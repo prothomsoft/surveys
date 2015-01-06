@@ -1,0 +1,55 @@
+HTTP/1.1 200 OK
+Date: Sun, 24 Jun 2012 08:58:48 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=OAxzgxsjhfxJ4fYSyfnWelVNI37vgO8JrOQ-NJlhhknEaiujW96Q4d84H01wSs6Iz0PObXcL0Aph0rqAGx-AckhLgQTB9IlYTGttiX_igfynKtGylWBm7jbZai8ufXXlFlNPTW%7cB5iFa7Roj4IW8kBqlhW3X9ZsqeTFvOB6p2CBmqQqrQUDhcbYlZIiWznwpP8tgQuEnYLpjm%7cRTEpmvoOvDlF8Kt0u0ZLVkpUBhoxJFGm04Y6Exha8uBgAGdAGJQsetWQ-H9XsPmHQJ_Z-W%7c1340528329; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Wed, 22-Jun-2022 08:58:49 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Sat, 19-Jun-2032 08:58:49 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1340528328807709; path=/; expires=Tue, 17-Jun-42 08:58:48 GMT
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+8
+VERIFIED
+0
+
+
+IPN PAYPAL TRANSACTION ID: 9VF89943HY1974631
+SUCCESS
+DATE: 06/24/2012 10:58 AM
+PAYER EMAIL: fvrpay_1340182032_per@gmail.com
+NAME: fvrbuyer fvrbuyer
+INVOICE: 26
+TOTAL: 40.00
+
+
+Payment was done for item id:26HTTP/1.1 200 OK
+Date: Sun, 24 Jun 2012 13:24:29 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=9ht52L_DsmX5o937NTOcQE2Ubw54MpiEi-erPFEHNhIq3UYwhiACofrAnpqM12hFOehCsw29Y-7iDkCT5X5gZct5gPlw3TKoMM-H5a9y3Wtmq6G_5mkC4z6BT3q54o7xhujD0G%7cmeJuhEBq6jEaBERwn7uxLNlY47hQjLiXHeE31dTqT7rQgF82SIBDOa1L-zLQw2LvHgUcMm%7cmqX227URDMgyBgF2TMY19gAFeibMznLyiZH0HpMElG0ymk6qF3ibuVw4u8-QLIQhcCv1Km%7c1340544269; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Wed, 22-Jun-2022 13:24:29 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Sat, 19-Jun-2032 13:24:29 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.109.11.1340544269559166; path=/; expires=Tue, 17-Jun-42 13:24:29 GMT
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+8
+VERIFIED
+0
+
+
+IPN PAYPAL TRANSACTION ID: 4M903329NT827170N
+SUCCESS
+DATE: 06/24/2012 3:24 PM
+PAYER EMAIL: fvrpay_1340182032_per@gmail.com
+NAME: fvrbuyer fvrbuyer
+INVOICE: 105
+TOTAL: 250.00
+
+
+Payment was done for item id:105

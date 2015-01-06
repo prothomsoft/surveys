@@ -1,0 +1,15 @@
+Currently I am working on:
+- checkout forms and process
+- products in stock and delivery time (additional features for product)
+- search - which will display list of products
+- newsletter - which will save subscription in admin panel
+- fill contact data
+
+I will let you know when this part of work is finished.
+Then we will have to set it on target domain, add products and images for product categories, and connect to PayPal. 
+
+payment_online_store
+payment_ok
+payment_error
+
+Delivery

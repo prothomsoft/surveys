@@ -1,0 +1,1058 @@
+<mach-ii>
+
+    <!-- PROPERTIES -->
+    <properties>
+        <!-- MACH-II REQUIRED -->
+        <property name="defaultEvent" value="surveys"/>
+        <property name="exceptionEvent" value=""/>
+        <property name="applicationRoot" value="."/>
+        <property name="eventParameter" value="event"/>
+        <property name="parameterPrecedence" value="form"/>
+        <property name="maxEvents" value="10" />
+    </properties>
+
+    <!-- LISTENERS -->
+    <listeners>
+    	<listener name="RightsListener" type="model.RightsListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="UserListener" type="model.UserListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="ProductListener" type="model.ProductListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="ProducerListener" type="model.ProducerListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="ProductCategoryPlainListener" type="model.ProductCategoryPlainListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="ShoppingCartListener" type="model.ShoppingCartListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="PaymentListener" type="model.PaymentListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener> 
+        <listener name="OrdersListener" type="model.OrdersListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>  
+        <listener name="PointsListener" type="model.PointsListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="SearchListener" type="model.SearchListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="ClubListener" type="model.ClubListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="ClubPictureListener" type="model.ClubPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>        
+        <listener name="AlfaListener" type="model.AlfaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="AlfaPictureListener" type="model.AlfaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>        
+        <listener name="BetaListener" type="model.BetaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="BetaPictureListener" type="model.BetaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>        
+        <listener name="GamaListener" type="model.GamaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="GamaPictureListener" type="model.GamaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="DeltaListener" type="model.DeltaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="DeltaPictureListener" type="model.DeltaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="SigmaListener" type="model.SigmaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="SigmaPictureListener" type="model.SigmaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="CmsCategoryPlainListener" type="model.CmsCategoryPlainListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="CmsContentListener" type="model.CmsContentListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>        
+        <listener name="CmsContentPictureListener" type="model.CmsContentPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="UpdateCategoryListener" type="model.UpdateCategoryListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="UpdateFileListener" type="model.UpdateFileListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        <listener name="MemberListener" type="model.MemberListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener> 
+        <listener name="NewsletterListener" type="model.NewsletterListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener> 
+        <listener name="BookListener" type="model.BookListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener> 
+    </listeners>
+    
+    <!-- EVENT FILTERS -->
+    <event-filters>
+    	<event-filter name="validateLoginFieldsFilter" type="filters.ValidateLoginFieldsFilter" />
+    	<event-filter name="validateRegistrationFieldsFilter" type="filters.ValidateRegistrationFieldsFilter" />
+    	<event-filter name="validateContactFieldsFilter" type="filters.ValidateContactFieldsFilter" />
+    	<event-filter name="validateSamplesFieldsFilter" type="filters.ValidateSamplesFieldsFilter" />
+    	<event-filter name="validateNewsletterFieldsFilter" type="filters.ValidateNewsletterFieldsFilter" />
+    	<event-filter name="validateContactFromFieldsFilter" type="filters.ValidateContactFormFieldsFilter" />
+    	<event-filter name="validateForgotPasswordFieldsFilter" type="filters.ValidateForgotPasswordFieldsFilter" />
+    	<event-filter name="validateChangePasswordFieldsFilter" type="filters.ValidateChangePasswordFieldsFilter" />
+    	<event-filter name="validateOrderFieldsFilter" type="filters.ValidateOrderFieldsFilter" />
+    	<event-filter name="validatePromocjaFieldsFilter" type="filters.ValidatePromocjaFieldsFilter" />
+    	<event-filter name="validateRezerwacjaFieldsFilter" type="filters.ValidateRezerwacjaFieldsFilter" />
+    	<event-filter name="validateBookFieldsFilter" type="filters.ValidateBookFieldsFilter" />
+    </event-filters>
+
+    <!-- EVENTS -->
+    <event-handlers>
+    
+        
+        
+        <!-- START --> <!-- START --> <!-- START -->
+        <event-handler event="surveys">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />        	
+        	<notify listener="SigmaListener" method="findLatest" />
+        	<notify listener="SigmaListener" method="getQueue" />
+        	<notify listener="SigmaListener" method="getListNavigation" />
+        	<notify listener="SigmaListener" method="getList" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="ProductListener" method="findAllHomePage" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<notify listener="DeltaListener" method="findAll" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="homePageView" contentKey="homePageView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+           	<view-page name="template4" />
+        </event-handler>
+        <!-- START --> <!-- START --> <!-- START -->
+        
+        <event-handler event="sendemail">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="OrdersListener" method="sendEmail"/>
+        </event-handler>
+        
+        <!-- CMS --> <!-- CMS --> <!-- CMS -->
+        <event-handler event="surveys_page" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="CmsContentListener" method="findByItemSeo" />
+        	<notify listener="CmsContentPictureListener" method="getByCmsContentObjAndId" />
+        	<notify listener="ProductListener" method="findAllHomePage" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<notify listener="DeltaListener" method="findAll" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="cmsView" contentKey="cmsView" />
+        	<view-page name="footerView" contentKey="footerView" />
+           	<view-page name="template4" />        	
+        </event-handler>
+        <!-- CMS --> <!-- CMS --> <!-- CMS -->
+        
+        
+        <!-- NEWS --> <!-- NEWS --> <!-- NEWS -->
+        <event-handler event="news" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="SigmaListener" method="findLatest" />
+        	<notify listener="SigmaListener" method="getQueue" />
+        	<notify listener="SigmaListener" method="getListNavigation" />
+        	<notify listener="SigmaListener" method="getList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="ProductListener" method="findAllHomePage" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="bestView" contentKey="bestView" />
+        	<view-page name="newsView" contentKey="newsView" />        	
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template3" />
+        </event-handler>
+                
+        <event-handler event="news_entry" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="SigmaListener" method="findByItemSeo" />
+        	<notify listener="SigmaListener" method="findLatest" />
+        	<notify listener="SigmaPictureListener" method="getBySigmaObjAndId" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="BookListener" method="getQueue" />
+        	<notify listener="BookListener" method="getListNavigation" />
+        	<notify listener="BookListener" method="getList" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="newsEntryView" contentKey="newsEntryView" />        	
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template3" />
+        </event-handler>
+        <!-- NEWS --> <!-- NEWS --> <!-- NEWS -->
+        
+                
+        <!-- COLLECTIONS --> <!-- COLLECTIONS --> <!-- COLLECTIONS -->
+        <event-handler event="collections">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ProductListener" method="findAllHomePage" />        	
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<view-page name="categoriesView" contentKey="categoriesView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="bestView" contentKey="bestView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template3" />
+        </event-handler>
+        <!-- COLLECTIONS --> <!-- COLLECTIONS --> <!-- COLLECTIONS -->
+                                
+        <!-- PRODUCTS --> <!-- PRODUCTS --> <!-- PRODUCTS -->
+        <event-handler event="products">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="ProductListener" method="getProductQueue" />
+        	<notify listener="ProductListener" method="getProductListNavigation" />
+        	<notify listener="ProductListener" method="getProductList" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="nproductsView" contentKey="nproductsView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="product">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="ProductListener" method="findById" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="nproductView" contentKey="nproductView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="produkty">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ProductListener" method="getProductQueue" />
+        	<notify listener="ProductListener" method="getProductListNavigation" />
+        	<notify listener="ProductListener" method="getProductList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<view-page name="categoriesView" contentKey="categoriesView" />
+        	<view-page name="productsView" contentKey="productsView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        
+        <!-- PRODUCT --> <!-- PRODUCT --> <!-- PRODUCT -->
+		<event-handler event="produkt">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ProductListener" method="findById" />
+        	<notify listener="ProductListener" method="findAll" />
+        	<notify listener="ProductListener" method="findAllBySubCategory" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<view-page name="productView" contentKey="productView" />
+        	<view-page name="categoriesView" contentKey="categoriesView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        <!-- PRODUCT --> <!-- PRODUCT --> <!-- PRODUCT -->
+                
+        <event-handler event="getProductTableData">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductListener" method="getTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <event-handler event="getProductSearchTableData">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductListener" method="getSearchTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- SEARCH --> <!-- SEARCH --> <!-- SEARCH -->
+        <event-handler event="findProductByName">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductListener" method="findByName" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <event-handler event="findProducerByName">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProducerListener" method="findByName" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        <!-- SEARCH --> <!-- SEARCH --> <!-- SEARCH -->
+        
+        <!-- LOGIN/LOGOUT --> <!-- LOGIN/LOGOUT --> <!-- LOGIN/LOGOUT -->
+        <event-handler event="login" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="loginFormView" contentKey="loginFormView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <!-- executeLogin -->
+        <event-handler event="executeLogin" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<event-arg name="failEvent" value="login" />
+        	<filter name="validateLoginFieldsFilter" />
+        	<notify listener="UserListener" method="logIn" />
+        </event-handler>
+
+		<!-- executeLogout -->
+        <event-handler event="executeLogout" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+			<notify listener="UserListener" method="logOut" />
+        	<announce event="surveys" />
+        </event-handler>
+        <!-- LOGIN/LOGOUT --> <!-- LOGIN/LOGOUT --> <!-- LOGIN/LOGOUT -->
+        
+        <!-- REGISTRATION --> <!-- REGISTRATION --> <!-- REGISTRATION -->
+        <event-handler event="register" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="registerFormView" contentKey="registerFormView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        <!-- executeRegistration -->
+        <event-handler event="executeRegistration" access="public">
+        	<event-arg name="failEvent" value="register" />
+        	<filter name="validateRegistrationFieldsFilter" />
+        	<notify listener="UserListener" method="createUserWithActivation" />
+        	<notify listener="UserListener" method="assignUserToRight" />
+        </event-handler>
+        <!-- registerConfirmation -->
+        <event-handler event="registerConfirmation" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="registerConfirmationView" contentKey="registerConfirmationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />        	
+        </event-handler>                
+        <!-- REGISTRATION --> <!-- REGISTRATION --> <!-- REGISTRATION -->
+        
+        
+        <!-- ACTIVATION --> <!-- ACTIVATION --> <!-- ACTIVATION -->
+        <event-handler event="activation">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="UserListener" method="executeActivation" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="activationView" contentKey="activationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        <!-- ACTIVATION --> <!-- ACTIVATION --> <!-- ACTIVATION -->
+        
+        <!-- FORGOTPASSWORD --> <!-- FORGOTPASSWORD --> <!-- FORGOTPASSWORD -->
+        <event-handler event="forgotPassword" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="forgotPasswordFormView" contentKey="forgotPasswordFormView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        <!-- executeForgotPassword -->
+        <event-handler event="executeForgotPassword" access="public">
+        	<event-arg name="failEvent" value="forgotPassword" />
+        	<filter name="validateForgotPasswordFieldsFilter" />
+        	<notify listener="UserListener" method="executeForgotPassword" />        	
+        </event-handler>
+        <!-- forgotPasswordConfirmation -->
+        <event-handler event="forgotPasswordConfirmation" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="forgotPasswordConfirmationView" contentKey="forgotPasswordConfirmationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />        	
+        </event-handler>                     
+        <!-- FORGOTPASSWORD --> <!-- FORGOTPASSWORD --> <!-- FORGOTPASSWORD -->
+        
+        
+        <!-- CONTACT --> <!-- CONTACT --> <!-- CONTACT -->
+        <!-- executeContact -->
+        <event-handler event="executeContact" access="public">
+        	<filter name="validateContactFieldsFilter" />
+        	<notify listener="UserListener" method="executeContact" />
+        	<notify listener="UserListener" method="validationResultTrue" />
+        </event-handler>        
+        <!-- CONTACT --> <!-- CONTACT --> <!-- CONTACT -->
+        
+        <!-- SHOPPINGCART --> <!-- SHOPPINGCART --> <!-- SHOPPINGCART -->
+        <event-handler event="shoppingCart">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="nShoppingCartView" contentKey="nShoppingCartView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <!-- executeAddShoppingCartAction -->
+        <event-handler event="executeAddShoppingCartAction">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ShoppingCartListener" method="addToCart"/>        	        	
+        </event-handler>
+        
+        <!-- executeClearShoppingCartAction -->
+        <event-handler event="executeClearShoppingCartAction">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ShoppingCartListener" method="clearCart"/>
+        	<announce event="shoppingCart" copyEventArgs="true" />
+        </event-handler>
+        
+        <!-- executeUpdateShoppingCartAction -->
+        <event-handler event="executeUpdateShoppingCartAction">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ShoppingCartListener" method="updateCart"/>
+        	<announce event="shoppingCart" copyEventArgs="true" />
+        </event-handler>
+        
+        <!-- executeRemoveShoppingCartAction -->
+        <event-handler event="executeRemoveShoppingCartAction">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ShoppingCartListener" method="removeFromCart"/>
+        	<announce event="shoppingCart" copyEventArgs="true" />
+        </event-handler>
+        
+        <!-- saveShoppingCartState -->
+        <event-handler event="saveShoppingCartState">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ShoppingCartListener" method="saveShoppingCartState" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        <!-- SHOPPINGCART --> <!-- SHOPPINGCART --> <!-- SHOPPINGCART -->
+        
+        <!-- USERACCOUNT --> <!-- USERACCOUNT --> <!-- USERACCOUNT -->
+        <event-handler event="myAccountStart">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="myAccountStartView" contentKey="myAccountStartView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="moje_konto" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<notify listener="UserListener" method="setFieldsForUpdate"/>
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+           	<event-arg name="submitEvent" value="executeEditUserApprovedAction" />
+			<view-page name="userAddEdit" contentKey="userAddEdit" />
+        	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        
+        <event-handler event="moje_konto_zapisz" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="UserListener" method="updateRecord" />
+        	<announce event="moje_konto_potwierdzenie" />
+        </event-handler>
+                        
+        <event-handler event="moje_konto_potwierdzenie" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<view-page name="userConfirm" contentKey="userConfirm" />
+        	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        
+        <event-handler event="zmiana_hasla" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<notify listener="UserListener" method="setFieldsForUpdate"/>
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+           	<event-arg name="submitEvent" value="executeEditUserApprovedAction" />
+			<view-page name="passwordAddEdit" contentKey="passwordAddEdit" />
+        	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        
+        <event-handler event="zmiana_hasla_zapisz" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<event-arg name="failEvent" value="zmiana_hasla" />
+        	<filter name="validateChangePasswordFieldsFilter" />
+        	<notify listener="UserListener" method="changePassword" />
+        	<announce event="zmiana_hasla_potwierdzenie" />
+        </event-handler>
+        
+        <event-handler event="zmiana_hasla_potwierdzenie" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<view-page name="passwordConfirm" contentKey="passwordConfirm" />
+        	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        
+        <event-handler event="historia_zamowien" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<notify listener="UserListener" method="setFieldsForUpdate"/>
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+           	<event-arg name="submitEvent" value="executeEditUserApprovedAction" />
+			<view-page name="orderHistoryView" contentKey="orderHistoryView" />
+        	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        <event-handler event="getOrdersTableData">
+        	<notify listener="OrdersListener" method="getUserTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                
+        <event-handler event="zamowienie" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="OrdersListener" method="setFieldsForUpdate" />
+        	<notify listener="OrdersListener" method="findOrderItems" />
+        	<notify listener="UserListener" method="findById"/>
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<event-arg name="submitEvent" value="executeEditUserApprovedAction" />
+			<view-page name="orderView" contentKey="orderView" />
+        	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        
+        <event-handler event="zamowienie_adres1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+           	<notify listener="ProductListener" method="findByListId"/>
+           	<notify listener="DeltaListener" method="findAll" />
+           	<notify listener="AlfaListener" method="findLatest" />
+			<view-page name="navigationTopView" contentKey="navigationTopView" />
+           	<view-page name="orderAddressView" contentKey="orderAddressView" />
+        	<view-page name="categoriesView" contentKey="categoriesView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        
+        <event-handler event="zamowienie_adres">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="nOrderAddressView" contentKey="nOrderAddressView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="orderAddress">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="nOrderAddressView" contentKey="nOrderAddressView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <!-- executeCreateOrderAndPayment  -->
+        <event-handler event="executeCreateOrderAndPayment">
+        	<filter name="validateOrderFieldsFilter" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+           	<notify listener="ProductListener" method="findByListId"/>
+        	<notify listener="OrdersListener" method="createOrder"/>        	
+        	<announce event="orderPayment" copyEventArgs="true" />
+        </event-handler>
+        
+        <!-- executeCreateOrder  -->
+        <event-handler event="executeCreateOrder">
+        	<filter name="validateOrderFieldsFilter" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+           	<notify listener="ProductListener" method="findByListId"/>
+			<notify listener="OrdersListener" method="createOrder"/>        	        	
+        	<announce event="zamowienie_potwierdzenie" copyEventArgs="true" />
+        </event-handler>
+        
+        <event-handler event="orderPayment">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="nOrderPaymentView" contentKey="nOrderPaymentView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="zamowienie_platnosc">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+           	<notify listener="ProductListener" method="findByListId"/>
+           	<notify listener="DeltaListener" method="findAll" />
+           	<notify listener="AlfaListener" method="findLatest" />
+           	<view-page name="navigationTopView" contentKey="navigationTopView" />
+           	<view-page name="orderPaymentView" contentKey="orderPaymentView" />
+        	<view-page name="categoriesView" contentKey="categoriesView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />
+        </event-handler>
+        
+        <event-handler event="zamowienie_potwierdzenie">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ShoppingCartListener" method="clearCart"/>
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<view-page name="orderSuccessView" contentKey="orderSuccessView" />
+        	<view-page name="categoriesView" contentKey="categoriesView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template2" />    
+        </event-handler>
+        
+        <!-- PLATNOSCI --> <!-- PLATNOSCI --> <!-- PLATNOSCI -->
+        <event-handler event="payment_ok">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ShoppingCartListener" method="clearCart"/>
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="nOkView" contentKey="nOkView" />        	
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="payment_error">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ShoppingCartListener" method="clearCart"/>
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="nErrorView" contentKey="nErrorView" />        	
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="payment_online_store">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="nOnlineStoreView" contentKey="nOnlineStoreView" />        	
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="payment_online_member">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="nOnlineMemberView" contentKey="nOnlineMemberView" />        	
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <!-- SEARCHRESULTS --> <!-- SEARCHRESULTS --> <!-- SEARCHRESULTS -->
+        <event-handler event="searchResults">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<notify listener="ProductListener" method="findSearchAll" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="wyniki_wyszukiwania">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="SigmaListener" method="getSearchQueue" />
+        	<notify listener="SigmaListener" method="getSearchListNavigation" />
+        	<notify listener="SigmaListener" method="getSearchList" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="SearchListener" method="addKeyword" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<view-page name="searchResultsView" contentKey="searchResultsView" />
+        	<view-page name="categoriesView" contentKey="categoriesView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="bestView" contentKey="bestView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template3" />
+        </event-handler>
+        <!-- SEARCHRESULTS --> <!-- SEARCHRESULTS --> <!-- SEARCHRESULTS -->
+        
+        <!-- ARTICLES --> <!-- ARTICLES --> <!-- ARTICLES -->
+        <event-handler event="videoarticles" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="BetaListener" method="getQueueVideo" />
+        	<notify listener="BetaListener" method="getListNavigationVideo" />
+        	<notify listener="BetaListener" method="getListVideo" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="articlesView" contentKey="articlesView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template3" />
+        </event-handler>
+        
+        <event-handler event="articles" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="BetaListener" method="getQueue" />
+        	<notify listener="BetaListener" method="getListNavigation" />
+        	<notify listener="BetaListener" method="getList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="articlesView" contentKey="articlesView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template3" />
+        </event-handler>
+        
+        <event-handler event="article" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="BetaListener" method="findLatest" />
+        	<notify listener="BetaListener" method="findById" />
+        	<notify listener="BetaPictureListener" method="getByBetaObjAndId" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="articleView" contentKey="articleView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template3" />
+        </event-handler>
+        <!-- ARTICLES --> <!-- ARTICLES --> <!-- ARTICLES -->
+        
+        <!-- CONTACT --> <!-- CONTACT --> <!-- CONTACT -->
+        <event-handler event="contact_form" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<view-page name="navigationView" contentKey="navigationView" />
+			<view-page name="carouselView" contentKey="carouselView" />
+			<view-page name="footerView" contentKey="footerView" />
+			<view-page name="contactFormView" contentKey="contactFormView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="executeContactAction">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<event-arg name="failEvent" value="contact_form" />
+        	<filter name="validateContactFromFieldsFilter" />
+        	<announce event="contact_form_confirmation" copyEventArgs="true" />
+        </event-handler>
+        
+        <event-handler event="contact_form_confirmation" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="ShoppingCartListener" method="findProductsList"/>
+        	<notify listener="ProductListener" method="findByListId"/>
+        	<view-page name="bestView" contentKey="bestView" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+			<view-page name="carouselView" contentKey="carouselView" />
+			<view-page name="footerView" contentKey="footerView" />
+			<view-page name="contactConfirmationView" contentKey="contactConfirmationView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template4" />
+        </event-handler>
+        <!-- CONTACT --> <!-- CONTACT --> <!-- CONTACT -->
+        
+        
+        <!-- NEWSLETTER --> <!-- NEWSLETTER --> <!-- NEWSLETTER -->
+        <event-handler event="newsletter">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ShoppingCartListener" method="clearCart"/>
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="newsletterFormView" contentKey="newsletterFormView" />        	
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="executeNewsletterAction">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<event-arg name="failEvent" value="newsletter" />
+        	<filter name="validateNewsletterFieldsFilter" />
+        	<notify listener="NewsletterListener" method="addEmail" />
+        	<announce event="newsletterConfirmation" copyEventArgs="true" />
+        </event-handler>
+        
+        <event-handler event="newsletterConfirmation">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="ShoppingCartListener" method="clearCart"/>
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="AlfaListener" method="findLatest" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="carouselView" contentKey="carouselView" />
+        	<view-page name="newsletterConfirmationView" contentKey="newsletterConfirmationView" />        	
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        <!-- NEWSLETTER --> <!-- NEWSLETTER --> <!-- NEWSLETTER -->
+        
+        <event-handler event="contact_information" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="DeltaListener" method="findAll" />
+        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
+        	<notify listener="CmsContentListener" method="findByItemSeo" />
+        	<notify listener="ProductListener" method="findAllHomePage" />
+        	<notify listener="BetaListener" method="findHomePageDetails" />
+        	<view-page name="bestView" contentKey="bestView" />
+        	<view-page name="navigationTopView" contentKey="navigationTopView" />
+        	<view-page name="contactInformationView" contentKey="contactInformationView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template3" />
+        </event-handler>
+        
+        
+                                
+    </event-handlers>
+
+    <!-- VIEWS -->
+    <page-views>
+    	
+    	<!-- !GENERAL -->
+    	<page-view name="responseJSON" page="/views/front/!general/responseJSON.php"/>
+    	<page-view name="documentReadyScript" page="/views/front/!general/documentReadyScript.php"/>
+    	<page-view name="footerView" page="/views/front/!general/footerView.php"/>
+    	<page-view name="searchView" page="/views/front/!general/searchView.php"/>
+    	
+    	<!-- !MANAGEMENT -->
+    	<page-view name="template4" page="/views/front/!management/template4.php"/>
+    	<page-view name="template3" page="/views/front/!management/template3.php"/>
+    	<page-view name="template2" page="/views/front/!management/template2.php"/>
+    	<page-view name="template1" page="/views/front/!management/template1.php"/>
+    	
+    	<!-- PROFILE -->
+    	<page-view name="profileCategoriesView" page="/views/front/profile/profileCategoriesView.php"/>
+    	
+    	<!--  HOME -->
+    	<page-view name="homePageView" page="/views/front/home/homePageView.php"/>
+    	
+    	<!--  MEMBERSHIP -->
+    	<page-view name="memberFormView" page="/views/front/member/memberFormView.php"/>
+    	<page-view name="memberConfirmationView" page="/views/front/member/memberConfirmationView.php"/>
+    	
+    	<!--  NEWSLETTER -->
+    	<page-view name="newsletterFormView" page="/views/front/member/newsletterFormView.php"/>
+    	<page-view name="newsletterConfirmationView" page="/views/front/member/newsletterConfirmationView.php"/>
+    	
+    	<!--  CONTACT -->
+    	<page-view name="contactFormView" page="/views/front/contact/contactFormView.php"/>
+    	<page-view name="contactConfirmationView" page="/views/front/contact/contactConfirmationView.php"/>
+    	
+    	<!--  LOGIN -->
+    	<page-view name="loginFormView" page="/views/front/login/loginFormView.php"/>
+    	
+    	<!--  REGISTER -->
+    	<page-view name="registerFormView" page="/views/front/register/registerFormView.php"/>
+    	<page-view name="registerConfirmationView" page="/views/front/register/registerConfirmationView.php"/>
+    	
+    	<!--  FORGOT PASSWORD -->
+    	<page-view name="forgotPasswordFormView" page="/views/front/forgotpassword/forgotPasswordFormView.php"/>
+    	<page-view name="forgotPasswordConfirmationView" page="/views/front/forgotpassword/forgotPasswordConfirmationView.php"/>
+    	
+    	<!--  NAVIGATION -->
+    	<page-view name="navigationView" page="/views/front/!general/navigationView.php"/>
+    	
+    	<!--  CAROUSEL -->
+    	<page-view name="carouselView" page="/views/front/!general/carouselView.php"/>
+    	
+    			   	
+    	<!-- PRODUCTS -->
+    	<page-view name="nproductsView" page="/views/front/product/nproductsView.php"/>
+    	<page-view name="nproductView" page="/views/front/product/nproductView.php"/>
+    	<page-view name="productView" page="/views/front/product/productView.php"/>
+    	
+    	
+    	<!-- SHOPPINGCART -->
+    	<page-view name="nShoppingCartView" page="/views/front/shoppingcart/nShoppingCartView.php"/>
+    	
+    	<!-- SEARCHRESULTS -->
+    	<page-view name="searchResultsView" page="/views/front/searchresults/searchResultsView.php"/>
+    	
+    	<!-- ACTIVATION -->
+    	<page-view name="activationView" page="/views/front/activation/activationView.php"/>
+    	
+    	<!-- MY ACCOUNT -->
+    	<page-view name="myAccountStartView" page="/views/front/myaccount/myAccountStartView.php"/>
+    	
+    	<!-- BOXES -->
+    	<page-view name="categoriesView" page="/views/front/boxes/categoriesView.php"/>
+    	<page-view name="newsletterView" page="/views/front/boxes/newsletterView.php"/>
+    	<page-view name="navigationTopView" page="/views/front/boxes/navigationTopView.php"/>
+    	<page-view name="bestView" page="/views/front/boxes/bestView.php"/>
+    	
+        <!-- USER -->
+        <page-view name="userStart" page="/views/front/user/userStart.php"/>
+    	<page-view name="userAddEdit" page="/views/front/user/userAddEdit.php"/>
+    	<page-view name="userConfirm" page="/views/front/user/userConfirm.php"/>
+    	<page-view name="orderHistoryView" page="/views/front/user/orderHistoryView.php"/>
+    	<page-view name="orderView" page="/views/front/user/orderView.php"/>
+    	<page-view name="orderAddressView" page="/views/front/user/orderAddressView.php"/>
+    	<page-view name="orderPaymentView" page="/views/front/user/orderPaymentView.php"/>
+    	<page-view name="passwordAddEdit" page="/views/front/user/passwordAddEdit.php"/>
+    	<page-view name="passwordConfirm" page="/views/front/user/passwordConfirm.php"/>
+    	
+    	<page-view name="nOrderAddressView" page="/views/front/user/nOrderAddressView.php"/>
+    	<page-view name="nOrderPaymentView" page="/views/front/user/nOrderPaymentView.php"/>
+    	
+        <!-- Shopping Cart-->
+        <page-view name="shoppingCartView" page="/views/front/shoppingcart/shoppingCartView.php"/>
+        
+        <!-- PAYMENT -->
+        <page-view name="orderSuccessView" page="/views/front/orders/orderSuccessView.php"/>
+        <page-view name="orderFailView" page="/views/front/orders/orderFailView.php"/>
+        
+        <!-- PLATNOSCI -->
+        <page-view name="okView" page="/views/front/platnosci/okView.php"/>
+        <page-view name="errorView" page="/views/front/platnosci/errorView.php"/>
+        <page-view name="onlineMemberView" page="/views/front/platnosci/onlineMemberView.php"/>
+        <page-view name="onlineStoreView" page="/views/front/platnosci/onlineStoreView.php"/>
+        
+        <page-view name="nOnlineStoreView" page="/views/front/platnosci/nOnlineStoreView.php"/>
+        <page-view name="nOkView" page="/views/front/platnosci/nOkView.php"/>
+        <page-view name="nErrorView" page="/views/front/platnosci/nErrorView.php"/>
+        <page-view name="nOnlineMemberView" page="/views/front/platnosci/nOnlineMemberView.php"/>
+        
+        <!-- NEWS -->
+    	<page-view name="newsView" page="/views/front/news/newsView.php"/>
+    	<page-view name="newsEntryView" page="/views/front/news/newsEntryView.php"/>
+    	    	
+    	<!-- ARTICLES -->
+    	<page-view name="articlesView" page="/views/front/articles/articlesView.php"/>
+    	<page-view name="articleView" page="/views/front/articles/articleView.php"/>
+    	
+    	<!-- CMS -->
+    	<page-view name="cmsView" page="/views/front/cms/cmsView.php"/>
+    	
+    	<!--  ADDITIONAL PAGES -->
+    	<page-view name="konkurranseView" page="/views/front/additionalpages/konkurranseView.php"/>
+    	<page-view name="contactInformationView" page="/views/front/additionalpages/contactInformationView.php"/>
+        
+                
+    </page-views>
+    
+    <!-- PLUGINS -->
+    <plugins>
+    	<plugin name="securityPlugin" type="plugins.SecurityPlugin" />
+    </plugins>
+
+</mach-ii>

@@ -1,0 +1,459 @@
+/*--------------------------------------------- */
+/* layout ------------------------------------- */
+/*--------------------------------------------- */
+* { 
+}
+
+body {
+	font-family: Arial; font-size: 12px; min-height: 100%;    
+}
+
+#wrapper {
+	text-align: left;
+}
+
+/*--------------------------------------------- */
+/* structure ---------------------------------- */
+/*--------------------------------------------- */
+
+/*--------------------------------------------- */
+/* box ---------------------------------------- */
+/*--------------------------------------------- */
+
+
+/*--------------------------------------------- */
+/* headings ----------------------------------- */
+/*--------------------------------------------- */
+.center-content h1 {
+	font-size:18px;
+	padding-top:5px;
+	padding-bottom:10px;
+	color :#4A083D;
+}
+
+.center-content h2 {
+	font-size:14px;
+	padding-top:5px;
+	padding-bottom:10px;
+	color :#4A083D;
+}
+
+.center-content h3 {
+	font-weight: normal;
+	font-size:14px;
+}
+
+.center-content h4 {
+	font-size:14px;
+	padding-top:5px;
+	padding-bottom:10px;
+	color :#4A083D;
+}
+
+.policy-content h4 {
+	font-size:14px;
+	padding-top:2px;
+	padding-bottom:10px;
+	color :#4A083D;
+}
+
+.pomoc-content h1 {
+	font-size:14px;
+	padding-top:5px;
+	padding-bottom:10px;
+	color :#4A083D;
+}
+
+.pomoc-content h2 {
+	font-size:14px;
+	padding-top:5px;
+	padding-bottom:10px;
+	color :#4A083D;
+}
+
+.pomoc-content h3 {
+	font-weight: normal;
+	font-size:14px;
+}
+
+.pomoc-content h4 {
+	font-size:14px;
+	padding-top:5px;
+	padding-bottom:10px;
+	color :#4A083D;
+}
+                  
+
+/*--------------------------------------------- */
+/* lists -------------------------------------- */
+/*--------------------------------------------- */
+
+.center-content ul {
+	line-height:18px;
+	list-style-type: none;
+	width: 100%;
+	text-align:left;
+	color:#000;
+}
+
+.center-content li{
+     padding-left:18px;
+     background:transparent url('../images/thick.jpg') 0 1px no-repeat;
+     padding-bottom: 3px;
+}
+
+.pomoc-content ul {
+	line-height:18px;
+	list-style-type: none;
+	width: 100%;
+	text-align:left;
+	color:#000;
+}
+
+.pomoc-content li{
+     padding-left:18px;
+     background:transparent url('../images/thick.jpg') 0 1px no-repeat;
+     padding-bottom: 3px;
+}
+
+.policy-content ul {
+	line-height:18px;
+	list-style-type: none;
+	width: 100%;
+	text-align:left;
+	color:#000;
+}
+
+.policy-content li{
+    padding-left:18px;
+    background:transparent url('../images/thick.jpg') 0 1px no-repeat;
+    padding-bottom: 3px;        
+}
+
+/*--------------------------------------------- */
+/* paragraphs --------------------------------- */
+/*--------------------------------------------- */
+
+.center-content p {
+	line-height: 20px;
+}
+
+.pomoc-content p {
+	line-height: 20px;
+}
+
+.accordion_content p {
+	padding: 4px 0 4px 0;
+	color: #000000;	
+}
+
+/*--------------------------------------------- */
+/* anchors ------------------------------------ */
+/*--------------------------------------------- */
+
+
+a, a:visited {
+	text-decoration : none; 
+}
+  
+a:hover { 
+	color: #4A083D; 
+	text-decoration : none; 
+}
+ 
+a:active, a:focus { 
+	color :#4A083D; 
+	text-decoration : none; 
+}
+
+a.action {
+	color :#4A083D; 
+	text-decoration : none;
+}
+
+
+
+a.anchor_link, a:visited.anchor_link {
+ 	color : #000000; 
+  	text-decoration : underline;	
+}
+
+
+a.anchor_link:hover {
+    color: #4A083D;
+    text-decoration : underline;
+}
+
+a.anchor_link_product, a:visited.anchor_link_product {
+ 	color: #4A083D;
+ 	font-size:12px;
+ 	font-weight: bold;    		
+ 	text-decoration : none;	
+}
+
+a.anchor_link_product:hover {
+    color: #4A083D;
+    font-size:12px;
+    font-weight: bold;
+    text-decoration : none;
+}
+
+a.anchor_link_white, a:visited.anchor_link_white {
+ 	color: #FFFFFF;    		
+ 	text-decoration : underline;	
+}
+
+a.anchor_link_white:hover {
+    color: #FFFFFF;
+    text-decoration : underline;
+}
+
+.accordion_content a, a:visited {
+	text-decoration : none; 
+}
+ 
+.accordion_content a:hover { 
+	color: #4A083D; 
+	text-decoration : none; 
+}
+
+a.anchor_home, a.anchor_home:visited {
+	color : #000000;
+	text-decoration : underline; 
+}
+ 
+a.anchor_home:hover { 
+	color: #4A083D; 
+	text-decoration : underline; 
+}
+ 
+a.anchor_home:active, a.anchor_home:focus { 
+	color :#4A083D; 
+	text-decoration : underline; 
+}
+
+a.anchor_home.action {
+	color :#4A083D; 
+	text-decoration : underline;
+}
+
+
+
+/*----------------------------------------------- */
+/* table ---------------------------------------- */
+/*----------------------------------------------- */
+
+
+
+
+
+
+/*-------------------------------------- */
+/* ikonki produktu---------------------- */
+/*-------------------------------------- */
+
+.iconki-wrapper{
+/*width: 151px;*/
+float: left;
+padding-top: 20px;
+width:420px;
+}
+.iconki-obrazek{
+width: 45px;
+padding-right: 14px;
+float: left;
+}
+.iconki-tekstl {
+/*width:92px;*/
+padding-top:10px;
+float: left;
+}
+
+.iconki-tekst2 {
+padding-top:10px;
+float:left;
+/*line-height: 15px;
+font-style: italic;*/
+width: 720px; 
+height:55px;
+}
+
+
+.iconki-tekstr {
+/*width:92px;
+float: right;*/
+float: left;
+padding-top:10px;
+}
+.iconki-tekstl p{
+text-align: left;
+line-height: 15px;
+font-style: italic;
+}
+
+
+
+.iconki-tekstr p{
+text-align:right;
+line-height: 15px;
+font-style: italic;
+}
+
+
+/*-------------------------------------- */
+/* help 7 powodow ---------------------- */
+/*-------------------------------------- */
+.d1box{
+height:150px;
+width:450px;
+margin-top:25px;
+margin-left:250px;
+}
+
+
+.d2box{
+height:150px;
+width:400px;
+margin-top:25px;
+margin-left:70px;
+}
+.d3box{
+height:150px;
+width:300px;
+margin-top:25px;
+margin-left:370px;
+}
+
+.d4box{
+height:180px;
+width:450px;
+margin-top:25px;
+margin-left:50px;
+}
+
+
+.d5box{
+height:150px;
+width:330px;
+margin-top:25px;
+margin-left:440px;
+}
+.d6box{
+height:150px;
+width:450px;
+margin-top:25px;
+margin-left:100px;
+}
+.d7box{
+height:180px;
+width:420px;
+margin-top:25px;
+margin-left:250px;
+margin-bottom:45px;
+}
+.help-wrapper-center{
+	padding-top:15px;
+	text-align:center;
+}
+.help-cyfra{
+float: left; 
+padding: 10px 5px 50px;
+height:30px;
+width:30px;
+}
+
+.help-center-img{
+text-align:center;
+}
+.help-left-img{
+padding-top:5px;
+padding-left:20px;
+padding-right:15px;
+float:left;
+}
+
+.help-center{
+  margin-left: auto ;
+  margin-right: auto ;
+}
+/*-------------------------------------- */
+/*tla pod boxy---------------------- */
+/*-------------------------------------- */
+
+
+#box_contact {
+background-image:url("http://www.close2you.pl/images/box_kontakt_background.png");
+background-repeat:no-repeat;
+float:left;
+}
+#box_dostawa {
+background-image:url("http://www.close2you.pl/images/box_dostawa_background.png");
+background-repeat:no-repeat;
+float:left;
+}
+#box_newsletter {
+background-image:url("http://www.close2you.pl/images/box_newsletter_background.gif");
+background-repeat:no-repeat;
+float:left;
+}
+#box_opinie {
+background-image:url("http://www.close2you.pl/images/box_opinie_background.gif");
+background-repeat:no-repeat;
+float:left;
+}
+#box_punkty {
+background-image:url("http://www.close2you.pl/images/box_punkty_background.png");
+background-repeat:no-repeat;
+float:left;
+}
+#box_pierwsze {
+background-image:url("http://www.close2you.pl/images/box_pierwsze_background.png");
+background-repeat:no-repeat;
+float:left;
+}
+#box_quattro {
+background-image:url("http://www.close2you.pl/images/box_quattro_background.png");
+background-repeat:no-repeat;
+float:left;
+}
+#box_buyreason {
+background-image:url("http://www.close2you.pl/images/box_buyreason_background.png");
+background-repeat:repeat-x;
+padding:0px 8px 8px 8px;
+float:left;
+}
+#box_operfumach {
+background-image:url("http://www.close2you.pl/images/box_operfumach_background.png");
+background-repeat:no-repeat;
+float:left;
+}
+
+#box_testery {
+background-image:url("http://www.close2you.pl/images/box_testery_background.png");
+background-repeat:no-repeat;
+float:left;
+}
+#box_promocje {
+background-image:url("http://www.close2you.pl/images/box_promocje_background.png");
+background-repeat:no-repeat;
+float:left;
+}
+
+
+
+.box-content p{
+line-height:20px;
+}
+
+/*----------------sitemapa- ---------------------*/
+
+.sitemapa p{
+margin-left:40px;
+}
+.sitemapa li{
+margin-left:45px;
+}
+
+/*-------------------------------------- */
+/*koniec---------------------- */
+/*-------------------------------------- */

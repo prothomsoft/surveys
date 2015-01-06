@@ -1,0 +1,1391 @@
+<mach-ii>
+
+    <!-- PROPERTIES -->
+    <properties>
+        <!-- MACH-II REQUIRED -->
+        <property name="defaultEvent" value="startAdmin"/>
+        <property name="exceptionEvent" value=""/>
+        <property name="applicationRoot" value="../"/>
+        <property name="eventParameter" value="event"/>
+        <property name="parameterPrecedence" value="form"/>
+        <property name="maxEvents" value="10" />
+    </properties>
+
+    <!-- LISTENERS -->
+    <listeners>
+        
+        <listener name="UserListener" type="model.UserListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <listener name="ProducerListener" type="model.ProducerListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <listener name="OrdersListener" type="model.OrdersListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <listener name="PointsListener" type="model.PointsListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <listener name="RightsListener" type="model.RightsListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- ProductCategory -->
+	    <listener name="ProductCategoryListener" type="model.ProductCategoryListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- ProductCategoryPlain -->
+	    <listener name="ProductCategoryPlainListener" type="model.ProductCategoryPlainListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Product Management -->
+        <listener name="ProductListener" type="model.ProductListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- ProductPicture Management -->
+        <listener name="ProductPictureListener" type="model.ProductPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Delta Management -->
+        <listener name="DeltaListener" type="model.DeltaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- DeltaPicture Management -->
+        <listener name="DeltaPictureListener" type="model.DeltaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Sigma Management -->
+        <listener name="SigmaListener" type="model.SigmaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- SigmaPicture Management -->
+        <listener name="SigmaPictureListener" type="model.SigmaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+                
+        <!-- Club Management -->
+        <listener name="ClubListener" type="model.ClubListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- ClubPicture Management -->
+        <listener name="ClubPictureListener" type="model.ClubPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Alfa Management -->
+        <listener name="AlfaListener" type="model.AlfaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- AlfaPicture Management -->
+        <listener name="AlfaPictureListener" type="model.AlfaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Beta Management -->
+        <listener name="BetaListener" type="model.BetaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- BetaPicture Management -->
+        <listener name="BetaPictureListener" type="model.BetaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Gama Management -->
+        <listener name="GamaListener" type="model.GamaListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- GamaPicture Management -->
+        <listener name="GamaPictureListener" type="model.GamaPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <listener name="CmsCategoryListener" type="model.CmsCategoryListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>        
+        <listener name="CmsContentListener" type="model.CmsContentListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener> 
+        <listener name="CmsContentPictureListener" type="model.CmsContentPictureListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener> 
+        
+        <!-- Member Management -->
+        <listener name="MemberListener" type="model.MemberListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Update File -->
+        <listener name="UpdateCategoryListener" type="model.UpdateCategoryListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Book Management -->
+        <listener name="BookListener" type="model.BookListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Newsletter Management -->
+        <listener name="NewsletterListener" type="model.NewsletterListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        
+    </listeners>
+    
+    <!-- EVENT FILTERS -->
+    <event-filters>
+    	<!-- Approved User -->
+    	<event-filter name="validateUserFieldsFilter" type="filters.ValidateUserFieldsFilter" />
+    	
+    	<!-- Producer -->
+    	<event-filter name="validateProducerFieldsFilter" type="filters.ValidateProducerFieldsFilter" />
+    	
+    	<!-- Point -->
+    	<event-filter name="validatePointFieldsFilter" type="filters.ValidatePointFieldsFilter" />
+    	
+    	<!-- Product Management -->
+    	<event-filter name="validateProductStep1Filter" type="filters.ValidateProductStep1Filter" />
+    	<event-filter name="validateProductStep2Filter" type="filters.ValidateProductStep2Filter" />
+    	
+    	<!-- Delta -->
+    	<event-filter name="validateDeltaStep1Filter" type="filters.ValidateDeltaStep1Filter" />
+    	
+    	<!-- Sigma -->
+    	<event-filter name="validateSigmaStep1Filter" type="filters.ValidateSigmaStep1Filter" />
+    	
+    	<!-- Club -->
+    	<event-filter name="validateClubStep1Filter" type="filters.ValidateClubStep1Filter" />
+    	
+    	<!-- Alfa -->
+    	<event-filter name="validateAlfaStep1Filter" type="filters.ValidateAlfaStep1Filter" />
+    	
+    	<!-- Beta -->
+    	<event-filter name="validateBetaStep1Filter" type="filters.ValidateBetaStep1Filter" />
+    	
+    	<!-- Gama -->
+    	<event-filter name="validateGamaStep1Filter" type="filters.ValidateGamaStep1Filter" />
+    	
+    	<!-- CmsContent -->
+    	<event-filter name="validateCmsContentStep1Filter" type="filters.ValidateCmsContentStep1Filter" />
+    	
+    	<event-filter name="validateUpdateFileFieldsFilter" type="filters.ValidateUpdateFileFieldsFilter" />
+    	
+    </event-filters>
+    
+    <!-- EVENTS -->
+    <event-handlers>
+    
+    	<!-- startAdmin -->
+        <event-handler event="startAdmin">
+        	<event-arg name="event" value="startAdmin" />
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+			<view-page name="homeList" contentKey="homeList" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        
+        
+        <!-- APPROVED USERS LIST --> <!-- APPROVED USERS LIST --> <!-- APPROVED USERS LIST -->
+        <!-- showUsersApprovedList -->
+        <event-handler event="showUsersApprovedList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="userList" contentKey="userList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+		  	<view-page name="template" />
+        </event-handler>
+        <event-handler event="getUsersApprovedTableData">
+        	<notify listener="UserListener" method="getUsersApprovedTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showCreateUserApprovedForm -->
+        <event-handler event="showCreateUserApprovedForm">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+			<event-arg name="submitEvent" value="executeCreateUserApprovedAction" />
+			<view-page name="userAddEdit" contentKey="userAddEdit" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+                         
+        <!-- executeCreateUserApprovedAction -->
+        <event-handler event="executeCreateUserApprovedAction" access="public">
+        	<event-arg name="failEvent" value="showCreateUserApprovedForm" />
+        	<filter name="validateUserFieldsFilter" />
+        	<notify listener="UserListener" method="createRecord" />
+
+        	<announce event="showUsersApprovedList" copyEventArgs="false" />
+        </event-handler>
+                
+        <!-- showEditUserApprovedForm -->
+        <event-handler event="showEditUserApprovedForm" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+           		<notify listener="UserListener" method="setFieldsForUpdate"/>
+           		<event-arg name="submitEvent" value="executeEditUserApprovedAction" />
+				<view-page name="userAddEdit" contentKey="userAddEdit" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+        	<view-page name="template" />
+        </event-handler>
+                                       
+        <!-- executeEditUserApprovedAction  -->
+        <event-handler event="executeEditUserApprovedAction" access="public">
+        	<event-arg name="failEvent" value="showEditUserApprovedForm" />
+        	<filter name="validateUserFieldsFilter" />
+        	<notify listener="UserListener" method="updateRecord" />
+        	<announce event="showUsersApprovedList" copyEventArgs="false" />
+        </event-handler>
+                                 
+        <!-- executeRemoveUsersApprovedAction -->
+        <event-handler event="executeRemoveUsersApprovedAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="UserListener" method="removeRecord" />
+			<announce event="showUsersApprovedList" copyEventArgs="false" />
+        </event-handler>               
+        <!-- APPROVED USERS LIST --> <!-- APPROVED USERS LIST --> <!-- APPROVED USERS LIST -->
+        
+        
+        <!-- PRODUCERS LIST --> <!-- PRODUCERS LIST --> <!-- PRODUCERS LIST -->
+        <!-- showProducersList -->
+        <event-handler event="showProducersList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="producerList" contentKey="producerList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+		  	<view-page name="template" />
+        </event-handler>
+        <event-handler event="getProducersTableData">
+        	<notify listener="ProducerListener" method="getProducersTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showCreateProducerForm -->
+        <event-handler event="showCreateProducerForm">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+			<event-arg name="submitEvent" value="executeCreateProducerAction" />
+			<view-page name="producerAddEdit" contentKey="producerAddEdit" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+                         
+        <!-- executeCreateProducerAction -->
+        <event-handler event="executeCreateProducerAction" access="public">
+        	<event-arg name="failEvent" value="showCreateProducerForm" />
+        	<filter name="validateProducerFieldsFilter" />
+        	<notify listener="ProducerListener" method="createProducer" />
+        	<announce event="showProducersList" copyEventArgs="false" />
+        </event-handler>
+                
+        <!-- showEditProducerForm -->
+        <event-handler event="showEditProducerForm" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+           		<notify listener="ProducerListener" method="setFieldsForUpdate"/>
+           		<event-arg name="submitEvent" value="executeEditProducerAction" />
+				<view-page name="producerAddEdit" contentKey="producerAddEdit" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+        	<view-page name="template" />
+        </event-handler>
+                                       
+        <!-- executeEditProducerAction  -->
+        <event-handler event="executeEditProducerAction" access="public">
+        	<event-arg name="failEvent" value="showEditProducerForm" />
+        	<filter name="validateProducerFieldsFilter" />
+        	<notify listener="ProducerListener" method="updateRecord" />
+        	<announce event="showProducersList" copyEventArgs="false" />
+        </event-handler>
+                                 
+        <!-- executeRemoveProducersAction -->
+        <event-handler event="executeRemoveProducersAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="ProducerListener" method="removeRecord" />
+			<announce event="showProducersList" copyEventArgs="false" />
+        </event-handler>               
+        <!-- PRODUCERS LIST --> <!-- PRODUCERS LIST --> <!-- PRODUCERS LIST -->
+        
+        
+        <!-- ORDERS LIST --> <!-- ORDERS LIST --> <!-- ORDERS LIST -->
+        <!-- showOrdersList -->
+        <event-handler event="showOrdersList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="ordersList" contentKey="ordersList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+		  	<view-page name="template" />
+        </event-handler>
+        <event-handler event="getOrdersTableData">
+        	<notify listener="OrdersListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showCreateOrderForm -->
+        <event-handler event="showCreateOrderForm">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+			<event-arg name="submitEvent" value="executeCreateOrderAction" />
+			<view-page name="orderAddEdit" contentKey="orderAddEdit" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+                         
+        <!-- executeCreateOrderAction -->
+        <event-handler event="executeCreateOrderAction" access="public">
+        	<event-arg name="failEvent" value="showCreateOrderForm" />
+        	<notify listener="OrdersListener" method="createOrder" />
+        	<announce event="showOrdersList" copyEventArgs="false" />
+        </event-handler>
+                
+        <!-- showEditOrderForm -->
+        <event-handler event="showEditOrderForm" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+           		<notify listener="OrdersListener" method="setFieldsForUpdate"/>
+           		<notify listener="OrdersListener" method="findOrderItems"/>
+           		<notify listener="OrdersListener" method="sendDeliveryMessage"/>
+           		<notify listener="OrdersListener" method="sendPointsMessage"/>
+           		<notify listener="OrdersListener" method="findById"/>
+           		<event-arg name="submitEvent" value="executeEditOrderAction" />
+				<view-page name="orderAddEdit" contentKey="orderAddEdit" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+        	<view-page name="template" />
+        </event-handler>
+                                       
+        <!-- executeEditOrderAction  -->
+        <event-handler event="executeEditOrderAction" access="public">
+        	<event-arg name="failEvent" value="showEditOrderForm" />
+        	<notify listener="OrdersListener" method="updateOrder" />
+        	<announce event="showOrdersList" copyEventArgs="false" />
+        </event-handler>
+                                 
+        <!-- executeRemoveOrdersAction -->
+        <event-handler event="executeRemoveOrdersAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="OrdersListener" method="removeRecord" />
+			<announce event="showOrdersList" copyEventArgs="false" />
+        </event-handler>               
+        <!-- ORDERS LIST --> <!-- ORDERS LIST --> <!-- ORDERS LIST -->
+        
+        
+        
+        
+         <!-- CMSCATEGORY --> <!-- CMSCATEGORY --> <!-- CMSCATEGORY -->
+        <!-- showCmsCategoriesList -->
+		<event-handler event="showCmsCategoriesList">
+			<notify listener="RightsListener" method="getAllowedEventsList" />
+			<view-page name="menu" contentKey="menu" />
+			<notify listener="CmsCategoryListener" method="updateCategories"/>
+			<notify listener="CmsCategoryListener" method="createPlainCategories"/>
+			<notify listener="CmsCategoryListener" method="getAdminCategoriesPath"/>
+			<notify listener="CmsCategoryListener" method="findByFatherId"/>
+			<view-page name="cmsCategoryList" contentKey="cmsCategoryList" />
+			<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>  
+        <!-- CMSCATEGORY --> <!-- CMSCATEGORY --> <!-- CMSCATEGORY -->
+        
+        <!-- CMSCONTENT --> <!-- CMSCONTENT --> <!-- CMSCONTENT -->
+        <!-- showCmsContentList -->
+        <event-handler event="showCmsContentsList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+		  	<view-page name="CmsContentList" contentKey="CmsContentList" />
+			<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+        	<view-page name="template" />
+        </event-handler>
+        <event-handler event="getCmsContentTableData">
+        	<notify listener="CmsContentListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- showCmsContentStep1 -->
+        <event-handler event="showCmsContentStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="CmsContentListener" method="checkId" />
+            <notify listener="CmsContentListener" method="getMaxCmsContentOrder" />
+        	<filter name="validateCmsContentStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="CmsContentWizardNavigation" contentKey="CmsContentWizardNavigation" />
+	           	<view-page name="CmsContentWizardStep1" contentKey="CmsContentWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showCmsContentStep2 -->
+        <event-handler event="showCmsContentStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="CmsContentListener" method="checkId" />
+            <filter name="validateCmsContentStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="CmsContentWizardNavigation" contentKey="CmsContentWizardNavigation" />
+	           	<view-page name="CmsContentWizardStep2" contentKey="CmsContentWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeCmsContentWizardClose -->
+        <event-handler event="executeCmsContentWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="CmsContentListener" method="checkId" />
+        	<filter name="validateCmsContentStep1Filter" />
+        	<announce event="showCmsContentsList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveCmsContentAction -->
+        <event-handler event="executeRemoveCmsContentAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="CmsContentListener" method="removeRecord" />
+			<announce event="showCmsContentsList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findCmsContentPictureByCmsContentId">
+        	<notify listener="CmsContentPictureListener" method="getByCmsContentId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeCmsContentPictureRemove">
+        	<notify listener="CmsContentPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeCmsContentPictureSetMain">
+        	<notify listener="CmsContentPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executeCmsContentSavePictureDescription">
+        	<notify listener="CmsContentPictureListener" method="executeSavePictureDescription" />        	
+        </event-handler>
+        <!-- CMSCONTENT --> <!-- CMSCONTENT --> <!-- CMSCONTENT -->
+        
+        
+        
+        
+    	        
+        <!-- ProductCategory Management --> <!-- ProductCategory Management --> <!-- ProductCategory Management -->
+        
+        <!-- showProductCategoriesList -->
+		<event-handler event="showProductCategoriesList">
+			<notify listener="RightsListener" method="getAllowedEventsList" />
+			<view-page name="menu" contentKey="menu" />
+			<notify listener="ProductCategoryListener" method="updateCategories"/>
+			<notify listener="ProductCategoryListener" method="createPlainCategories"/>
+			<notify listener="ProductCategoryListener" method="getAdminCategoriesPath"/>
+			<notify listener="ProductCategoryListener" method="findByFatherId"/>
+			<view-page name="productCategoryList" contentKey="productCategoryList" />
+			<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>  
+        
+        <!-- Product Management --> <!-- Product Management --> <!-- Product Management --> <!-- Product Management -->
+        <!-- shows products list -->
+        <event-handler event="showProductsList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="productList" contentKey="productList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getProductTableData">
+        	<notify listener="ProductListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showProductStep1 -->
+        <event-handler event="showProductStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="ProductListener" method="checkId" />
+        	<filter name="validateProductStep1Filter" />
+        	<filter name="validateProductStep2Filter" />
+        	<notify listener="BetaListener" method="findAll" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="productWizardNavigation" contentKey="productWizardNavigation" />
+	           	<view-page name="productWizardStep1" contentKey="productWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showProductStep2 -->
+        <event-handler event="showProductStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="ProductListener" method="checkId" />
+            <notify listener="ProductListener" method="findAll" />
+            <notify listener="ProductListener" method="getMaxProductOrder" />
+            <notify listener="ProducerListener" method="findAll" />
+            <filter name="validateProductStep1Filter" />
+        	<filter name="validateProductStep2Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="productWizardNavigation" contentKey="productWizardNavigation" />
+	           	<view-page name="productWizardStep2" contentKey="productWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showProductStep3 -->
+        <event-handler event="showProductStep3">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductListener" method="checkId" />
+        	<filter name="validateProductStep1Filter" />
+        	<filter name="validateProductStep2Filter" />
+        	<view-page name="menu" contentKey="menu" />
+	        	<view-page name="productWizardNavigation" contentKey="productWizardNavigation" />
+	         	<view-page name="productWizardStep3" contentKey="productWizardStep3" />
+         	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showProductStep4 -->
+        <event-handler event="showProductStep4">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="ProductListener" method="checkId" />
+        		<notify listener="ProductListener" method="findAll" />			
+        	<filter name="validateProductStep1Filter" />
+        	<filter name="validateProductStep2Filter" />
+        	<view-page name="menu" contentKey="menu" />
+	        	<view-page name="productWizardNavigation" contentKey="productWizardNavigation" />
+	           	<view-page name="productWizardStep4" contentKey="productWizardStep4" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+       	
+        <!-- executeWizardClose -->
+        <event-handler event="executeWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="ProductListener" method="checkId" />
+        	<filter name="validateProductStep1Filter" />
+        	<filter name="validateProductStep2Filter" />
+        	<announce event="showProductsList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveProductAction -->
+        <event-handler event="executeRemoveProductAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="ProductListener" method="removeRecord" />
+			<announce event="showProductsList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- executeCopyProductAction -->
+        <event-handler event="executeCopyProductAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ProductListener" method="getMaxProductOrder" />
+           	<notify listener="ProductListener" method="copyRecord" />
+			<announce event="showProductsList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findProductPictureByProductId">
+        	<notify listener="ProductPictureListener" method="getByProductId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeProductPictureRemove">
+        	<notify listener="ProductPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeProductPictureSetMain">
+        	<notify listener="ProductPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        <!-- Product Management --> <!-- Product Management --> <!-- Product Management --> <!-- Product Management -->
+        
+        <!-- POINTS LIST --> <!-- POINTS LIST --> <!-- POINTS LIST -->
+        <!-- showPointsList -->
+        <event-handler event="showPointsList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="pointsList" contentKey="pointsList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+		  	<view-page name="template" />
+        </event-handler>
+        <event-handler event="getPointsTableData">
+        	<notify listener="PointsListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showCreatePointForm -->
+        <event-handler event="showCreatePointForm">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="UserListener" method="findAll" />
+        	<notify listener="ProductListener" method="findAll" />
+        	<view-page name="menu" contentKey="menu" />
+			<event-arg name="submitEvent" value="executeCreatePointAction" />
+			<view-page name="pointAddEdit" contentKey="pointAddEdit" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+                         
+        <!-- executeCreatePointAction -->
+        <event-handler event="executeCreatePointAction" access="public">
+        	<event-arg name="failEvent" value="showCreatePointForm" />
+        	<filter name="validatePointFieldsFilter" />
+        	<notify listener="PointsListener" method="createPoint" />
+        	<announce event="showPointsList" copyEventArgs="false" />
+        </event-handler>
+                
+        <!-- showEditPointForm -->
+        <event-handler event="showEditPointForm" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+           		<notify listener="PointsListener" method="setFieldsForUpdate"/>
+           		<event-arg name="submitEvent" value="executeEditPointAction" />
+				<view-page name="pointAddEdit" contentKey="pointAddEdit" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+        	<view-page name="template" />
+        </event-handler>
+                                       
+        <!-- executeEditPointAction  -->
+        <event-handler event="executeEditPointAction" access="public">
+        	<event-arg name="failEvent" value="showEditPointForm" />
+        	<filter name="validatePointFieldsFilter" />
+        	<notify listener="PointsListener" method="updatePoint" />
+        	<announce event="showPointsList" copyEventArgs="false" />
+        </event-handler>
+                                 
+        <!-- executeRemovePointsAction -->
+        <event-handler event="executeRemovePointsAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="PointsListener" method="removeRecord" />
+			<announce event="showPointsList" copyEventArgs="false" />
+        </event-handler>               
+        <!-- POINTS LIST --> <!-- POINTS LIST --> <!-- POINTS LIST -->
+        
+         <!-- Delta Management --> <!-- Delta Management --> <!-- Delta Management --> <!-- Delta Management -->
+        <!-- shows Deltas list -->
+        <event-handler event="showDeltasList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="DeltaList" contentKey="DeltaList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getDeltaTableData">
+        	<notify listener="DeltaListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showDeltaStep1 -->
+        <event-handler event="showDeltaStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="DeltaListener" method="checkId" />
+            <notify listener="DeltaListener" method="getMaxDeltaOrder" />
+        	<filter name="validateDeltaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="DeltaWizardNavigation" contentKey="DeltaWizardNavigation" />
+	           	<view-page name="DeltaWizardStep1" contentKey="DeltaWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showDeltaStep2 -->
+        <event-handler event="showDeltaStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="DeltaListener" method="checkId" />
+            <filter name="validateDeltaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="DeltaWizardNavigation" contentKey="DeltaWizardNavigation" />
+	           	<view-page name="DeltaWizardStep2" contentKey="DeltaWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeDeltaWizardClose -->
+        <event-handler event="executeDeltaWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="DeltaListener" method="checkId" />
+        	<filter name="validateDeltaStep1Filter" />
+        	<announce event="showDeltasList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveDeltaAction -->
+        <event-handler event="executeRemoveDeltaAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="DeltaListener" method="removeRecord" />
+			<announce event="showDeltasList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findDeltaPictureByDeltaId">
+        	<notify listener="DeltaPictureListener" method="getByDeltaId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeDeltaPictureRemove">
+        	<notify listener="DeltaPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeDeltaPictureSetMain">
+        	<notify listener="DeltaPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executeDeltaSavePictureDescription">
+        	<notify listener="DeltaPictureListener" method="executeSavePictureDescription" />        	
+        </event-handler>
+        <!-- Delta Management --> <!-- Delta Management --> <!-- Delta Management --> <!-- Delta Management -->
+        
+        
+        <!-- Sigma Management --> <!-- Sigma Management --> <!-- Sigma Management --> <!-- Sigma Management -->
+        <!-- shows Sigmas list -->
+        <event-handler event="showSigmasList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="SigmaList" contentKey="SigmaList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getSigmaTableData">
+        	<notify listener="SigmaListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showSigmaStep1 -->
+        <event-handler event="showSigmaStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="DeltaListener" method="findAll" />
+            <notify listener="SigmaListener" method="checkId" />
+            <notify listener="SigmaListener" method="getMaxSigmaOrder" />
+        	<filter name="validateSigmaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="SigmaWizardNavigation" contentKey="SigmaWizardNavigation" />
+	           	<view-page name="SigmaWizardStep1" contentKey="SigmaWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showSigmaStep2 -->
+        <event-handler event="showSigmaStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="SigmaListener" method="checkId" />
+            <filter name="validateSigmaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="SigmaWizardNavigation" contentKey="SigmaWizardNavigation" />
+	           	<view-page name="SigmaWizardStep2" contentKey="SigmaWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeSigmaWizardClose -->
+        <event-handler event="executeSigmaWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="SigmaListener" method="checkId" />
+        	<filter name="validateSigmaStep1Filter" />
+        	<announce event="showSigmasList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveSigmaAction -->
+        <event-handler event="executeRemoveSigmaAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="SigmaListener" method="removeRecord" />
+			<announce event="showSigmasList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findSigmaPictureBySigmaId">
+        	<notify listener="SigmaPictureListener" method="getBySigmaId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeSigmaPictureRemove">
+        	<notify listener="SigmaPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeSigmaPictureSetMain">
+        	<notify listener="SigmaPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executeSigmaSavePictureDescription">
+        	<notify listener="SigmaPictureListener" method="executeSavePictureDescription" />        	
+        </event-handler>
+        <!-- Sigma Management --> <!-- Sigma Management --> <!-- Sigma Management --> <!-- Sigma Management -->
+        
+        
+        
+        
+        <!-- Club Management --> <!-- Club Management --> <!-- Club Management --> <!-- Club Management -->
+        <!-- shows Clubs list -->
+        <event-handler event="showClubsList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="ClubList" contentKey="ClubList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getClubTableData">
+        	<notify listener="ClubListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showClubStep1 -->
+        <event-handler event="showClubStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="ClubListener" method="checkId" />
+            <notify listener="ClubListener" method="getMaxClubOrder" />
+        	<filter name="validateClubStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="ClubWizardNavigation" contentKey="ClubWizardNavigation" />
+	           	<view-page name="ClubWizardStep1" contentKey="ClubWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showClubStep2 -->
+        <event-handler event="showClubStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="ClubListener" method="checkId" />
+            <filter name="validateClubStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="ClubWizardNavigation" contentKey="ClubWizardNavigation" />
+	           	<view-page name="ClubWizardStep2" contentKey="ClubWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeClubWizardClose -->
+        <event-handler event="executeClubWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="ClubListener" method="checkId" />
+        	<filter name="validateClubStep1Filter" />
+        	<announce event="showClubsList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveClubAction -->
+        <event-handler event="executeRemoveClubAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="ClubListener" method="removeRecord" />
+			<announce event="showClubsList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findClubPictureByClubId">
+        	<notify listener="ClubPictureListener" method="getByClubId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeClubPictureRemove">
+        	<notify listener="ClubPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeClubPictureSetMain">
+        	<notify listener="ClubPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executeClubSavePictureDescription">
+        	<notify listener="ClubPictureListener" method="executeSavePictureDescription" />        	
+        </event-handler>
+        <!-- Club Management --> <!-- Club Management --> <!-- Club Management --> <!-- Club Management -->
+        
+        
+        
+        
+        
+        <!-- Alfa Management --> <!-- Alfa Management --> <!-- Alfa Management --> <!-- Alfa Management -->
+        <!-- shows Alfas list -->
+        <event-handler event="showAlfasList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="AlfaList" contentKey="AlfaList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getAlfaTableData">
+        	<notify listener="AlfaListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showAlfaStep1 -->
+        <event-handler event="showAlfaStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ClubListener" method="findAll" />
+           	<notify listener="BetaListener" method="findAll" />
+            <notify listener="AlfaListener" method="checkId" />
+            <notify listener="AlfaListener" method="getMaxAlfaOrder" />
+        	<filter name="validateAlfaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="AlfaWizardNavigation" contentKey="AlfaWizardNavigation" />
+	           	<view-page name="AlfaWizardStep1" contentKey="AlfaWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showAlfaStep2 -->
+        <event-handler event="showAlfaStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="AlfaListener" method="checkId" />
+            <filter name="validateAlfaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="AlfaWizardNavigation" contentKey="AlfaWizardNavigation" />
+	           	<view-page name="AlfaWizardStep2" contentKey="AlfaWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeAlfaWizardClose -->
+        <event-handler event="executeAlfaWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="AlfaListener" method="checkId" />
+        	<filter name="validateAlfaStep1Filter" />
+        	<announce event="showAlfasList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveAlfaAction -->
+        <event-handler event="executeRemoveAlfaAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="AlfaListener" method="removeRecord" />
+			<announce event="showAlfasList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findAlfaPictureByAlfaId">
+        	<notify listener="AlfaPictureListener" method="getByAlfaId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeAlfaPictureRemove">
+        	<notify listener="AlfaPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeAlfaPictureSetMain">
+        	<notify listener="AlfaPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        
+        <!-- SetHeader picture from the grid -->
+        <event-handler event="executeAlfaPictureSetHeader">
+        	<notify listener="AlfaPictureListener" method="executeSetHeader" />        	
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executeAlfaSavePictureDescription">
+        	<notify listener="AlfaPictureListener" method="executeSavePictureDescription" />        	
+        </event-handler>
+        <!-- Alfa Management --> <!-- Alfa Management --> <!-- Alfa Management --> <!-- Alfa Management -->
+        
+        
+        <!-- Beta Management --> <!-- Beta Management --> <!-- Beta Management --> <!-- Beta Management -->
+        <!-- shows Betas list -->
+        <event-handler event="showBetasList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="BetaList" contentKey="BetaList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getBetaTableData">
+        	<notify listener="BetaListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showBetaStep1 -->
+        <event-handler event="showBetaStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ClubListener" method="findAll" />
+        	<notify listener="GamaListener" method="findAll" />
+            <notify listener="BetaListener" method="checkId" />
+            <notify listener="BetaListener" method="getMaxBetaOrder" />
+        	<filter name="validateBetaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="BetaWizardNavigation" contentKey="BetaWizardNavigation" />
+	           	<view-page name="BetaWizardStep1" contentKey="BetaWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showBetaStep2 -->
+        <event-handler event="showBetaStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="BetaListener" method="checkId" />
+            <filter name="validateBetaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="BetaWizardNavigation" contentKey="BetaWizardNavigation" />
+	           	<view-page name="BetaWizardStep2" contentKey="BetaWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeBetaWizardClose -->
+        <event-handler event="executeBetaWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="BetaListener" method="checkId" />
+        	<filter name="validateBetaStep1Filter" />
+        	<announce event="showBetasList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveBetaAction -->
+        <event-handler event="executeRemoveBetaAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="BetaListener" method="removeRecord" />
+			<announce event="showBetasList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findBetaPictureByBetaId">
+        	<notify listener="BetaPictureListener" method="getByBetaId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeBetaPictureRemove">
+        	<notify listener="BetaPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeBetaPictureSetMain">
+        	<notify listener="BetaPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executeBetaSavePictureDescription">
+        	<notify listener="BetaPictureListener" method="executeSavePictureDescription" />        	
+        </event-handler>
+        <!-- Beta Management --> <!-- Beta Management --> <!-- Beta Management --> <!-- Beta Management -->
+        
+        
+        <!-- Gama Management --> <!-- Gama Management --> <!-- Gama Management --> <!-- Gama Management -->
+        <!-- shows Gamas list -->
+        <event-handler event="showGamasList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="GamaList" contentKey="GamaList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getGamaTableData">
+        	<notify listener="GamaListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showGamaStep1 -->
+        <event-handler event="showGamaStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="ClubListener" method="findAll" />
+            <notify listener="GamaListener" method="checkId" />
+            <notify listener="GamaListener" method="getMaxGamaOrder" />
+        	<filter name="validateGamaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="GamaWizardNavigation" contentKey="GamaWizardNavigation" />
+	           	<view-page name="GamaWizardStep1" contentKey="GamaWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showGamaStep2 -->
+        <event-handler event="showGamaStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="GamaListener" method="checkId" />
+            <filter name="validateGamaStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="GamaWizardNavigation" contentKey="GamaWizardNavigation" />
+	           	<view-page name="GamaWizardStep2" contentKey="GamaWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeGamaWizardClose -->
+        <event-handler event="executeGamaWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="GamaListener" method="checkId" />
+        	<filter name="validateGamaStep1Filter" />
+        	<announce event="showGamasList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveGamaAction -->
+        <event-handler event="executeRemoveGamaAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="GamaListener" method="removeRecord" />
+			<announce event="showGamasList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findGamaPictureByGamaId">
+        	<notify listener="GamaPictureListener" method="getByGamaId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeGamaPictureRemove">
+        	<notify listener="GamaPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeGamaPictureSetMain">
+        	<notify listener="GamaPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executeGamaSavePictureDescription">
+        	<notify listener="GamaPictureListener" method="executeSavePictureDescription" />        	
+        </event-handler>
+        <!-- Gama Management --> <!-- Gama Management --> <!-- Gama Management --> <!-- Gama Management -->
+        
+        
+        <!-- MEMBER --> <!-- MEMBER --> <!-- MEMBER -->
+        <!-- shows Member list -->
+        <event-handler event="showMemberList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="MemberList" contentKey="MemberList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getMemberTableData">
+        	<notify listener="MemberListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- shows Member view -->
+        <event-handler event="showMemberView">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<notify listener="MemberListener" method="getById" />
+        	<view-page name="MemberView" contentKey="MemberView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeRemoveMemberAction -->
+        <event-handler event="executeRemoveMemberAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="MemberListener" method="removeRecord" />
+			<announce event="showMemberList" copyEventArgs="false" />
+        </event-handler>
+        <!-- MEMBER --> <!-- MEMBER --> <!-- MEMBER -->
+        
+        
+        
+        
+        
+        <!-- Upload Files Manager --> <!-- Upload Files Manager --> <!-- Upload Files Manager -->
+        <event-handler event="showUpdateCategoryList">
+			<notify listener="RightsListener" method="getAllowedEventsList" />
+			<view-page name="menu" contentKey="menu" />
+			<notify listener="UpdateCategoryListener" method="updateCategories"/>
+           	<notify listener="UpdateCategoryListener" method="createPlainCategories"/>
+			<notify listener="UpdateCategoryListener" method="getAdminCategoriesPath"/>
+			<notify listener="UpdateCategoryListener" method="findByFatherId"/>
+			<view-page name="c2BoxUpdateCategoryListView" contentKey="c2BoxUpdateCategoryListView" />
+			<view-page name="c2BoxUpdateFileListView" contentKey="c2BoxUpdateFileListView" />
+			<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>  
+        
+        <event-handler event="upload">
+           	<view-page name="c2BoxUploadView" contentKey="c2BoxUploadView" />
+           	<view-page name="template" />
+        </event-handler>              
+        
+        <event-handler event="remove">
+           	<view-page name="c2BoxRemoveView" contentKey="c2BoxRemoveView" />           	
+           	<view-page name="template" />
+        </event-handler>
+        <!-- Upload Files Manager --> <!-- Upload Files Manager --> <!-- Upload Files Manager -->
+        
+        <!-- shows Book list -->
+        <event-handler event="showBookList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="BookList" contentKey="BookList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getBookTableData">
+        	<notify listener="BookListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- shows Book view -->
+        <event-handler event="showBookView">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<notify listener="BookListener" method="getById" />
+        	<view-page name="BookView" contentKey="BookView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeRemoveBookAction -->
+        <event-handler event="executeRemoveBookAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="BookListener" method="removeRecord" />
+			<announce event="showBookList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- executeAuthorizeBookAction -->
+        <event-handler event="executeAuthorizeBookAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="BookListener" method="authorizeRecord" />
+			<announce event="showBookList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- shows Newsletter list -->
+        <event-handler event="showNewsletterList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="NewsletterList" contentKey="NewsletterList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getNewsletterTableData">
+        	<notify listener="NewsletterListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- shows Newsletter view -->
+        <event-handler event="showNewsletterView">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<notify listener="NewsletterListener" method="getById" />
+        	<view-page name="NewsletterView" contentKey="NewsletterView" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        
+        <!-- executeRemoveBetaAction -->
+        <event-handler event="executeRemoveNewsletterAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="NewsletterListener" method="removeRecord" />
+			<announce event="showNewsletterList" copyEventArgs="false" />
+        </event-handler>
+                               
+    </event-handlers>
+    
+ 	<!-- VIEWS -->
+    <page-views>
+      
+        <!-- !GENERAL -->
+        <page-view name="responseJSON" page="/views/admin/!general/responseJSON.php"/>
+        <page-view name="documentReadyScript" page="/views/admin/!general/documentReadyScript.php"/>
+        
+        <!-- !MANAGEMENT -->
+        <page-view name="template" page="/views/admin/!management/template.php"/>
+        <page-view name="menu" page="/views/admin/!management/menu.php"/>
+    
+        <!-- Home -->
+        <page-view name="homeList" page="/views/admin/home/homeList.php"/>
+        
+         <!-- User -->
+        <page-view name="userList" page="/views/admin/user/userList.php" />
+        <page-view name="userAddEdit" page="/views/admin/user/userAddEdit.php" />
+        
+        <!-- Producer -->
+        <page-view name="producerList" page="/views/admin/producer/producerList.php" />
+        <page-view name="producerAddEdit" page="/views/admin/producer/producerAddEdit.php" />
+        
+        <!-- Order -->
+        <page-view name="ordersList" page="/views/admin/order/ordersList.php" />
+        <page-view name="orderAddEdit" page="/views/admin/order/orderAddEdit.php" />
+        
+        <!-- Point -->
+        <page-view name="pointsList" page="/views/admin/point/pointsList.php" />
+        <page-view name="pointAddEdit" page="/views/admin/point/pointAddEdit.php" />
+        
+        <!-- ProductCategory -->
+        <page-view name="productCategoryList" page="/views/admin/productcategory/productCategoryList.php"/>
+
+        <!-- Product -->
+        <page-view name="productList" page="/views/admin/product/productList.php" />
+        <page-view name="productWizardStep1" page="/views/admin/productwizard/productWizardStep1.php" />
+        <page-view name="productWizardStep2" page="/views/admin/productwizard/productWizardStep2.php" />
+        <page-view name="productWizardStep3" page="/views/admin/productwizard/productWizardStep3.php" />
+        <page-view name="productWizardStep4" page="/views/admin/productwizard/productWizardStep4.php" />
+        <page-view name="productWizardNavigation" page="/views/admin/productwizard/productWizardNavigation.php"/>
+       <!-- Delta -->
+        <page-view name="DeltaList" page="/views/admin/Delta/DeltaList.php" />
+        <page-view name="DeltaWizardStep1" page="/views/admin/DeltaWizard/DeltaWizardStep1.php" />
+        <page-view name="DeltaWizardStep2" page="/views/admin/DeltaWizard/DeltaWizardStep2.php" />
+        <page-view name="DeltaWizardNavigation" page="/views/admin/DeltaWizard/DeltaWizardNavigation.php"/>
+        
+        <!-- Sigma -->
+        <page-view name="SigmaList" page="/views/admin/Sigma/SigmaList.php" />
+        <page-view name="SigmaWizardStep1" page="/views/admin/SigmaWizard/SigmaWizardStep1.php" />
+        <page-view name="SigmaWizardStep2" page="/views/admin/SigmaWizard/SigmaWizardStep2.php" />
+        <page-view name="SigmaWizardNavigation" page="/views/admin/SigmaWizard/SigmaWizardNavigation.php"/>
+        
+        <!-- Club -->
+        <page-view name="ClubList" page="/views/admin/Club/ClubList.php" />
+        <page-view name="ClubWizardStep1" page="/views/admin/ClubWizard/ClubWizardStep1.php" />
+        <page-view name="ClubWizardStep2" page="/views/admin/ClubWizard/ClubWizardStep2.php" />
+        <page-view name="ClubWizardNavigation" page="/views/admin/ClubWizard/ClubWizardNavigation.php"/>
+        
+        <!-- Alfa -->
+        <page-view name="AlfaList" page="/views/admin/Alfa/AlfaList.php" />
+        <page-view name="AlfaWizardStep1" page="/views/admin/AlfaWizard/AlfaWizardStep1.php" />
+        <page-view name="AlfaWizardStep2" page="/views/admin/AlfaWizard/AlfaWizardStep2.php" />
+        <page-view name="AlfaWizardNavigation" page="/views/admin/AlfaWizard/AlfaWizardNavigation.php"/>
+        
+        <!-- Beta -->
+        <page-view name="BetaList" page="/views/admin/Beta/BetaList.php" />
+        <page-view name="BetaWizardStep1" page="/views/admin/BetaWizard/BetaWizardStep1.php" />
+        <page-view name="BetaWizardStep2" page="/views/admin/BetaWizard/BetaWizardStep2.php" />
+        <page-view name="BetaWizardNavigation" page="/views/admin/BetaWizard/BetaWizardNavigation.php"/>
+        
+        <!-- Gama -->
+        <page-view name="GamaList" page="/views/admin/Gama/GamaList.php" />
+        <page-view name="GamaWizardStep1" page="/views/admin/GamaWizard/GamaWizardStep1.php" />
+        <page-view name="GamaWizardStep2" page="/views/admin/GamaWizard/GamaWizardStep2.php" />
+        <page-view name="GamaWizardNavigation" page="/views/admin/GamaWizard/GamaWizardNavigation.php"/>
+        
+        <!-- Member -->
+        <page-view name="MemberList" page="/views/admin/Member/MemberList.php" />
+        <page-view name="MemberView" page="/views/admin/Member/MemberView.php" />
+        
+        <!-- CmsCategory -->
+        <page-view name="cmsCategoryList" page="/views/admin/cmscategory/cmsCategoryList.php"/>
+        
+        <!-- CmsContent -->
+        <page-view name="CmsContentList" page="/views/admin/CmsContent/CmsContentList.php" />
+        <page-view name="CmsContentWizardStep1" page="/views/admin/CmsContentWizard/CmsContentWizardStep1.php" />
+        <page-view name="CmsContentWizardStep2" page="/views/admin/CmsContentWizard/CmsContentWizardStep2.php" />
+        <page-view name="CmsContentWizardNavigation" page="/views/admin/CmsContentWizard/CmsContentWizardNavigation.php"/>
+        
+        <!-- Update file -->
+        <page-view name="c2BoxUpdateCategoryListView" page="/views/admin/updatefile/c2BoxUpdateCategoryListView.php"/>
+        <page-view name="c2BoxUpdateFileListView" page="/views/admin/updatefile/c2BoxUpdateFileListView.php"/>
+        <page-view name="c2BoxUploadView" page="/views/admin/updatefile/c2BoxUploadView.php" />
+        <page-view name="c2BoxRemoveView" page="/views/admin/updatefile/c2BoxRemoveView.php" />
+        
+        <!-- Book -->
+        <page-view name="BookList" page="/views/admin/Book/BookList.php" />
+        <page-view name="BookView" page="/views/admin/Book/BookView.php" />
+        
+        <!-- Newsletter -->
+        <page-view name="NewsletterList" page="/views/admin/Newsletter/NewsletterList.php" />
+        <page-view name="NewsletterView" page="/views/admin/Newsletter/NewsletterView.php" />                   
+         
+    </page-views> 
+    
+    <!-- PLUGINS -->
+    <plugins>
+		<plugin name="securityPlugin" type="plugins.SecurityPlugin" />
+    </plugins>
+
+</mach-ii>

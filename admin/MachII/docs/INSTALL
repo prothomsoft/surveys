@@ -1,0 +1,155 @@
+INSTALLATION
+
+Mach-II for PHP uses either absolute or relative pathing for class
+definition files, so installation of core framework files (the MachII
+directory) and applications is very flexible.  The MachII directory
+should be installed in your include_path, document root or any
+subdirectory that contains an entry page (index.php).
+
+There are two methods of installing Mach-II for PHP, the first is
+automatic and makes use of the PEAR installer and the second is a
+manual installation.  Both are described in detail.
+
+***** PEAR Installer *****
+The prefered method of installation is to use the PEAR installer.  It
+has several advantages over a manual installation.  Installation can be
+as simple as a single commandline.  It varifies that each file in the
+package is uncorrupted, automatically places the core files in your include
+path, validates dependencies (important for cache, filter and plugin
+extensions), allows managing of packaged extensions and makes upgrading
+very simple.
+
+Note: PEAR installer requires PHP 4.2.0 or newer.
+
+1) If PEAR is already installed and configured, skip to step 1b;
+otherwise continue to step 1a.
+
+1a) The installer has been included by default with PHP since 4.3.0 but
+was not always usable with Windows "out of the box" until more recently.
+Also, versions included with Linux distributions often are out of date.
+If you need help installing PEAR see:
+http://pear.php.net/manual/en/installation.php
+
+1b) Unless you just installed PEAR, it is generally best to upgrade to the
+latest beta version of the PEAR core:
+pear config-set preferred_state beta
+pear upgrade pear
+pear config-set preferred_state {your preferred state, if other than beta}
+
+2) There are two ways to install the Mach-II core, directly from the server
+(step 2a) or from the package file (step 2b).
+
+2a) At the command line:
+pear config-set master_server php.mach-ii.com
+pear install machii
+
+If you won't be installing any more Mach-II packages for the time being
+but will be using PEAR, restore the master_server setting to pear.php.net.
+In the future PEAR will support multiple servers and it won't be necesary
+to change it back and forth.
+
+You're done!  Skip to step 4.
+ - or -
+2b) Download the Mach-II core from it's package description page:
+http://php.mach-ii.com/MachII
+
+Or direct download the package at:
+http://php.mach-ii.com/get/MachII
+
+2c) At the command line:
+pear install /path/to/MachII-x.x.x.tgz
+
+You're done!  Continue to step 4.
+
+4) Remember the -R or --installroot option can be used to override the
+default install directory.  (Usually, /usr/share/pear or /usr/lib/php on
+UNIX-like systems and C:\PHP\PEAR on Windows systems.)  If you set another
+install directory, don't forget to add it to your PHP include_path.
+
+You shouldn't need to check it but you should have a directory structure
+like this:
+path/
+    to/
+        pear/
+            data/
+                MachII/
+                    data/
+            docs/
+                MachII/
+                    docs/
+            MachII/
+                cache/
+                filters/
+                framework/
+                locale/
+                plugins/
+                util/
+                MachII.php
+                mach-ii.php
+            tests/
+                MachII/
+                    tests/
+
+You are ready to test your install.
+
+
+***** Manual Install *****
+1) Download the Mach-II core from it's package description page:
+http://php.mach-ii.com/MachII
+
+Or direct download the package at:
+http://php.mach-ii.com/get/MachII
+
+2a) Create a directory called MachII in a directory that is in your PHP
+include_path.  The MachII directory itself should NOT be in the
+include_path definition.  For example, if the MachII directory is located
+at /path/to/MachII, include_path should have an entry of /path/to.
+ - or -
+2b) Create a directory called MachII DIRECTLY under your web root. If your
+webroot is "htdocs", your path would look like /path/to/htdocs/MachII.
+
+3) Open the package, MachII-x.x.x.tgz, downloaded in step 1 and extract
+contents of the MachII-x.x.x directory to the MachII directory created in
+step 2.
+
+You should have a directory structure like this:
+path/
+    to/
+        MachII/
+            cache/
+            data/
+            docs/
+            filters/
+            framework/
+            locale/
+            plugins/
+            tests/
+            util/
+            MachII.php
+            mach-ii.php
+
+You are ready to test your install.
+
+
+***** Testing *****
+Requires compiled CLI version of PHP.
+
+This will actually run a minimal Mach-II application to verify everything
+is setup correctly.
+
+1) Change to the tests/install directory.
+2) Enter the following at the command prompt:
+php -f test.php
+
+If you received a success message you are ready to use Mach-II!
+
+Otherwise, you might need...
+
+
+
+***** Help! *****
+If you encounter problems, please first ensure that your directory 
+structure matches the one shown here. Next, try cycling the web 
+server.  If problems persist, please check
+http://php.mach-ii.com/support.php for places to obtain help getting
+setup.

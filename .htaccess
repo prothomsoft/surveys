@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteRule ^(.*)/(.*)/(.*)/(.*)/(.*).html$ index.php?event=$1&id1=$2&id2=$3&id3=$4&id4=$5 [L]
+RewriteRule ^(.*)/(.*)/(.*)/(.*).html$ index.php?event=$1&id1=$2&id2=$3&id3=$4 [L]
+RewriteRule ^(.*)/(.*)/(.*).html$ index.php?event=$1&id1=$2&id2=$3 [L]
+RewriteRule ^(.*)/(.*).html$ index.php?event=$1&id1=$2 [L]
+RewriteRule ^(.*).html$ index.php?event=$1 [L]
+RewriteRule index.html$ index.php [L]
