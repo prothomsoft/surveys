@@ -3,11 +3,12 @@ require_once(dirname(__FILE__)."/PollVoteDao.inc.php");
 
 class PollVoteBean{
    private $PollVoteId;
+   private $UserId;
    private $PollId;
    private $PollAnswerId;
-   private $UserId;
-   private $PollVote;
-   private $PollVoteOrder;   
+   private $PollOpenAnswer;
+   private $CreateDate;
+      
    
    public function setPollVoteId($val){
       $this->PollVoteId=$val;
@@ -15,6 +16,14 @@ class PollVoteBean{
 
    public function getPollVoteId(){
       return $this->PollVoteId;
+   }
+   
+   public function setUserId($val){
+   	$this->UserId=$val;
+   }
+    
+   public function getUserId(){
+   	return $this->UserId;
    }
 
    public function setPollId($val){
@@ -32,29 +41,21 @@ class PollVoteBean{
    public function getPollAnswerId(){
    	return $this->PollAnswerId;
    }
+   
+   public function setPollOpenAnswer($val){
+   	$this->PollOpenAnswer=$val;
+   }
     
-   public function setUserId($val){
-   	$this->UserId=$val;
+   public function getPollOpenAnswer(){
+   	return $this->PollOpenAnswer;
    }
    
-   public function getUserId(){
-   	return $this->UserId;
+   public function setCreateDate($val){
+      $this->CreateDate=$val;
    }
 
-   public function setPollVote($val){
-      $this->PollVote=$val;
-   }
-
-   public function getPollVote(){
-      return $this->PollVote;
-   }
-
-   public function setPollVoteOrder($val){
-      $this->PollVoteOrder=$val;
-   }
-
-   public function getPollVoteOrder(){
-      return $this->PollVoteOrder;
+   public function getCreateDate(){
+      return $this->CreateDate;
    }  
 }
 ?>

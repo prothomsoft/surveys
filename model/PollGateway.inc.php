@@ -34,7 +34,7 @@ class PollGateway {
       
       $DB = new DB();
       $DB->connect();
-      $query  = "SELECT PollId,Question,CreateDate,Status,PollOrder FROM Poll";
+      $query  = "SELECT PollId,Question,OpenQuestion,CreateDate,Status,PollOrder FROM Poll";
       $query .= " WHERE 1 = 1";
       $query .= " ORDER BY PollOrder ASC";
 	  $DB->query($query);
@@ -46,6 +46,7 @@ class PollGateway {
       			$objPollBean= new PollBean();
 			    $objPollBean->setPollId($DB->getField("PollId"));
 			    $objPollBean->setQuestion($DB->getField("Question"));
+			    $objPollBean->setOpenQuestion($DB->getField("OpenQuestion"));
 			    $objPollBean->setCreateDate($DB->getField("CreateDate"));
 			    $objPollBean->setStatus($DB->getField("Status"));
 			    $objPollBean->setPollOrder($DB->getField("PollOrder"));			    
@@ -74,7 +75,7 @@ class PollGateway {
    	
 	   	$DB = new DB();
        	$DB->connect();	
-      	$query  = "SELECT PollId,QuestionName,CreateDate,Status,PollOrder FROM Poll ";
+      	$query  = "SELECT PollId,Question,OpenQuestion,CreateDate,Status,PollOrder FROM Poll ";
       	$query .= " WHERE 1 = 1";
       	$query .= " ORDER BY PollOrder ASC";
       	$query .= " LIMIT ".$start.",".$limit;
@@ -87,6 +88,7 @@ class PollGateway {
 	      			$objPollBean= new PollBean();
 				    $objPollBean->setPollId($DB->getField("PollId"));
 				    $objPollBean->setQuestion($DB->getField("Question"));
+				    $objPollBean->setOpenQuestion($DB->getField("OpenQuestion"));
 				    $objPollBean->setCreateDate($DB->getField("CreateDate"));
 				    $objPollBean->setStatus($DB->getField("Status"));
 				    $objPollBean->setPollOrder($DB->getField("PollOrder"));				    
@@ -94,6 +96,31 @@ class PollGateway {
 	      		}
 	      }
 		  return $arr;      
-   }            
+   }
+
+   public function findActive(){   
+   	$DB = new DB();
+   	$DB->connect();
+   	$query  = "SELECT PollId,Question,OpenQuestion,CreateDate,Status,PollOrder FROM Poll";
+   	$query .= " WHERE Status = 1";
+   	$query .= " ORDER BY PollOrder ASC";
+   	$DB->query($query);
+   	$arr = "";
+   	if ($DB->numRows()>0)
+   	{
+   		while($DB->move_next())
+   		{
+   			$objPollBean= new PollBean();
+   			$objPollBean->setPollId($DB->getField("PollId"));
+   			$objPollBean->setQuestion($DB->getField("Question"));
+   			$objPollBean->setOpenQuestion($DB->getField("OpenQuestion"));
+   			$objPollBean->setCreateDate($DB->getField("CreateDate"));
+   			$objPollBean->setStatus($DB->getField("Status"));
+   			$objPollBean->setPollOrder($DB->getField("PollOrder"));
+   			$arr[] = $objPollBean;
+   		}
+   	}
+   	return $arr;
+   }
 }
 ?>

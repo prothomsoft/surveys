@@ -6,7 +6,7 @@ $(document).ready(function() {
 											showAlfaStep1, showAlfaStep2, executeAlfaWizardClose,
 											showBetaStep1, showBetaStep2, executeBetaWizardClose,
 											showGamaStep1, showGamaStep2, executeGamaWizardClose,
-											showDeltaStep1, showDeltaStep2, executeDeltaWizardClose,
+											showPollStep1, showPollStep2, executePollWizardClose,
 											showSigmaStep1, showSigmaStep2, executeSigmaWizardClose,
 											showCmsContentStep1, showCmsContentStep2, executeCmsContentWizardClose, showProductStep2);?>
 	<?$currentEvent = $event->getArg('event');?>
@@ -475,16 +475,16 @@ $(document).ready(function() {
 		}
 	});
 	
-	<?if ($event->getArg('DeltaWizardStep2') != "") {?>
-		<?$DeltaId = $event->getArg('DeltaId');?>
+	<?if ($event->getArg('PollWizardStep2') != "") {?>
+		<?$PollId = $event->getArg('PollId');?>
 		// Refresh Edit Mode -------->
-		refreshDeltaPicture();
+		refreshPollPicture();
 		
 		// File Upload -------->
 		$("#uploadify").uploadify({
 			'uploader'       : 'uploadify/uploadify.swf',
-			'script'         : 'uploadify/uploadifyDeltaPicture.php',
-			'scriptData'	 : {'DeltaId': <?=$DeltaId?>},
+			'script'         : 'uploadify/uploadifyPollPicture.php',
+			'scriptData'	 : {'PollId': <?=$PollId?>},
 			'cancelImg'      : '../images/cancel.png',
 			'fileExt'		 : '*.jpg;',
 			'fileDesc'		 : 'Only .jpg files are allowed',
@@ -503,22 +503,22 @@ $(document).ready(function() {
                     },
 			'onComplete'	 : function(event, queueID, fileObj, response, data1) {
 				$.ajax({
-					url: "index.php?event=findDeltaPictureByDeltaId",
+					url: "index.php?event=findPollPictureByPollId",
 					dataType: "json",
-					data: {'DeltaId': <?=$DeltaId?>},
+					data: {'PollId': <?=$PollId?>},
 					success: function(data) {
 						if(!data) {
 							return false;
 						}
 						$html = "";
 						$("#filesUploaded").html($html);
-						$.map(data.DeltaPicture, function(item) {
+						$.map(data.PollPicture, function(item) {
 							$html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
-							$html = $html + '<input onBlur="javascript:executeDeltaSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
+							$html = $html + '<input onBlur="javascript:executePollSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
 							if(item.MainPicture == 0) {
-								$html = $html + '<a href="javascript:executeDeltaPictureSetMain(\'<?=$DeltaId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
+								$html = $html + '<a href="javascript:executePollPictureSetMain(\'<?=$PollId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
 							}
-							$html = $html + '<a href="javascript:executeDeltaPictureRemove(\'<?=$DeltaId?>\', \'' + item.ImgDriveName + '\')">Remove</a></div>';							
+							$html = $html + '<a href="javascript:executePollPictureRemove(\'<?=$PollId?>\', \'' + item.ImgDriveName + '\')">Remove</a></div>';							
 						})
 						$("#filesUploaded").html($html);
 					}
@@ -528,15 +528,15 @@ $(document).ready(function() {
 	<?}?>
 	
 	// ---------------------------->
-	// DeltaTable --------->
+	// PollTable --------->
 	// ---------------------------->
-	$('#idDeltaTable').dataTable( {
+	$('#idPollTable').dataTable( {
 		"bAutoWidth": false,
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
 		"bProcessing": true,
 		"bServerSide": true,
-		"sAjaxSource": "index.php?event=getDeltaTableData",
+		"sAjaxSource": "index.php?event=getPollTableData",
 		"aaSorting": [[ 5, "desc" ]],
 		"bProcessing": false,
 		"bLengthChange": true,
@@ -546,12 +546,12 @@ $(document).ready(function() {
 			"sUrl": "../lang/pl_PL.txt"
 		},					
 		"aoColumns": [				
-			/* DeltaId */ { "sClass": "center", "bSearchable": false, "bVisible": false },
-			/* ImgDriveName */ { "sClass": "center", "bSortable": false, "bVisible": false },					
-			/* Name */ { "sClass": "center", "bVisible": true },
-			/* SeoName */ { "sClass": "center", "bVisible": false },
-			/* UpdateDate */ { "sClass": "center", "bVisible": false },
-			/* DeltaOrder */ { "sClass": "center" },
+			/* PollId */ { "sClass": "center", "bSearchable": false, "bVisible": false },
+			/* Question */ { "sClass": "center", "bSortable": false, "bVisible": false },					
+			/* CreateDate */ { "sClass": "center", "bVisible": true },
+			/* Status */ { "sClass": "center", "bVisible": true },
+			/* Question */ { "sClass": "center", "bVisible": false },
+			/* PollOrder */ { "sClass": "center" },
 			/* Action */ { "sClass": "center", "sType": "html", "bSortable": false , "bSearchable": false }			  			
   		],
   		"fnServerData": function ( sSource, aoData, fnCallback ) {
@@ -1495,52 +1495,52 @@ $(document).ready(function() {
 	}
 <?}?>
 
-<?if ($event->getArg('DeltaWizardStep2') != "") {?>
-	function executeDeltaPictureRemove($DeltaId, $pictureId) {
+<?if ($event->getArg('PollWizardStep2') != "") {?>
+	function executePollPictureRemove($PollId, $pictureId) {
 		$.ajax({
-			url: "index.php?event=executeDeltaPictureRemove",
+			url: "index.php?event=executePollPictureRemove",
 			dataType: "json",
-			data: { 'DeltaId': $DeltaId,
+			data: { 'PollId': $PollId,
 					'pictureId': $pictureId},
 			success: function(data) {
-				refreshDeltaPicture();
+				refreshPollPicture();
 			}
 		});
 	}
 	
-	function executeDeltaSavePictureDescription(ImgDriveName, input) {
+	function executePollSavePictureDescription(ImgDriveName, input) {
 		
 		var text = input.value;
 		text = text.replace("'", "")
 		
 		$.ajax({
-			url: "index.php?event=executeDeltaSavePictureDescription",
+			url: "index.php?event=executePollSavePictureDescription",
 			dataType: "json",
 			data: { 'imgDriveName': ImgDriveName,
 					'imgAltName': text},
 			success: function(data) {
-				refreshDeltaPicture();
+				refreshPollPicture();
 			}
 		});		
 	}
 	
-	function executeDeltaPictureSetMain($DeltaId, $pictureId) {
+	function executePollPictureSetMain($PollId, $pictureId) {
 		$.ajax({
-			url: "index.php?event=executeDeltaPictureSetMain",
+			url: "index.php?event=executePollPictureSetMain",
 			dataType: "json",
-			data: { 'DeltaId': $DeltaId,
+			data: { 'PollId': $PollId,
 					'pictureId': $pictureId},
 			success: function(data) {
-				refreshDeltaPicture();
+				refreshPollPicture();
 			}
 		});
 	}
 	
-	function refreshDeltaPicture() {
+	function refreshPollPicture() {
 		$.ajax({
-			url: "index.php?event=findDeltaPictureByDeltaId",
+			url: "index.php?event=findPollPictureByPollId",
 			dataType: "json",
-			data: {'DeltaId': <?=$DeltaId?>},
+			data: {'PollId': <?=$PollId?>},
 			success: function(data) {
 				if(!data) {
 					$html = "";
@@ -1549,13 +1549,13 @@ $(document).ready(function() {
 				}
 				$html = "";
 				$("#filesUploaded").html($html);
-				$.map(data.DeltaPicture, function(item) {
+				$.map(data.PollPicture, function(item) {
 					$html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
-					$html = $html + '<input onBlur="javascript:executeDeltaSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
+					$html = $html + '<input onBlur="javascript:executePollSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
 					if(item.MainPicture == 0) {
-						$html = $html + '<a href="javascript:executeDeltaPictureSetMain(\'<?=$DeltaId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
+						$html = $html + '<a href="javascript:executePollPictureSetMain(\'<?=$PollId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
 					}
-					$html = $html + '<a href="javascript:executeDeltaPictureRemove(\'<?=$DeltaId?>\', \'' + item.ImgDriveName + '\')" onclick="return confirm(\'Are you sure you want to remove this picture??\')">Remove</a></div>';
+					$html = $html + '<a href="javascript:executePollPictureRemove(\'<?=$PollId?>\', \'' + item.ImgDriveName + '\')" onclick="return confirm(\'Are you sure you want to remove this picture??\')">Remove</a></div>';
 					
 				})
 				$("#filesUploaded").html($html);

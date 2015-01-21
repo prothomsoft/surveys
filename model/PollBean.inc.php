@@ -10,6 +10,7 @@ require_once(dirname(__FILE__)."/BetaDao.inc.php");
 class PollBean{
    private $PollId;
    private $Question;
+   private $OpenQuestion;
    private $CreateDate;
    private $Status;
    private $PollOrder;
@@ -29,6 +30,14 @@ class PollBean{
 
    public function getQuestion(){
       return $this->Question;
+   }
+   
+   public function setOpenQuestion($val){
+   	$this->OpenQuestion=$val;
+   }
+   
+   public function getOpenQuestion(){
+   	return $this->OpenQuestion;
    }
    
    public function setCreateDate($val){

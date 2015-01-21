@@ -152,8 +152,9 @@ $oT = new Translator('template3',$sLang);
 		<div role="main" class="main">
 		
 			<!-- Begin page top -->
-			<section class="page-top-md">				
+			<?/*?><section class="page-top-md">				
 			</section>
+			<?*/?>
 			<!-- End page top -->
 			
 			<div class="container">

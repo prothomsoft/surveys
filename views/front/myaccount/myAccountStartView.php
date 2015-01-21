@@ -8,25 +8,22 @@ $oT = new Translator('template3',$sLang);
 ?>
 <!-- Begin Main -->
 <div role="main" class="main">
-
-	<!-- Begin page top -->
-	<section class="page-top-md">				
-	</section>
-	<!-- End page top -->
 	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="blog-posts single-post form-register">
-					<article class="post post-large blog-single-post">
-						<h3 style="text-align:center"><?=$oT->gL("txtMyAccount")?></h3>
-						<div class="post-content">
-							<p style="text-align:center">My Account Content</p>
-							<div style="text-align:center"><a class="btn btn-primary" href="<?=$SN;?>surveys.html"><?=$oT->gL("txtStart")?></a></div>
-						</div>
-					</article>							
+				<div style="text-align:center; padding-bottom:20px;">
+					<?$objCmsContentDao = new CmsContentDao();
+					  $objCmsContent = $objCmsContentDao->read(25);
+					  $longDescription = htmlspecialchars_decode($objCmsContent->getLongDescription());
+					  $name = htmlspecialchars_decode($objCmsContent->getName());
+					?>
+					<h3><?=$name;?></h3>
+					<?=$longDescription;?>					
 				</div>
-			</div>
+				<div style="padding-bottom:30px">
+				</div>
+			</div>	
 		</div>	
 	</div>
 </div>

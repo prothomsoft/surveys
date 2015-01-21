@@ -45,30 +45,30 @@
 		</div>
 	<?}?>
 	
-	<?if (in_array('getdeltatabledata', $arrEventsAllowedForLevel)) {?>
+	<?if (in_array('getpolltabledata', $arrEventsAllowedForLevel)) {?>
 		<div>
-			<h3><a href="#">Polls</a></h3>
+			<h3><a href="#">Theme market</a></h3>
 			<div class="accordion_content">
-			<?$arrHighligths = array(showDeltasList, executeRemoveDeltasAction, executeSaveDeltasAction);
+			<?$arrHighligths = array(showPollsList, executeRemovePollsAction, executeSavePollsAction, showPollResults);
 	      		$currentEvent = $event->getArg('event');
 	      		$activeStyle = "";
 	      		if (in_array($currentEvent, $arrHighligths)) {
 		      		echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 2 );}</script>";
 		      		$activeStyle = "style=\"font-weight:bold\"";
 	      		}?>
-				<p <?=$activeStyle?>><a href="index.php?event=showDeltasList">List of Polls</a></p>
+				<p <?=$activeStyle?>><a href="index.php?event=showPollsList">List of Polls</a></p>
 			<?$arrHighligths = array(
-	      		  showDeltaStep1,
-				  showDeltaStep2,
-				  executeDeltaWizardClose,
-				  executeRemoveDeltaAction);
+	      		  showPollStep1,
+				  showPollStep2,				  
+				  executePollWizardClose,
+				  executeRemovePollAction);
 	      			$currentEvent = $event->getArg('event'); 
 	      			$activeStyle = "";
 	      			if (in_array($currentEvent, $arrHighligths)) {
 		      			echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 2 );}</script>";
 		      			$activeStyle = "style=\"font-weight:bold\"";
 	      			}?>
-	      			<p <?=$activeStyle?>><a href="index.php?event=showDeltaStep1">Add Poll</a></p>
+	      			<p <?=$activeStyle?>><a href="index.php?event=showPollStep1">Add Poll</a></p>
 			</div>
 		</div>
 	<?}?>

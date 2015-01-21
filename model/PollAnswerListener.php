@@ -8,10 +8,10 @@ class model_PollAnswerListener extends MachII_framework_Listener {
 	
 	function configure() {}
 	
-	function getByPollId(&$event) {
+	function findByPollId(&$event) {
 		$PollId = $event->getArg('PollId');
 		$objPollAnswerGateway = new PollAnswerGateway();
-		$responseJSON = $objPollAnswerGateway->getByPollId($PollId);
-		$event->setArg("responseJSON", $responseJSON);
+		$arrPollAnswers = $objPollAnswerGateway->getByPollId($PollId);
+		$event->setArg("arrPollAnswers", $arrPollAnswers);
 	}	   
 }?>

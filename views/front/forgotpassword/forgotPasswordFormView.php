@@ -29,7 +29,8 @@ $oT = new Translator('template3',$sLang);
 					        </div>					        
 					        <div style="text-align:center">
 					        	<button type="submit" class="btn btn-primary"><?=$oT->gL("txtForgotPasswordSend")?></button>
-					        </div>				        
+					        </div>
+					        <div style="padding-bottom:60px;"></div>
 					    </form>
 		            </div>
 			 	</div>

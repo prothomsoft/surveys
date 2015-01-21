@@ -9,7 +9,8 @@ class PollAnswerGateway {
 		$DB->connect();
 		$query  = "SELECT PollAnswerId, PollAnswer, PollAnswerOrder";
 		$query .= " FROM PollAnswer";
-		$query .= " WHERE PollId = '".$PollId."'";	
+		$query .= " WHERE PollId = '".$PollId."'";
+		$query .= " ORDER BY PollAnswerOrder ASC";
 		$DB->query($query);
 		
 	      $arr = "";

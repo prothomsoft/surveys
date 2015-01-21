@@ -45,6 +45,7 @@ class MachII_util_Exception extends Exception {
     {   
         $localizedMessage = $this->_localizeErrorMessage($message, $code);
         parent::Exception($localizedMessage, $code);
+        echo $localizedMessage; 
     }
     
     /**

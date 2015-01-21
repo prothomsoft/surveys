@@ -103,6 +103,12 @@
         <listener name="BookListener" type="model.BookListener">
             <invoker type="MachII.framework.invokers.ObjectEvent"/>
         </listener> 
+        <listener name="PollListener" type="model.PollListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener> 
+        <listener name="PollAnswerListener" type="model.PollAnswerListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener> 
     </listeners>
     
     <!-- EVENT FILTERS -->
@@ -317,7 +323,7 @@
         <event-handler event="login" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
         	<view-page name="loginFormView" contentKey="loginFormView" />
-        	<view-page name="carouselView" contentKey="carouselView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
         	<view-page name="navigationView" contentKey="navigationView" />
         	<view-page name="footerView" contentKey="footerView" />
         	<view-page name="searchView" contentKey="searchView" />
@@ -344,7 +350,7 @@
         <event-handler event="register" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
         	<view-page name="registerFormView" contentKey="registerFormView" />
-        	<view-page name="carouselView" contentKey="carouselView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
         	<view-page name="navigationView" contentKey="navigationView" />
         	<view-page name="footerView" contentKey="footerView" />
         	<view-page name="searchView" contentKey="searchView" />
@@ -360,7 +366,7 @@
         <!-- registerConfirmation -->
         <event-handler event="registerConfirmation" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<view-page name="carouselView" contentKey="carouselView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
         	<view-page name="navigationView" contentKey="navigationView" />
         	<view-page name="registerConfirmationView" contentKey="registerConfirmationView" />
         	<view-page name="footerView" contentKey="footerView" />
@@ -374,7 +380,7 @@
         <event-handler event="activation">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
         	<notify listener="UserListener" method="executeActivation" />
-        	<view-page name="carouselView" contentKey="carouselView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
         	<view-page name="navigationView" contentKey="navigationView" />
         	<view-page name="activationView" contentKey="activationView" />
         	<view-page name="footerView" contentKey="footerView" />
@@ -387,7 +393,7 @@
         <event-handler event="forgotPassword" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
         	<view-page name="forgotPasswordFormView" contentKey="forgotPasswordFormView" />
-        	<view-page name="carouselView" contentKey="carouselView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
         	<view-page name="navigationView" contentKey="navigationView" />
         	<view-page name="footerView" contentKey="footerView" />
         	<view-page name="searchView" contentKey="searchView" />
@@ -402,7 +408,7 @@
         <!-- forgotPasswordConfirmation -->
         <event-handler event="forgotPasswordConfirmation" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<view-page name="carouselView" contentKey="carouselView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
         	<view-page name="navigationView" contentKey="navigationView" />
         	<view-page name="forgotPasswordConfirmationView" contentKey="forgotPasswordConfirmationView" />
         	<view-page name="footerView" contentKey="footerView" />
@@ -410,6 +416,57 @@
         	<view-page name="template4" />        	
         </event-handler>                     
         <!-- FORGOTPASSWORD --> <!-- FORGOTPASSWORD --> <!-- FORGOTPASSWORD -->
+        
+        <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD -->
+        <event-handler event="changePassword" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="changePasswordFormView" contentKey="changePasswordFormView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        <event-handler event="executeChangePassword" access="public">
+        	<event-arg name="failEvent" value="changePassword" />
+        	<filter name="validateChangePasswordFieldsFilter" />
+        	<notify listener="UserListener" method="changePassword" />        	
+        </event-handler>
+        <event-handler event="changePasswordConfirmation" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="changePasswordConfirmationView" contentKey="changePasswordConfirmationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />        	
+        </event-handler>
+        <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD -->
+        
+        <!-- REMOVEACCOUNT --> <!-- REMOVEACCOUNT --> <!-- REMOVEACCOUNT -->
+        <event-handler event="removeAccount" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="removeAccountFormView" contentKey="removeAccountFormView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        <event-handler event="executeRemoveAccount" access="public">
+        	<event-arg name="failEvent" value="changePassword" />        	
+        	<notify listener="UserListener" method="removeAccount" />        	
+        </event-handler>
+        <event-handler event="removeAccountConfirmation" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="removeAccountConfirmationView" contentKey="removeAccountConfirmationView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />        	
+        </event-handler>
+        <!-- REMOVEACCOUNT --> <!-- REMOVEACCOUNT --> <!-- REMOVEACCOUNT -->
         
         
         <!-- CONTACT --> <!-- CONTACT --> <!-- CONTACT -->
@@ -474,13 +531,35 @@
         <!-- USERACCOUNT --> <!-- USERACCOUNT --> <!-- USERACCOUNT -->
         <event-handler event="myAccountStart">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<view-page name="carouselView" contentKey="carouselView" />
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
         	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
         	<view-page name="myAccountStartView" contentKey="myAccountStartView" />
         	<view-page name="footerView" contentKey="footerView" />
         	<view-page name="searchView" contentKey="searchView" />
         	<view-page name="template4" />
         </event-handler>
+        
+        <event-handler event="themeMarket">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="PollListener" method="checkQuestionsStatus"/>
+        	<notify listener="PollAnswerListener" method="findByPollId"/>
+        	<notify listener="PollListener" method="getTotalNumberVotes"/>        	
+        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
+        	<view-page name="navigationView" contentKey="navigationView" />
+        	<view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
+        	<view-page name="themeMarketView" contentKey="themeMarketView" />
+        	<view-page name="footerView" contentKey="footerView" />
+        	<view-page name="searchView" contentKey="searchView" />
+        	<view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="executeThemeMarketAction">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="PollListener" method="saveOpenAnswer"/>
+        	<notify listener="PollListener" method="savePollAnswers"/>
+        	<announce event="themeMarket" copyEventArgs="false" />
+        </event-handler>        
         
         <event-handler event="moje_konto" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
@@ -510,41 +589,6 @@
         	<notify listener="AlfaListener" method="findLatest" />
         	<view-page name="navigationTopView" contentKey="navigationTopView" />
         	<view-page name="userConfirm" contentKey="userConfirm" />
-        	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
-        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
-           	<view-page name="template2" />
-        </event-handler>
-        
-        <event-handler event="zmiana_hasla" access="public">
-        	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<view-page name="navigationTopView" contentKey="navigationTopView" />
-        	<notify listener="UserListener" method="setFieldsForUpdate"/>
-        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
-        	<notify listener="DeltaListener" method="findAll" />
-        	<notify listener="AlfaListener" method="findLatest" />
-           	<event-arg name="submitEvent" value="executeEditUserApprovedAction" />
-			<view-page name="passwordAddEdit" contentKey="passwordAddEdit" />
-        	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
-        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
-           	<view-page name="template2" />
-        </event-handler>
-        
-        <event-handler event="zmiana_hasla_zapisz" access="public">
-        	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<event-arg name="failEvent" value="zmiana_hasla" />
-        	<filter name="validateChangePasswordFieldsFilter" />
-        	<notify listener="UserListener" method="changePassword" />
-        	<announce event="zmiana_hasla_potwierdzenie" />
-        </event-handler>
-        
-        <event-handler event="zmiana_hasla_potwierdzenie" access="public">
-        	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<notify listener="ProductCategoryPlainListener" method="findAllAsc" />
-        	<notify listener="CmsCategoryPlainListener" method="findAllAsc" />
-        	<notify listener="DeltaListener" method="findAll" />
-        	<notify listener="AlfaListener" method="findLatest" />
-        	<view-page name="navigationTopView" contentKey="navigationTopView" />
-        	<view-page name="passwordConfirm" contentKey="passwordConfirm" />
         	<view-page name="profileCategoriesView" contentKey="profileCategoriesView" />
         	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
            	<view-page name="template2" />
@@ -833,7 +877,7 @@
         	<notify listener="ShoppingCartListener" method="findProductsList"/>
         	<notify listener="ProductListener" method="findByListId"/>
         	<view-page name="navigationView" contentKey="navigationView" />
-			<view-page name="carouselView" contentKey="carouselView" />
+			<!--<view-page name="carouselView" contentKey="carouselView" />-->
 			<view-page name="footerView" contentKey="footerView" />
 			<view-page name="contactFormView" contentKey="contactFormView" />
         	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
@@ -855,7 +899,7 @@
         	<view-page name="bestView" contentKey="bestView" />
         	<view-page name="navigationTopView" contentKey="navigationTopView" />
         	<view-page name="navigationView" contentKey="navigationView" />
-			<view-page name="carouselView" contentKey="carouselView" />
+			<!--<view-page name="carouselView" contentKey="carouselView" />-->
 			<view-page name="footerView" contentKey="footerView" />
 			<view-page name="contactConfirmationView" contentKey="contactConfirmationView" />
         	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
@@ -969,8 +1013,18 @@
     	<page-view name="forgotPasswordFormView" page="/views/front/forgotpassword/forgotPasswordFormView.php"/>
     	<page-view name="forgotPasswordConfirmationView" page="/views/front/forgotpassword/forgotPasswordConfirmationView.php"/>
     	
+    	<!--  CHANGE PASSWORD -->
+    	<page-view name="changePasswordFormView" page="/views/front/changepassword/changePasswordFormView.php"/>
+    	<page-view name="changePasswordConfirmationView" page="/views/front/changepassword/changePasswordConfirmationView.php"/>
+    	
+    	<page-view name="removeAccountFormView" page="/views/front/removeaccount/removeAccountFormView.php"/>
+    	<page-view name="removeAccountConfirmationView" page="/views/front/removeaccount/removeAccountConfirmationView.php"/>
+    	
+    	
+    	
     	<!--  NAVIGATION -->
     	<page-view name="navigationView" page="/views/front/!general/navigationView.php"/>
+    	<page-view name="userAreaMenuView" page="/views/front/!general/userAreaMenuView.php"/>
     	
     	<!--  CAROUSEL -->
     	<page-view name="carouselView" page="/views/front/!general/carouselView.php"/>
@@ -993,6 +1047,9 @@
     	
     	<!-- MY ACCOUNT -->
     	<page-view name="myAccountStartView" page="/views/front/myaccount/myAccountStartView.php"/>
+    	
+    	<!-- THEME MARKET -->
+    	<page-view name="themeMarketView" page="/views/front/thememarket/themeMarketView.php"/>
     	
     	<!-- BOXES -->
     	<page-view name="categoriesView" page="/views/front/boxes/categoriesView.php"/>

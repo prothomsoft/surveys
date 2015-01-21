@@ -144,6 +144,20 @@
             <invoker type="MachII.framework.invokers.ObjectEvent"/>
         </listener>
         
+        <!-- Poll Management -->
+        <listener name="PollListener" type="model.PollListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- PollAnswer Management -->
+        <listener name="PollAnswerListener" type="model.PollAnswerListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- PollVote Management -->
+        <listener name="PollVoteListener" type="model.PollVoteListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
         
     </listeners>
     
@@ -161,6 +175,9 @@
     	<!-- Product Management -->
     	<event-filter name="validateProductStep1Filter" type="filters.ValidateProductStep1Filter" />
     	<event-filter name="validateProductStep2Filter" type="filters.ValidateProductStep2Filter" />
+    	
+    	<!-- Delta -->
+    	<event-filter name="validateDeltaStep1Filter" type="filters.ValidateDeltaStep1Filter" />
     	
     	<!-- Delta -->
     	<event-filter name="validateDeltaStep1Filter" type="filters.ValidateDeltaStep1Filter" />
@@ -183,7 +200,11 @@
     	<!-- CmsContent -->
     	<event-filter name="validateCmsContentStep1Filter" type="filters.ValidateCmsContentStep1Filter" />
     	
+    	<!-- Update file -->
     	<event-filter name="validateUpdateFileFieldsFilter" type="filters.ValidateUpdateFileFieldsFilter" />
+    	
+    	<!-- Poll -->
+    	<event-filter name="validatePollStep1Filter" type="filters.ValidatePollStep1Filter" />
     	
     </event-filters>
     
@@ -1275,6 +1296,98 @@
            	<notify listener="NewsletterListener" method="removeRecord" />
 			<announce event="showNewsletterList" copyEventArgs="false" />
         </event-handler>
+        
+        
+        <!-- Poll Management --> <!-- Poll Management --> <!-- Poll Management --> <!-- Poll Management -->
+        <!-- shows Polls list -->
+        <event-handler event="showPollsList">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="PollList" contentKey="PollList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getPollTableData">
+        	<notify listener="PollListener" method="getAdminTableData" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showPollStep1 -->
+        <event-handler event="showPollStep1">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="PollListener" method="checkId" />
+            <notify listener="PollListener" method="getMaxPollOrder" />
+            <notify listener="PollAnswerListener" method="findByPollId" />
+        	<filter name="validatePollStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+           		<view-page name="PollWizardNavigation" contentKey="PollWizardNavigation" />
+	           	<view-page name="PollWizardStep1" contentKey="PollWizardStep1" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- showPollStep2 -->
+        <event-handler event="showPollStep2">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="PollListener" method="checkId" />
+            <filter name="validatePollStep1Filter" />
+        	<view-page name="menu" contentKey="menu" />
+				<view-page name="PollWizardNavigation" contentKey="PollWizardNavigation" />
+	           	<view-page name="PollWizardStep2" contentKey="PollWizardStep2" />
+           	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>
+        
+        <!-- executePollWizardClose -->
+        <event-handler event="executePollWizardClose">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="PollListener" method="checkId" />
+        	<filter name="validatePollStep1Filter" />
+        	<announce event="showPollsList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemovePollAction -->
+        <event-handler event="executeRemovePollAction" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="PollListener" method="removeRecord" />
+			<announce event="showPollsList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findPollPictureByPollId">
+        	<notify listener="PollPictureListener" method="getByPollId" />
+        	<view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executePollPictureRemove">
+        	<notify listener="PollPictureListener" method="executeRemove" />        	
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executePollPictureSetMain">
+        	<notify listener="PollPictureListener" method="executeSetMain" />        	
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executePollSavePictureDescription">
+        	<notify listener="PollPictureListener" method="executeSavePictureDescription" />        	
+        </event-handler>
+        
+        <!-- showPollResults -->
+        <event-handler event="showPollResults">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<notify listener="PollAnswerListener" method="findByPollId"/>
+            <notify listener="PollListener" method="getResultsTotalNumberVotes" />
+            <notify listener="PollListener" method="getById" />
+            <notify listener="PollVoteListener" method="findByPollId" />
+            <view-page name="menu" contentKey="menu" />
+           	<view-page name="PollWizardNavigation" contentKey="PollWizardNavigation" />
+	        <view-page name="PollResults" contentKey="PollResults" />
+	        <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+           	<view-page name="template" />
+        </event-handler>        
+        <!-- Poll Management --> <!-- Poll Management --> <!-- Poll Management --> <!-- Poll Management -->
                                
     </event-handlers>
     
@@ -1318,11 +1431,19 @@
         <page-view name="productWizardStep3" page="/views/admin/productwizard/productWizardStep3.php" />
         <page-view name="productWizardStep4" page="/views/admin/productwizard/productWizardStep4.php" />
         <page-view name="productWizardNavigation" page="/views/admin/productwizard/productWizardNavigation.php"/>
-       <!-- Delta -->
+       
+        <!-- Delta -->
         <page-view name="DeltaList" page="/views/admin/Delta/DeltaList.php" />
         <page-view name="DeltaWizardStep1" page="/views/admin/DeltaWizard/DeltaWizardStep1.php" />
         <page-view name="DeltaWizardStep2" page="/views/admin/DeltaWizard/DeltaWizardStep2.php" />
         <page-view name="DeltaWizardNavigation" page="/views/admin/DeltaWizard/DeltaWizardNavigation.php"/>
+        
+        <!-- Poll -->
+        <page-view name="PollList" page="/views/admin/Poll/PollList.php" />
+        <page-view name="PollWizardStep1" page="/views/admin/PollWizard/PollWizardStep1.php" />
+        <page-view name="PollWizardStep2" page="/views/admin/PollWizard/PollWizardStep2.php" />
+        <page-view name="PollWizardNavigation" page="/views/admin/PollWizard/PollWizardNavigation.php"/>
+        <page-view name="PollResults" page="/views/admin/PollWizard/PollResults.php" />
         
         <!-- Sigma -->
         <page-view name="SigmaList" page="/views/admin/Sigma/SigmaList.php" />

@@ -80,6 +80,20 @@ class EventsAllowedForLevel {
 	  executedeltapicturesetmain,
 	  finddeltabystreet,
 	  
+	  // poll management
+	  getpolltabledata,
+	  showpollslist,
+	  showpollstep1,
+	  showpollstep2,
+	  executepollwizardclose,
+	  executeremovepollaction,
+	  findpollpicturebypollid,
+	  executepollpictureremove,
+	  executepollsavepicturedescription,
+	  executepollpicturesetmain,
+	  findpollbystreet,
+	  showpollresults,
+	  
 	  // sigma management
 	  getsigmatabledata,
 	  showsigmaslist,
@@ -214,7 +228,17 @@ class EventsAllowedForLevel {
       // ADMIN HOME
       startadmin,
     		
-      myaccountstart
+      myaccountstart,
+      thememarket,
+      executethememarketaction,
+    		
+		changepassword,
+		executechangepassword,
+		changepasswordconfirmation,
+    		
+    		removeaccount,
+    		executeremoveaccount,
+    		removeaccountconfirmation
     );
     
     // LEVEL 2 - ZONE 2 - $4.99

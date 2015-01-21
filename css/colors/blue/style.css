@@ -7,7 +7,7 @@ a {
 }
 /* line 24, ../../../sass/mixins/_mixins.scss */
 a:hover, a:focus {
-  color: white;
+  color: #000000;
 }
 /* line 8, ../../../sass/colors/blue/style.scss */
 a:hover, a:focus {
@@ -121,6 +121,47 @@ a:hover, a:focus {
 }
 /* line 122, ../../../sass/colors/blue/style.scss */
 .navbar-main .navbar-nav .dropdown-menu .item-cat a:hover, .navbar-main .navbar-nav .dropdown-menu .item-cat a:focus {
+  color: #004378;
+ 
+}
+
+/* line 94, ../../../sass/colors/blue/style.scss */
+.navbar-main-user .navbar-nav > li > a {
+  color: #FFF;
+   border-right: 1px solid #FFF;
+}
+/* line 24, ../../../sass/mixins/_mixins.scss */
+.navbar-main-user .navbar-nav > li > a:hover, .navbar-main-user .navbar-nav > li > a:focus {
+  color: #FFF;
+   border-right: 1px solid #FFF;
+}
+/* line 105, ../../../sass/colors/blue/style.scss */
+.navbar-main-user .navbar-nav > .active > a,
+.navbar-main-user .navbar-nav > .active > a:hover,
+.navbar-main-user .navbar-nav > .active > a:focus,
+.navbar-main-user .navbar-nav > .open > a,
+.navbar-main-user .navbar-nav > .open > a:hover,
+.navbar-main-user .navbar-nav > .open > a:focus,
+.navbar-main-user .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-main-user .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-main-user .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #FFF;
+  background-color: #004378;
+  border-right: 1px solid #FFF;
+}
+/* line 111, ../../../sass/colors/blue/style.scss */
+.navbar-main-user .navbar-nav .dropdown-menu li a:hover, .navbar-main-user .navbar-nav .dropdown-menu li a:focus {
+  color: white;
+}
+/* line 117, ../../../sass/colors/blue/style.scss */
+.navbar-main-user .navbar-nav .dropdown-menu > .active > a,
+.navbar-main-user .navbar-nav .dropdown-menu > .active > a:hover,
+.navbar-main-user .navbar-nav .dropdown-menu > .active > a:focus {
+  background-color: transparent;
+  color: #004378;
+}
+/* line 122, ../../../sass/colors/blue/style.scss */
+.navbar-main-user .navbar-nav .dropdown-menu .item-cat a:hover, .navbar-main-user .navbar-nav .dropdown-menu .item-cat a:focus {
   color: #004378;
 }
 
@@ -374,5 +415,128 @@ a:hover, a:focus {
 .navbar-main-drop .navbar-collapse .navbar-nav > .open > a,
 .navbar-main-drop .navbar-collapse .navbar-nav > .open > a:hover,
 .navbar-main-drop .navbar-collapse .navbar-nav > .open > a:focus {
+  background-color: #004378;
+}
+
+
+/* line 94, ../../../sass/colors/blue/style.scss */
+.navbar-main-drop .navbar-nav > li > a {
+  color: #333333;
+}
+/* line 24, ../../../sass/mixins/_mixins.scss */
+.navbar-main-drop .navbar-nav > li > a:hover, .navbar-main-drop .navbar-nav > li > a:focus {
+  color: #004378;
+}
+/* line 105, ../../../sass/colors/blue/style.scss */
+.navbar-main-drop .navbar-nav > .active > a,
+.navbar-main-drop .navbar-nav > .active > a:hover,
+.navbar-main-drop .navbar-nav > .active > a:focus,
+.navbar-main-drop .navbar-nav > .open > a,
+.navbar-main-drop .navbar-nav > .open > a:hover,
+.navbar-main-drop .navbar-nav > .open > a:focus,
+.navbar-main-drop .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-main-drop .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-main-drop .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #004378;
+  background-color: transparent;
+}
+/* line 111, ../../../sass/colors/blue/style.scss */
+.navbar-main-drop .navbar-nav .dropdown-menu li a:hover, .navbar-main-drop .navbar-nav .dropdown-menu li a:focus {
+  color: white;
+}
+/* line 117, ../../../sass/colors/blue/style.scss */
+.navbar-main-drop .navbar-nav .dropdown-menu > .active > a,
+.navbar-main-drop .navbar-nav .dropdown-menu > .active > a:hover,
+.navbar-main-drop .navbar-nav .dropdown-menu > .active > a:focus {
+  background-color: transparent;
+  color: #004378;
+}
+/* line 122, ../../../sass/colors/blue/style.scss */
+.navbar-main-drop .navbar-nav .dropdown-menu .item-cat a:hover, .navbar-main-drop .navbar-nav .dropdown-menu .item-cat a:focus {
+  color: #004378;
+}
+
+
+/* home 4 */
+/* line 363, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:hover, .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:focus {
+  background-color: #004378;
+}
+/* line 372, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a:hover,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a:focus,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:hover,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:focus {
+  background-color: #004378;
+}
+
+/* home 4 */
+/* line 363, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:hover, .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:focus {
+  background-color: #004378;
+}
+/* line 372, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a:hover,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a:focus,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:hover,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:focus {
+  background-color: #004378;
+}
+
+
+/* line 94, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-nav > li > a {
+  color: #333333;
+}
+/* line 24, ../../../sass/mixins/_mixins.scss */
+.navbar-main-user-drop .navbar-nav > li > a:hover, .navbar-main-user-drop .navbar-nav > li > a:focus {
+  color: #004378;
+}
+/* line 105, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-nav > .active > a,
+.navbar-main-user-drop .navbar-nav > .active > a:hover,
+.navbar-main-user-drop .navbar-nav > .active > a:focus,
+.navbar-main-user-drop .navbar-nav > .open > a,
+.navbar-main-user-drop .navbar-nav > .open > a:hover,
+.navbar-main-user-drop .navbar-nav > .open > a:focus,
+.navbar-main-user-drop .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-main-user-drop .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-main-user-drop .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #004378;
+  background-color: transparent;
+}
+/* line 111, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-nav .dropdown-menu li a:hover, .navbar-main-user-drop .navbar-nav .dropdown-menu li a:focus {
+  color: white;
+}
+/* line 117, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-nav .dropdown-menu > .active > a,
+.navbar-main-user-drop .navbar-nav .dropdown-menu > .active > a:hover,
+.navbar-main-user-drop .navbar-nav .dropdown-menu > .active > a:focus {
+  background-color: transparent;
+  color: #004378;
+}
+/* line 122, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-nav .dropdown-menu .item-cat a:hover, .navbar-main-user-drop .navbar-nav .dropdown-menu .item-cat a:focus {
+  color: #004378;
+}
+
+
+/* home 4 */
+/* line 363, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:hover, .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:focus {
+  background-color: #004378;
+}
+/* line 372, ../../../sass/colors/blue/style.scss */
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a:hover,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a:focus,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:hover,
+.navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:focus {
   background-color: #004378;
 }

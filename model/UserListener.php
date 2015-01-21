@@ -34,7 +34,7 @@ class model_UserListener extends MachII_framework_Listener {
 				$arrResult = array(validationResult => true, userType => "admin");
 				header("Location: ".$SN."admin/index.php?event=startAdmin");
 			} else {
-				header("Location: ".$SN."surveys.html");
+				header("Location: ".$SN."myAccountStart.html");
 			}
 		} else {
 			$newEventArgs = &$event->getArgs();
@@ -481,7 +481,11 @@ class model_UserListener extends MachII_framework_Listener {
 	}
 	
 	function changePassword(&$event) {
-    	$userId = $event->getArg('userId');
+		
+		$objAppSession = new AppSession();
+		$objUser = $objAppSession->getSession("User");
+		
+    	$userId = $objUser->getUserId();
     	
 		$objUserDao = new UserDao();
 		$objUserBean = new UserBean();
@@ -489,8 +493,22 @@ class model_UserListener extends MachII_framework_Listener {
 		
 		$newPassword = $event->getArg("newPassword");
 		
-		$objUserBean->setPassword($newPassword);
+		$objUserBean->setPassword(md5($newPassword));
 		$objUserDao->update($objUserBean);
+		header("Location: ".$SN."changePasswordConfirmation.html");
+	}
+	
+	function removeAccount(&$event) {
+		$objAppSession = new AppSession();
+		$objUser = $objAppSession->getSession("User");
+	
+		$userId = $objUser->getUserId();
+		 
+		$objUserDao = new UserDao();
+		$objUserBean = new UserBean();
+		$objUserBean = $objUserDao->delete($userId);
+		
+		header("Location: ".$SN."removeAccountConfirmation.html");
 	}
    
    function updateRecord(&$event) {

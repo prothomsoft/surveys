@@ -45,5 +45,13 @@ class PollAnswerDao{
       $query.="WHERE PollAnswerId=".$id;
       $DB->query($query);
    }
+   
+   public function deleteByPollId($pollId){
+   	$DB = new DB();
+   	$DB->connect();
+   	$query="DELETE from PollAnswer ";
+   	$query.="WHERE PollId=".$pollId;
+   	$DB->query($query);
+   }
 }
 ?>

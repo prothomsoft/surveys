@@ -7,6 +7,10 @@
     <meta name="description" content="" />
     <meta name="author" content="website created by prothomsoft - www.prothomsoft.com" />
     <link type="text/css" href="../styles_admin/custom-theme/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <?if ($event->getArg('PollResults') != "") {?>
+		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+	<?}?>
 	<link href="../styles_admin/global.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="../styles_admin/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css" media="screen" />
 	<script type="text/javascript" src="../js_admin/jquery-1.6.2.min.js"></script>
@@ -16,6 +20,26 @@
 	<script type="text/javascript" src="../js_admin/jquery.uploadify.min.js"></script>
 	<script type="text/javascript" src="../js_admin/jquery.wymeditor.min.js"></script>
 	<script type="text/javascript" src="../js_admin/jquery.lightbox-0.5.min.js"></script>
+	
+	<?if ($event->getArg('PollResults') != "") {?>
+	<style>
+	.progress .bar {
+	    background-color: #0e90d2;
+	    background-image: linear-gradient(to bottom, #149bdf, #0480be);
+	    background-repeat: repeat-x;
+	    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+	    box-sizing: border-box;
+	    color: #ffffff;
+	    float: left;
+	    font-size: 12px;
+	    height: 100%;
+	    text-align: center;
+	    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	    transition: width 0.6s ease 0s;
+	    width: 0;
+	}
+	</style>
+	<?}?>
 	
 	<?echo $event->getArg('documentReadyScript');?>
 		
@@ -120,7 +144,21 @@
 				}
 				if ($event->getArg('DeltaWizardStep2') != "") {
 					echo $event->getArg('DeltaWizardStep2');
-				}	
+				}
+
+				// Poll
+				if ($event->getArg('PollList') != "") {
+					echo $event->getArg('PollList');
+				}
+				if ($event->getArg('PollWizardStep1') != "") {
+					echo $event->getArg('PollWizardStep1');
+				}
+				if ($event->getArg('PollWizardStep2') != "") {
+					echo $event->getArg('PollWizardStep2');
+				}
+				if ($event->getArg('PollResults') != "") {
+					echo $event->getArg('PollResults');
+				}
 				
 				// Sigma
 				if ($event->getArg('SigmaList') != "") {

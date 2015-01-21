@@ -1,0 +1,47 @@
+Hi Nicolas,
+
+1. 
+To clarify Login (CONNEXION), User Area(MON COMPTE), Logout(DÉCONNECTION) buttons.
+- case 1: When user is not logged in we display Login and Register buttons.
+- case 2: When user is logged in we display User Area (this is link to starting page) and Logout button.
+Contact is displayed in both cases.
+Login form is common for admin and user, so it is not good idea to have two links to the same page.
+
+2. Second menu was created and it is visible when you login as administrator.
+You market LES CONSULTATIONS EN COURS as drop-down menu - I think that it is better to keep it the same way like LA BOURSE (no menu here) - links are displayed anyway.
+Drop down menu is used for MES INFORMATIONS - as this is not clickable itself (options of this item are - like change password).
+
+3. I changed CMS Menu content and divided it on PUBLIC, SECURE and OTHERS area.
+
+4. We have only one vote button and open question is not required. When results are displayed we show only poll.
+
+5. We have images in slider on second and fifth position to show that it is possible (image size is 1140x360px). 
+
+6. Links in footer was added as OTHER pages. Tags can be edited from admin panel as simple page. The code is as follows:
+	<ul class="list-inline tagclouds">
+		<li><a href="http://surveys.prothomsoft.com/surveys_page/vous-et-vos-experiences.html">CONFIANCE</a></li>
+		<li><a href="http://surveys.prothomsoft.com/surveys_page/vous-et-vos-experiences.html">INVESTISSEMENTS</a></li>
+		<li><a href="http://surveys.prothomsoft.com/surveys_page/vous-et-vos-experiences.html">PMI / ETI</a></li>
+		<li><a href="http://surveys.prothomsoft.com/surveys_page/vous-et-vos-experiences.html">CCI</a></li>
+		<li><a href="http://surveys.prothomsoft.com/surveys_page/vous-et-vos-experiences.html">CAC 40</a></li>
+		<li><a href="http://surveys.prothomsoft.com/surveys_page/vous-et-vos-experiences.html">CICE</a></li>
+		<li><a href="http://surveys.prothomsoft.com/surveys_page/vous-et-vos-experiences.html">INNOVATION</a></li>
+	</ul>								
+
+7. I removed slider from pages with form and user area.
+
+8. User after login is directly redirected to LES CONSULTATIONS EN COURS
+
+9. Change Password
+
+10. Boxes
+
+
+
+
+
+
+
+CONDITIONS DE PARTICIPATION
+
+Conditions de participation

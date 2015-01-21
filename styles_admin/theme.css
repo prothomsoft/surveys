@@ -52,7 +52,7 @@ body {
 /* forms -------------------------------------- */
 /*--------------------------------------------- */
 label, input { display:block; padding: 4px;}
-input.text { margin-bottom:10px; width:97%; }
+input.text { margin-bottom:10px; width:92%; }
 fieldset { margin:10px 0px 0px 10px; border: 0;}
 
 #idUsersApprovedTable_filter label, input { display:inline; padding: .3em; width:140px;}

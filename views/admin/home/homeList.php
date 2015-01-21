@@ -24,10 +24,10 @@
 		
 		
 		<div class="ui-widget-content ui-corner-all center-header">
-			<p>Polls</p>
+			<p>Theme market</p>
 			<p>&nbsp;</p>
-			<span class="wizardButton"><a href="index.php?event=showDeltasList">List of Polls</a><span>
-			<span class="wizardButton"><a href="index.php?event=showDeltaStep1">Add Poll</a><span>			
+			<span class="wizardButton"><a href="index.php?event=showPollsList">List of Polls</a><span>
+			<span class="wizardButton"><a href="index.php?event=showPollStep1">Add Poll</a><span>			
 		</div>
 		
 		<div class="ui-helper-clearfix spacer">

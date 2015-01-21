@@ -120,6 +120,10 @@
   .navbar-main .navbar-nav {
     float: none !important;
   }
+  
+  .navbar-main-user .navbar-nav {
+    float: none !important;
+  }
 
   /* line 120, ../sass/theme-responsive.scss */
   .navbar-collapse {
@@ -192,6 +196,20 @@
   .navbar-main .navbar-nav .dropdown-menu .dropdown-menu {
     font-size: 1em;
   }
+  
+  /* line 177, ../sass/theme-responsive.scss */
+  .navbar-main-user .navbar-nav .open > a:after {
+    display: none;
+  }
+  /* line 180, ../sass/theme-responsive.scss */
+  .navbar-main-user .navbar-nav .dropdown-menu {
+    font-family: 'Raleway', sans-serif;
+    font-size: .928em;
+  }
+  /* line 183, ../sass/theme-responsive.scss */
+  .navbar-main-user .navbar-nav .dropdown-menu .dropdown-menu {
+    font-size: 1em;
+  }
 
   /* line 190, ../sass/theme-responsive.scss */
   .navbar-nav > .megamenu .dropdown-menu {
@@ -262,6 +280,41 @@
   .navbar-main-narrow .shopping-bag {
     top: 24px;
   }
+  
+  /* line 224, ../sass/theme-responsive.scss */
+  .navbar-main-user .navbar-collapse .navbar-nav > li > a:hover, .navbar-main-user .navbar-collapse .navbar-nav > li > a:focus {
+    background-color: #005295;
+    color: white;
+  }
+  /* line 234, ../sass/theme-responsive.scss */
+  .navbar-main-user .navbar-collapse .navbar-nav > .active > a,
+  .navbar-main-user .navbar-collapse .navbar-nav > .active > a:hover,
+  .navbar-main-user .navbar-collapse .navbar-nav > .active > a:focus,
+  .navbar-main-user .navbar-collapse .navbar-nav > .open > a,
+  .navbar-main-user .navbar-collapse .navbar-nav > .open > a:hover,
+  .navbar-main-user .navbar-collapse .navbar-nav > .open > a:focus {
+    color: white;
+    background-color: #005295;
+  }
+  /* line 238, ../sass/theme-responsive.scss */
+  .navbar-main-user .navbar-collapse .navbar-nav > .active > a:before {
+    color: white;
+  }
+
+  /* line 244, ../sass/theme-responsive.scss */
+  .navbar-main-user-narrow .logo {
+    margin: 26px 0;
+  }
+  /* line 248, ../sass/theme-responsive.scss */
+  .navbar-main-user-narrow .navbar-act > li > a {
+    padding-bottom: 34px;
+    padding-top: 34px;
+  }
+  /* line 253, ../sass/theme-responsive.scss */
+  .navbar-main-user-narrow .shopping-bag {
+    top: 24px;
+  }
+
 
   /* home 2 */
   /* line 259, ../sass/theme-responsive.scss */
@@ -286,6 +339,17 @@
   .navbar-main-drop .navbar-act {
     position: static;
   }
+  
+  /* home 4 */
+  /* line 271, ../sass/theme-responsive.scss */
+  .navbar-main-user-drop {
+    /* main nav */
+  }
+  /* line 276, ../sass/theme-responsive.scss */
+  .navbar-main-user-drop .navbar-act {
+    position: static;
+  }
+
 
   /* parallax */
   /* line 281, ../sass/theme-responsive.scss */
@@ -402,6 +466,11 @@
 
   /* line 387, ../sass/theme-responsive.scss */
   .navbar-main-narrow .logo {
+    float: left;
+  }
+  
+  /* line 387, ../sass/theme-responsive.scss */
+  .navbar-main-user-narrow .logo {
     float: left;
   }
 

@@ -27,6 +27,16 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 										</div>
 									</div>
 								</li>
+								
+								<li>
+									<div class="flex-slides">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<img src="<?=$SN;?>images/banners/banner_1.jpg" height="360px;">
+											</div>
+										</div>
+									</div>
+								</li>
 							
 								<li>
 									<div class="flex-slides">
@@ -43,6 +53,16 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-12">
 												<a href="http://www.google.pl" target="_blank"><div class="container-head-three"></div></a>
+											</div>
+										</div>
+									</div>
+								</li>
+								
+								<li>
+									<div class="flex-slides">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<img src="<?=$SN;?>images/banners/banner_1.jpg" height="360px;">
 											</div>
 										</div>
 									</div>

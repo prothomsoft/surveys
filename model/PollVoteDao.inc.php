@@ -9,8 +9,8 @@ class PollVoteDao{
    public function create($objPollVoteBean){
       $DB = new DB();
       $DB->connect();
-      $query = "INSERT INTO PollVote(PollId,PollAnswerId,UserId,PollVote,PollVoteOrder) ";
-      $query.= "VALUES('".$objPollVoteBean->getPollId()."','".$objPollVoteBean->getPollAnswerId()."','".$objPollVoteBean->getUserId()."','".$objPollVoteBean->getPollVote()."','".$objPollVoteBean->getPollVoteOrder()."') ";
+      $query = "INSERT INTO PollVote(PollVoteId,UserId,PollId,PollAnswerId,PollOpenAnswer,CreateDate) ";
+      $query.= "VALUES('".$objPollVoteBean->getPollVoteId()."','".$objPollVoteBean->getUserId()."','".$objPollVoteBean->getPollId()."','".$objPollVoteBean->getPollAnswerId()."','".$objPollVoteBean->getPollOpenAnswer()."','".$objPollVoteBean->getCreateDate()."') ";
       $DB->query($query);
       return $DB->getLast();
    }
@@ -18,28 +18,27 @@ class PollVoteDao{
       $DB = new DB();
       $DB->connect();
       $query = "UPDATE PollVote SET ";
+      $query.="UserId='".$objPollVoteBean->getUserId()."',";
       $query.="PollId='".$objPollVoteBean->getPollId()."',";
       $query.="PollAnswerId='".$objPollVoteBean->getPollAnswerId()."',";
-      $query.="UserId='".$objPollVoteBean->getUserId()."',";
-      $query.="PollVote='".$objPollVoteBean->getPollVote()."',";
-      $query.="PollVoteOrder='".$objPollVoteBean->getPollVoteOrder()."' ";
+      $query.="PollOpenAnswer='".$objPollVoteBean->getPollOpenAnswer()."',";
+      $query.="CreateDate='".$objPollVoteBean->getCreateDate()."' ";
       $query.="WHERE PollVoteId=".$objPollVoteBean->getPollVoteId()."";
       $DB->query($query);
    }
    public function read($id){
       $DB = new DB();
       $DB->connect();
-      $query="SELECT PollVoteId,PollId,PollAnswerId,UserId,PollVote,PollVoteOrder FROM PollVote";
+      $query="SELECT PollVoteId,UserId,PollId,PollAnswerId,PollOpenAnswer,CreateDate FROM PollVote";
       $query.=" WHERE PollVoteId=".$id;
       $DB->query($query);
       $objPollVoteBean= new PollVoteBean();
       $objPollVoteBean->setPollVoteId($DB->getField("PollVoteId"));
-      $objPollVoteBean->setPollId($DB->getField("PollId"));
-      $objPollVoteBean->setPollAnwerId($DB->getField("PollAnswerId"));
       $objPollVoteBean->setUserId($DB->getField("UserId"));
-      $objPollVoteBean->setPollVote($DB->getField("PollVote"));
-      $objPollVoteBean->setPollVoteOrder($DB->getField("PollVoteOrder"));
-      
+      $objPollVoteBean->setPollId($DB->getField("PollId"));
+      $objPollVoteBean->setPollAnswerId($DB->getField("PollAnswerId"));
+      $objPollVoteBean->setPollOpenAnwer($DB->getField("PollOpenAnswer"));
+      $objPollVoteBean->setCreateDate($DB->getField("CreateDate"));      
       return $objPollVoteBean;
    }
    public function delete($id){

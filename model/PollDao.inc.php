@@ -14,8 +14,8 @@ class PollDao{
    public function create($objPollBean){
       $DB = new DB();
       $DB->connect();
-      $query = "INSERT INTO Poll(Question,CreateDate,Status,PollOrder) ";
-      $query.= "VALUES('".$objPollBean->getQuestion()."','".$objPollBean->getCreateDate()."','".$objPollBean->getStatus()."','".$objPollBean->getPollOrder()."') ";
+      $query = "INSERT INTO Poll(Question,OpenQuestion,CreateDate,Status,PollOrder) ";
+      $query.= "VALUES('".$objPollBean->getQuestion()."','".$objPollBean->getOpenQuestion()."','".$objPollBean->getCreateDate()."','".$objPollBean->getStatus()."','".$objPollBean->getPollOrder()."') ";
       $DB->query($query);
       return $DB->getLast();
    }
@@ -24,6 +24,7 @@ class PollDao{
       $DB->connect();
       $query = "UPDATE Poll SET ";
       $query.="Question='".$objPollBean->getQuestion()."',";
+      $query.="OpenQuestion='".$objPollBean->getOpenQuestion()."',";
       $query.="CreateDate='".$objPollBean->getCreateDate()."',";
       $query.="Status='".$objPollBean->getStatus()."',";
       $query.="PollOrder='".$objPollBean->getPollOrder()."' ";
@@ -33,12 +34,13 @@ class PollDao{
    public function read($id){
       $DB = new DB();
       $DB->connect();
-      $query="SELECT PollId,Question,CreateDate,Status,PollOrder FROM Poll";
+      $query="SELECT PollId,Question,OpenQuestion,CreateDate,Status,PollOrder FROM Poll";
       $query.=" WHERE PollId=".$id;
       $DB->query($query);
       $objPollBean= new PollBean();
       $objPollBean->setPollId($DB->getField("PollId"));
       $objPollBean->setQuestion($DB->getField("Question"));
+      $objPollBean->setOpenQuestion($DB->getField("OpenQuestion"));
       $objPollBean->setCreateDate($DB->getField("CreateDate"));
       $objPollBean->setStatus($DB->getField("Status"));
       $objPollBean->setPollOrder($DB->getField("PollOrder"));

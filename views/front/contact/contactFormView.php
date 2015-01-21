@@ -10,11 +10,11 @@ $oT = new Translator('template3',$sLang);
  		<div role="main" class="main">
 		
 			<!-- Begin page top -->
-			<section class="page-top-lg"></section>
+			<div style="padding:5px"></div>
 			
 			<!-- End page top -->
 			<div class="container">
-				<div class="contact-content contact-content-full animation">
+				<div class="contact-content contact-content-full">
 					
 					<div class="alert alert-success hidden" id="contactsuccess">
 						<strong>Success!</strong> Your message has been sent to us.
@@ -45,7 +45,7 @@ $oT = new Translator('template3',$sLang);
 						</div>
 					<?}?>
 					
-					<h3><?=$oT->gL("txtContact")?></h3>
+					<h3 style="text-align: center; font-weight:normal;"><?=$oT->gL("txtContact")?></h3>
 					<form id="f4" name="f4" action="<?=$SN?>executeContactAction.html" method="POST">
 						<div class="row">
 							<div class="col-xs-5 col-sm-4">
