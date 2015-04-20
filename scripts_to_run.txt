@@ -1,0 +1,94 @@
+-- phpMyAdmin SQL Dump
+-- version 3.3.9
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Czas wygenerowania: 20 Kwi 2015, 14:22
+-- Wersja serwera: 5.5.8
+-- Wersja PHP: 5.3.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Baza danych: `surveys`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla  `Topic`
+--
+
+CREATE TABLE IF NOT EXISTS `Topic` (
+  `TopicId` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(255) NOT NULL DEFAULT '0',
+  `OpenQuestion` varchar(255) NOT NULL,
+  `CreateDate` date NOT NULL DEFAULT '0000-00-00',
+  `Status` int(11) NOT NULL,
+  `TopicOrder` int(11) NOT NULL,
+  PRIMARY KEY (`TopicId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin2 AUTO_INCREMENT=5 ;
+
+--
+-- Zrzut danych tabeli `Topic`
+--
+
+INSERT INTO `Topic` (`TopicId`, `Question`, `OpenQuestion`, `CreateDate`, `Status`, `TopicOrder`) VALUES
+(4, 'This is topic number two', '', '2015-04-20', 0, 2),
+(3, 'This is topic number one', '', '2015-04-20', 0, 1);
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 3.3.9
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Czas wygenerowania: 20 Kwi 2015, 14:22
+-- Wersja serwera: 5.5.8
+-- Wersja PHP: 5.3.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Baza danych: `surveys`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla  `TopicMessage`
+--
+
+CREATE TABLE IF NOT EXISTS `TopicMessage` (
+  `TopicMessageId` int(11) NOT NULL AUTO_INCREMENT,
+  `UserId` int(11) NOT NULL DEFAULT '0',
+  `TopicId` int(11) NOT NULL DEFAULT '0',
+  `Message` text CHARACTER SET latin2 NOT NULL,
+  `CreateDateTime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`TopicMessageId`),
+  KEY `UserId` (`UserId`),
+  KEY `TopicId` (`TopicId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Zrzut danych tabeli `TopicMessage`
+--
+
+INSERT INTO `TopicMessage` (`TopicMessageId`, `UserId`, `TopicId`, `Message`, `CreateDateTime`) VALUES
+(1, 3579, 4, 'This is message from user1 for topic 4', '2015-04-20 10:13:01'),
+(2, 3580, 4, 'This is question from user2 for topic 4', '2015-04-21 10:14:02'),
+(3, 3579, 3, 'This is message from user1 for topic 3', '2015-04-18 10:13:01'),
+(4, 3580, 3, 'This is question from user2 for topic 3', '2015-04-18 10:14:02');
