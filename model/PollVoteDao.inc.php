@@ -10,7 +10,7 @@ class PollVoteDao{
       $DB = new DB();
       $DB->connect();
       $query = "INSERT INTO PollVote(PollVoteId,UserId,PollId,PollAnswerId,PollOpenAnswer,CreateDate) ";
-      $query.= "VALUES('".$objPollVoteBean->getPollVoteId()."','".$objPollVoteBean->getUserId()."','".$objPollVoteBean->getPollId()."','".$objPollVoteBean->getPollAnswerId()."','".$objPollVoteBean->getPollOpenAnswer()."','".$objPollVoteBean->getCreateDate()."') ";
+      $query.= "VALUES('".$objPollVoteBean->getPollVoteId()."','".$objPollVoteBean->getUserId()."','".$objPollVoteBean->getPollId()."','".$objPollVoteBean->getPollAnswerId()."','".mysql_real_escape_string($objPollVoteBean->getPollOpenAnswer())."','".$objPollVoteBean->getCreateDate()."') ";	  
       $DB->query($query);
       return $DB->getLast();
    }

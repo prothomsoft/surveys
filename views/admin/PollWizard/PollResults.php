@@ -15,7 +15,8 @@ $arrPollVote = $event->getArg("arrPollVote");
 	
 <div style="float:left; width:100%">
 	<?$objPollVoteGateway = new PollVoteGateway(); ?>
-	<h4><?=$objPoll->getQuestion();?></h4>
+	<h3><?=$objPoll->getQuestion();?></h3>
+	<h4>Total number of votes: <?=$totalNumberVotes;?></h4>
 	<?// get total number of votes $totalNumberVotes
 		if($arrPollAnswers) {?>
 
@@ -66,10 +67,16 @@ $arrPollVote = $event->getArg("arrPollVote");
 				<?if ($objPollVote->getPollAnswerId() == 0) {?>
 					<?$UserDao = new UserDao();
 					  $UserId = $objPollVote->getUserId();
-					  $objUserBean = $UserDao->read($UserId)?>
+					  $objUserBean = $UserDao->read($UserId);
+					  
+					  $pollAnswer = $objPollVote->getPollOpenAnswer();
+					  if($pollAnswer == "Please enter Your answer here...") {
+						$pollAnswer = "-";
+					  }
+					  ?>
 					<tr>
 						<td style="border: 1px solid #666"><?=$objUserBean->getEmail();?></td>
-						<td style="border: 1px solid #666"><?=$objPollVote->getPollOpenAnswer();?></td>
+						<td style="border: 1px solid #666"><?=$pollAnswer;?></td>
 					</tr>
 				<?}?>
 			

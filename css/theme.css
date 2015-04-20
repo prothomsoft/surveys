@@ -14,7 +14,7 @@ body {
 /* top */
 /* line 17, ../sass/theme.scss */
 #top {
-  background: #004378;
+  background: #004379;
   color: white;
   font-size: .714em;
   text-transform: uppercase;
@@ -31,8 +31,8 @@ body {
 /* Drop down menu */
 /* line 31, ../sass/theme.scss */
 .dropdown-menu {
+  background: #004379;
   font-size: 12px;
-  background: #004378;
   border: none;
   border-radius: 0;
   margin: 0;
@@ -41,11 +41,23 @@ body {
 .dropdown-menu > li > a {
   line-height: 1.6;
   padding: 5px 20px 8px;
+  background: #004379;
 }
 /* line 40, ../sass/theme.scss */
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-  background-color: transparent;
+  background: #004379;
 }
+
+.dropdown-menu > li li > a {
+  line-height: 1.6;
+  padding: 5px 20px 8px;
+  background: #737373;
+}
+/* line 40, ../sass/theme.scss */
+.dropdown-menu > li li > a:hover, .dropdown-menu > li li > a:focus {
+  background: #737373;
+}
+
 /* line 45, ../sass/theme.scss */
 .dropdown-menu h3 {
   font-size: 1em;
@@ -295,7 +307,7 @@ body {
 .navbar-main .navbar-nav .open > a:after {
   bottom: 0;
   height: 0;
-  border-bottom: 6px solid #004378;
+  border-bottom: 6px solid #004379;
   border-left: 5px solid rgba(0, 0, 0, 0);
   border-right: 5px solid rgba(0, 0, 0, 0);
   content: "";
@@ -357,13 +369,12 @@ body {
 }
 /* line 228, ../sass/theme.scss */
 .navbar-main-user .navbar-nav > li > a {
-  
   font-size: 0.95em;
   font-weight: 400;
   padding: 20px 20px 20px;
   text-transform: uppercase;
   color: #FFF;
-  background-color: #004378;
+  background-color: #E50043;
 }
 /* line 24, ../sass/mixins/_mixins.scss */
 .navbar-main-user .navbar-nav > li > a:hover, .navbar-main-user .navbar-nav > li > a:focus {
@@ -372,7 +383,7 @@ body {
 /* line 234, ../sass/theme.scss */
 .navbar-main-user .navbar-nav > li > a:hover, .navbar-main-user .navbar-nav > li > a:focus {
   color: #FFF;
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 246, ../sass/theme.scss */
 .navbar-main-user .navbar-nav > .active > a,
@@ -385,13 +396,13 @@ body {
 .navbar-main-user .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-main-user .navbar-nav .open .dropdown-menu > .active > a:focus {
   color: #FFF;
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 251, ../sass/theme.scss */
 .navbar-main-user .navbar-nav .open > a:after {
   bottom: 0;
   height: 0;
-  border-bottom: 6px solid #004378;
+  border-bottom: 6px solid #004379;
   border-left: 5px solid rgba(0, 0, 0, 0);
   border-right: 5px solid rgba(0, 0, 0, 0);
   content: "";
@@ -1368,8 +1379,8 @@ body {
 /* footer */
 /* line 1061, ../sass/theme.scss */
 .footer {
-  background: #181818;
-  color: #999999;
+  background: #737373;
+  color: white;
   padding: 50px 0 30px;
 }
 /* line 1065, ../sass/theme.scss */
@@ -1385,7 +1396,7 @@ body {
 }
 /* line 1073, ../sass/theme.scss */
 .footer i {
-  color: #666666;
+  color: white;
   padding-right: 5px;
 }
 /* line 1077, ../sass/theme.scss */
@@ -1410,16 +1421,16 @@ body {
 }
 /* line 1094, ../sass/theme.scss */
 .upper-foot a {
-  color: #999999;
+  color: white;
 }
 /* line 1096, ../sass/theme.scss */
 .upper-foot a:hover, .upper-foot a:focus {
-  color: #1abc9c;
+  color: white;
 }
 
 /* line 1102, ../sass/theme.scss */
 .below-foot {
-  border-top: 1px solid #383838;
+  border-top: 1px solid #666;
   padding-top: 25px;
 }
 /* line 1105, ../sass/theme.scss */
@@ -2164,8 +2175,8 @@ body {
 
 /* register */
 .form-register {
-  max-width: 480px;
-  padding: 15px;
+  max-width: 500px;
+  padding: 15px 0px 15px 0px;
   margin: 0 auto;
 }
 
@@ -2210,4 +2221,8 @@ a.black, a:visited.black {
 a.black:hover {
     color: #333;
     text-decoration : underline;
+}
+
+.radio {
+padding-left:20px;	
 }

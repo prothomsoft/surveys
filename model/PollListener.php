@@ -386,7 +386,7 @@ class model_PollListener extends MachII_framework_Listener
     
     function saveOpenAnswer(&$event) {
     	$objPoll = $this->getActivePoll();
-    	if($objPoll != "") {
+		if($objPoll != "") {
     		$PollId = $objPoll->getPollId();
     	}
     	
@@ -452,6 +452,8 @@ class model_PollListener extends MachII_framework_Listener
 	    		$objPollVoteDao->create($objPollVoteBean);
 	    	}
     	}
+    	
+    	header("Location: ".$SN."themeMarketResults.html");
     }
     
     function getTotalNumberVotes(&$event) {

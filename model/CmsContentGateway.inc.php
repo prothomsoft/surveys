@@ -164,6 +164,68 @@ class CmsContentGateway {
 	      		}
 	      }
 		  return $arr;      
-   }        
+   }
+
+   public function findByKeyword($search_keyword){
+   
+   	$DB = new DB();
+   	$DB->connect();
+   	
+   	
+   	$query  = "SELECT * FROM CmsContent";
+   	$query .= " WHERE Keyword like '%".$search_keyword."%'";   	
+   	$query .= " ORDER BY CmsContentOrder DESC";
+   	$DB->query($query);
+   	$arr = "";
+   	if ($DB->numRows()>0)
+   	{
+   		while($DB->move_next())
+   		{
+   			$objCmsContentBean= new CmsContentBean();
+   			$objCmsContentBean->setCmsContentId($DB->getField("CmsContentId"));
+   			$objCmsContentBean->setCmsCategoryId($DB->getField("CmsCategoryId"));
+   			$objCmsContentBean->setName($DB->getField("Name"));
+   			$objCmsContentBean->setNameTransEN($DB->getField("NameTransEN"));
+   			$objCmsContentBean->setNameTransDE($DB->getField("NameTransDE"));
+   			$objCmsContentBean->setNameTransRU($DB->getField("NameTransRU"));
+   			$objCmsContentBean->setSeoName($DB->getField("SeoName"));
+   			$objCmsContentBean->setKeyword($DB->getField("Keyword"));
+   			$objCmsContentBean->setDescription($DB->getField("Description"));
+   			$objCmsContentBean->setShortDescription($DB->getField("ShortDescription"));
+   			$objCmsContentBean->setShortDescriptionTransEN($DB->getField("ShortDescriptionTransEN"));
+   			$objCmsContentBean->setShortDescriptionTransDE($DB->getField("ShortDescriptionTransDE"));
+   			$objCmsContentBean->setShortDescriptionTransRU($DB->getField("ShortDescriptionTransRU"));
+   			$objCmsContentBean->setLongDescription($DB->getField("LongDescription"));
+   			$objCmsContentBean->setLongDescriptionTransEN($DB->getField("LongDescriptionTransEN"));
+   			$objCmsContentBean->setLongDescriptionTransDE($DB->getField("LongDescriptionTransDE"));
+   			$objCmsContentBean->setLongDescriptionTransRU($DB->getField("LongDescriptionTransRU"));
+   			$objCmsContentBean->setUpdateDate($DB->getField("UpdateDate"));
+   			$objCmsContentBean->setCmsContentOrder($DB->getField("CmsContentOrder"));
+   			$objCmsContentBean->setStatus($DB->getField("Status"));
+   			$objCmsContentBean->setImgDriveName($DB->getField("ImgDriveName"));
+   			$objCmsContentBean->setOm1($DB->getField("Om1"));
+   			$objCmsContentBean->setOm2($DB->getField("Om2"));
+   			$objCmsContentBean->setOm3($DB->getField("Om3"));
+   			$objCmsContentBean->setOm4($DB->getField("Om4"));
+   			$objCmsContentBean->setOm5($DB->getField("Om5"));
+   			$objCmsContentBean->setOm6($DB->getField("Om6"));
+   			$objCmsContentBean->setOm7($DB->getField("Om7"));
+   			$objCmsContentBean->setOm8($DB->getField("Om8"));
+   			$objCmsContentBean->setOm9($DB->getField("Om9"));
+   			$objCmsContentBean->setOm10($DB->getField("Om10"));
+   			$objCmsContentBean->setOm11($DB->getField("Om11"));
+   			$objCmsContentBean->setOm12($DB->getField("Om12"));
+   			$objCmsContentBean->setOm13($DB->getField("Om13"));
+   			$objCmsContentBean->setOm14($DB->getField("Om14"));
+   			$objCmsContentBean->setOm15($DB->getField("Om15"));
+   			$objCmsContentBean->setOm16($DB->getField("Om16"));
+   			$objCmsContentBean->setOm17($DB->getField("Om17"));
+   			$objCmsContentBean->setOm18($DB->getField("Om18"));
+   
+   			$arr[] = $objCmsContentBean;
+   		}
+   	}
+   	return $arr;
+   }
 }
 ?>

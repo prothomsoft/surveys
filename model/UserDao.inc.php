@@ -9,8 +9,9 @@ class UserDao{
    public function create($objUserBean){
       $DB = new DB();
       $DB->connect();
+      
       $query = "INSERT INTO `User`(CountryId,ProvinceId,Email,Password,CompanyName,NameFirst,NameLast,Street,Number,Zip,City,Phone1,Phone2,Fax1,Fax2,Website1,Website2,NipPL,NipUE,Regon,CreateDate,UpdateDate,Status, ImgDriveName, ActivationToken, Info, TesterStatus, TesterDate) ";
-      $query.= "VALUES('".$objUserBean->getCountryId()."','".$objUserBean->getProvinceId()."','".$objUserBean->getEmail()."','".$objUserBean->getPassword()."','".$objUserBean->getCompanyName()."','".$objUserBean->getNameFirst()."','".$objUserBean->getNameLast()."','".$objUserBean->getStreet()."','".$objUserBean->getNumber()."','".$objUserBean->getZip()."','".$objUserBean->getCity()."','".$objUserBean->getPhone1()."','".$objUserBean->getPhone2()."','".$objUserBean->getFax1()."','".$objUserBean->getFax2()."','".$objUserBean->getWebsite1()."','".$objUserBean->getWebsite2()."','".$objUserBean->getNipPL()."','".$objUserBean->getNipUE()."','".$objUserBean->getRegon()."',NOW(),NOW(),'".$objUserBean->getStatus()."','".$objUserBean->getImgDriveName()."','".$objUserBean->getActivationToken()."','".$objUserBean->getInfo()."','".$objUserBean->getTesterStatus()."','".$objUserBean->getTesterDate()."') ";      
+      $query.= "VALUES('".$objUserBean->getCountryId()."','".$objUserBean->getProvinceId()."','".mysql_real_escape_string($objUserBean->getEmail())."','".mysql_real_escape_string($objUserBean->getPassword())."','".$objUserBean->getCompanyName()."','".$objUserBean->getNameFirst()."','".$objUserBean->getNameLast()."','".$objUserBean->getStreet()."','".$objUserBean->getNumber()."','".$objUserBean->getZip()."','".$objUserBean->getCity()."','".$objUserBean->getPhone1()."','".$objUserBean->getPhone2()."','".$objUserBean->getFax1()."','".$objUserBean->getFax2()."','".$objUserBean->getWebsite1()."','".$objUserBean->getWebsite2()."','".$objUserBean->getNipPL()."','".$objUserBean->getNipUE()."','".$objUserBean->getRegon()."',NOW(),NOW(),'".$objUserBean->getStatus()."','".$objUserBean->getImgDriveName()."','".$objUserBean->getActivationToken()."','".$objUserBean->getInfo()."','".$objUserBean->getTesterStatus()."','".$objUserBean->getTesterDate()."') ";      
       $DB->query($query);
       return $DB->getLast();
    }
@@ -102,11 +103,11 @@ class UserDao{
       $DB = new DB();
       $DB->connect();
       
-      $email  = $name = mysql_real_escape_string($email);
-      $password  = $name = mysql_real_escape_string($password);
+      $email  = mysql_real_escape_string($email);
+      $password  = mysql_real_escape_string($password);
       
       $query="SELECT UserId,CountryId,ProvinceId,Email,Password,CompanyName,NameFirst,NameLast,Street,Number,Zip,City,Phone1,Phone2,Fax1,Fax2,Website1,Website2,NipPL,NipUE,Regon,CreateDate,Status,UpdateDate,ImgDriveName,ActivationToken,Info,TesterStatus,TesterDate FROM `User` ";
-      $query.="WHERE Email='".$email."' and Password='".$password."'";      
+      $query.="WHERE Email='".$email."' and Password='".$password."'";
       $DB->query($query);
       $objUserBean = new UserBean();
       if ($DB->numRows()==1){
@@ -145,6 +146,10 @@ class UserDao{
    }
           
    public function getByEmail($email){
+       
+      $email  = mysql_real_escape_string($email);
+      $password  = mysql_real_escape_string($password);
+       
       $DB = new DB();
       $DB->connect();
       $query="SELECT UserId,CountryId,ProvinceId,Email,Password,CompanyName,NameFirst,NameLast,Street,Number,Zip,City,Phone1,Phone2,Fax1,Fax2,Website1,Website2,NipPL,NipUE,Regon,CreateDate,Status,UpdateDate,ImgDriveName,ActivationToken,Info,TesterStatus,TesterDate FROM `User` ";

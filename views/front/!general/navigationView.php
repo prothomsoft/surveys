@@ -7,7 +7,6 @@ require_once("model/components/translator.inc.php");
 $sLang = $objAppSession->getSession('sLang');
 $oT = new Translator('template3',$sLang);
 ?>
-
 <div id="top">
 	<div class="container">
 		<div class="row">
@@ -19,23 +18,23 @@ $oT = new Translator('template3',$sLang);
 					</li>
 					<?*/?>
 					<?if ($objAppSession->getSession("User") != "") {?>				
-						<li>
+						<li style="background: #E50043; border-left: 1px solid #FFF;">
 							<a href="<?=$SN;?>myAccountStart.html">MON COMPTE</a>										
 						</li>
-						<li>
+						<li style="background: #E50043; margin: 0px; border-left: 1px solid #FFF;">
 							<a href="<?=$SN;?>executeLogout.html">DÉCONNECTION</a>										
 						</li>
-						<li>
+						<li style="background: #004379; margin: 0px; border-left: 1px solid #FFF;border-right: 1px solid #FFF;">
 							<a href="<?=$SN;?>contact_form.html">NOUS CONTACTER</a>
 						</li>
 					<?} else {?>
-						<li>
+						<li style="background: #E50043; border-left: 1px solid #FFF;">
 							<a href="<?=$SN;?>login.html">CONNEXION</a>
 						</li>
-						<li>
+						<li style="background: #E50043; margin: 0px; border-left: 1px solid #FFF;">
 							<a href="<?=$SN;?>register.html">S'INSCRIRE</a>
 						</li>
-						<li>
+						<li style="background: #004379; margin: 0px; border-left: 1px solid #FFF;border-right: 1px solid #FFF;">
 							<a href="<?=$SN;?>contact_form.html">NOUS CONTACTER</a>
 						</li>
 					<?}?>
@@ -50,7 +49,7 @@ $oT = new Translator('template3',$sLang);
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<div style="padding:20px; text-align:center;"><a href="<?=$SN?>surveys.html"><img src="<?=$SN?>images/surveys/logo_surveys.jpg"></a></div>
-				<div><h3 style="text-align: center; color: #004378;">GRANDE CONSULTATION<br/>DES ENTREPRENEURS</h3></div>
+				<div><h3 style="text-align: center; color: #004378; font-size: 34px;">GRANDE CONSULTATION<br/>DES ENTREPRENEURS</h3></div>
 				<div style="border-bottom: 1px dashed #004378;"></div>							
 					</div>
 				</div>

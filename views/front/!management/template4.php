@@ -65,6 +65,15 @@ $oT = new Translator('template3',$sLang);
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="<?=$SN;?>vendor/jquery.min.js"></script>
+		
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		  ga('create', 'UA-60924329-1', 'auto');
+		  ga('send', 'pageview');
+		</script>
 							
 	</head>
 	
@@ -158,6 +167,14 @@ $oT = new Translator('template3',$sLang);
 				echo $event->getArg('changePasswordConfirmationView');
 			}?>
 			
+			<?if ($event->getArg('changeDetailsFormView') != "") {
+				echo $event->getArg('changeDetailsFormView');
+			}?>
+			
+			<?if ($event->getArg('changeDetailsConfirmationView') != "") {
+				echo $event->getArg('changeDetailsConfirmationView');
+			}?>
+			
 			<?if ($event->getArg('removeAccountFormView') != "") {
 				echo $event->getArg('removeAccountFormView');
 			}?>
@@ -174,6 +191,10 @@ $oT = new Translator('template3',$sLang);
 				echo $event->getArg('cmsView');
 			}?>
 			
+			<?if ($event->getArg('globalSearchView') != "") {
+				echo $event->getArg('globalSearchView');
+			}?>
+			
 			<?if ($event->getArg('activationView') != "") {
 				echo $event->getArg('activationView');
 			}?>
@@ -186,7 +207,9 @@ $oT = new Translator('template3',$sLang);
 				echo $event->getArg('themeMarketView');
 			}?>
 			
-			
+			<?if ($event->getArg('themeMarketResultsView') != "") {
+				echo $event->getArg('themeMarketResultsView');
+			}?>
 			
 			<?if ($event->getArg('contactConfirmationView') != "") {
 				echo $event->getArg('contactConfirmationView');
@@ -216,10 +239,9 @@ $oT = new Translator('template3',$sLang);
 		
 		<!-- Highcharts -->
 		<script type="text/javascript" src="<?=$SN;?>js/highcharts.js"></script>
-		<script src="http://code.highcharts.com/maps/1.0.1/modules/map.js" type="text/javascript"></script>
-		<script src="http://code.highcharts.com/stock/modules/exporting.js" type="text/javascript"></script>
-		<script src="http://code.highcharts.com/mapdata/custom/world.js" type="text/javascript"></script>
-		
+		<script src="<?=$SN;?>js/map.js" type="text/javascript"></script>
+		<script src="<?=$SN;?>js/modules/exporting.js" type="text/javascript"></script>
+		<script src="<?=$SN;?>js/modules/treemap.js" type="text/javascript"></script>
 		
 		<!-- Others -->
 		<script src="<?=$SN;?>js/jquery.surveys.js"></script>

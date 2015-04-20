@@ -194,7 +194,7 @@
 	      		$currentEvent = $event->getArg('event');
 	      		$activeStyle = "";
 	      		if (in_array($currentEvent, $arrHighligths)) {
-		      		echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 2 );}</script>";
+		      		echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 3 );}</script>";
 		      		$activeStyle = "style=\"font-weight:bold\"";
 	      		}?>
 				<p <?=$activeStyle?>><a href="index.php?event=showUsersApprovedList">List of Users</a></p>
@@ -203,7 +203,7 @@
 	      		$currentEvent = $event->getArg('event');
 	      		$activeStyle = "";
 	      		if (in_array($currentEvent, $arrHighligths)) {
-	      		 	echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 2 );}</script>";
+	      		 	echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 3 );}</script>";
 	      		 	$activeStyle = "style=\"font-weight:bold\"";
 	      		}?>
 				<p <?=$activeStyle?>><a href="index.php?event=showCreateUserApprovedForm">Add User</a></p>

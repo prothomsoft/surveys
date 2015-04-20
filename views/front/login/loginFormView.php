@@ -12,6 +12,7 @@ $oT = new Translator('template3',$sLang);
 	<div class="container">
 	    <div class="starter-template">
 	        <div class="form-login">
+	        	<?$missingField = $event->getArg('missingField');?>
 		        <?if ($event->getArg('message') != "") {?>
 					<div class="alert alert-danger" id="loginerror">
 						<strong><?=$oT->gL("txtWarning");?>: </strong>
@@ -22,13 +23,13 @@ $oT = new Translator('template3',$sLang);
 				<?}?>			                          
 			    <form name="loginForm" action="<?=$SN;?>index.php?event=executeLogin" method="POST">
 			     	<h3 style="text-align:center;"><?=$oT->gL("txtLoginForm")?></h3>
-			        <div class="form-group">
+			        <div class="form-group <?if($missingField =="email") echo "has-error";?>">
 			            <label for="inputEmail"><?=$oT->gL("txtEmail");?></label>
-			            <input type="text" class="form-control" id="inputEmail" name="email">
+			            <input type="text" class="form-control" id="inputEmail" name="email" value="<?=$event->getArg("email");?>">
 			        </div>
-			        <div class="form-group">
+			        <div class="form-group <?if($missingField =="password") echo "has-error";?>">
 			            <label for="inputPassword"><?=$oT->gL("txtPassword");?></label>
-			            <input type="password" class="form-control" id="inputPassword" name="password">
+			            <input type="password" class="form-control" id="inputPassword" name="password" value="<?=$event->getArg("password");?>">
 			        </div>
 			        <div class="form-group" style="text-align:center">
 			        	<a href="<?=$SN?>forgotPassword.html"><font style="color:#000"><u><?=$oT->gL("txtForgotYourPassword");?></u></font></a>

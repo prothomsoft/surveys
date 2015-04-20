@@ -17,31 +17,30 @@ $oT = new Translator('template3',$sLang);
 				<div class="contact-content contact-content-full">
 					
 					<div class="alert alert-success hidden" id="contactsuccess">
-						<strong>Success!</strong> Your message has been sent to us.
+						<strong>Succès!</strong> Votre message a été envoyé à nous.
 					</div>
 
 					<?if ($event->getArg('message') != "") {?>
 						<div class="alert alert-danger" id="contacterror">
 							<?if($event->getArg("message") == "txtName") {?>
-								<strong></strong> Name is a required field.								
+								<strong></strong> Nom est un champ obligatoire.
 							<?}?>
 																					
 							<?if($event->getArg("message") == "txtEmail") {?>
-								<strong></strong> Email is a required field.								
+								<strong></strong> Votre adresse mél est un champ obligatoire.
 							<?}?>
 							
 							<?if($event->getArg("message") == "txtEmailIncorrect") {?>
-								<strong></strong> Entered email is not correct.
+								<strong></strong> Email saisi ne est pas correcte.
 							<?}?>
 							
 							<?if($event->getArg("message") == "txtPhoneNumber") {?>
-								<strong></strong> Phone number is a required field.								
+								<strong></strong> Numéro de téléphone est un champ obligatoire.
 							<?}?>
 							
 							<?if($event->getArg("message") == "txtMessage") {?>
-								<strong></strong> Message is a required field.								
-							<?}?> 
-
+								<strong></strong> Message est un champ obligatoire.
+							<?}?>
 						</div>
 					<?}?>
 					

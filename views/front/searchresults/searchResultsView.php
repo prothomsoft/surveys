@@ -40,13 +40,13 @@ $SN = $objAppSession->getSession('SN');
 				
 				
 				<?if($objSigma->getEventDate() == "news") {?>
-					<p><a class="anchor_link_2" href="<?=$SN?>news_entry/<?=$objSigma->getSigmaId();?>.html"><u>les mer...</u></a>	</p>
+					<p><a class="anchor_link_2" href="<?=$SN?>news_entry/<?=$objSigma->getSigmaId();?>.html"><u>&raquo;&nbsp;Lire la suite...</u></a>	</p>
 				<?}?>
 				<?if($objSigma->getEventDate() == "article") {?>
-					<p><a class="anchor_link_2" href="<?=$SN?>article/<?=$objSigma->getSigmaId();?>.html"><u>les mer...</u></a></p>
+					<p><a class="anchor_link_2" href="<?=$SN?>article/<?=$objSigma->getSigmaId();?>.html"><u>&raquo;&nbsp;Lire la suite...</u></a></p>
 				<?}?>
 				<?if($objSigma->getEventDate() == "cms") {?>
-					<p><a class="anchor_link_2" href="<?=$SN?>musikkgaver_page/<?=$objSigma->getSeoName();?>.html"><u>les mer...</u></a></p>
+					<p><a class="anchor_link_2" href="<?=$SN?>musikkgaver_page/<?=$objSigma->getSeoName();?>.html"><u>&raquo;&nbsp;Lire la suite...</u></a></p>
 				<?}?>
 			</div>
 		</div>

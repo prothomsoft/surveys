@@ -691,6 +691,13 @@ class model_CmsContentListener extends MachII_framework_Listener
 		$event->setArg("arrCmsContents", $arrCmsContents);
 	}
 	
+	function findByKeyword(&$event) {
+		$search_keyword = $event->getArg("id1");
+		$objCmsContentGateway = new CmsContentGateway();
+		$arrCmsContents = $objCmsContentGateway->findByKeyword($search_keyword);
+		$event->setArg("arrCmsContents", $arrCmsContents);
+	}
+	
 	function getMaxCmsContentOrder(&$event) {
     	$objCmsContentGateway = new CmsContentGateway();
     	$maxCmsContentOrder = $objCmsContentGateway->getMaxCmsContentOrder();

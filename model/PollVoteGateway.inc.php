@@ -146,7 +146,8 @@ class PollVoteGateway {
 		$query .= " FROM PollVote";
 		$query .= " WHERE PollId = '".$PollId."'";
 		$query .= " AND UserId = '".$UserId."'";
-		$query .= " AND PollOpenAnswer = '".$PollOpenAnswer."'";
+		$query .= " AND PollOpenAnswer = '".mysql_real_escape_string($PollOpenAnswer)."'";
+		echo $query;
 		$DB->query($query);
 	
 		$arr = "";

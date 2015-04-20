@@ -1,29 +1,30 @@
 /* line 5, ../../../sass/colors/blue/style.scss */
 a {
-  color: #333333;
+  color: #E50043;
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
   transition: all 300ms;
 }
 /* line 24, ../../../sass/mixins/_mixins.scss */
 a:hover, a:focus {
-  color: #000000;
+  color: #E50043;
 }
 /* line 8, ../../../sass/colors/blue/style.scss */
 a:hover, a:focus {
   text-decoration: none;
+  color: #E50043;
 }
 
 /* line 14, ../../../sass/colors/blue/style.scss */
 .btn:hover, .btn:focus {
-  background-color: #004378;
-  border-color: #004378;
+  background-color: #004379;
+  border-color: #004379;
 }
 
 /* line 20, ../../../sass/colors/blue/style.scss */
 .btn-primary {
-  background-color: #004378;
-  border-color: #004378;
+  background-color: #004379;
+  border-color: #004379;
 }
 /* line 23, ../../../sass/colors/blue/style.scss */
 .btn-primary:hover, .btn-primary:focus {
@@ -33,18 +34,18 @@ a:hover, a:focus {
 
 /* line 29, ../../../sass/colors/blue/style.scss */
 .btn-active {
-  background-color: #004378;
-  border-color: #004378;
+  background-color: #004379;
+  border-color: #004379;
 }
 
 /* line 34, ../../../sass/colors/blue/style.scss */
 .post-image {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /* line 39, ../../../sass/colors/blue/style.scss */
 .post-meta a {
-  color: #004378;
+  color: #004379;
 }
 /* line 41, ../../../sass/colors/blue/style.scss */
 .post-meta a:hover, .post-meta a:focus {
@@ -53,7 +54,7 @@ a:hover, a:focus {
 
 /* line 47, ../../../sass/colors/blue/style.scss */
 .price {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 53, ../../../sass/colors/blue/style.scss */
@@ -63,7 +64,7 @@ a:hover, a:focus {
 
 /* line 61, ../../../sass/colors/blue/style.scss */
 .product-thumb-info-act a:hover, .product-thumb-info-act a:focus {
-  background-color: #004378;
+  background-color: #004379;
   color: white;
 }
 
@@ -84,7 +85,7 @@ a:hover, a:focus {
 /* My Account */
 /* line 87, ../../../sass/colors/blue/style.scss */
 .my-account .dropdown-menu > li > a:hover, .my-account .dropdown-menu > li > a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 94, ../../../sass/colors/blue/style.scss */
@@ -93,7 +94,7 @@ a:hover, a:focus {
 }
 /* line 24, ../../../sass/mixins/_mixins.scss */
 .navbar-main .navbar-nav > li > a:hover, .navbar-main .navbar-nav > li > a:focus {
-  color: #004378;
+  color: #004379;
 }
 /* line 105, ../../../sass/colors/blue/style.scss */
 .navbar-main .navbar-nav > .active > a,
@@ -105,7 +106,7 @@ a:hover, a:focus {
 .navbar-main .navbar-nav .open .dropdown-menu > .active > a,
 .navbar-main .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-main .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #004378;
+  color: #004379;
   background-color: transparent;
 }
 /* line 111, ../../../sass/colors/blue/style.scss */
@@ -117,11 +118,11 @@ a:hover, a:focus {
 .navbar-main .navbar-nav .dropdown-menu > .active > a:hover,
 .navbar-main .navbar-nav .dropdown-menu > .active > a:focus {
   background-color: transparent;
-  color: #004378;
+  color: #004379;
 }
 /* line 122, ../../../sass/colors/blue/style.scss */
 .navbar-main .navbar-nav .dropdown-menu .item-cat a:hover, .navbar-main .navbar-nav .dropdown-menu .item-cat a:focus {
-  color: #004378;
+  color: #004379;
  
 }
 
@@ -146,7 +147,7 @@ a:hover, a:focus {
 .navbar-main-user .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-main-user .navbar-nav .open .dropdown-menu > .active > a:focus {
   color: #FFF;
-  background-color: #004378;
+  background-color: #004379;
   border-right: 1px solid #FFF;
 }
 /* line 111, ../../../sass/colors/blue/style.scss */
@@ -158,11 +159,11 @@ a:hover, a:focus {
 .navbar-main-user .navbar-nav .dropdown-menu > .active > a:hover,
 .navbar-main-user .navbar-nav .dropdown-menu > .active > a:focus {
   background-color: transparent;
-  color: #004378;
+  color: #004379;
 }
 /* line 122, ../../../sass/colors/blue/style.scss */
 .navbar-main-user .navbar-nav .dropdown-menu .item-cat a:hover, .navbar-main-user .navbar-nav .dropdown-menu .item-cat a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 131, ../../../sass/colors/blue/style.scss */
@@ -171,7 +172,7 @@ a:hover, a:focus {
 }
 /* line 133, ../../../sass/colors/blue/style.scss */
 .nav-white > .megamenu .dropdown-menu li a:hover, .nav-white > .megamenu .dropdown-menu li a:focus {
-  color: #004378;
+  color: #004379;
 }
 /* line 139, ../../../sass/colors/blue/style.scss */
 .nav-white > .megamenu .mega-menu-content .sub-menu > li > a {
@@ -179,7 +180,7 @@ a:hover, a:focus {
 }
 /* line 141, ../../../sass/colors/blue/style.scss */
 .nav-white > .megamenu .mega-menu-content .sub-menu > li > a:hover, .nav-white > .megamenu .mega-menu-content .sub-menu > li > a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 /* login */
@@ -189,7 +190,7 @@ a:hover, a:focus {
 }
 /* line 152, ../../../sass/colors/blue/style.scss */
 .login-wrapper a:hover, .login-wrapper a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 160, ../../../sass/colors/blue/style.scss */
@@ -198,14 +199,14 @@ a:hover, a:focus {
 }
 /* line 162, ../../../sass/colors/blue/style.scss */
 .owl-carousel .item .item-caption .item-cat a:hover, .owl-carousel .item .item-caption .item-cat a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 171, ../../../sass/colors/blue/style.scss */
 .owl-theme .owl-controls .owl-buttons .owl-prev:hover, .owl-theme .owl-controls .owl-buttons .owl-prev:focus,
 .owl-theme .owl-controls .owl-buttons .owl-next:hover,
 .owl-theme .owl-controls .owl-buttons .owl-next:focus {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /* product slide */
@@ -218,57 +219,57 @@ a:hover, a:focus {
 .product-slide .owl-controls .owl-buttons .owl-prev:hover, .product-slide .owl-controls .owl-buttons .owl-prev:focus,
 .product-slide .owl-controls .owl-buttons .owl-next:hover,
 .product-slide .owl-controls .owl-buttons .owl-next:focus {
-  color: #004378;
+  color: #004379;
 }
 /* line 181, ../../../sass/colors/blue/style.scss */
 .product-slide .owl-controls .owl-buttons .owl-prev:hover, .product-slide .owl-controls .owl-buttons .owl-prev:focus,
 .product-slide .owl-controls .owl-buttons .owl-next:hover,
 .product-slide .owl-controls .owl-buttons .owl-next:focus {
   background-color: transparent;
-  border-color: #004378;
+  border-color: #004379;
 }
 
 /* line 190, ../../../sass/colors/blue/style.scss */
 .product-remove a:hover, .product-remove a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 196, ../../../sass/colors/blue/style.scss */
 .shop_table td.product-subtotal {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 202, ../../../sass/colors/blue/style.scss */
 .cart-totals .total .amount {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 207, ../../../sass/colors/blue/style.scss */
 .shopping-bag {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /* lookbook */
 /* line 215, ../../../sass/colors/blue/style.scss */
 .lookbook h2 a:hover, .lookbook h2 a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 224, ../../../sass/colors/blue/style.scss */
 .upper-foot a:hover, .upper-foot a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 /* tags */
 /* line 232, ../../../sass/colors/blue/style.scss */
 .tagclouds a:hover, .tagclouds a:focus {
-  color: #004378;
-  border-color: #004378;
+  color: #004379;
+  border-color: #004379;
 }
 
 /* line 239, ../../../sass/colors/blue/style.scss */
 .below-foot a {
-  color: #004378;
+  color: #004379;
 }
 /* line 241, ../../../sass/colors/blue/style.scss */
 .below-foot a:hover, .below-foot a:focus {
@@ -278,7 +279,7 @@ a:hover, a:focus {
 /* highlights */
 /* line 249, ../../../sass/colors/blue/style.scss */
 .wp-ads li {
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 251, ../../../sass/colors/blue/style.scss */
 .wp-ads li + li {
@@ -300,7 +301,7 @@ a:hover, a:focus {
 /* page-top */
 /* line 267, ../../../sass/colors/blue/style.scss */
 .page-top {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /* line 271, ../../../sass/colors/blue/style.scss */
@@ -311,7 +312,7 @@ a:hover, a:focus {
 .second-tabs li.active:after {
   bottom: -5px;
   height: 0;
-  border-top: 5px solid #004378;
+  border-top: 5px solid #004379;
   border-left: 5px solid rgba(0, 0, 0, 0);
   border-right: 5px solid rgba(0, 0, 0, 0);
   content: "";
@@ -322,24 +323,24 @@ a:hover, a:focus {
 }
 /* line 277, ../../../sass/colors/blue/style.scss */
 .second-tabs li.active a {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /* drop caps */
 /* line 285, ../../../sass/colors/blue/style.scss */
 .drop-caps:first-letter {
-  color: #004378;
+  color: #004379;
 }
 
 /* line 289, ../../../sass/colors/blue/style.scss */
 .drop-caps.secondary:first-letter {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /* Scroll to Top */
 /* line 294, ../../../sass/colors/blue/style.scss */
 .scroll-to-top {
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 296, ../../../sass/colors/blue/style.scss */
 .scroll-to-top:hover, .scroll-to-top:focus {
@@ -348,18 +349,18 @@ a:hover, a:focus {
 
 /* line 303, ../../../sass/colors/blue/style.scss */
 .post .btn:hover, .post .btn:focus {
-  background-color: #004378;
-  border-color: #004378;
+  background-color: #004379;
+  border-color: #004379;
 }
 /* line 309, ../../../sass/colors/blue/style.scss */
 .post blockquote p {
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 313, ../../../sass/colors/blue/style.scss */
 .post blockquote footer:after {
   bottom: -5px;
   height: 0;
-  border-top: 5px solid #004378;
+  border-top: 5px solid #004379;
   border-left: 5px solid rgba(0, 0, 0, 0);
   border-right: 5px solid rgba(0, 0, 0, 0);
   content: "";
@@ -388,25 +389,25 @@ a:hover, a:focus {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: #004378;
-  border-color: #004378;
+  background-color: #004379;
+  border-color: #004379;
 }
 
 /* line 347, ../../../sass/colors/blue/style.scss */
 #price-range .ui-slider-horizontal .ui-slider-range {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /**/
 /* line 352, ../../../sass/colors/blue/style.scss */
 .navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /* home 4 */
 /* line 363, ../../../sass/colors/blue/style.scss */
 .navbar-main-drop .navbar-collapse .navbar-nav > li > a:hover, .navbar-main-drop .navbar-collapse .navbar-nav > li > a:focus {
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 372, ../../../sass/colors/blue/style.scss */
 .navbar-main-drop .navbar-collapse .navbar-nav > .active > a,
@@ -415,7 +416,7 @@ a:hover, a:focus {
 .navbar-main-drop .navbar-collapse .navbar-nav > .open > a,
 .navbar-main-drop .navbar-collapse .navbar-nav > .open > a:hover,
 .navbar-main-drop .navbar-collapse .navbar-nav > .open > a:focus {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 
@@ -425,7 +426,7 @@ a:hover, a:focus {
 }
 /* line 24, ../../../sass/mixins/_mixins.scss */
 .navbar-main-drop .navbar-nav > li > a:hover, .navbar-main-drop .navbar-nav > li > a:focus {
-  color: #004378;
+  color: #004379;
 }
 /* line 105, ../../../sass/colors/blue/style.scss */
 .navbar-main-drop .navbar-nav > .active > a,
@@ -437,7 +438,7 @@ a:hover, a:focus {
 .navbar-main-drop .navbar-nav .open .dropdown-menu > .active > a,
 .navbar-main-drop .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-main-drop .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #004378;
+  color: #004379;
   background-color: transparent;
 }
 /* line 111, ../../../sass/colors/blue/style.scss */
@@ -449,18 +450,18 @@ a:hover, a:focus {
 .navbar-main-drop .navbar-nav .dropdown-menu > .active > a:hover,
 .navbar-main-drop .navbar-nav .dropdown-menu > .active > a:focus {
   background-color: transparent;
-  color: #004378;
+  color: #004379;
 }
 /* line 122, ../../../sass/colors/blue/style.scss */
 .navbar-main-drop .navbar-nav .dropdown-menu .item-cat a:hover, .navbar-main-drop .navbar-nav .dropdown-menu .item-cat a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 
 /* home 4 */
 /* line 363, ../../../sass/colors/blue/style.scss */
 .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:hover, .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:focus {
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 372, ../../../sass/colors/blue/style.scss */
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a,
@@ -469,13 +470,13 @@ a:hover, a:focus {
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a,
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:hover,
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:focus {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 /* home 4 */
 /* line 363, ../../../sass/colors/blue/style.scss */
 .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:hover, .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:focus {
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 372, ../../../sass/colors/blue/style.scss */
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a,
@@ -484,7 +485,7 @@ a:hover, a:focus {
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a,
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:hover,
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:focus {
-  background-color: #004378;
+  background-color: #004379;
 }
 
 
@@ -494,7 +495,7 @@ a:hover, a:focus {
 }
 /* line 24, ../../../sass/mixins/_mixins.scss */
 .navbar-main-user-drop .navbar-nav > li > a:hover, .navbar-main-user-drop .navbar-nav > li > a:focus {
-  color: #004378;
+  color: #004379;
 }
 /* line 105, ../../../sass/colors/blue/style.scss */
 .navbar-main-user-drop .navbar-nav > .active > a,
@@ -506,7 +507,7 @@ a:hover, a:focus {
 .navbar-main-user-drop .navbar-nav .open .dropdown-menu > .active > a,
 .navbar-main-user-drop .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-main-user-drop .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #004378;
+  color: #004379;
   background-color: transparent;
 }
 /* line 111, ../../../sass/colors/blue/style.scss */
@@ -518,18 +519,18 @@ a:hover, a:focus {
 .navbar-main-user-drop .navbar-nav .dropdown-menu > .active > a:hover,
 .navbar-main-user-drop .navbar-nav .dropdown-menu > .active > a:focus {
   background-color: transparent;
-  color: #004378;
+  color: #004379;
 }
 /* line 122, ../../../sass/colors/blue/style.scss */
 .navbar-main-user-drop .navbar-nav .dropdown-menu .item-cat a:hover, .navbar-main-user-drop .navbar-nav .dropdown-menu .item-cat a:focus {
-  color: #004378;
+  color: #004379;
 }
 
 
 /* home 4 */
 /* line 363, ../../../sass/colors/blue/style.scss */
 .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:hover, .navbar-main-user-drop .navbar-collapse .navbar-nav > li > a:focus {
-  background-color: #004378;
+  background-color: #004379;
 }
 /* line 372, ../../../sass/colors/blue/style.scss */
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .active > a,
@@ -538,5 +539,5 @@ a:hover, a:focus {
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a,
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:hover,
 .navbar-main-user-drop .navbar-collapse .navbar-nav > .open > a:focus {
-  background-color: #004378;
+  background-color: #004379;
 }

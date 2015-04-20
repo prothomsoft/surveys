@@ -152,7 +152,7 @@ class model_UserListener extends MachII_framework_Listener {
 				}
 			}
 			if($aRow[0] != 3) {
-				$sOutput .= '"<a class=\"anchor_link\" href=\"index.php?event=showEditUserApprovedForm&userId='.$aRow[0].'\">Edit</a>';
+				$sOutput .= '"<a class=\"anchor_link\" href=\"index.php?event=showEditUserApprovedForm&userId='.$aRow[0].'\">View</a>';
 				$sOutput .= ' | <a class=\"anchor_link\" href=\"index.php?event=executeRemoveUsersApprovedAction&userId='.$aRow[0].'\" onclick=\"return confirm(\'Are you sure you want to remove this record?\')\">Remove</a>",';	
 			} else {
 				$sOutput .= '"<a class=\"anchor_link\" href=\"index.php?event=showEditUserApprovedForm&userId='.$aRow[0].'\">Edit</a>",';
@@ -173,6 +173,9 @@ class model_UserListener extends MachII_framework_Listener {
 		$objUserBean = new UserBean();
 		$objUserBean->setEmail($event->getArg('email'));
 		$password = $event->getArg('password');
+		$phone1 = $event->getArg("phone1");
+		$website1 = $event->getArg("website1");
+		$phone2 = $event->getArg("phone2");
 		$objUserBean->setPassword(md5($password));
 		
 		// generateActivationToken
@@ -184,6 +187,9 @@ class model_UserListener extends MachII_framework_Listener {
 			
 		$objUserBean->setStatus('0');
 		$objUserBean->setRegon('1');
+		$objUserBean->setPhone1($phone1);
+		$objUserBean->setWebsite1($website1);
+		$objUserBean->setPhone2($phone2);
 		$objUserBean->setActivationToken($securityKey);
 		$objUser = new UserDao();
 		$userId = $objUser->create($objUserBean);
@@ -192,19 +198,22 @@ class model_UserListener extends MachII_framework_Listener {
 		$objAppSession = new AppSession();
 		$SN = $objAppSession->getSession('SN');
 		
+		$sLang = $objAppSession->getSession('sLang');
+		$oT = new Translator('template3',$sLang);
+		
 		// send activation email
 		$name = $event->getArg('email');
-  		$fromEmail = "Surveys <admin@surveys.prothomsoft.com>";
+  		$fromEmail = "grandeconsultation.fr <admin@grandeconsultation.fr>";
 		$toEmail = $event->getArg('email');
-		$subject  = 'Surveys - Activation link';
+		$subject  = $oT->gL("txtRegisterConfirmationMessage1");
 
-		$messageContent .= "<p style=\"font-size:18px\">Thank you for the registration <br/><br/></p>"; 
+		$messageContent .= "<p style=\"font-size:18px\">".$oT->gL("txtRegisterConfirmationMessage2")." <br/><br/></p>"; 
 		// tresc wiadomosci
 
-		$messageContent .= "Your login and password are as follows:<br/>";
-		$messageContent .= "<b>Login: </b>".$event->getArg('email')."<br/>";
-		$messageContent .= "<b>Password: </b>".$event->getArg('password')."<br/><br/>";
-		$messageContent .= "Please click the link below to activate your account: <br/>";
+		$messageContent .= $oT->gL("txtRegisterConfirmationMessage3")."<br/>";
+		$messageContent .= "<b>Email: </b>".$event->getArg('email')."<br/>";
+		$messageContent .= "<b>Mot de passe: </b>".$event->getArg('password')."<br/><br/>";
+		$messageContent .= $oT->gL("txtRegisterConfirmationMessage4")."<br/>";
 		$messageContent .= "<a href=\"".$SN."activation/".$securityKey.".html\">".$SN."activation/".$securityKey.".html</a><br/><br/>";
 		$messageContent .= "<br /><br />";
 				
@@ -407,7 +416,7 @@ class model_UserListener extends MachII_framework_Listener {
 			$objUserBean->setPassword(md5($newPassword));
 			$objUserDao->update($objUserBean);
 			
-			$fromEmail = "Surveys <admin@surveys.prothomsoft.com>";
+			$fromEmail = "grandeconsultation.fr <admin@grandeconsultation.fr>";
 			$toEmail = $objUserBean->getEmail();
 			$subject  = "Surveys - Forgot Password";
 			
@@ -419,7 +428,7 @@ class model_UserListener extends MachII_framework_Listener {
 			$messageContent .= "<b>Login: </b>".$objUserBean->getEmail()."<br />";
 			$messageContent .= "<b>Password: </b>".$newPassword."<br /><br/>";
 			$messageContent .= "Click the link below and login to Your account:<br/>";
-	  		$messageContent .= "<a href=\"http://surveys.prothomsoft.com/login.html\">http://surveys.prothomsoft.com/login.html</a><br/><br/>";
+	  		$messageContent .= "<a href=\"http://grandeconsultation.fr/login.html\">http://grandeconsultation.fr/login.html</a><br/><br/>";
 			
 			$mail = new Rmail();
     		$mail->setFrom($fromEmail);
@@ -505,7 +514,26 @@ class model_UserListener extends MachII_framework_Listener {
 		$userId = $objUser->getUserId();
 		 
 		$objUserDao = new UserDao();
-		$objUserBean = new UserBean();
+		$objUserBean = $objUserDao->read($userId);
+		
+		// send activation email
+		$fromEmail = "grandeconsultation.fr <admin@grandeconsultation.fr>";
+		$toEmail = "ncurtelin@gmail.com";
+		//$toEmail = "tprokop@prothomsoft.com";
+		$subject  = "Surveys user account was removed by user.";
+
+		$messageContent = "<p style=\"font-size:18px\">Surveys user account was removed by user <br/><br/></p>"; 
+		// tresc wiadomosci
+
+		$messageContent .= "User details:<br/>";
+		$messageContent .= "<b>Email: </b>".$objUserBean->getEmail()."<br/>";
+				
+		$mail = new Rmail();
+    	$mail->setFrom($fromEmail); 
+    	$mail->setSubject($subject);
+	    $mail->setHTML($messageContent);
+    	$result = $mail->send(array($toEmail));
+		
 		$objUserBean = $objUserDao->delete($userId);
 		
 		header("Location: ".$SN."removeAccountConfirmation.html");
@@ -595,6 +623,14 @@ class model_UserListener extends MachII_framework_Listener {
     	if (!$event->isArgDefined('phone1')) {
     		$phone1 = $objUser->getPhone1();
     		$event->setArg('phone1',$phone1);
+    	}
+    	if (!$event->isArgDefined('phone2')) {
+    		$phone2 = $objUser->getPhone2();
+    		$event->setArg('phone2',$phone2);
+    	}
+    	if (!$event->isArgDefined('website1')) {
+    		$website1 = $objUser->getWebsite1();
+    		$event->setArg('website1',$website1);
     	}
     	if (!$event->isArgDefined('info')) {
     		$info = $objUser->getInfo();
@@ -979,7 +1015,42 @@ class model_UserListener extends MachII_framework_Listener {
 		$arrAllDateNames = $objUserGateway->findAllDateName();
 		$event->setArg("arrAllDateNames", $arrAllDateNames);
 
-	}   	
+	}
+
+	function changeDetails(&$event) {
+		
+		$objAppSession = new AppSession();
+		$objUser = $objAppSession->getSession("User");
+		
+    	$userId = $objUser->getUserId();
+    	
+		$objUserDao = new UserDao();
+		$objUserBean = new UserBean();
+		$objUserBean = $objUserDao->read($userId);
+		
+		$phone1 = $event->getArg("phone1");
+		$website1 = $event->getArg("website1");
+		$phone2 = $event->getArg("phone2");
+		
+		$objUserBean->setPhone1($phone1);
+		$objUserBean->setWebsite1($website1);
+		$objUserBean->setPhone2($phone2);
+		$objUserDao->update($objUserBean);
+		header("Location: ".$SN."changeDetailsConfirmation.html");
+	}
+	
+	function getDetails(&$event) {
+		$objAppSession = new AppSession();
+		$objUser = $objAppSession->getSession("User");
+		
+		$userId = $objUser->getUserId();
+		$objUserDao = new UserDao();
+		$objUser = $objUserDao->read($userId);
+		
+		$event->setArg("objUser", $objUser);
+	}
+	
+	
     
 }
 

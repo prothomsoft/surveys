@@ -33,6 +33,7 @@ class EventsAllowedForEveryone {
       
 	  surveys_page,
 	  surveys,
+      search,
 	  collections,
 	  pomoc,
 	  wyniki_wyszukiwania,

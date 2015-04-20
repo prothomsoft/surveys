@@ -56,7 +56,7 @@
 									</tr>
 									<tr>
 										<td>Page URL: </td>
-										<td>http://surveys.prothomsoft.com/surveys_page/<?echo stripslashes($objCmsCategory->getSeoName())?>.html</td>
+										<td>http://grandeconsultation.fr/surveys_page/<?echo stripslashes($objCmsCategory->getSeoName())?>.html</td>
 									</tr>
 									<tr>
 										<td>Is Component: </td>

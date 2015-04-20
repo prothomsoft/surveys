@@ -1057,7 +1057,7 @@ $(document).ready(function() {
 		},					
 		"aoColumns": [				
 			/* Id */ { "sClass": "center", "bVisible": false, "bSearchable": false },
-			/* NameFirst */ { "sClass": "center" },
+			/* NameFirst */ { "sClass": "center", "bVisible": false },
 			/* NameLast */ { "sClass": "center", "bVisible": false },					
 			/* Email */ { "sClass": "center" },
 			/* CreateDate */ { "sClass": "center", "bVisible": true },
