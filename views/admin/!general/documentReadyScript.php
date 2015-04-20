@@ -7,6 +7,7 @@ $(document).ready(function() {
 											showBetaStep1, showBetaStep2, executeBetaWizardClose,
 											showGamaStep1, showGamaStep2, executeGamaWizardClose,
 											showPollStep1, showPollStep2, executePollWizardClose,
+											showTopicStep1, showTopicStep2, executeTopicWizardClose,
 											showSigmaStep1, showSigmaStep2, executeSigmaWizardClose,
 											showCmsContentStep1, showCmsContentStep2, executeCmsContentWizardClose, showProductStep2);?>
 	<?$currentEvent = $event->getArg('event');?>
@@ -566,6 +567,98 @@ $(document).ready(function() {
 			} );
 		}
 	});
+	
+	<?if ($event->getArg('TopicWizardStep2') != "") {?>
+        <?$TopicId = $event->getArg('TopicId');?>
+        // Refresh Edit Mode -------->
+        refreshTopicPicture();
+        
+        // File Upload -------->
+        $("#uploadify").uploadify({
+            'uploader'       : 'uploadify/uploadify.swf',
+            'script'         : 'uploadify/uploadifyTopicPicture.php',
+            'scriptData'     : {'TopicId': <?=$TopicId?>},
+            'cancelImg'      : '../images/cancel.png',
+            'fileExt'        : '*.jpg;',
+            'fileDesc'       : 'Only .jpg files are allowed',
+            'buttonImg'      : '../images/upload_btn_en.jpg',
+            'width'          : '155',
+            'height'         : '31',
+            'sizeLimit'      : '2000000',
+            'buttonText'     : '',
+            'folder'         : '../upload',
+            'queueID'        : 'fileQueue',
+            'auto'           : true,
+            'multi'          : false,
+            'wmode'          : 'transparent',
+            'onError': function (event, queueID ,fileObj, errorObj) {
+                    alert("Error: "+errorObj.type+"      Info: "+errorObj.info +"");
+                    },
+            'onComplete'     : function(event, queueID, fileObj, response, data1) {
+                $.ajax({
+                    url: "index.php?event=findTopicPictureByTopicId",
+                    dataType: "json",
+                    data: {'TopicId': <?=$TopicId?>},
+                    success: function(data) {
+                        if(!data) {
+                            return false;
+                        }
+                        $html = "";
+                        $("#filesUploaded").html($html);
+                        $.map(data.TopicPicture, function(item) {
+                            $html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
+                            $html = $html + '<input onBlur="javascript:executeTopicSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
+                            if(item.MainPicture == 0) {
+                                $html = $html + '<a href="javascript:executeTopicPictureSetMain(\'<?=$TopicId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
+                            }
+                            $html = $html + '<a href="javascript:executeTopicPictureRemove(\'<?=$TopicId?>\', \'' + item.ImgDriveName + '\')">Remove</a></div>';                            
+                        })
+                        $("#filesUploaded").html($html);
+                    }
+                });
+            }
+        });
+    <?}?>
+    
+    // ---------------------------->
+    // TopicTable --------->
+    // ---------------------------->
+    $('#idTopicTable').dataTable( {
+        "bAutoWidth": false,
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers",
+        "bProcessing": true,
+        "bServerSide": true,
+        "sAjaxSource": "index.php?event=getTopicTableData",
+        "aaSorting": [[ 5, "desc" ]],
+        "bProcessing": false,
+        "bLengthChange": true,
+        "iDisplayLength": 10, 
+        "sDom": '<"top"p>t<"bottom"pl<"clear">',
+        "oLanguage": {
+            "sUrl": "../lang/pl_PL.txt"
+        },                  
+        "aoColumns": [              
+            /* TopicId */ { "sClass": "center", "bSearchable": false, "bVisible": false },
+            /* Question */ { "sClass": "center", "bSortable": false, "bVisible": true },                   
+            /* CreateDate */ { "sClass": "center", "bVisible": false },
+            /* Status */ { "sClass": "center", "bSortable": false, "bVisible": true },
+            /* Question */ { "sClass": "center", "bVisible": false },
+            /* TopicOrder */ { "sClass": "center" },
+            /* Action */ { "sClass": "center", "sType": "html", "bSortable": false , "bSearchable": false }                     
+        ],
+        "fnServerData": function ( sSource, aoData, fnCallback ) {
+            aoData.push(    { "name": "searchKeyword", "value": "<?=$event->getArg('searchKeyword')?>" },
+                            { "name": "searchInitials", "value": "<?=$event->getArg('searchInitials')?>" } );
+            $.ajax( {
+                "dataType": 'json', 
+                "type": "POST", 
+                "url": sSource, 
+                "data": aoData, 
+                "success": fnCallback
+            } );
+        }
+    });
 	
 	<?if ($event->getArg('SigmaWizardStep2') != "") {?>
 		<?$SigmaId = $event->getArg('SigmaId');?>
@@ -1562,6 +1655,75 @@ $(document).ready(function() {
 			}
 		});
 	}
+<?}?>
+
+<?if ($event->getArg('TopicWizardStep2') != "") {?>
+    function executeTopicPictureRemove($TopicId, $pictureId) {
+        $.ajax({
+            url: "index.php?event=executeTopicPictureRemove",
+            dataType: "json",
+            data: { 'TopicId': $TopicId,
+                    'pictureId': $pictureId},
+            success: function(data) {
+                refreshTopicPicture();
+            }
+        });
+    }
+    
+    function executeTopicSavePictureDescription(ImgDriveName, input) {
+        
+        var text = input.value;
+        text = text.replace("'", "")
+        
+        $.ajax({
+            url: "index.php?event=executeTopicSavePictureDescription",
+            dataType: "json",
+            data: { 'imgDriveName': ImgDriveName,
+                    'imgAltName': text},
+            success: function(data) {
+                refreshTopicPicture();
+            }
+        });     
+    }
+    
+    function executeTopicPictureSetMain($TopicId, $pictureId) {
+        $.ajax({
+            url: "index.php?event=executeTopicPictureSetMain",
+            dataType: "json",
+            data: { 'TopicId': $TopicId,
+                    'pictureId': $pictureId},
+            success: function(data) {
+                refreshTopicPicture();
+            }
+        });
+    }
+    
+    function refreshTopicPicture() {
+        $.ajax({
+            url: "index.php?event=findTopicPictureByTopicId",
+            dataType: "json",
+            data: {'TopicId': <?=$TopicId?>},
+            success: function(data) {
+                if(!data) {
+                    $html = "";
+                    $("#filesUploaded").html($html);
+                    return false;
+                }
+                $html = "";
+                $("#filesUploaded").html($html);
+                $.map(data.TopicPicture, function(item) {
+                    $html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
+                    $html = $html + '<input onBlur="javascript:executeTopicSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
+                    if(item.MainPicture == 0) {
+                        $html = $html + '<a href="javascript:executeTopicPictureSetMain(\'<?=$TopicId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
+                    }
+                    $html = $html + '<a href="javascript:executeTopicPictureRemove(\'<?=$TopicId?>\', \'' + item.ImgDriveName + '\')" onclick="return confirm(\'Are you sure you want to remove this picture??\')">Remove</a></div>';
+                    
+                })
+                $("#filesUploaded").html($html);
+            }
+        });
+    }
 <?}?>
 
 

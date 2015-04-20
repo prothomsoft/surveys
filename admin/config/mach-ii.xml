@@ -159,6 +159,16 @@
             <invoker type="MachII.framework.invokers.ObjectEvent"/>
         </listener>
         
+        <!-- Topic Management -->
+        <listener name="TopicListener" type="model.TopicListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Topic Listener -->
+        <listener name="TopicMessageListener" type="model.TopicMessageListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
     </listeners>
     
     <!-- EVENT FILTERS -->
@@ -205,6 +215,9 @@
     	
     	<!-- Poll -->
     	<event-filter name="validatePollStep1Filter" type="filters.ValidatePollStep1Filter" />
+    	
+    	<!-- Topic -->
+        <event-filter name="validateTopicStep1Filter" type="filters.ValidateTopicStep1Filter" />
     	
     </event-filters>
     
@@ -1388,6 +1401,95 @@
            	<view-page name="template" />
         </event-handler>        
         <!-- Poll Management --> <!-- Poll Management --> <!-- Poll Management --> <!-- Poll Management -->
+        
+        
+        <!-- Topic Management --> <!-- Topic Management --> <!-- Topic Management --> <!-- Topic Management -->
+        <!-- shows Topics list -->
+        <event-handler event="showTopicsList">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <view-page name="menu" contentKey="menu" />
+            <view-page name="TopicList" contentKey="TopicList" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+            <view-page name="template" />
+        </event-handler>
+        <event-handler event="getTopicTableData">
+            <notify listener="TopicListener" method="getAdminTableData" />
+            <view-page name="responseJSON" />
+        </event-handler>
+                        
+        <!-- showTopicStep1 -->
+        <event-handler event="showTopicStep1">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicListener" method="checkId" />
+            <notify listener="TopicListener" method="getMaxTopicOrder" />            
+            <filter name="validateTopicStep1Filter" />
+            <view-page name="menu" contentKey="menu" />
+                <view-page name="TopicWizardNavigation" contentKey="TopicWizardNavigation" />
+                <view-page name="TopicWizardStep1" contentKey="TopicWizardStep1" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+            <view-page name="template" />
+        </event-handler>
+        
+        <!-- showTopicStep2 -->
+        <event-handler event="showTopicStep2">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicListener" method="checkId" />
+            <filter name="validateTopicStep1Filter" />
+            <view-page name="menu" contentKey="menu" />
+                <view-page name="TopicWizardNavigation" contentKey="TopicWizardNavigation" />
+                <view-page name="TopicWizardStep2" contentKey="TopicWizardStep2" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+            <view-page name="template" />
+        </event-handler>
+        
+        <!-- executeTopicWizardClose -->
+        <event-handler event="executeTopicWizardClose">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicListener" method="checkId" />
+            <filter name="validateTopicStep1Filter" />
+            <announce event="showTopicsList" copyEventArgs="false" /> 
+        </event-handler>
+        
+        <!-- executeRemoveTopicAction -->
+        <event-handler event="executeRemoveTopicAction" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicListener" method="removeRecord" />
+            <announce event="showTopicsList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- gets JSON for pictures grid -->
+        <event-handler event="findTopicPictureByTopicId">
+            <notify listener="TopicPictureListener" method="getByTopicId" />
+            <view-page name="responseJSON" />
+        </event-handler>
+        
+        <!-- removes picture from the grid -->
+        <event-handler event="executeTopicPictureRemove">
+            <notify listener="TopicPictureListener" method="executeRemove" />            
+        </event-handler>
+        
+        <!-- SetMain picture from the grid -->
+        <event-handler event="executeTopicPictureSetMain">
+            <notify listener="TopicPictureListener" method="executeSetMain" />           
+        </event-handler>
+        
+        <!-- Save picture description -->
+        <event-handler event="executeTopicSavePictureDescription">
+            <notify listener="TopicPictureListener" method="executeSavePictureDescription" />            
+        </event-handler>
+        
+        <!-- showTopicHistory -->
+        <event-handler event="showTopicHistory">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicMessageListener" method="findByTopicId" />
+            <view-page name="menu" contentKey="menu" />
+            <view-page name="TopicWizardNavigation" contentKey="TopicWizardNavigation" />
+            <view-page name="TopicHistory" contentKey="TopicHistory" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+            <view-page name="template" />
+        </event-handler>        
+        <!-- Topic Management --> <!-- Topic Management --> <!-- Topic Management --> <!-- Topic Management -->
+                               
                                
     </event-handlers>
     
@@ -1444,6 +1546,13 @@
         <page-view name="PollWizardStep2" page="/views/admin/PollWizard/PollWizardStep2.php" />
         <page-view name="PollWizardNavigation" page="/views/admin/PollWizard/PollWizardNavigation.php"/>
         <page-view name="PollResults" page="/views/admin/PollWizard/PollResults.php" />
+        
+        <!-- Topic -->
+        <page-view name="TopicList" page="/views/admin/Topic/TopicList.php" />
+        <page-view name="TopicWizardStep1" page="/views/admin/TopicWizard/TopicWizardStep1.php" />
+        <page-view name="TopicWizardStep2" page="/views/admin/TopicWizard/TopicWizardStep2.php" />
+        <page-view name="TopicWizardNavigation" page="/views/admin/TopicWizard/TopicWizardNavigation.php"/>
+        <page-view name="TopicHistory" page="/views/admin/TopicWizard/TopicHistory.php" />
         
         <!-- Sigma -->
         <page-view name="SigmaList" page="/views/admin/Sigma/SigmaList.php" />

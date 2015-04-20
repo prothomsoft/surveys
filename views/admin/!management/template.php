@@ -159,6 +159,20 @@
 				if ($event->getArg('PollResults') != "") {
 					echo $event->getArg('PollResults');
 				}
+
+                // Topic
+                if ($event->getArg('TopicList') != "") {
+                    echo $event->getArg('TopicList');
+                }
+                if ($event->getArg('TopicWizardStep1') != "") {
+                    echo $event->getArg('TopicWizardStep1');
+                }
+                if ($event->getArg('TopicWizardStep2') != "") {
+                    echo $event->getArg('TopicWizardStep2');
+                }
+                if ($event->getArg('TopicHistory') != "") {
+                    echo $event->getArg('TopicHistory');
+                }
 				
 				// Sigma
 				if ($event->getArg('SigmaList') != "") {

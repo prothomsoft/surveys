@@ -168,7 +168,7 @@ class model_PollListener extends MachII_framework_Listener
       	}
       	if($event->isArgDefined('OpenQuestion') && $event->getArg('OpenQuestion') == "") {
       		$OpenQuestion = "";
-      		$objPollBean->setName($OpenQuestion);
+      		$objPollBean->setOpenQuestion($OpenQuestion);
       		$objPollDao->update($objPollBean);
       	}
       	if($objPollBean->getOpenQuestion() != "") {
@@ -184,7 +184,7 @@ class model_PollListener extends MachII_framework_Listener
 		}
 		if($event->isArgDefined('Question') && $event->getArg('Question') == "") {
 			$Question = "";
-			$objPollBean->setName($Question);
+			$objPollBean->setQuestion($Question);
 			$objPollDao->update($objPollBean);
 		}
 		if($objPollBean->getQuestion() != "") {
