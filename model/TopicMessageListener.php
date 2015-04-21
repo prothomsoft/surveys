@@ -43,4 +43,13 @@ class model_TopicMessageListener extends MachII_framework_Listener {
         $arrResult = array(validationResult => true);
         echo json_encode($arrResult);
     }
+    
+    function removeRecord(&$event) {
+        $TopicMessageId = $event->getArg('TopicMessageId');
+        $objTopicMessageDao = new TopicMessageDao();
+        $objTopicMessageBean = new TopicMessageBean();
+        $objTopicMessageBean = $objTopicMessageDao->delete($TopicMessageId);
+        $TopicId = $event->getArg('TopicId');
+        header("Location: ".$SN."index.php?event=showTopicHistory&id1=".$TopicId."");                 
+    }
 }?>

@@ -107,6 +107,7 @@ class EventsAllowedForLevel {
       executetopicpicturesetmain,
       findtopicbystreet,
       showtopichistory,
+      executeremovetopicmessageaction,
 	  
 	  // sigma management
 	  getsigmatabledata,

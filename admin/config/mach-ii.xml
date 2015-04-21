@@ -1487,9 +1487,14 @@
             <view-page name="TopicHistory" contentKey="TopicHistory" />
             <view-page name="documentReadyScript" contentKey="documentReadyScript" />
             <view-page name="template" />
-        </event-handler>        
-        <!-- Topic Management --> <!-- Topic Management --> <!-- Topic Management --> <!-- Topic Management -->
-                               
+        </event-handler>   
+        
+        <!-- executeRemoveTopicMessageAction -->
+        <event-handler event="executeRemoveTopicMessageAction" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicMessageListener" method="removeRecord" />            
+        </event-handler>     
+        <!-- executeRemoveTopicMessageAction -->
                                
     </event-handlers>
     

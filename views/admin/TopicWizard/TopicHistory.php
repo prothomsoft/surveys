@@ -10,28 +10,41 @@
 	<?$arrTopicMessage = $event->getArg("arrTopicMessage"); ?>
 	<?// get total number of votes $totalNumberVotes
 		if($arrTopicMessage) {?>
-			<ul style="list-style-type: none;">
-			<?foreach ($arrTopicMessage as $objTopicMessage) {?>
-				<li>
-				<?
-				$UserId = $objTopicMessage->getUserId();
-                $UserDao = new UserDao();
-                $objUserBean = $UserDao->read($UserId);
-                $UserEmail = $objUserBean->getEmail();
-                $TopicId = $objTopicMessage->getTopicId();
-                $Message = $objTopicMessage->getMessage();
-                $CreateDateTime = $objTopicMessage->getCreateDateTime();
-                
-                echo date("Y-m-d H:i:s", strtotime($CreateDateTime));
-                                
-                ?>
-                <strong><?=$UserEmail;?></strong> <?=$Message;?>
-                </li>
-		    <?}?>
-			</ul>
+            <table width="860px" style="border: 1px solid #DEDEDE;">
+                                			
+    			<?foreach ($arrTopicMessage as $objTopicMessage) {?>
+    			    <tr style="border: 1px solid #DEDEDE;">
+    				<?$UserId = $objTopicMessage->getUserId();
+                    $UserDao = new UserDao();
+                    $objUserBean = $UserDao->read($UserId);
+                    $UserEmail = $objUserBean->getEmail();
+                    $TopicMessageId = $objTopicMessage->getTopicMessageId();
+                    
+                    $TopicId = $objTopicMessage->getTopicId();
+                    $Message = $objTopicMessage->getMessage();
+                    $CreateDateTime = $objTopicMessage->getCreateDateTime();
+                    if($UserId == 3) {
+                        echo "<td style=\"border: 1px solid #DEDEDE; color: #FF0000;\">";    
+                    } else {
+                        echo "<td style=\"border: 1px solid #DEDEDE; color: #000000;\">";
+                    }
+                    
+                    echo "(".date("Y-m-d h:i A", strtotime($CreateDateTime)).")";?>
+                    <strong><?=$UserEmail;?></strong>: <?=$Message;?>
+                    <?echo "</td>";
+                    echo "<td style=\"text-align:center;\">";?>
+                        
+                    <a href="index.php?event=executeRemoveTopicMessageAction&TopicMessageId=<?=$TopicMessageId;?>&TopicId=<?=$TopicId?>" onclick="return confirm('Are you sure you want to remove this record?')">Remove</a>
+                    <?echo "</td>";?>
+                    </tr>
+    		    <?}?>
+		          
+            </table>
+
 		<?}?>
 </div>
 
+<div class="ui-helper-clearfix spacer"></div>
 <div class="ui-helper-clearfix spacer"></div>
 
 <div class="ui-widget formButtons">

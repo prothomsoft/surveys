@@ -109,7 +109,7 @@ class model_TopicListener extends MachII_framework_Listener
 					$responseJSON .= '"'.str_replace('"', '\"', $aRow[ $aColumns[$i] ]).'",';
 				}
 			}
-			$responseJSON .= '"<a class=\"anchor_link\" href=\"index.php?event=showTopicStep1&TopicId='.$TopicId.'\">Edit</a>&nbsp;|&nbsp;&nbsp;<a class=\"anchor_link\" href=\"index.php?event=showTopicHistory&TopicId='.$TopicId.'\">History</a>&nbsp;|&nbsp;&nbsp;';
+			$responseJSON .= '"<a class=\"anchor_link\" href=\"index.php?event=showTopicStep1&TopicId='.$TopicId.'\">Edit</a>&nbsp;|&nbsp;&nbsp;<a class=\"anchor_link\" href=\"index.php?event=showTopicHistory&id1='.$TopicId.'\">History</a>&nbsp;|&nbsp;&nbsp;';
 			$responseJSON .= '<a class=\"anchor_link\" href=\"index.php?event=executeRemoveTopicAction&TopicId='.$TopicId.'\" onclick=\"return confirm(\'Are you sure you want to remove this record?\')\">Remove</a>",';
 			
 			$responseJSON = substr_replace( $responseJSON, "", -1 );
