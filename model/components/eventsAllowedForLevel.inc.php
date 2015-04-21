@@ -231,7 +231,12 @@ class EventsAllowedForLevel {
 	  executecopyproductaction,
 	  findproductpicturebyproductid,
 	  executeproductpictureremove,
-	  executeproductpicturesetmain
+	  executeproductpicturesetmain,
+	  
+      lesconsultationsencours,
+      lesconsultationsencourschat,
+      findtopicmessagesbytopicid,
+      savetopicmessage
     );
     
     // LEVEL 1 - ZONE 1 - $4.99
@@ -246,7 +251,11 @@ class EventsAllowedForLevel {
       thememarket,
       executethememarketaction,
       thememarketresults,
-    		
+    	
+        lesconsultationsencours,
+        lesconsultationsencourschat,
+        findtopicmessagesbytopicid,
+        savetopicmessage,
 		changepassword,
 		executechangepassword,
 		changepasswordconfirmation,

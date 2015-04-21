@@ -37,7 +37,8 @@
             <p>Chat topics</p>
             <p>&nbsp;</p>
             <span class="wizardButton"><a href="index.php?event=showTopicsList">List of Topics</a><span>
-            <span class="wizardButton"><a href="index.php?event=showTopicStep1">Add Topic</a><span>           
+            <span class="wizardButton"><a href="index.php?event=showTopicStep1">Add Topic</a><span>
+            <span class="wizardButton"><a href="../index.php?event=lesConsultationsEnCours">Join as Admin</a><span>
         </div>
         
         <div class="ui-helper-clearfix spacer">

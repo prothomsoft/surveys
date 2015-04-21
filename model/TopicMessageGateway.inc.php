@@ -54,6 +54,30 @@ class TopicMessageGateway {
 			}
 		}
 		return $arr;
-	}	
+	}
+    
+    public function findTopicMessagesByTopicId($TopicId){
+      $DB = new DB();
+      $DB->connect();
+      
+      $query  = "SELECT u.UserId, u.Email, tm.CreateDateTime, tm.Message ";
+      $query .= "FROM TopicMessage tm, User u ";
+      $query .= " WHERE tm.UserId = u.UserId";
+      $query .= " AND tm.TopicId =  '".$TopicId."'"; 
+      $query .= " ORDER BY tm.CreateDateTime DESC;";
+      $DB->query($query);
+      $i = 0;
+      $value = "";
+      if ($DB->numRows() > 0) {
+            while($DB->move_next()) {
+                $value{"TopicMessage"}{$i}{"UserId"} = $DB->getField("UserId");
+                $value{"TopicMessage"}{$i}{"Email"} = $DB->getField("Email");
+                $value{"TopicMessage"}{$i}{"CreateDateTime"} =  date("h:i A", strtotime($DB->getField("CreateDateTime")));
+                $value{"TopicMessage"}{$i}{"Message"} = $DB->getField("Message");
+                $i++;
+            }
+      }
+      return json_encode($value);
+   }	
 }
 ?>

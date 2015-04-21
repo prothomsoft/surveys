@@ -17,13 +17,19 @@ $oT = new Translator('template3',$sLang);
 						<a href="javascript:void(0);" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-search"></i></a>
 					</li>
 					<?*/?>
-					<?if ($objAppSession->getSession("User") != "") {?>				
-						<li style="background: #E50043; border-left: 1px solid #FFF;">
+					<?if ($objAppSession->getSession("User") != "") {?>
+					    <?$objUser = $objAppSession->getSession("User")?>
+					    <li style="background: #E50043; border-left: 1px solid #FFF;">
 							<a href="<?=$SN;?>myAccountStart.html">MON COMPTE</a>										
 						</li>
 						<li style="background: #E50043; margin: 0px; border-left: 1px solid #FFF;">
 							<a href="<?=$SN;?>executeLogout.html">DÉCONNECTION</a>										
 						</li>
+						<?if($objUser->getUserId() == 3) {?>
+                            <li style="background: #FF9900; margin: 0px; border-left: 1px solid #FFF;">
+                                <a href="<?=$SN;?>admin/index.php?event=showTopicsList"><?=$oT->gL("txtGoBackToAdminPanel")?></a>                                       
+                            </li>    
+                        <?}?>       
 						<li style="background: #004379; margin: 0px; border-left: 1px solid #FFF;border-right: 1px solid #FFF;">
 							<a href="<?=$SN;?>contact_form.html">NOUS CONTACTER</a>
 						</li>

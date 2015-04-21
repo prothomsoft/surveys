@@ -10,7 +10,7 @@ class TopicMessageDao{
       $DB = new DB();
       $DB->connect();
       $query = "INSERT INTO TopicMessage(TopicMessageId,UserId,TopicId,Message,CreateDateTime) ";
-      $query.= "VALUES('".$objTopicMessageBean->getTopicMessageId()."','".$objTopicMessageBean->getUserId()."','".$objTopicMessageBean->getTopicId()."','".mysql_real_escape_string($objTopicMessageBean->getMessage())."','".$objTopicMessageBean->getCreateDateTime()."') ";	  
+      $query.= "VALUES('".$objTopicMessageBean->getTopicMessageId()."','".$objTopicMessageBean->getUserId()."','".$objTopicMessageBean->getTopicId()."','".mysql_real_escape_string($objTopicMessageBean->getMessage())."',now()) ";	  
       $DB->query($query);
       return $DB->getLast();
    }

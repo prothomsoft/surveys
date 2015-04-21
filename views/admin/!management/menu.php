@@ -96,6 +96,7 @@
                         $activeStyle = "style=\"font-weight:bold\"";
                     }?>
                     <p <?=$activeStyle?>><a href="index.php?event=showTopicStep1">Add Topic</a></p>
+                    <p><a href="../index.php?event=lesConsultationsEnCours">Join as Admin</a></p>                    
             </div>
         </div>
     <?}?>

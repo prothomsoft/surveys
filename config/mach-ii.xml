@@ -108,6 +108,16 @@
         </listener> 
         <listener name="PollAnswerListener" type="model.PollAnswerListener">
             <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Topic Management -->
+        <listener name="TopicListener" type="model.TopicListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
+        </listener>
+        
+        <!-- Topic Listener -->
+        <listener name="TopicMessageListener" type="model.TopicMessageListener">
+            <invoker type="MachII.framework.invokers.ObjectEvent"/>
         </listener> 
     </listeners>
     
@@ -991,7 +1001,58 @@
            	<view-page name="template3" />
         </event-handler>
         
+         <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours -->
+        <event-handler event="lesConsultationsEnCours" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicListener" method="findAll" />
+            <view-page name="lesConsultationsEnCoursView" contentKey="lesConsultationsEnCoursView" />
+            <!--<view-page name="carouselView" contentKey="carouselView" />-->
+            <view-page name="navigationView" contentKey="navigationView" />
+            <view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
+            <view-page name="footerView" contentKey="footerView" />
+            <view-page name="searchView" contentKey="searchView" />
+            <view-page name="template4" />
+        </event-handler>
         
+        <event-handler event="lesConsultationsEnCoursChat" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicListener" method="getByIdFO" />
+            <view-page name="lesConsultationsEnCoursChatView" contentKey="lesConsultationsEnCoursChatView" />
+            <!--<view-page name="carouselView" contentKey="carouselView" />-->
+            <view-page name="navigationView" contentKey="navigationView" />
+            <view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
+            <view-page name="footerView" contentKey="footerView" />
+            <view-page name="searchView" contentKey="searchView" />
+            <view-page name="template4" />
+        </event-handler>
+        
+        <event-handler event="findTopicMessagesByTopicId">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicMessageListener" method="findTopicMessagesByTopicId" />
+            <view-page name="responseJSON" />
+        </event-handler>
+        
+        <event-handler event="saveTopicMessage">
+            <notify listener="TopicMessageListener" method="saveTopicMessage" />
+            <notify listener="TopicMessageListener" method="validationResultTrue" />            
+        </event-handler>
+        
+        <event-handler event="executeLesConsultationsEnCours" access="public">
+            <event-arg name="failEvent" value="changePassword" />
+            <filter name="validateChangePasswordFieldsFilter" />
+            <notify listener="UserListener" method="changePassword" />          
+        </event-handler>
+        <event-handler event="lesConsultationsEnCoursConfirmation" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <!--<view-page name="carouselView" contentKey="carouselView" />-->
+            <view-page name="navigationView" contentKey="navigationView" />
+            <view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
+            <view-page name="changePasswordConfirmationView" contentKey="changePasswordConfirmationView" />
+            <view-page name="footerView" contentKey="footerView" />
+            <view-page name="searchView" contentKey="searchView" />
+            <view-page name="template4" />          
+        </event-handler>
+        <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours -->
                                 
     </event-handlers>
 
@@ -1137,6 +1198,11 @@
     	<!--  ADDITIONAL PAGES -->
     	<page-view name="konkurranseView" page="/views/front/additionalpages/konkurranseView.php"/>
     	<page-view name="contactInformationView" page="/views/front/additionalpages/contactInformationView.php"/>
+    	
+    	<!--  lesConsultationsEnCours -->
+        <page-view name="lesConsultationsEnCoursView" page="/views/front/chat/lesConsultationsEnCoursView.php"/>
+        <page-view name="lesConsultationsEnCoursChatView" page="/views/front/chat/lesConsultationsEnCoursChatView.php"/>
+        
         
                 
     </page-views>

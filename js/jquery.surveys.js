@@ -1,4 +1,5 @@
 $(document).ready(function() {
+        
 	
 	$("a[rel^='prettyPhoto']").prettyPhoto({animationSpeed:'slow',theme:'light_square',slideshow:3000, autoplay_slideshow: false, hideflash: false, wmode: 'opaque',opacity: 1, show_title: false, social_tools: false});
 	

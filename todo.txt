@@ -1,17 +1,8 @@
-800x600
-480x360
-
- 1.
-15 in stock (Delivery time: 1-2 weeks)
-(We have to put in the nr, then when a sale is made, the nr. is 14. This to avoid that people order more than what is in stock)
-Translates to:
-15 på lager (Leveringstid 1-2 uker)
-2.
-Can be ordered (Delivery time: 3-4 weeks)
-Translates to:
-Bestillingsvare ( Leveringstid: 3-4 uker)
-3.
-An option for us to make a product:
-Not available at the moment.
-Translates to:
-For øyeblikket ikke tilgjengelig. 
+1. Moderacja in administration panel.
+2. Powiadomienia, kiedy nowe wiadomości są dodane do chata (tylko jak pierwsza zostanie dodana i użytkownik jest zamieszany)
+3. Lista translacji czyli:
+"txtPleaseSelectATopic" =>  "PLEASE SELECT A TOPIC",
+"txtTopic" =>  "TOPIC",
+"txtYourMessage" =>  "Your Message",
+"txtSend" =>  "Send",
+"txtGoBackToAdminPanel" =>  "GO BACK TO ADMIN PANEL", 

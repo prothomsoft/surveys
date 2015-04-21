@@ -122,11 +122,18 @@ class model_TopicListener extends MachII_framework_Listener
 	}
 	
 	function getById(&$event){
-		$TopicId = $event->getArg('TopicId');		
-		$objTopicDao = new TopicDao();
+		$TopicId = $event->getArg('TopicId');
+        $objTopicDao = new TopicDao();
 		$objTopicBean = $objTopicDao->read($TopicId);
 		$event->setArg("objTopic", $objTopicBean);		
 	}
+    
+    function getByIdFO(&$event){
+        $TopicId = $event->getArg('id1');
+        $objTopicDao = new TopicDao();
+        $objTopicBean = $objTopicDao->read($TopicId);
+        $event->setArg("objTopic", $objTopicBean);      
+    }
    
 	function checkId(&$event){
    		$TopicId = $event->getArg('TopicId');

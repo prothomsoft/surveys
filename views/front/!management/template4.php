@@ -167,6 +167,14 @@ $oT = new Translator('template3',$sLang);
 				echo $event->getArg('changePasswordConfirmationView');
 			}?>
 			
+			<?if ($event->getArg('lesConsultationsEnCoursView') != "") {
+                echo $event->getArg('lesConsultationsEnCoursView');
+            }?>
+            
+            <?if ($event->getArg('lesConsultationsEnCoursChatView') != "") {
+                echo $event->getArg('lesConsultationsEnCoursChatView');
+            }?>
+			
 			<?if ($event->getArg('changeDetailsFormView') != "") {
 				echo $event->getArg('changeDetailsFormView');
 			}?>

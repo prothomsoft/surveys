@@ -36,7 +36,7 @@ class TopicGateway {
       $DB->connect();
       $query  = "SELECT TopicId,Question,OpenQuestion,CreateDate,Status,TopicOrder FROM Topic";
       $query .= " WHERE 1 = 1";
-      $query .= " ORDER BY TopicOrder ASC";
+      $query .= " ORDER BY TopicOrder DESC";
 	  $DB->query($query);
       $arr = "";
       if ($DB->numRows()>0)
