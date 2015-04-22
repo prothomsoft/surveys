@@ -231,7 +231,16 @@ class model_TopicListener extends MachII_framework_Listener
 		$arrTopics = $objTopicGateway->findAll();
 		$event->setArg("arrTopics", $arrTopics);
 	}
-	
+    
+    function findActive(&$event) {
+        $objAppSession=new AppSession();
+        $objTopicGateway = new TopicGateway();
+        $arrTopics = $objTopicGateway->findActive();
+        $event->setArg("arrTopics", $arrTopics);
+    }
+    
+    
+    
 	function getMaxTopicOrder(&$event) {
     	$objTopicGateway = new TopicGateway();
     	$maxTopicOrder = $objTopicGateway->getMaxTopicOrder();

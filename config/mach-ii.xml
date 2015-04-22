@@ -1004,7 +1004,7 @@
          <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours -->
         <event-handler event="lesConsultationsEnCours" access="public">
             <notify listener="RightsListener" method="getAllowedEventsList" />
-            <notify listener="TopicListener" method="findAll" />
+            <notify listener="TopicListener" method="findActive" />
             <view-page name="lesConsultationsEnCoursView" contentKey="lesConsultationsEnCoursView" />
             <!--<view-page name="carouselView" contentKey="carouselView" />-->
             <view-page name="navigationView" contentKey="navigationView" />

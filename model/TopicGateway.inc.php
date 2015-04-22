@@ -102,7 +102,7 @@ class TopicGateway {
    	$DB = new DB();
    	$DB->connect();
    	$query  = "SELECT TopicId,Question,OpenQuestion,CreateDate,Status,TopicOrder FROM Topic";
-   	$query .= " WHERE Status = 1";
+   	$query .= " WHERE Status = 0";
    	$query .= " ORDER BY TopicOrder ASC";
    	$DB->query($query);
    	$arr = "";

@@ -162,11 +162,13 @@ class Translator
 "txtRegisterConfirmationMessage4" =>  "Merci de cliquer sur le lien suivant pour activer votre compte:",
 "txtSearchResults" =>  "RESULTATS DE RECHERCHE",
 "txtKeyword" =>  "Mot clé",
-"txtPleaseSelectATopic" =>  "PLEASE SELECT A TOPIC",
-"txtTopic" =>  "TOPIC",
-"txtYourMessage" =>  "Your Message",
-"txtSend" =>  "Send",
-"txtGoBackToAdminPanel" =>  "GO BACK TO ADMIN PANEL",
+"txtPleaseSelectATopic" =>  "Merci de choisir un thème",
+"txtTopic" =>  "Thème",
+"txtYourMessage" =>  "Votre message",
+"txtSend" =>  "Envoyer",
+"txtGoBackToAdminPanel" =>  "Retour au panel d'administration",
+"txtGoBackToTopicList" =>  "Retour à la liste des consultations",
+
 "txtNoResultsFound" =>  "Aucun résultat... Merci de préciser votre recherche.");
 			
       } elseif (file_exists($fileAdmin.$lang)) {

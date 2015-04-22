@@ -57,6 +57,9 @@ $TopicId = $event->getArg("id1");
                                         <input name="submitmsg" type="submit"  id="submitmsg" value="<?=$oT->gL("txtSend")?>" />
                                     </div>
                                 </div>
+                            </div>
+                            <p style="text-align:center; font-weight:bold;"><a href="<?=$SN;?>lesConsultationsEnCours.html"><u><?=$oT->gL("txtGoBackToTopicList")?></u></a><br/><br/></p>
+                            
                     </article>                          
                 </div>
             </div>
