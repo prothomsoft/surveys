@@ -1,8 +1,17 @@
-1. Moderacja in administration panel.
-2. Powiadomienia, kiedy nowe wiadomości są dodane do chata (tylko jak pierwsza zostanie dodana i użytkownik jest zamieszany)
-3. Lista translacji czyli:
-"txtPleaseSelectATopic" =>  "PLEASE SELECT A TOPIC",
-"txtTopic" =>  "TOPIC",
-"txtYourMessage" =>  "Your Message",
-"txtSend" =>  "Send",
-"txtGoBackToAdminPanel" =>  "GO BACK TO ADMIN PANEL", 
+We take current date.
+
+We go through all the users in the system in the loop which have DateMessageSent != CurrentDate.
+For each user we get list of topics the user participated in.
+Select nTopicId from TopicMessage where nUserId = 3;
+
+In this point we have current date, userId, and list of topic Ids he participated in.
+
+We look for all the messages from day before current date for topics user participated and his Id:
+select count(*) from TopicMessage where Date = (current date - 1 day) and topicId in (list) and UserId = 3;
+
+If number from this query is equal 0 it means that there are new messages. 
+Why because there is a number of messages in some topics and this day user was not part of conversation.
+Hence we send email in this case.
+
+As we do not have cron jobs then we have to run this procedure when any user is logged in and alse we need to mark that message was sent this day.
+When message is sent we place current date in User table DateMessageSent.
