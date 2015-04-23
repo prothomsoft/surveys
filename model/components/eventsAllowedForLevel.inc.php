@@ -107,6 +107,7 @@ class EventsAllowedForLevel {
       executetopicpicturesetmain,
       findtopicbystreet,
       showtopichistory,
+      downloadtopichistory,
       executeremovetopicmessageaction,
 	  
 	  // sigma management

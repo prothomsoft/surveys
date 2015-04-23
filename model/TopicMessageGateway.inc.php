@@ -44,7 +44,7 @@ class TopicMessageGateway {
 		{
 			while($DB->move_next())
 			{
-				$objTopicMessage = new TopicMessageBean();
+			    $objTopicMessage = new TopicMessageBean();
 				$objTopicMessage->setTopicMessageId($DB->getField("TopicMessageId"));
 				$objTopicMessage->setUserId($DB->getField("UserId"));
 				$objTopicMessage->setTopicId($DB->getField("TopicId"));
@@ -70,9 +70,12 @@ class TopicMessageGateway {
       $value = "";
       if ($DB->numRows() > 0) {
             while($DB->move_next()) {
+                $frenchHour = date("H", strtotime($DB->getField("CreateDateTime")));
+                $frenchMinutes = date("i", strtotime($DB->getField("CreateDateTime")));
+                $frenchTime = $frenchHour."h".$frenchMinutes;
                 $value{"TopicMessage"}{$i}{"UserId"} = $DB->getField("UserId");
                 $value{"TopicMessage"}{$i}{"Email"} = $DB->getField("Email");
-                $value{"TopicMessage"}{$i}{"CreateDateTime"} =  date("h:i A", strtotime($DB->getField("CreateDateTime")));
+                $value{"TopicMessage"}{$i}{"CreateDateTime"} = $frenchTime;
                 $value{"TopicMessage"}{$i}{"Message"} = $DB->getField("Message");
                 $i++;
             }

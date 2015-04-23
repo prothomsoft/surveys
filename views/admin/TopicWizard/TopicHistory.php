@@ -1,9 +1,11 @@
 
-
 <div class="ui-widget-header ui-corner-all center-header">
 	Chat topics - Topic results
 </div>
 
+<div class="ui-helper-clearfix spacer"></div>
+
+<p style="text-align:center;"><a href="index.php?event=downloadTopicHistory&id1=<?=$event->getArg("id1");?>">GET EXCEL FILE</a></p>
 <div class="ui-helper-clearfix spacer"></div>
 	
 <div style="float:left; width:100%">
@@ -29,7 +31,11 @@
                         echo "<td style=\"border: 1px solid #DEDEDE; color: #000000;\">";
                     }
                     
-                    echo "(".date("Y-m-d h:i A", strtotime($CreateDateTime)).")";?>
+                    echo "".date("Y-m-d ", strtotime($CreateDateTime))."";
+                    echo "(".date("H", strtotime($CreateDateTime))."";
+                    echo "h";
+                    echo "".date("i", strtotime($CreateDateTime)).")";
+                    ?>
                     <strong><?=$UserEmail;?></strong>: <?=$Message;?>
                     <?echo "</td>";
                     echo "<td style=\"text-align:center;\">";?>

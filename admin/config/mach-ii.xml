@@ -1487,6 +1487,15 @@
             <view-page name="TopicHistory" contentKey="TopicHistory" />
             <view-page name="documentReadyScript" contentKey="documentReadyScript" />
             <view-page name="template" />
+        </event-handler>
+        
+        <!-- downloadTopicHistory -->
+        <event-handler event="downloadTopicHistory">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="TopicMessageListener" method="findByTopicId" />
+            <view-page name="TopicHistoryDownload" contentKey="TopicHistoryDownload" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+            <view-page name="template" />
         </event-handler>   
         
         <!-- executeRemoveTopicMessageAction -->
@@ -1558,6 +1567,7 @@
         <page-view name="TopicWizardStep2" page="/views/admin/TopicWizard/TopicWizardStep2.php" />
         <page-view name="TopicWizardNavigation" page="/views/admin/TopicWizard/TopicWizardNavigation.php"/>
         <page-view name="TopicHistory" page="/views/admin/TopicWizard/TopicHistory.php" />
+        <page-view name="TopicHistoryDownload" page="/views/admin/TopicWizard/TopicHistoryDownload.php" />
         
         <!-- Sigma -->
         <page-view name="SigmaList" page="/views/admin/Sigma/SigmaList.php" />

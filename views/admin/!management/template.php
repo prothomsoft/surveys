@@ -173,6 +173,9 @@
                 if ($event->getArg('TopicHistory') != "") {
                     echo $event->getArg('TopicHistory');
                 }
+                if ($event->getArg('TopicHistoryDownload') != "") {
+                    echo $event->getArg('TopicHistoryDownload');
+                }
 				
 				// Sigma
 				if ($event->getArg('SigmaList') != "") {

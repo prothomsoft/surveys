@@ -11,8 +11,8 @@ class UserDao{
       $DB->connect();
       
       $query = "INSERT INTO `User`(CountryId,ProvinceId,Email,Password,CompanyName,NameFirst,NameLast,Street,Number,Zip,City,Phone1,Phone2,Fax1,Fax2,Website1,Website2,NipPL,NipUE,Regon,CreateDate,UpdateDate,Status, ImgDriveName, ActivationToken, Info, TesterStatus, TesterDate) ";
-      $query.= "VALUES('".$objUserBean->getCountryId()."','".$objUserBean->getProvinceId()."','".mysql_real_escape_string($objUserBean->getEmail())."','".mysql_real_escape_string($objUserBean->getPassword())."','".$objUserBean->getCompanyName()."','".$objUserBean->getNameFirst()."','".$objUserBean->getNameLast()."','".$objUserBean->getStreet()."','".$objUserBean->getNumber()."','".$objUserBean->getZip()."','".$objUserBean->getCity()."','".$objUserBean->getPhone1()."','".$objUserBean->getPhone2()."','".$objUserBean->getFax1()."','".$objUserBean->getFax2()."','".$objUserBean->getWebsite1()."','".$objUserBean->getWebsite2()."','".$objUserBean->getNipPL()."','".$objUserBean->getNipUE()."','".$objUserBean->getRegon()."',NOW(),NOW(),'".$objUserBean->getStatus()."','".$objUserBean->getImgDriveName()."','".$objUserBean->getActivationToken()."','".$objUserBean->getInfo()."','".$objUserBean->getTesterStatus()."','".$objUserBean->getTesterDate()."') ";      
-      $DB->query($query);
+      $query.= "VALUES('".$objUserBean->getCountryId()."','".$objUserBean->getProvinceId()."','".mysql_real_escape_string($objUserBean->getEmail())."','".mysql_real_escape_string($objUserBean->getPassword())."','".$objUserBean->getCompanyName()."','".$objUserBean->getNameFirst()."','".$objUserBean->getNameLast()."','".$objUserBean->getStreet()."','".$objUserBean->getNumber()."','".$objUserBean->getZip()."','".$objUserBean->getCity()."','".mysql_real_escape_string($objUserBean->getPhone1())."','".mysql_real_escape_string($objUserBean->getPhone2())."','".$objUserBean->getFax1()."','".$objUserBean->getFax2()."','".$objUserBean->getWebsite1()."','".$objUserBean->getWebsite2()."','".$objUserBean->getNipPL()."','".$objUserBean->getNipUE()."','".$objUserBean->getRegon()."',NOW(),NOW(),'".$objUserBean->getStatus()."','".$objUserBean->getImgDriveName()."','".$objUserBean->getActivationToken()."','".$objUserBean->getInfo()."','".$objUserBean->getTesterStatus()."','".$objUserBean->getTesterDate()."') ";      
+	  $DB->query($query);
       return $DB->getLast();
    }
    public function update($objUserBean){
@@ -21,7 +21,7 @@ class UserDao{
       $query = "UPDATE `User` SET ";
       $query.="CountryId='".$objUserBean->getCountryId()."',";
       $query.="ProvinceId='".$objUserBean->getProvinceId()."',";
-      $query.="Email='".$objUserBean->getEmail()."',";
+      $query.="Email='".mysql_real_escape_string($objUserBean->getEmail())."',";
       $query.="Password='".$objUserBean->getPassword()."',";
       $query.="CompanyName='".$objUserBean->getCompanyName()."',";
       $query.="NameFirst='".$objUserBean->getNameFirst()."',";
@@ -30,8 +30,8 @@ class UserDao{
       $query.="Number='".$objUserBean->getNumber()."',";
       $query.="Zip='".$objUserBean->getZip()."',";
       $query.="City='".$objUserBean->getCity()."',";
-      $query.="Phone1='".$objUserBean->getPhone1()."',";
-      $query.="Phone2='".$objUserBean->getPhone2()."',";
+      $query.="Phone1='".mysql_real_escape_string($objUserBean->getPhone1())."',";
+      $query.="Phone2='".mysql_real_escape_string($objUserBean->getPhone2())."',";
       $query.="Fax1='".$objUserBean->getFax1()."',";
       $query.="Fax2='".$objUserBean->getFax2()."',";
       $query.="Website1='".$objUserBean->getWebsite1()."',";

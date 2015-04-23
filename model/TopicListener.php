@@ -99,7 +99,7 @@ class model_TopicListener extends MachII_framework_Listener
 						if($Status == 0) {
 							$responseJSON .= '"Open for discussion",';
 						} else {
-							$responseJSON .= '"Closed for votes",';							
+							$responseJSON .= '"Closed for discussion",';							
 						}
 						
 				} else if ($aColumns[$i] == "CreateDate"){

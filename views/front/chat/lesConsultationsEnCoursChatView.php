@@ -21,24 +21,30 @@ $TopicId = $event->getArg("id1");
     background:#fff;
     height:270px;
     width:95%;
-    border:1px solid #ACD8F0;
+    border:1px solid #004378;
     overflow:auto; }
   
 #usermsg {
     width:60%;
-    border:1px solid #ACD8F0; }
+    border:1px solid #004378; }
     
 #wrapper {
     margin:0 auto;
     padding:25px 0px 25px 0px;
-    background:#EBF4FB;
-    width:100%;
-    border:1px solid #ACD8F0; }
+    background:#004378;
+    width:100%;}
   
-#submit { width: 60px; }
+#submit { width: 80px;}
+
+#submitmsg {
+    background:#E50043;
+    color: #FFF;
+    border: 1px solid #E50043;
+    width: 80px;
+}
 
 .msgln {color: #000;}
-.msglnAdmin {color: #FF0000;}    
+.msglnAdmin {color: #E50043;}    
 </style>
 
 <!-- Begin Main -->
@@ -49,16 +55,29 @@ $TopicId = $event->getArg("id1");
                 <div class="blog-posts single-post">
                     <article class="post post-large blog-single-post" style="text-align: center;">
                             <h3><?=$oT->gL("txtTopic")?>: <?=$objTopic->getQuestion();?></h3>
+                            <br/>
                             <div class="post-content">
                                 <div id="wrapper">
                                     <div id="chatbox"></div>
-                                    <?=$oT->gL("txtYourMessage")?>:
+                                    <span style="color:#FFFFFF;"><?=$oT->gL("txtYourMessage")?>:</span>
                                         <input name="usermsg" type="text" id="usermsg" />
                                         <input name="submitmsg" type="submit"  id="submitmsg" value="<?=$oT->gL("txtSend")?>" />
                                     </div>
                                 </div>
                             </div>
-                            <p style="text-align:center; font-weight:bold;"><a href="<?=$SN;?>lesConsultationsEnCours.html"><u><?=$oT->gL("txtGoBackToTopicList")?></u></a><br/><br/></p>
+                            
+                            <div id="menu1">
+                                <nav class="navbar navbar-default navbar-main-user navbar-main-slide" role="navigation" style="z-index: 1;">
+                                    <div class="collapse navbar-collapse menu2">
+                                        <ul class="nav navbar-nav">
+                                            <li>
+                                            <a href="<?=$SN;?>lesConsultationsEnCours.html"><?=$oT->gL("txtGoBackToTopicList")?></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div><p>&nbsp;</p></div>
                             
                     </article>                          
                 </div>
@@ -72,6 +91,12 @@ $TopicId = $event->getArg("id1");
     $(document).ready(function() {
         loadLog();
         $("#usermsg").focus();
+        
+        $("#usermsg").keyup(function(event){
+            if(event.keyCode == 13){
+                $("#submitmsg").click();
+            }
+        });
         
         $("#submitmsg").click(function() {
             var clientmsg = $("#usermsg").val();
