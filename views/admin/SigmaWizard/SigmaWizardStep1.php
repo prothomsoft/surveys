@@ -1,6 +1,6 @@
 
 <div class="ui-widget-header ui-corner-all center-header">
-	News Entry - Description
+	Blog entry - Description
 </div>
 
 <?if ($event->getArg('message') != "") {?>
@@ -24,9 +24,6 @@
 <input type="hidden" name="event" id="event" value="showSigmaStep2">
 <input type="hidden" name="SigmaId" id="SigmaId" value="<?=$event->getArg('SigmaId')?>">
 <input type="hidden" name="ClubId" id="ClubId" value="<?=$event->getArg('ClubId')?>">
-<input type="hidden" name="DeltaId" id="DeltaId" value="<?=$event->getArg('DeltaId')?>">
-<input type="hidden" name="Description" id="Description" value="<?=$event->getArg('Description')?>">
-
 	
 <div class="ui-widget-content ui-corner-all center-content">
 	
@@ -43,6 +40,32 @@
 			<label for="SigmaOrder">Order <font color="red">*</font></label>
 			<input style="width:80px" type="text" name="SigmaOrder" id="SigmaOrder" value="<?=$maxSigmaOrder?>" class="text ui-widget-content ui-corner-all <?if ($event->getArg("missingField") == "SigmaOrder") echo "ui-state-error"?>" />
 		</fieldset>
+				
+		<fieldset>
+			<label for="Description">Blog entry visible on home page:</label>
+			<select name="Description" id="Description" style="width:220px; padding:2px; border: 1px solid #DEDEDE;">
+				<? if ($event->getArg('Description') == '1') {?>
+						<option value="0">No</option>
+						<option value="1" selected>Yes</option>
+					<?} else {?>
+						<option value="0" selected>No</option>
+						<option value="1">Yes</option>
+					<?}?>				
+			</select>  	   
+		</fieldset>
+		
+		<fieldset>
+            <label for="DeltaId">Blog entry is listed on popular posts:</label>
+            <select name="DeltaId" id="DeltaId" style="width:220px; padding:2px; border: 1px solid #DEDEDE;">
+                <? if ($event->getArg('DeltaId') == '1') {?>
+                        <option value="0">No</option>
+                        <option value="1" selected>Yes</option>
+                    <?} else {?>
+                        <option value="0" selected>No</option>
+                        <option value="1">Yes</option>
+                    <?}?>               
+            </select>      
+        </fieldset>
 		
 	</div>
 	<div class="ui-helper-clearfix spacer"></div>
@@ -57,18 +80,13 @@
 	</fieldset>
 	
 	<fieldset>
-		<label for="Keyword">Sub Title</label>
+		<label for="Keyword">Author</label>
 		<input type="text" name="Keyword" id="Keyword" value="<?echo htmlspecialchars_decode($event->getArg('Keyword'));?>" class="text ui-widget-content ui-corner-all <?if ($event->getArg("missingField") == "Keyword") echo "ui-state-error"?>" />
 	</fieldset>
 	
 	<fieldset>
-		<label for="EventDate">Date of the entry (DD.MM.YYYY)</label>
+		<label for="EventDate">Date of the entry (DD-MM-YYYY)</label>
 		<input type="text" name="EventDate" id="EventDate" value="<?echo htmlspecialchars_decode($event->getArg('EventDate'));?>" class="text ui-widget-content ui-corner-all <?if ($event->getArg("missingField") == "EventDate") echo "ui-state-error"?>" />
-	</fieldset>
-	
-	<fieldset>
-		<label for="Description">YouTube Code: http://www.youtube.com/embed/KjQEAb6VT-E</label>
-		<input type="text" name="Description" id="Description" value="<?echo htmlspecialchars_decode($event->getArg('Description'));?>" class="text ui-widget-content ui-corner-all <?if ($event->getArg("missingField") == "Description") echo "ui-state-error"?>" />
 	</fieldset>
 	
 </div>
@@ -78,21 +96,20 @@
 <div class="ui-widget-content ui-corner-all center-content">
 		<fieldset style="width:750px;">
 			<label for="ShortDescription">Short Text</label>
-			<textarea name="ShortDescription" id="ShortDescription" cols="91" rows="15" class="wymeditor"><?echo htmlspecialchars_decode($event->getArg('ShortDescription'));?></textarea>			
+			<textarea name="ShortDescription" id="ShortDescription" cols="91" rows="15"><?echo htmlspecialchars_decode($event->getArg('ShortDescription'));?></textarea>			
 		</fieldset>
 </div>
 
 <div class="ui-helper-clearfix spacer"></div>
-
+		
 <div class="ui-widget-content ui-corner-all center-content">
-		<fieldset style="width:750px;">
+	    <fieldset style="width:750px;">
 			<label for="LongDescription">Long Text</label>
-			<textarea name="LongDescription" id="LongDescription" cols="91" rows="15" class="wymeditor"><?echo htmlspecialchars_decode($event->getArg('LongDescription'));?></textarea>			
+			<textarea name="LongDescription" id="LongDescription" cols="91" rows="15"><?echo htmlspecialchars_decode($event->getArg('LongDescription'));?></textarea>			
 		</fieldset>
 </div>
 
 <div class="ui-helper-clearfix spacer"></div>
-
 
 <div class="ui-widget formButtons">
 	<input type="submit" value="Add Pictures" class="wymupdate">

@@ -34,7 +34,7 @@ class TopicGateway {
       
       $DB = new DB();
       $DB->connect();
-      $query  = "SELECT TopicId,Question,OpenQuestion,CreateDate,Status,TopicOrder FROM Topic";
+      $query  = "SELECT TopicId,UpdateCategoryId,Question,OpenQuestion,CreateDate,Status,TopicOrder FROM Topic";
       $query .= " WHERE 1 = 1";
       $query .= " ORDER BY TopicOrder DESC";
 	  $DB->query($query);
@@ -45,6 +45,7 @@ class TopicGateway {
       		{
       			$objTopicBean= new TopicBean();
 			    $objTopicBean->setTopicId($DB->getField("TopicId"));
+                $objTopicBean->setUpdateCategoryId($DB->getField("UpdateCategoryId"));
 			    $objTopicBean->setQuestion($DB->getField("Question"));
 			    $objTopicBean->setOpenQuestion($DB->getField("OpenQuestion"));
 			    $objTopicBean->setCreateDate($DB->getField("CreateDate"));
@@ -75,7 +76,7 @@ class TopicGateway {
    	
 	   	$DB = new DB();
        	$DB->connect();	
-      	$query  = "SELECT TopicId,Question,OpenQuestion,CreateDate,Status,TopicOrder FROM Topic ";
+      	$query  = "SELECT TopicId,UpdateCategoryId,Question,OpenQuestion,CreateDate,Status,TopicOrder FROM Topic ";
       	$query .= " WHERE 1 = 1";
       	$query .= " ORDER BY TopicOrder ASC";
       	$query .= " LIMIT ".$start.",".$limit;
@@ -87,6 +88,7 @@ class TopicGateway {
 	      		{
 	      			$objTopicBean= new TopicBean();
 				    $objTopicBean->setTopicId($DB->getField("TopicId"));
+				    $objTopicBean->setUpdateCategoryId($DB->getField("UpdateCategoryId"));
 				    $objTopicBean->setQuestion($DB->getField("Question"));
 				    $objTopicBean->setOpenQuestion($DB->getField("OpenQuestion"));
 				    $objTopicBean->setCreateDate($DB->getField("CreateDate"));
@@ -101,7 +103,7 @@ class TopicGateway {
    public function findActive(){   
    	$DB = new DB();
    	$DB->connect();
-   	$query  = "SELECT TopicId,Question,OpenQuestion,CreateDate,Status,TopicOrder FROM Topic";
+   	$query  = "SELECT TopicId,UpdateCategoryId,Question,OpenQuestion,CreateDate,Status,TopicOrder FROM Topic";
    	$query .= " WHERE Status = 0";
    	$query .= " ORDER BY TopicOrder ASC";
    	$DB->query($query);
@@ -112,6 +114,7 @@ class TopicGateway {
    		{
    			$objTopicBean= new TopicBean();
    			$objTopicBean->setTopicId($DB->getField("TopicId"));
+            $objTopicBean->setUpdateCategoryId($DB->getField("UpdateCategoryId"));
    			$objTopicBean->setQuestion($DB->getField("Question"));
    			$objTopicBean->setOpenQuestion($DB->getField("OpenQuestion"));
    			$objTopicBean->setCreateDate($DB->getField("CreateDate"));

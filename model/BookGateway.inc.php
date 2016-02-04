@@ -17,7 +17,7 @@ class BookGateway{
       
       $DB = new DB();
       $DB->connect();
-      $query  = "SELECT BookId,SigmaId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
+      $query  = "SELECT BookId,SigmaId,ParentId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
       $query .= " WHERE 1 = 1";
       $query .= " ORDER BY BookId ASC";
       $DB->query($query);
@@ -29,6 +29,7 @@ class BookGateway{
       			$objBookBean= new BookBean();
 			    $objBookBean->setBookId($DB->getField("BookId"));
 			    $objBookBean->setSigmaId($DB->getField("SigmaId"));
+                $objBookBean->setParentId($DB->getField("ParentId"));
 			    $objBookBean->setEmail($DB->getField("Email"));
 			    $objBookBean->setFirstName($DB->getField("FirstName"));
 			    $objBookBean->setLastName($DB->getField("LastName"));
@@ -60,7 +61,7 @@ class BookGateway{
    	
 	   	$DB = new DB();
        	$DB->connect();	
-      	$query  = "SELECT BookId,SigmaId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
+      	$query  = "SELECT BookId,SigmaId,ParentId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
       	$query .= " WHERE 1 = 1";
       	$query .= " ORDER BY BookId ASC";
       	$query .= " LIMIT ".$start.",".$limit;
@@ -73,6 +74,7 @@ class BookGateway{
 	      			$objBookBean= new BookBean();
 				    $objBookBean->setBookId($DB->getField("BookId"));
 				    $objBookBean->setSigmaId($DB->getField("SigmaId"));
+                    $objBookBean->setParentId($DB->getField("ParentId"));
 				    $objBookBean->setEmail($DB->getField("Email"));
 				    $objBookBean->setFirstName($DB->getField("FirstName"));
 				    $objBookBean->setLastName($DB->getField("LastName"));
@@ -89,9 +91,8 @@ class BookGateway{
       
       $DB = new DB();
       $DB->connect();
-      $query  = "SELECT BookId,SigmaId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
+      $query  = "SELECT BookId,SigmaId,ParentId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
       $query .= " WHERE 1 = 1";
-      $query .= " AND City = 1";
       $query .= " AND SigmaId = ".$blogId."";
       $query .= " ORDER BY BookId ASC";
       $DB->query($query);
@@ -103,6 +104,7 @@ class BookGateway{
       			$objBookBean= new BookBean();
 			    $objBookBean->setBookId($DB->getField("BookId"));
 			    $objBookBean->setSigmaId($DB->getField("SigmaId"));
+                $objBookBean->setParentId($DB->getField("ParentId"));
 			    $objBookBean->setEmail($DB->getField("Email"));
 			    $objBookBean->setFirstName($DB->getField("FirstName"));
 			    $objBookBean->setLastName($DB->getField("LastName"));
@@ -111,6 +113,35 @@ class BookGateway{
 			    $objBookBean->setCreateDate($DB->getField("CreateDate"));
 			    $arr[] = $objBookBean;
       		}
+      }
+      return $arr;
+   }
+
+    public function findAllAuthorizedLatest($blogId){
+      
+      $DB = new DB();
+      $DB->connect();
+      $query  = "SELECT BookId,SigmaId,ParentId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
+      $query .= " WHERE 1 = 1";
+      $query .= " ORDER BY BookId DESC";
+      $DB->query($query);
+      $arr = "";
+      if ($DB->numRows()>0)
+      {
+            while($DB->move_next())
+            {
+                $objBookBean= new BookBean();
+                $objBookBean->setBookId($DB->getField("BookId"));
+                $objBookBean->setSigmaId($DB->getField("SigmaId"));
+                $objBookBean->setParentId($DB->getField("ParentId"));
+                $objBookBean->setEmail($DB->getField("Email"));
+                $objBookBean->setFirstName($DB->getField("FirstName"));
+                $objBookBean->setLastName($DB->getField("LastName"));
+                $objBookBean->setCompanyName($DB->getField("CompanyName"));
+                $objBookBean->setCity($DB->getField("City"));
+                $objBookBean->setCreateDate($DB->getField("CreateDate"));
+                $arr[] = $objBookBean;
+            }
       }
       return $arr;
    }
@@ -134,7 +165,7 @@ class BookGateway{
    	
 	   	$DB = new DB();
        	$DB->connect();	
-      	$query  = "SELECT BookId,SigmaId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
+      	$query  = "SELECT BookId,SigmaId,ParentId,Email,FirstName,LastName,CompanyName,City,CreateDate  FROM Book";
       	$query .= " WHERE 1 = 1";
       	$query .= " AND City = 1";
       	$query .= " AND SigmaId = ".$blogId."";
@@ -149,6 +180,7 @@ class BookGateway{
 	      			$objBookBean= new BookBean();
 				    $objBookBean->setBookId($DB->getField("BookId"));
 				    $objBookBean->setSigmaId($DB->getField("SigmaId"));
+                    $objBookBean->setParentId($DB->getField("ParentId"));
 				    $objBookBean->setEmail($DB->getField("Email"));
 				    $objBookBean->setFirstName($DB->getField("FirstName"));
 				    $objBookBean->setLastName($DB->getField("LastName"));

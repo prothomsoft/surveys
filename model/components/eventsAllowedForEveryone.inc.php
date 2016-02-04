@@ -20,6 +20,8 @@ class EventsAllowedForEveryone {
 	 article,
 	 
 	 contact_information,
+	 
+     executepollvoteaction,
 	
 	  // HOME
 	  zamowienie,
@@ -84,15 +86,11 @@ class EventsAllowedForEveryone {
 	  //shopping cart new
 	  shoppingcart,
 	  
-/*	  blog,
-	  wydarzenie,
-	  zdjecia,
-	  zdjecie,
-	  blog_portfolio,
-	  blog_o_mnie,
-	  blog_polecam,
-	  blog_kontakt,
-	  blog_kontakt_action,*/
+      blog,
+      blog_entry,
+      blog_comment,
+      blog_comment_save,
+      blog_comment_confirm,
 	  
 	  findproductbyname,
 	  findproducerbyname,

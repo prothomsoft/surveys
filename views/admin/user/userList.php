@@ -2,6 +2,11 @@
 	<div class="ui-widget-header ui-corner-top center-header">
 		Users &raquo; List of users			
 	</div>
+	
+	<div class="ui-helper-clearfix spacer"></div>
+	<p style="text-align:center;"><a href="index.php?event=downloadUsersList">GET EXCEL FILE</a></p>
+	<div class="ui-helper-clearfix spacer"></div>
+	
 	<div class="ui-widget-content ui-corner-bottom center-content">
 		<div id="divUsersApprovedTable">
 			<form>

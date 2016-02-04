@@ -96,9 +96,9 @@ class model_SigmaListener extends MachII_framework_Listener
 				
 				if ( $aColumns[$i] == "ImgDriveName") {
 					if($ImgDriveName != "") {
-						$responseJSON .= '"<table border=\"0\"><tr><td width=\"200\" height=\"200\" valign=\"middle\"><img src=\"'.$SN.'/upload/micro/'.$ImgDriveName.'\"></td></tr></table>",';	
+						$responseJSON .= '"<table border=\"0\"><tr><td width=\"200\" height=\"200\" valign=\"middle\"><img width=\"200\" src=\"'.$SN.'/upload/'.$ImgDriveName.'\"></td></tr></table>",';	
 					} else {
-						$responseJSON .= '"<table border=\"0\"><tr><td width=\"200\" height=\"200\" valign=\"middle\"><img src=\"'.$SN.'/images/hotel.jpg\"></td></tr></table>",';
+						$responseJSON .= '"<table border=\"0\"><tr><td width=\"200\" height=\"200\" valign=\"middle\"><img width=\"200\" src=\"'.$SN.'/images/blank.gif\"></td></tr></table>",';
 					}
 				} else if ($aColumns[$i] == "Name"){
 					$responseJSON .= '"<strong>'.$Name.'</strong>",';
@@ -322,6 +322,12 @@ class model_SigmaListener extends MachII_framework_Listener
 		$event->setArg('arrSigmaLatest',$arrSigmas);
    }
    
+   function findThreeLatest(&$event) {
+   	$objSigmaGateway = new SigmaGateway();
+   	$arrSigmas = $objSigmaGateway->findThreeLatest();
+   	$event->setArg('arrSigmaThreeLatest',$arrSigmas);
+   }
+   
    function findInCurrentMonth(&$event) {
     	$objSigmaGateway = new SigmaGateway();
 		$arrSigmas = $objSigmaGateway->findInCurrentMonth();
@@ -380,7 +386,7 @@ class model_SigmaListener extends MachII_framework_Listener
       
      	$arrQueue = $event->getArg('arrQueue');
 		$nSigmas = count($arrQueue);
-		$objPagination = new pagination($nSigmas,30); 
+		$objPagination = new pagination($nSigmas,5); 
     	$arrPagination = $objPagination->paginate("SigmaList",$page);
     	$event->setArg('arrPagination',$arrPagination);
    }  

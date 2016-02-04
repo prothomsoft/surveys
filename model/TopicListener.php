@@ -8,6 +8,9 @@ require_once("TopicGateway.inc.php");
 require_once("TopicDao.inc.php");
 require_once("TopicBean.inc.php");
 
+require_once("UpdateCategoryDao.inc.php");
+require_once("UpdateCategoryBean.inc.php");
+
 class model_TopicListener extends MachII_framework_Listener
 {
     function configure() {}
@@ -21,7 +24,7 @@ class model_TopicListener extends MachII_framework_Listener
 		$DB->connect();
 		
 		// columns in the table
-		$aColumns = array('TopicId', 'Question', 'CreateDate', 'Status', 'Question', 'TopicOrder');
+		$aColumns = array('TopicId', 'Question', 'CreateDate', 'UpdateCategoryId', 'Status', 'TopicOrder');
 		$sIndexColumn = "TopicId";
 		
 		// paging
@@ -83,25 +86,38 @@ class model_TopicListener extends MachII_framework_Listener
 			$responseJSON .= "[";
 			for ($i=0; $i<count($aColumns); $i++) {
 				
-				$aColumns = array('TopicId', 'Question', 'CreateDate', 'Status', 'Question', 'TopicOrder');
+				$aColumns = array('TopicId', 'Question', 'CreateDate', 'UpdateCategoryId', 'Status', 'TopicOrder');
 				
 				$TopicId = $aRow[0];
 				$Question = $aRow[1];
 				$CreateDate = $aRow[2];
-				$Status = $aRow[3];
-				$Question1 = $aRow[4];
+                $UpdateCategoryId = $aRow[3];
+				$Status = $aRow[4];
 				$TopicOrder = $aRow[5];
 				
 				
 				if ($aColumns[$i] == "Question"){
 					$responseJSON .= '"'.$Question.'",';
-				} else if ($aColumns[$i] == "Status"){
-						if($Status == 0) {
-							$responseJSON .= '"Open for discussion",';
-						} else {
-							$responseJSON .= '"Closed for discussion",';							
-						}
-						
+				} else if ($aColumns[$i] == "UpdateCategoryId"){
+				     
+				    $objUpdateCategoryDao = new UpdateCategoryDao();
+				    $objUpdateCategoryBean = $objUpdateCategoryDao->read($UpdateCategoryId);
+                    
+                    $fatherId = $objUpdateCategoryBean->getFatherId();
+                    if($fatherId != 0) {
+                        $objUpdateCategoryBean = $objUpdateCategoryDao->read($fatherId);
+                        $displayName = $objUpdateCategoryBean->getName();
+                    } else {
+                        $displayName = "";
+                    }
+                    
+                    $responseJSON .= '"'.$displayName.'",';
+                } else if ($aColumns[$i] == "Status"){
+                        if($Status == 0) {
+                            $responseJSON .= '"Open",';
+                        } else {
+                            $responseJSON .= '"Closed",';                           
+                        }
 				} else if ($aColumns[$i] == "CreateDate"){
 					$responseJSON .= '"'.substr($CreateDate, 0, 10).'",';
 				} else {
@@ -109,8 +125,8 @@ class model_TopicListener extends MachII_framework_Listener
 					$responseJSON .= '"'.str_replace('"', '\"', $aRow[ $aColumns[$i] ]).'",';
 				}
 			}
-			$responseJSON .= '"<a class=\"anchor_link\" href=\"index.php?event=showTopicStep1&TopicId='.$TopicId.'\">Edit</a>&nbsp;|&nbsp;&nbsp;<a class=\"anchor_link\" href=\"index.php?event=showTopicHistory&id1='.$TopicId.'\">History</a>&nbsp;|&nbsp;&nbsp;';
-			$responseJSON .= '<a class=\"anchor_link\" href=\"index.php?event=executeRemoveTopicAction&TopicId='.$TopicId.'\" onclick=\"return confirm(\'Are you sure you want to remove this record?\')\">Remove</a>",';
+			$responseJSON .= '"<a class=\"anchor_link\" href=\"index.php?event=showTopicStep1&TopicId='.$TopicId.'\">Edit</a>&nbsp;|&nbsp;&nbsp;<a class=\"anchor_link\" href=\"index.php?event=showTopicHistory&id1='.$TopicId.'\">History</a>';
+			$responseJSON .= '",';
 			
 			$responseJSON = substr_replace( $responseJSON, "", -1 );
 			$responseJSON .= "],";
@@ -131,7 +147,10 @@ class model_TopicListener extends MachII_framework_Listener
     function getByIdFO(&$event){
         $TopicId = $event->getArg('id1');
         $objTopicDao = new TopicDao();
-        $objTopicBean = $objTopicDao->read($TopicId);
+        $objTopicBean = new TopicBean();
+        if($TopicId != "") {
+            $objTopicBean = $objTopicDao->read($TopicId);
+        }
         $event->setArg("objTopic", $objTopicBean);      
     }
    

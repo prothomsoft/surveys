@@ -1,6 +1,6 @@
 ﻿<div class="ui-widget" style="margin:-14px 0px 0px 0px;">
 	<div class="ui-widget-header ui-corner-top center-header">
-		Headers			
+		Blog Categories			
 	</div>
 	<div class="ui-widget-content ui-corner-bottom center-content">
 		<div id="divDeltaTable">

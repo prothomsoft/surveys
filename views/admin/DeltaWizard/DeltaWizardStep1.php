@@ -1,5 +1,6 @@
+
 <div class="ui-widget-header ui-corner-all center-header">
-	Header - Content
+	Blog category - Content
 </div>
 
 <?if ($event->getArg('message') != "") {?>
@@ -24,8 +25,8 @@
 <input type="hidden" name="DeltaId" id="DeltaId" value="<?=$event->getArg('DeltaId')?>">
 <input type="hidden" name="Keyword" id="Keyword" value="<?=$event->getArg('Keyword')?>">
 <input type="hidden" name="Description" id="Description" value="<?=$event->getArg('Description')?>">
-<input type="hidden" name="LongDescription" id="LongDescription" value="<?=$event->getArg('LongDescription')?>">
 <input type="hidden" name="ShortDescription" id="ShortDescription" value="<?=$event->getArg('ShortDescription')?>">
+<input type="hidden" name="LongDescription" id="LongDescription" value="<?=$event->getArg('LongDescription')?>">
 
 <div class="ui-widget-content ui-corner-all center-content">
 	
@@ -51,20 +52,20 @@
 		
 <div class="ui-widget-content ui-corner-all center-content">
 	<fieldset>
-		<label for="Name">Caption</label>
+		<label for="Name">Name</label>
 		<input type="text" name="Name" id="Name" value="<?echo $event->getArg('Name');?>" class="text ui-widget-content ui-corner-all <?if ($event->getArg("missingField") == "Name") echo "ui-state-error"?>" />
 	</fieldset>
 	
 	<fieldset>
-		<label for="Keyword">URL</label>
+		<label for="Keyword">Keyword</label>
 		<input type="text" name="Keyword" id="Keyword" value="<?echo $event->getArg('Keyword');?>" class="text ui-widget-content ui-corner-all <?if ($event->getArg("missingField") == "Keyword") echo "ui-state-error"?>" />
-	</fieldset>
+	</fieldset>	
 </div>
 
 <div class="ui-helper-clearfix spacer"></div>
 
 <div class="ui-widget formButtons">
-	<input type="submit" value="Add Picture" class="wymupdate">
+	<!--<input type="submit" value="Dodaj zdjęcia" class="wymupdate">-->
 	<span class="wizardButton"><a href="javascript:$('#event').val('executeDeltaWizardClose');$('#DeltaId').val('<?=$event->getArg("DeltaId");?>');document.f1.submit();">Save Changes</a></span>
 </div>
 </form>				

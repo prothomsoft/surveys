@@ -165,30 +165,30 @@ class model_UpdateCategoryListener extends MachII_framework_Listener
     /* CMS CATEGORIES IN ADMIN PANEL START */ /* CMS CATEGORIES IN ADMIN PANEL START */ /* CMS CATEGORIES IN ADMIN PANEL START */
     
     function getAdminCategoriesPath(&$event) {
-    	$objUpdateCategory = new UpdateCategoryDAO();
-		if($event->isArgDefined('categoryId') && $event->getArg('categoryId') > 0) {
-			$father = $event->getArg('categoryId');
-			$counter = 0;
-			do {
-				$category = $objUpdateCategory->read($father);
-	 			$grandfather = $category->getFatherId();
-	 					 				
-	 			if($counter == 0) {
-	 				$adminCategoriesPath = "<a href=\"#\" class=\"isActive\">".stripslashes($category->getName())."</a>";
-	 			}
-	 			else {
-	 				if($event->getArg('categoryId') != $father)	{
-	 					$adminCategoriesPath = "&raquo;<a href=\"index.php?event=".$event->getArg('event')."&categoryId=".$category->getUpdateCategoryId()."&categoryName=".stripslashes($category->getName())."\">".stripslashes($category->getName())."</a> ".$adminCategoriesPath."";
-					}
-	 			}
-	 			$counter++;
-	 				
-	 			$father = $grandfather;
-	 		}
-	 		while($father > 0);
-	 	}
-	 	$event->setArg('adminCategoriesPath', $adminCategoriesPath);
-	}
+        $objUpdateCategory = new UpdateCategoryDAO();
+        if($event->isArgDefined('categoryId') && $event->getArg('categoryId') > 0) {
+            $father = $event->getArg('categoryId');
+            $counter = 0;
+            do {
+                $category = $objUpdateCategory->read($father);
+                $grandfather = $category->getFatherId();
+                                        
+                if($counter == 0) {
+                    $adminCategoriesPath = "<a href=\"#\" class=\"isActive\">".stripslashes($category->getName())."</a>";
+                }
+                else {
+                    if($event->getArg('categoryId') != $father) {
+                        $adminCategoriesPath = "<a href=\"index.php?event=".$event->getArg('event')."&categoryId=".$category->getUpdateCategoryId()."&categoryName=".stripslashes($category->getName())."\">".stripslashes($category->getName())."</a> > ".$adminCategoriesPath."";
+                    }
+                }
+                $counter++;
+                    
+                $father = $grandfather;
+            }
+            while($father > 0);
+        }
+        $event->setArg('adminCategoriesPath', $adminCategoriesPath);
+    }
     
     function findByFatherId(&$event) {
     	$categoryId = $event->getArg('categoryId');
@@ -198,19 +198,22 @@ class model_UpdateCategoryListener extends MachII_framework_Listener
     }
     
     function updateCategories(&$event) {
+                
        // parse the categories array to update -------------------------------->
        $categories_id = $event->getArg('categories_id');
        $categories = $event->getArg('categories');
        $old_categories = $event->getArg('old_categories');
        $old_description = $event->getArg('old_description');
-       $description = $event->getArg('description');
        $categoryId = $event->getArg('categoryId');
+       $old_isModules = $event->getArg('old_isModules');
+       $isModules = $event->getArg('isModules');
+       $old_orders = $event->getArg('old_orders');
+       $orders = $event->getArg('orders');
                      
 	   $i = 0;
 	   while($i < count($categories)) {
-	   		if($categories[$i] != $old_categories[$i] || $old_description[$i] != $description[$i]) {
-				
-				// get numberOfItems first - if not we update the number with null -------------------------------->
+	     	if($categories[$i] != $old_categories[$i] || $old_orders[$i] != $orders[$i] || $old_isModules[$i] != $isModules[$i]) {
+	   		    // get numberOfItems first - if not we update the number with null -------------------------------->
 				$objUpdateCategory = new UpdateCategoryDAO();
        			$category = $objUpdateCategory->read($categories_id[$i]);
        			$numberOfItems = $category->getNumberOfItems();
@@ -224,12 +227,27 @@ class model_UpdateCategoryListener extends MachII_framework_Listener
      			$objClearUrl = new ClearUrl($categories[$i]);
 				$objUpdateCategoryBean->setSeoName($objClearUrl->clear());
      			
-			    $objUpdateCategoryBean->setListOrder($description[$i]);
 			    $objUpdateCategoryBean->setFatherId($categoryId);
 			    $objUpdateCategoryBean->setNumberOfItems($numberOfItems);
+                
+                $objUpdateCategoryBean->setListOrder($orders[$i]);
+                $objUpdateCategoryBean->setIsModule($isModules[$i]);
 			    			    
 			    $objUpdateCategory = new UpdateCategoryDAO();
-				$objUpdateCategory->update($objUpdateCategoryBean);	
+				$objUpdateCategory->update($objUpdateCategoryBean);
+                
+                // also we need to update record to Topic only when this is not a module
+                if($isModules[$i] == 0) {
+                    $objTopicDao = new TopicDao();
+                    $objTopicBean = $objTopicDao->readByUploadCategoryId($categories_id[$i]);
+                    if ($objTopicBean->getTopicId() != "") {
+                        $createDate = date('Y-m-d');
+                        $objTopicBean->setCreateDate($createDate);
+                        $objTopicBean->setQuestion($categoryName);
+                        $objTopicDao->update($objTopicBean);
+                    }
+                }
+                
 	   		}
 			$i++;
 	   }
@@ -240,7 +258,12 @@ class model_UpdateCategoryListener extends MachII_framework_Listener
 	   while($i < count($delete)) {
 	      	if($delete[$i]) {
 	      		$objUpdateCategory = new UpdateCategoryDAO();
-				$objUpdateCategory->delete($delete[$i]);	
+				$objUpdateCategory->delete($delete[$i]);
+                
+                // also we need to delete record to Topic
+                $objTopicDao = new TopicDao();
+                $objTopicDao->deleteByUploadCategoryId($delete[$i]);
+                	
 		   	}
 			$i++;
 	   }
@@ -248,6 +271,8 @@ class model_UpdateCategoryListener extends MachII_framework_Listener
 	   // add new category (if present) --------------------------------------->
 	   $new_category = $event->getArg('new_category');
 	   $cat_description = $event->getArg('cat_description');
+       $new_isModule = $event->getArg('new_isModule');
+       $new_order = $event->getArg('new_order');
 	   
 	   if($new_category) {
 	   	  	if(!$event->isArgDefined('categoryId')) {
@@ -264,10 +289,27 @@ class model_UpdateCategoryListener extends MachII_framework_Listener
      		$objClearUrl = new ClearUrl($new_category);
 			$objUpdateCategoryBean->setSeoName($objClearUrl->clear());
      		
-		    $objUpdateCategoryBean->setListOrder($cat_description);
-			   	  	
+            $objUpdateCategoryBean->setIsModule($new_isModule);
+		    $objUpdateCategoryBean->setListOrder($new_order);
+               	  	
 	   	  	$objUpdateCategory = new UpdateCategoryDAO();
-			$objUpdateCategory->create($objUpdateCategoryBean);	
+			$updateCategoryId = $objUpdateCategory->create($objUpdateCategoryBean);
+            
+            
+            
+            // also we need to add new record to Topic
+            if($new_isModule == 0) {
+                $objTopicGateway = new TopicGateway();
+                $maxTopicOrder = $objTopicGateway->getMaxTopicOrder();
+                $createDate = date('Y-m-d');
+                $objTopicBean = new TopicBean();
+                $objTopicBean->setUpdateCategoryId($updateCategoryId);
+                $objTopicBean->setQuestion($categoryName);
+                $objTopicBean->setCreateDate($createDate);
+                $objTopicBean->setTopicOrder($maxTopicOrder+1);
+                $objTopicDao = new TopicDao();
+                $objTopicDao->create($objTopicBean);
+            }	
 	   }
     }
     

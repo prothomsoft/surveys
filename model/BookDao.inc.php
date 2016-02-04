@@ -8,6 +8,7 @@ class BookDao{
    }
    
    private $SigmaId;
+   private $ParentId;
    private $Email;
    private $CreateDate;
    private $FirstName;
@@ -22,8 +23,8 @@ class BookDao{
    public function create($objBookBean){
       $DB = new DB();
       $DB->connect();
-      $query = "INSERT INTO `Book` (SigmaId,Email,CreateDate,FirstName,LastName,CompanyName,City,Code,Street,Number,Phone) ";
-      $query.= "VALUES('".$objBookBean->getSigmaId()."','".$objBookBean->getEmail()."','".$objBookBean->getCreateDate()."','".$objBookBean->getFirstName()."','".$objBookBean->getLastName()."','".$objBookBean->getCompanyName()."','".$objBookBean->getCity()."','".$objBookBean->getCode()."','".$objBookBean->getStreet()."','".$objBookBean->getNumber()."','".$objBookBean->getPhone()."') ";
+      $query = "INSERT INTO `Book` (SigmaId,ParentId,Email,CreateDate,FirstName,LastName,CompanyName,City,Code,Street,Number,Phone) ";
+      $query.= "VALUES('".$objBookBean->getSigmaId()."','".$objBookBean->getParentId()."','".$objBookBean->getEmail()."','".$objBookBean->getCreateDate()."','".$objBookBean->getFirstName()."','".$objBookBean->getLastName()."','".$objBookBean->getCompanyName()."','".$objBookBean->getCity()."','".$objBookBean->getCode()."','".$objBookBean->getStreet()."','".$objBookBean->getNumber()."','".$objBookBean->getPhone()."') ";
       $DB->query($query);
       return $DB->getLast();
    }
@@ -32,6 +33,7 @@ class BookDao{
       $DB->connect();
       $query = "UPDATE `Book` SET ";
       $query.="SigmaId='".$objBookBean->getSigmaId()."', ";
+      $query.="ParentId='".$objBookBean->getParentId()."', ";
       $query.="Email='".$objBookBean->getEmail()."', ";
       $query.="CreateDate='".$objBookBean->getCreateDate()."',";
       $query.="FirstName='".$objBookBean->getFirstName()."',";
@@ -48,12 +50,13 @@ class BookDao{
    public function read($id){
       $DB = new DB();
       $DB->connect();
-      $query="SELECT BookId,SigmaId,Email,CreateDate,FirstName,LastName,CompanyName,City,Code,Street,Number,Phone FROM `Book`";
+      $query="SELECT BookId,SigmaId,ParentId,Email,CreateDate,FirstName,LastName,CompanyName,City,Code,Street,Number,Phone FROM `Book`";
       $query.=" WHERE BookId=".$id;
       $DB->query($query);
       $objBookBean= new BookBean();
       $objBookBean->setBookId($DB->getField("BookId"));
       $objBookBean->setSigmaId($DB->getField("SigmaId"));
+      $objBookBean->setParentId($DB->getField("ParentId"));
       $objBookBean->setEmail($DB->getField("Email"));
       $objBookBean->setCreateDate($DB->getField("CreateDate"));
       $objBookBean->setFirstName($DB->getField("FirstName"));

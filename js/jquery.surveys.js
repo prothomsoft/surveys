@@ -1,5 +1,26 @@
 $(document).ready(function() {
-        
+    
+    
+    
+    $("#voteButton").click(function() {
+        var voteRadioValue = $("input:radio[name ='voteRadio']:checked").val();
+        $.ajax({
+            type: "POST",
+            url: $("#form_SN").val() + "index.php?event=executePollVoteAction",
+            data: "voteRadioValue=" + voteRadioValue,
+            success: function(responseJSON){
+                $.cookie('already_voted', 'the_value', { expires: 7 });
+                $("#pollContainer").html(responseJSON);                
+            }
+        });
+        return false;
+    });
+    
+    $("a.reply").click(function() {
+        var id = $(this).attr("id");
+        $("#parentId").attr("value", id);
+        $("#firstName").focus();
+    });
 	
 	$("a[rel^='prettyPhoto']").prettyPhoto({animationSpeed:'slow',theme:'light_square',slideshow:3000, autoplay_slideshow: false, hideflash: false, wmode: 'opaque',opacity: 1, show_title: false, social_tools: false});
 	

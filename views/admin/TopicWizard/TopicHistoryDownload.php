@@ -9,6 +9,7 @@ $exporter->initialize(); // starts streaming data to web browser
 // pass addRow() an array and it converts it to Excel XML format and sends 
 // it to the browser
 
+$topicId = $event->getArg("id1");
 $arrTopicMessage = $event->getArg("arrTopicMessage");
 if($arrTopicMessage) {
     foreach ($arrTopicMessage as $objTopicMessage) {
@@ -31,8 +32,24 @@ if($arrTopicMessage) {
         $frenchHour = date("H", strtotime($CreateDateTime));
         $frenchMinutes = date("H", strtotime($CreateDateTime));
         
+        
+        $objTopicDao = new TopicDao();
+        $objTopicBean = $objTopicDao->read($topicId);
+        
+        $UpdateCategoryId = $objTopicBean->getUpdateCategoryId();
+        $objUpdateCategoryDao = new UpdateCategoryDao();
+        $objUpdateCategoryBean = $objUpdateCategoryDao->read($UpdateCategoryId);
+        
+        $fatherId = $objUpdateCategoryBean->getFatherId();
+        if($fatherId != 0) {
+            $objUpdateCategoryBean = $objUpdateCategoryDao->read($fatherId);
+            $displayName = $objUpdateCategoryBean->getName();
+        } else {
+            $displayName = "";
+        }
+        
         $time = $frenchHour."h".$frenchMinutes;
-        $exporter->addRow(array($date, $time, $UserEmail, $Message)); 
+        $exporter->addRow(array($date, $time, $UserEmail, $Message, $displayName)); 
     }
 }
 

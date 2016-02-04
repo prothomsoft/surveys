@@ -13,13 +13,16 @@
 	<?}?>
 	<link href="../styles_admin/global.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="../styles_admin/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="../styles_admin/uploadifive.css" rel="stylesheet" type="text/css" media="screen" />	   
+	
 	<script type="text/javascript" src="../js_admin/jquery-1.6.2.min.js"></script>
 	<script type="text/javascript" src="../js_admin/jquery-ui-1.8.16.custom.min.js"></script>
 	<script type="text/javascript" src="../js_admin/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="../js_admin/swfobject.js"></script>
-	<script type="text/javascript" src="../js_admin/jquery.uploadify.min.js"></script>
+	<script type="text/javascript" src="../js_admin/jquery.uploadifive.min.js"></script>
 	<script type="text/javascript" src="../js_admin/jquery.wymeditor.min.js"></script>
 	<script type="text/javascript" src="../js_admin/jquery.lightbox-0.5.min.js"></script>
+	
 	
 	<?if ($event->getArg('PollResults') != "") {?>
 	<style>
@@ -175,6 +178,9 @@
                 }
                 if ($event->getArg('TopicHistoryDownload') != "") {
                     echo $event->getArg('TopicHistoryDownload');
+                }
+                if ($event->getArg('UsersListDownload') != "") {
+                	echo $event->getArg('UsersListDownload');
                 }
 				
 				// Sigma

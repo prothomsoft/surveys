@@ -220,7 +220,7 @@
 				
 				<table cellpadding="0" cellspacing="0" border="0">
 						<tr>
-							<td valign="top"
+							<td valign="top">
 								<p><strong><font color="#000000"><?=$oT->gL("txtDeliveryCost")?>: <span id="shipPrice"><?=$shipPrice;?></span> NOK</font></strong></p>
 								<p><strong><font color="#000000"><?=$oT->gL("txtTotal")?>: <span id="finalPrice"><?=number_format($cartTotal + $shipPrice,2, '.', '');?></span> NOK</font></strong></p>
 							</td>

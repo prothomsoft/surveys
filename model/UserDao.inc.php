@@ -103,11 +103,8 @@ class UserDao{
       $DB = new DB();
       $DB->connect();
       
-      $email  = mysql_real_escape_string($email);
-      $password  = mysql_real_escape_string($password);
-      
       $query="SELECT UserId,CountryId,ProvinceId,Email,Password,CompanyName,NameFirst,NameLast,Street,Number,Zip,City,Phone1,Phone2,Fax1,Fax2,Website1,Website2,NipPL,NipUE,Regon,CreateDate,Status,UpdateDate,ImgDriveName,ActivationToken,Info,TesterStatus,TesterDate FROM `User` ";
-      $query.="WHERE Email='".$email."' and Password='".$password."'";
+      $query.="WHERE Email='".mysql_real_escape_string($email)."' and Password='".mysql_real_escape_string($password)."'";
       $DB->query($query);
       $objUserBean = new UserBean();
       if ($DB->numRows()==1){
@@ -147,13 +144,10 @@ class UserDao{
           
    public function getByEmail($email){
        
-      $email  = mysql_real_escape_string($email);
-      $password  = mysql_real_escape_string($password);
-       
       $DB = new DB();
       $DB->connect();
       $query="SELECT UserId,CountryId,ProvinceId,Email,Password,CompanyName,NameFirst,NameLast,Street,Number,Zip,City,Phone1,Phone2,Fax1,Fax2,Website1,Website2,NipPL,NipUE,Regon,CreateDate,Status,UpdateDate,ImgDriveName,ActivationToken,Info,TesterStatus,TesterDate FROM `User` ";
-      $query.="WHERE Email='".$email."'";
+      $query.="WHERE Email='".mysql_real_escape_string($email)."'";
       $DB->query($query);
       $objUserBean = new UserBean();
       if ($DB->numRows()==1){

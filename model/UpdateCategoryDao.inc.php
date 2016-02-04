@@ -14,8 +14,8 @@ class UpdateCategoryDao{
    public function create($objUpdateCategoryBean){
       $DB = new DB();
       $DB->connect();
-      $query = "INSERT INTO UpdateCategory(FatherId,Name,SeoName,ListOrder,ContentType,NumberOfItems) ";
-      $query.= "VALUES('".$objUpdateCategoryBean->getFatherId()."','".$objUpdateCategoryBean->getName()."','".$objUpdateCategoryBean->getSeoName()."','".$objUpdateCategoryBean->getListOrder()."','".$objUpdateCategoryBean->getContentType()."','".$objUpdateCategoryBean->getNumberOfItems()."') ";
+      $query = "INSERT INTO UpdateCategory(FatherId,Name,SeoName,ListOrder,ContentType,NumberOfItems,IsModule) ";
+      $query.= "VALUES('".$objUpdateCategoryBean->getFatherId()."','".$objUpdateCategoryBean->getName()."','".$objUpdateCategoryBean->getSeoName()."','".$objUpdateCategoryBean->getListOrder()."','".$objUpdateCategoryBean->getContentType()."','".$objUpdateCategoryBean->getNumberOfItems()."','".$objUpdateCategoryBean->getIsModule()."') ";
       $DB->query($query);
       return $DB->getLast();
    }
@@ -28,14 +28,15 @@ class UpdateCategoryDao{
       $query.="SeoName='".$objUpdateCategoryBean->getSeoName()."',";
       $query.="ListOrder='".$objUpdateCategoryBean->getListOrder()."',";
       $query.="ContentType='".$objUpdateCategoryBean->getContentType()."',";
-      $query.="NumberOfItems='".$objUpdateCategoryBean->getNumberOfItems()."' ";
+      $query.="NumberOfItems='".$objUpdateCategoryBean->getNumberOfItems()."',";
+      $query.="IsModule='".$objUpdateCategoryBean->getIsModule()."' ";
       $query.="WHERE UpdateCategoryId=".$objUpdateCategoryBean->getUpdateCategoryId()."";
       $DB->query($query);
    }
    public function read($id){
       $DB = new DB();
       $DB->connect();
-      $query="SELECT UpdateCategoryId,FatherId,Name,SeoName,ListOrder,ContentType,NumberOfItems FROM UpdateCategory";
+      $query="SELECT UpdateCategoryId,FatherId,Name,SeoName,ListOrder,ContentType,NumberOfItems,IsModule FROM UpdateCategory";
       $query.=" WHERE UpdateCategoryId=".$id;
       $DB->query($query);
       $objUpdateCategoryBean= new UpdateCategoryBean();
@@ -46,6 +47,7 @@ class UpdateCategoryDao{
       $objUpdateCategoryBean->setListOrder($DB->getField("ListOrder"));
       $objUpdateCategoryBean->setContentType($DB->getField("ContentType"));
       $objUpdateCategoryBean->setNumberOfItems($DB->getField("NumberOfItems"));
+      $objUpdateCategoryBean->setIsModule($DB->getField("IsModule"));
 
       return $objUpdateCategoryBean;
    }
@@ -53,7 +55,7 @@ class UpdateCategoryDao{
    public function readByCatSeo($CatName){
       $DB = new DB();
       $DB->connect();
-      $query="SELECT UpdateCategoryId,FatherId,Name,SeoName,ListOrder,ContentType,NumberOfItems FROM UpdateCategory";
+      $query="SELECT UpdateCategoryId,FatherId,Name,SeoName,ListOrder,ContentType,NumberOfItems,IsModule FROM UpdateCategory";
       $query.=" WHERE SeoName='".$CatName."'";
       $DB->query($query);
       $objUpdateCategoryBean= new UpdateCategoryBean();
@@ -64,6 +66,7 @@ class UpdateCategoryDao{
       $objUpdateCategoryBean->setListOrder($DB->getField("ListOrder"));
       $objUpdateCategoryBean->setContentType($DB->getField("ContentType"));
       $objUpdateCategoryBean->setNumberOfItems($DB->getField("NumberOfItems"));
+      $objUpdateCategoryBean->setIsModule($DB->getField("IsModule"));
 
       return $objUpdateCategoryBean;
    }

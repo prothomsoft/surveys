@@ -19,16 +19,13 @@
 <div class="ui-helper-clearfix spacer"></div>
 
 <div class="ui-widget-content ui-corner-all center-content">
-	<div style="height:50px;">
-		<div style="float:left">
-			<input type="file" name="uploadify" id="uploadify" />
-		</div>
-		<div id="fileQueue" style="float:right;">
-		</div>
-	</div>
-	<div class="ui-helper-clearfix spacer"></div>
-	<div id="filesUploaded"></div>
-	
+	<form>
+        <div id="queue" style="padding-bottom:10px;"></div>
+        <input id="file_upload" name="file_upload" type="file" multiple="true">        
+    </form>
+    
+    <div class="ui-helper-clearfix spacer"></div>
+    <div id="filesUploaded"></div>
 	<div class="ui-helper-clearfix spacer"></div>
 	
 	<form name="f1" method="post" action="index.php">

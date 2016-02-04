@@ -1,6 +1,6 @@
 <? 
 $arrTab[1]="Content";
-$arrTab[2]="Pictures";
+//$arrTab[2]="Zdjęcia";
 ?>
 <?for($i=1;$i<count($arrTab)+1;$i++) {?>
    <? if($event->getName()==strtolower('showDeltaStep'.$i)){?>

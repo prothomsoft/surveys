@@ -23,13 +23,16 @@ $oT = new Translator('template3',$sLang);
 							<a href="<?=$SN;?>myAccountStart.html">MON COMPTE</a>										
 						</li>
 						<li style="background: #E50043; margin: 0px; border-left: 1px solid #FFF;">
-							<a href="<?=$SN;?>executeLogout.html">DÉCONNECTION</a>										
+							<a href="<?=$SN;?>executeLogout.html">DÉCONNEXION</a>																	
 						</li>
 						<?if($objUser->getUserId() == 3) {?>
                             <li style="background: #FF9900; margin: 0px; border-left: 1px solid #FFF;">
                                 <a href="<?=$SN;?>admin/index.php?event=showTopicsList"><?=$oT->gL("txtGoBackToAdminPanel")?></a>                                       
                             </li>    
-                        <?}?>       
+                        <?}?>                        
+                        <li style="background: #004379; margin: 0px; border-left: 1px solid #FFF;border-right: 1px solid #FFF;">
+                            <a href="<?=$SN;?>blog.html">LE BLOG</a>
+                        </li>
 						<li style="background: #004379; margin: 0px; border-left: 1px solid #FFF;border-right: 1px solid #FFF;">
 							<a href="<?=$SN;?>contact_form.html">NOUS CONTACTER</a>
 						</li>
@@ -39,7 +42,10 @@ $oT = new Translator('template3',$sLang);
 						</li>
 						<li style="background: #E50043; margin: 0px; border-left: 1px solid #FFF;">
 							<a href="<?=$SN;?>register.html">S'INSCRIRE</a>
-						</li>
+						</li>						
+						<li style="background: #004379; margin: 0px; border-left: 1px solid #FFF;border-right: 1px solid #FFF;">
+                            <a href="<?=$SN;?>blog.html">LE BLOG</a>
+                        </li>                                             
 						<li style="background: #004379; margin: 0px; border-left: 1px solid #FFF;border-right: 1px solid #FFF;">
 							<a href="<?=$SN;?>contact_form.html">NOUS CONTACTER</a>
 						</li>

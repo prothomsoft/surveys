@@ -9,6 +9,7 @@ $(document).ready(function() {
 											showPollStep1, showPollStep2, executePollWizardClose,
 											showTopicStep1, showTopicStep2, executeTopicWizardClose,
 											showSigmaStep1, showSigmaStep2, executeSigmaWizardClose,
+											showDeltaStep1, showDeltaStep2, executeDeltaWizardClose,
 											showCmsContentStep1, showCmsContentStep2, executeCmsContentWizardClose, showProductStep2);?>
 	<?$currentEvent = $event->getArg('event');?>
 	
@@ -642,9 +643,101 @@ $(document).ready(function() {
             /* TopicId */ { "sClass": "center", "bSearchable": false, "bVisible": false },
             /* Question */ { "sClass": "center", "bSortable": false, "bVisible": true },                   
             /* CreateDate */ { "sClass": "center", "bVisible": false },
+            /* UpdateCategoryId */ { "sClass": "center", "bVisible": true },
             /* Status */ { "sClass": "center", "bSortable": false, "bVisible": true },
-            /* Question */ { "sClass": "center", "bVisible": false },
             /* TopicOrder */ { "sClass": "center" },
+            /* Action */ { "sClass": "center", "sType": "html", "bSortable": false , "bSearchable": false }                     
+        ],
+        "fnServerData": function ( sSource, aoData, fnCallback ) {
+            aoData.push(    { "name": "searchKeyword", "value": "<?=$event->getArg('searchKeyword')?>" },
+                            { "name": "searchInitials", "value": "<?=$event->getArg('searchInitials')?>" } );
+            $.ajax( {
+                "dataType": 'json', 
+                "type": "POST", 
+                "url": sSource, 
+                "data": aoData, 
+                "success": fnCallback
+            } );
+        }
+    });
+    
+    <?if ($event->getArg('DeltaWizardStep2') != "") {?>
+        <?$DeltaId = $event->getArg('DeltaId');?>
+        // Refresh Edit Mode -------->
+        refreshDeltaPicture();
+        
+        // File Upload -------->
+        $("#uploadify").uploadify({
+            'uploader'       : 'uploadify/uploadify.swf',
+            'script'         : 'uploadify/uploadifyDeltaPicture.php',
+            'scriptData'     : {'DeltaId': <?=$DeltaId?>},
+            'cancelImg'      : '../images/cancel.png',
+            'fileExt'        : '*.jpg;',
+            'fileDesc'       : 'Only .jpg files are allowed',
+            'buttonImg'      : '../images/upload_btn_pl.jpg',
+            'width'          : '155',
+            'height'         : '31',
+            'sizeLimit'      : '2000000',
+            'buttonText'     : '',
+            'folder'         : '../upload',
+            'queueID'        : 'fileQueue',
+            'auto'           : true,
+            'multi'          : false,
+            'wmode'          : 'transparent',
+            'onError': function (event, queueID ,fileObj, errorObj) {
+                    alert("Error: "+errorObj.type+"      Info: "+errorObj.info +"");
+                    },
+            'onComplete'     : function(event, queueID, fileObj, response, data1) {
+                $.ajax({
+                    url: "index.php?event=findDeltaPictureByDeltaId",
+                    dataType: "json",
+                    data: {'DeltaId': <?=$DeltaId?>},
+                    success: function(data) {
+                        if(!data) {
+                            return false;
+                        }
+                        $html = "";
+                        $("#filesUploaded").html($html);
+                        $.map(data.DeltaPicture, function(item) {
+                            $html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
+                            $html = $html + '<input onBlur="javascript:executeDeltaSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
+                            if(item.MainPicture == 0) {
+                                $html = $html + '<a href="javascript:executeDeltaPictureSetMain(\'<?=$DeltaId?>\', \'' + item.ImgDriveName + '\')">Main</a>&nbsp;|&nbsp;';
+                            }
+                            $html = $html + '<a href="javascript:executeDeltaPictureRemove(\'<?=$DeltaId?>\', \'' + item.ImgDriveName + '\')">Remove</a></div>';                            
+                        })
+                        $("#filesUploaded").html($html);
+                    }
+                });
+            }
+        });
+    <?}?>
+    
+    // ---------------------------->
+    // DeltaTable --------->
+    // ---------------------------->
+    $('#idDeltaTable').dataTable( {
+        "bAutoWidth": false,
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers",
+        "bProcessing": true,
+        "bServerSide": true,
+        "sAjaxSource": "index.php?event=getDeltaTableData",
+        "aaSorting": [[ 5, "desc" ]],
+        "bProcessing": false,
+        "bLengthChange": true,
+        "iDisplayLength": 10, 
+        "sDom": '<"top"p>t<"bottom"pl<"clear">',
+        "oLanguage": {
+            "sUrl": "../lang/pl_PL.txt"
+        },                  
+        "aoColumns": [              
+            /* DeltaId */ { "sClass": "center", "bSearchable": false, "bVisible": false },
+            /* ImgDriveName */ { "sClass": "center", "bSortable": false, "bVisible": false },                   
+            /* Name */ { "sClass": "center", "bVisible": true },
+            /* SeoName */ { "sClass": "center", "bVisible": false },
+            /* UpdateDate */ { "sClass": "center", "bVisible": false },
+            /* DeltaOrder */ { "sClass": "center" },
             /* Action */ { "sClass": "center", "sType": "html", "bSortable": false , "bSearchable": false }                     
         ],
         "fnServerData": function ( sSource, aoData, fnCallback ) {
@@ -666,50 +759,44 @@ $(document).ready(function() {
 		refreshSigmaPicture();
 		
 		// File Upload -------->
-		$("#uploadify").uploadify({
-			'uploader'       : 'uploadify/uploadify.swf',
-			'script'         : 'uploadify/uploadifySigmaPicture.php',
-			'scriptData'	 : {'SigmaId': <?=$SigmaId?>},
-			'cancelImg'      : '../images/cancel.png',
-			'fileExt'		 : '*.jpg;',
-			'fileDesc'		 : 'Only .jpg files are allowed',
-			'buttonImg'		 : '../images/upload_btn_en.jpg',
-			'width'			 : '155',
-			'height'		 : '31',
-			'sizeLimit'		 : '2000000',
-			'buttonText'	 : '',
-			'folder'         : '../upload',
-			'queueID'        : 'fileQueue',
-			'auto'           : true,
-			'multi'          : false,
-			'wmode'			 : 'transparent',
-			'onError': function (event, queueID ,fileObj, errorObj) {
-                    alert("Error: "+errorObj.type+"      Info: "+errorObj.info +"");
-                    },
-			'onComplete'	 : function(event, queueID, fileObj, response, data1) {
-				$.ajax({
-					url: "index.php?event=findSigmaPictureBySigmaId",
-					dataType: "json",
-					data: {'SigmaId': <?=$SigmaId?>},
-					success: function(data) {
-						if(!data) {
-							return false;
-						}
-						$html = "";
-						$("#filesUploaded").html($html);
-						$.map(data.SigmaPicture, function(item) {
-							$html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
-							$html = $html + '<input onBlur="javascript:executeSigmaSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
-							if(item.MainPicture == 0) {
-								$html = $html + '<a href="javascript:executeSigmaPictureSetMain(\'<?=$SigmaId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
-							}
-							$html = $html + '<a href="javascript:executeSigmaPictureRemove(\'<?=$SigmaId?>\', \'' + item.ImgDriveName + '\')">Remove</a></div>';							
-						})
-						$("#filesUploaded").html($html);
-					}
-				});
-			}
-		});
+        <?php $timestamp = time();?>
+        $(function() {
+            $('#file_upload').uploadifive({
+                'auto'             : true,
+                'checkScript'      : 'uploadify/check-exists.php',
+                'formData'         : {
+                                       'timestamp' : '<?php echo $timestamp;?>',
+                                       'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
+                                       'SigmaId': <?=$SigmaId?>
+                                     },
+                'queueID'          : 'queue',
+                'uploadScript'     : 'uploadify/uploadifiveSigmaPicture.php',
+                'onUploadComplete' : function(file, data) {
+                    $.ajax({
+                        url: "index.php?event=findSigmaPictureBySigmaId",
+                        dataType: "json",
+                        data: {'SigmaId': <?=$SigmaId?>},
+                        success: function(data) {
+                            if(!data) {
+                                return false;
+                            }
+                            $html = "";
+                            $("#filesUploaded").html($html);
+                            $.map(data.SigmaPicture, function(item) {
+                                $html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/' + item.ImgDriveName +'" target="_blank"><img width="200px" src="../upload/' + item.ImgDriveName +'"/></a></div><br/><br/>';
+                                $html = $html + '<input onBlur="javascript:executeSigmaSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
+                                if(item.MainPicture == 0) {
+                                    $html = $html + '<a href="javascript:executeSigmaPictureSetMain(\'<?=$SigmaId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
+                                }
+                                $html = $html + '<a href="javascript:executeSigmaPictureRemove(\'<?=$SigmaId?>\', \'' + item.ImgDriveName + '\')">Remove</a></div>';                            
+                            })
+                            $("#filesUploaded").html($html);
+                        }
+                    });
+                }
+            });
+        });
+		
 	<?}?>
 	
 	// ---------------------------->
@@ -868,52 +955,50 @@ $(document).ready(function() {
 	
 	<?if ($event->getArg('CmsContentWizardStep2') != "") {?>
 		<?$CmsContentId = $event->getArg('CmsContentId');?>
+		
 		// Refresh Edit Mode -------->
 		refreshCmsContentPicture();
 		
 		// File Upload -------->
-		$("#uploadify").uploadify({
-			'uploader'       : 'uploadify/uploadify.swf',
-			'script'         : 'uploadify/uploadifyCmsContentPicture.php',
-			'scriptData'	 : {'CmsContentId': <?=$CmsContentId?>},
-			'cancelImg'      : '../images/cancel.png',
-			'fileExt'		 : '*.jpg;',
-			'fileDesc'		 : 'Only .jpg files are allowed',
-			'buttonImg'		 : '../images/upload_btn_en.jpg',
-			'width'			 : '155',
-			'height'		 : '31',
-			'sizeLimit'		 : '2000000',
-			'buttonText'	 : '',
-			'folder'         : '../upload',
-			'queueID'        : 'fileQueue',
-			'auto'           : true,
-			'multi'          : false,
-			'wmode'			 : 'transparent',
-			'onError': function (event, queueID ,fileObj, errorObj) {
-                    alert("Error: "+errorObj.type+"      Info: "+errorObj.info +"");
-                    },
-            'onComplete'	 : function(event, queueID, fileObj, response, data1) {
-				$.ajax({
-					url: "index.php?event=findCmsContentPictureByCmsContentId",
-					dataType: "json",
-					data: {'CmsContentId': <?=$CmsContentId?>},
-					success: function(data) {
-						if(!data) {
-							return false;
-						}
-						$html = "";
-						$("#filesUploaded").html($html);
-						$.map(data.CmsContentPicture, function(item) {
-							$html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
-							$html = $html + '<input onBlur="javascript:executeCmsContentSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/>';
-							$html = $html + '<input onBlur="javascript:executeCmsContentSavePictureOrder(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'1" value="' + item.ImgOrder +'" style="width:190px;"><br/><br/>';
-							$html = $html + '<a href="javascript:executeCmsContentPictureRemove(\'<?=$CmsContentId?>\', \'' + item.ImgDriveName + '\')">Remove</a></div>';							
-						})
-						$("#filesUploaded").html($html);
-					}
-				});
-			}
-		});
+		<?php $timestamp = time();?>
+        $(function() {
+            $('#file_upload').uploadifive({
+                'auto'             : true,
+                'checkScript'      : 'uploadify/check-exists.php',
+                'formData'         : {
+                                       'timestamp' : '<?php echo $timestamp;?>',
+                                       'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
+                                       'CmsContentId': <?=$CmsContentId?>
+                                     },
+                'queueID'          : 'queue',
+                'uploadScript'     : 'uploadify/uploadifiveCmsContentPicture.php',
+                'onUploadComplete' : function(file, data) {
+                    $.ajax({
+                        url: "index.php?event=findCmsContentPictureByCmsContentId",
+                        dataType: "json",
+                        data: {'CmsContentId': <?=$CmsContentId?>},
+                        success: function(data) {
+                            if(!data) {
+                                return false;
+                            }
+                            $html = "";
+                            $("#filesUploaded").html($html);
+                            $.map(data.CmsContentPicture, function(item) {
+                                $html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/' + item.ImgDriveName +'" target="_blank" width="200px"><img src="../upload/' + item.ImgDriveName +'" width="200px"/></a></div><br/><br/>';
+                                $html = $html + '<input onBlur="javascript:executeCmsContentSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/>';
+                                $html = $html + '<input onBlur="javascript:executeCmsContentSavePictureOrder(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'1" value="' + item.ImgOrder +'" style="width:190px;"><br/><br/>';
+                                $html = $html + '<a href="javascript:executeCmsContentPictureRemove(\'<?=$CmsContentId?>\', \'' + item.ImgDriveName + '\')">Remove</a></div>';                          
+                            })
+                            $("#filesUploaded").html($html);
+                        }
+                    });    
+                    
+                }
+            });
+        });
+		
+		
+		
 	<?}?>
 	
 	// ---------------------------->
@@ -1727,6 +1812,76 @@ $(document).ready(function() {
 <?}?>
 
 
+<?if ($event->getArg('DeltaWizardStep2') != "") {?>
+    function executeDeltaPictureRemove($DeltaId, $pictureId) {
+        $.ajax({
+            url: "index.php?event=executeDeltaPictureRemove",
+            dataType: "json",
+            data: { 'DeltaId': $DeltaId,
+                    'pictureId': $pictureId},
+            success: function(data) {
+                refreshDeltaPicture();
+            }
+        });
+    }
+    
+    function executeDeltaSavePictureDescription(ImgDriveName, input) {
+        
+        var text = input.value;
+        text = text.replace("'", "")
+        
+        $.ajax({
+            url: "index.php?event=executeDeltaSavePictureDescription",
+            dataType: "json",
+            data: { 'imgDriveName': ImgDriveName,
+                    'imgAltName': text},
+            success: function(data) {
+                refreshDeltaPicture();
+            }
+        });     
+    }
+    
+    function executeDeltaPictureSetMain($DeltaId, $pictureId) {
+        $.ajax({
+            url: "index.php?event=executeDeltaPictureSetMain",
+            dataType: "json",
+            data: { 'DeltaId': $DeltaId,
+                    'pictureId': $pictureId},
+            success: function(data) {
+                refreshDeltaPicture();
+            }
+        });
+    }
+    
+    function refreshDeltaPicture() {
+        $.ajax({
+            url: "index.php?event=findDeltaPictureByDeltaId",
+            dataType: "json",
+            data: {'DeltaId': <?=$DeltaId?>},
+            success: function(data) {
+                if(!data) {
+                    $html = "";
+                    $("#filesUploaded").html($html);
+                    return false;
+                }
+                $html = "";
+                $("#filesUploaded").html($html);
+                $.map(data.DeltaPicture, function(item) {
+                    $html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
+                    $html = $html + '<input onBlur="javascript:executeDeltaSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
+                    if(item.MainPicture == 0) {
+                        $html = $html + '<a href="javascript:executeDeltaPictureSetMain(\'<?=$DeltaId?>\', \'' + item.ImgDriveName + '\')">Main</a>&nbsp;|&nbsp;';
+                    }
+                    $html = $html + '<a href="javascript:executeDeltaPictureRemove(\'<?=$DeltaId?>\', \'' + item.ImgDriveName + '\')" onclick="return confirm(\'Are you sure you want to remove this record?\')">Remove</a></div>';
+                    
+                })
+                $("#filesUploaded").html($html);
+            }
+        });
+    }
+<?}?>
+
+
 <?if ($event->getArg('SigmaWizardStep2') != "") {?>
 	function executeSigmaPictureRemove($SigmaId, $pictureId) {
 		$.ajax({
@@ -1782,7 +1937,7 @@ $(document).ready(function() {
 				$html = "";
 				$("#filesUploaded").html($html);
 				$.map(data.SigmaPicture, function(item) {
-					$html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
+					$html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/' + item.ImgDriveName +'" target="_blank"><img width="200px" src="../upload/' + item.ImgDriveName +'"/></a></div><br/><br/>';
 					$html = $html + '<input onBlur="javascript:executeSigmaSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/><br/>';
 					if(item.MainPicture == 0) {
 						$html = $html + '<a href="javascript:executeSigmaPictureSetMain(\'<?=$SigmaId?>\', \'' + item.ImgDriveName + '\')">Main Picture</a>&nbsp;|&nbsp;';
@@ -1866,7 +2021,7 @@ $(document).ready(function() {
 				$html = "";
 				$("#filesUploaded").html($html);
 				$.map(data.CmsContentPicture, function(item) {
-					$html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/proper/' + item.ImgDriveName +'" target="_blank"><img src="../upload/micro/' + item.ImgDriveName +'"/></a></div><br/><br/>';
+					$html = $html + '<div class="galeria" style="float:left; padding:20px; text-align:center;"><div style="width:200px; height:200px;"><a href="../upload/' + item.ImgDriveName +'" target="_blank" width="200px"><img src="../upload/' + item.ImgDriveName +'" width="200px"/></a></div><br/><br/>';
 					$html = $html + '<input onBlur="javascript:executeCmsContentSavePictureDescription(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'" value="' + item.ImgAltName +'" style="width:190px;"><br/>';
 					$html = $html + '<input onBlur="javascript:executeCmsContentSavePictureOrder(\''+ item.ImgDriveName+ '\', this);" type="text" name="' + item.ImgDriveName +'1" value="' + item.ImgOrder +'" style="width:190px;"><br/><br/>';
 					$html = $html + '<a href="javascript:executeCmsContentPictureRemove(\'<?=$CmsContentId?>\', \'' + item.ImgDriveName + '\')" onclick="return confirm(\'Are you sure you want to remove this picture??\')">Remove</a></div>';

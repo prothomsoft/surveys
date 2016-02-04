@@ -110,22 +110,6 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 					    	<ul class="slides">
 
 
-							
-								<li>
-									<div class="flex-slides">
-										<div class="row">
-											<div class="col-xs-12 col-sm-12 col-md-12">
-												<a href="http://grandeconsultation.fr/register.html" target="_blank"><div class="slide-text-banner-1">
-											        <h1>Vous êtes entrepreneur ?</h1>
-											        <h2>Venez rejoindre la grande consultation !</h2>
-											        <h3></h3>
-											    </div></a>
-											</div>
-										</div>
-									</div>
-								</li>
-								
-
 								
 								<li>
 							  		<div class="flex-slides">
@@ -149,7 +133,7 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 									</div>
 								</li>
 								
-								
+
 								
 								<li>
 									<div class="flex-slides">

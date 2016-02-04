@@ -5,7 +5,7 @@ $objSigma =  $event->getArg("objSigma");
 
 <div class="ui-widget" style="margin:-14px 0px 0px 0px;">
 	<div class="ui-widget-header ui-corner-top center-header">
-		News Comments			
+		Blog Comments			
 	</div>
 	
 	<div class="ui-widget-content ui-corner-bottom center-content">

@@ -146,7 +146,7 @@
         <!-- START --> <!-- START --> <!-- START -->
         <event-handler event="surveys">
         	<notify listener="RightsListener" method="getAllowedEventsList" />        	
-        	<notify listener="SigmaListener" method="findLatest" />
+        	<notify listener="SigmaListener" method="findThreeLatest" />
         	<notify listener="SigmaListener" method="getQueue" />
         	<notify listener="SigmaListener" method="getListNavigation" />
         	<notify listener="SigmaListener" method="getList" />
@@ -1004,8 +1004,7 @@
          <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours -->
         <event-handler event="lesConsultationsEnCours" access="public">
             <notify listener="RightsListener" method="getAllowedEventsList" />
-            <notify listener="TopicListener" method="findActive" />
-            <view-page name="lesConsultationsEnCoursView" contentKey="lesConsultationsEnCoursView" />
+            
             <!--<view-page name="carouselView" contentKey="carouselView" />-->
             <view-page name="navigationView" contentKey="navigationView" />
             <view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
@@ -1017,6 +1016,7 @@
         <event-handler event="lesConsultationsEnCoursChat" access="public">
             <notify listener="RightsListener" method="getAllowedEventsList" />
             <notify listener="TopicListener" method="getByIdFO" />
+            <notify listener="TopicListener" method="findActive" />
             <view-page name="lesConsultationsEnCoursChatView" contentKey="lesConsultationsEnCoursChatView" />
             <!--<view-page name="carouselView" contentKey="carouselView" />-->
             <view-page name="navigationView" contentKey="navigationView" />
@@ -1053,6 +1053,45 @@
             <view-page name="template4" />          
         </event-handler>
         <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours -->
+        
+        <event-handler event="blog" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="SigmaListener" method="findLatest" />
+            <notify listener="SigmaListener" method="getQueue" />
+            <notify listener="SigmaListener" method="getListNavigation" />
+            <notify listener="SigmaListener" method="getList" />
+            <view-page name="navigationView" contentKey="navigationView" />
+            <view-page name="blogCategoriesView" contentKey="blogCategoriesView" />
+            <view-page name="blogView" contentKey="blogView" />
+            <view-page name="footerView" contentKey="footerView" />
+            <view-page name="template3" />
+        </event-handler>
+        
+        <event-handler event="blog_entry" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="SigmaListener" method="findByItemSeo" />
+            <notify listener="SigmaListener" method="findLatest" />
+            <notify listener="SigmaPictureListener" method="getBySigmaObjAndId" />
+            <notify listener="BookListener" method="getList" />
+            <view-page name="navigationView" contentKey="navigationView" />
+            <view-page name="blogCategoriesView" contentKey="blogCategoriesView" />
+            <view-page name="blogEntryView" contentKey="blogEntryView" />
+            <view-page name="footerView" contentKey="footerView" />
+            <view-page name="template3" />
+        </event-handler>
+        
+        <event-handler event="blog_comment_save" access="public">
+            <event-arg name="failEvent" value="blog_entry" />
+            <filter name="validateBookFieldsFilter" />
+            <notify listener="BookListener" method="saveBook" />
+        </event-handler>
+        
+        <event-handler event="executePollVoteAction" access="public">
+            <notify listener="PollListener" method="executePollVoteAction"/>
+            <view-page name="responseJSON" />            
+        </event-handler>
+        
+        
                                 
     </event-handlers>
 
@@ -1202,6 +1241,15 @@
     	<!--  lesConsultationsEnCours -->
         <page-view name="lesConsultationsEnCoursView" page="/views/front/chat/lesConsultationsEnCoursView.php"/>
         <page-view name="lesConsultationsEnCoursChatView" page="/views/front/chat/lesConsultationsEnCoursChatView.php"/>
+        
+        <!-- BLOG -->
+        <page-view name="blogCategoriesView" page="/views/front/blog/blogCategoriesView.php"/>
+        <page-view name="blogView" page="/views/front/blog/blogView.php"/>
+        <page-view name="blogEntryView" page="/views/front/blog/blogEntryView.php"/>        
+        
+        <!-- BOOK -->
+    	<page-view name="bookFormView" page="/views/front/blogcomment/bookFormView.php"/>
+    	<page-view name="bookConfirmationView" page="/views/front/blogcomment/bookConfirmationView.php"/>
         
         
                 

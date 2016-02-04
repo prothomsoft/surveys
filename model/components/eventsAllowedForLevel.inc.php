@@ -66,6 +66,7 @@ class EventsAllowedForLevel {
 	  executeedituserapprovedaction,
 	  showuserapprovedview,
 	  executeremoveusersapprovedaction,
+	  downloaduserslist,
 	  	  	  
 	  // delta management
 	  getdeltatabledata,

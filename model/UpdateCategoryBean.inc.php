@@ -11,6 +11,7 @@ class UpdateCategoryBean{
    private $ContentType;
    private $NumberOfItems;
    private $UpdateFile;   // additional property for foreign key object
+   private $IsModule;
 
    public function setUpdateCategoryId($val){
       $this->UpdateCategoryId=$val;
@@ -76,6 +77,14 @@ class UpdateCategoryBean{
       }
       return $this->UpdateFile;
    }
+   public function setIsModule($val){
+      $this->IsModule=$val;
+   }
+
+   public function getIsModule(){
+      return $this->IsModule;
+   }
+   
 
 }
 ?>

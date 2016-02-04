@@ -117,7 +117,7 @@ $arrSigmaPictures = $objSigmaPictureGateway->getBySigmaObjAndId($objSigma->getSi
 			    <fieldset>
 			    <label for="123">Enter text from the image:  <font color="red">*</font> (<a href="#" onclick="document.getElementById('captcha').src = '<?=$SN?>/filters/securimage/securimage_show.php?' + Math.random(); return false">Change the image</a>)</label>
 			    <input style="width:250px" class="text ui-widget-content ui-corner-all" type="text" name="captcha_code" size="20" maxlength="16" />&nbsp;&nbsp;&nbsp;
-			    </fieldset
+			    </fieldset>
 				</p>
 				
 				<div style="text-align:left; padding: 20px 0px 20px 10px;">

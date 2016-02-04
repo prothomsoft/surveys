@@ -44,7 +44,7 @@ class TopicMessageGateway {
 		{
 			while($DB->move_next())
 			{
-			    $objTopicMessage = new TopicMessageBean();
+				$objTopicMessage = new TopicMessageBean();
 				$objTopicMessage->setTopicMessageId($DB->getField("TopicMessageId"));
 				$objTopicMessage->setUserId($DB->getField("UserId"));
 				$objTopicMessage->setTopicId($DB->getField("TopicId"));

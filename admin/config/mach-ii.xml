@@ -293,7 +293,16 @@
         	<notify listener="RightsListener" method="getAllowedEventsList" />
            	<notify listener="UserListener" method="removeRecord" />
 			<announce event="showUsersApprovedList" copyEventArgs="false" />
-        </event-handler>               
+        </event-handler>
+        
+        <!-- downloadUsersList -->
+        <event-handler event="downloadUsersList">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="UserListener" method="findAll" />
+            <view-page name="UsersListDownload" contentKey="UsersListDownload" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />
+            <view-page name="template" />
+        </event-handler>                  
         <!-- APPROVED USERS LIST --> <!-- APPROVED USERS LIST --> <!-- APPROVED USERS LIST -->
         
         
@@ -1227,7 +1236,6 @@
 			<notify listener="UpdateCategoryListener" method="getAdminCategoriesPath"/>
 			<notify listener="UpdateCategoryListener" method="findByFatherId"/>
 			<view-page name="c2BoxUpdateCategoryListView" contentKey="c2BoxUpdateCategoryListView" />
-			<view-page name="c2BoxUpdateFileListView" contentKey="c2BoxUpdateFileListView" />
 			<view-page name="documentReadyScript" contentKey="documentReadyScript" />
 			<view-page name="template" />
         </event-handler>  
@@ -1524,6 +1532,7 @@
          <!-- User -->
         <page-view name="userList" page="/views/admin/user/userList.php" />
         <page-view name="userAddEdit" page="/views/admin/user/userAddEdit.php" />
+        <page-view name="UsersListDownload" page="/views/admin/user/UsersListDownload.php" />
         
         <!-- Producer -->
         <page-view name="producerList" page="/views/admin/producer/producerList.php" />

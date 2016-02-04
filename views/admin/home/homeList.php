@@ -36,8 +36,8 @@
 		<div class="ui-widget-content ui-corner-all center-header">
             <p>Chat topics</p>
             <p>&nbsp;</p>
+            <span class="wizardButton"><a href="index.php?event=showUpdateCategoryList">Edit Topic Tree</a><span>
             <span class="wizardButton"><a href="index.php?event=showTopicsList">List of Topics</a><span>
-            <span class="wizardButton"><a href="index.php?event=showTopicStep1">Add Topic</a><span>
             <span class="wizardButton"><a href="../index.php?event=lesConsultationsEnCours">Join as Admin</a><span>
         </div>
         
@@ -82,6 +82,25 @@
 		<div class="ui-helper-clearfix spacer">
 		</div>
 		<?*/?>
+		
+		<div class="ui-widget-content ui-corner-all center-header">
+            <p>Blog</p>
+            <p>&nbsp;</p>
+            <span class="wizardButton"><a href="index.php?event=showSigmasList">List of Blog Entries</a><span>
+            <span class="wizardButton"><a href="index.php?event=showSigmaStep1">Add Blog Entry</a><span>            
+        </div>
+                
+        <div class="ui-helper-clearfix spacer">
+        </div>
+        
+        <div class="ui-widget-content ui-corner-all center-header">
+            <p>Blog Comments</p>
+            <p>&nbsp;</p>
+            <span class="wizardButton"><a href="index.php?event=showBookList">List of Blog Comments</a><span>                       
+        </div>
+        
+        <div class="ui-helper-clearfix spacer">
+        </div>
 		
 		<div class="ui-widget-content ui-corner-all center-header">
 			<p>Users</p>

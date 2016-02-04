@@ -34,7 +34,7 @@ class model_UserListener extends MachII_framework_Listener {
 				$arrResult = array(validationResult => true, userType => "admin");
 				header("Location: ".$SN."admin/index.php?event=startAdmin");
 			} else {
-				header("Location: ".$SN."myAccountStart.html");
+				header("Location: ".$SN."lesConsultationsEnCoursChat.html");
 			}
 		} else {
 			$newEventArgs = &$event->getArgs();
@@ -170,6 +170,7 @@ class model_UserListener extends MachII_framework_Listener {
 	}
 		
 	function createUserWithActivation(&$event) {
+		echo "123";
 		$objUserBean = new UserBean();
 		$objUserBean->setEmail($event->getArg('email'));
 		$password = $event->getArg('password');

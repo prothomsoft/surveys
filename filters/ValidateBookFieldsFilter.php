@@ -27,21 +27,7 @@ class filters_ValidateBookFieldsFilter extends MachII_framework_EventFilter
         	$this->announceEvent($event->getArg('failEvent'), $newEventArgs);
         	return false;
         }
-        
-		if ($event->isArgDefined('captcha_code') && ($event->getArg('captcha_code') == '')) {
-        	$newEventArgs['message'] = 'Text from the image is a required field';
-        	$newEventArgs['missingField'] = 'captcha_code';
-        	$this->announceEvent($event->getArg('failEvent'), $newEventArgs);
-        	return false;
-        }
-        
-        $securimage = new Securimage();
-        if ($securimage->check($event->getArg('captcha_code')) == false) {
-        	$newEventArgs['message'] = 'Text from the image was typed incorrectly';
-        	$newEventArgs['missingField'] = 'captcha_code';
-        	$this->announceEvent($event->getArg('failEvent'), $newEventArgs);
-        	return false;
-        }		
+        	
         return true;
     }
 }

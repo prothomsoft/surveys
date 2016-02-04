@@ -129,4 +129,3 @@ txtRegisterConfirmationMessage4 = "Merci de cliquer sur le lien suivant pour act
 txtSearchResults = "RESULTATS DE RECHERCHE"
 txtKeyword = "Mot clé"
 txtNoResultsFound = "Aucun résultat... Merci de préciser votre recherche."
-txtPleaseSelectATopic = "Please select a topic:"

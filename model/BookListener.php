@@ -98,9 +98,8 @@ class model_BookListener extends MachII_framework_Listener
 					$responseJSON .= '"'.str_replace('"', '\"', $aRow[ $aColumns[$i] ]).'",';
 				}
 			}
-			$responseJSON .= '"<a class=\"anchor_link\" href=\"index.php?event=showBookView&Book_id='.$BookId.'\">Details</a>';
-			$responseJSON .= ' | <a class=\"anchor_link\" href=\"index.php?event=executeRemoveBookAction&bookId='.$aRow[0].'\" onclick=\"return confirm(\'Are you sure you want to remove this record?\')\">Remove</a> ';
-			$responseJSON .= '<br/><a class=\"anchor_link\" href=\"index.php?event=executeAuthorizeBookAction&bookId='.$aRow[0].'\" onclick=\"return confirm(\'Are you sure you want to approve this record?\')\">Approve</a>",';
+			$responseJSON .= '"<a class=\"anchor_link\" href=\"index.php?event=showBookView&Book_id='.$BookId.'\">Details</a>';			
+			$responseJSON .= '<br/><a class=\"anchor_link\" href=\"index.php?event=executeRemoveBookAction&bookId='.$aRow[0].'\" onclick=\"return confirm(\'Are you sure you want to approve this record?\')\">Remove</a>",';
 			
 			$responseJSON = substr_replace( $responseJSON, "", -1 );
 			$responseJSON .= "],";
@@ -153,6 +152,8 @@ class model_BookListener extends MachII_framework_Listener
 		$lastName = $event->getArg("lastName");
 		$email = $event->getArg("email");
 		$id1 = $event->getArg("id1");
+        $id2 = $event->getArg("id2");
+        $parentId = $event->getArg("parentId");
 		$companyName = $event->getArg("companyName");
 		
 		$objBookBean = new BookBean();
@@ -162,84 +163,29 @@ class model_BookListener extends MachII_framework_Listener
 		$objBookBean->setCity("0");
 		$objBookBean->setCompanyName($companyName);
 		$objBookBean->setSigmaId($id1);
-		
+        $objBookBean->setParentId($parentId);
 		
 		$date = date('Y-m-d');
 		$objBookBean->setCreateDate($date);
 		
-		
 		$objBookDao = new BookDao();
 		$bookId = $objBookDao->create($objBookBean);
-		
-		
-		$fromEmail = "Marius Sjoli <mariussj@gmail.com>";
-		$toEmail = 'mariussj@gmail.com';
-		$subject  = 'New Entry for Blog Comment';
-		$messageContent = "First and Last Name: ".$firstName." ".$lastName."<br/>";
-		$messageContent .= "Email: ".$email."<br />";
-		$messageContent .= "Entry: ".$companyName."";
-		$mail = new Rmail();
-    	$mail->setFrom($fromEmail);
-    	$mail->setSubject($subject);
-	    $mail->setHTML($messageContent);
-    	//$result = $mail->send(array($toEmail));
-		
-		
-		$newEventArgs = &$event->getArgs();
-		$this->announceEvent("news_comment_confirm", $newEventArgs);
+		header("location:blog_entry/".$event->getArg('id1')."/".$event->getArg('id2').".html");
 	}
 	
-	function getQueue(&$event) {
-		$objAppSession = new AppSession();
-    	$objBookGateway = new BookGateway();
-    	
-    	if (!$event->isArgDefined('id3')) {
-    		$page = 1;
-    	} else {
-    		$page = $event->getArg('id3');
-    	}
-    	$blogId = $event->getArg("id1");
-    	 
-		$arrBook = $objBookGateway->findAllAuthorized($blogId);
-		$i=1;
-		if ($arrBook) {
-			foreach ($arrBook as $objBook) {
-	       		$arrIds[$i] = $objBook->getBookId();
-	       		$i++;
-	    	}
-	      	$event->setArg('arrQueue',$arrIds);
-		}
-	} 
-
-	function getListNavigation(&$event) {
-		if (!$event->isArgDefined('id3')) {
-	 		$page = 1;
-	 	} else { 
-	 		$page = $event->getArg('id3');
-	 	}
-      
-     	$arrQueue = $event->getArg('arrQueue');
-		$nBooks = count($arrQueue);
-		$objPagination = new pagination($nBooks,6); 
-    	$arrPagination = $objPagination->paginate("BookList",$page);
-    	$event->setArg('arrPagination',$arrPagination);
-   }  
-   
 	function getList(&$event){
-		$objAppSession = new AppSession();
 		$objBookGateway = new BookGateway();
-    	$arrPagination = $event->getArg('arrPagination');
-    	
-    	if (!$event->isArgDefined('id3')) {
-    		$page = 1;
-    	} else {
-    		$page = $event->getArg('id3');
-    	}
-    	$blogId = $event->getArg("id1");
-    	
-    	$arrBooks = $objBookGateway->findAllAuthorizedLimited($blogId, $arrPagination['nCurrentPage'],$arrPagination['nItemsPerPage']);
+    	$blogEntryId = $event->getArg("id1");
+    	$arrBooks = $objBookGateway->findAllAuthorized($blogEntryId);
     	$event->setArg('arrBooks',$arrBooks);	
 	}
+    
+    function getListLatest(&$event){
+        $objBookGateway = new BookGateway();
+        $blogEntryId = $event->getArg("id1");
+        $arrBooks = $objBookGateway->findAllAuthorizedLatest($blogEntryId);
+        $event->setArg('arrBooksLatest',$arrBooks);   
+    }
 	
 	function findByCategoryId(&$event) {
 		$categoryId = $event->getArg("id2");

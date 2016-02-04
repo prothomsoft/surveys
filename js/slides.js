@@ -4,7 +4,6 @@
 		$('.container-head-one').each(function() {
 			$(this).highcharts({
 				chart: {
-					type: 'column',
 					spacing: [15, 100, 5, 100],
 					marginTop: 30,
 					height: 360,
@@ -12,63 +11,64 @@
 				},
 
 				title: {
-					text: 'Grande consultation des entrepreneurs - Vague 1 / Février 2015',
+					text: 'Grande consultation des entrepreneurs - Vague 6 / Janvier 2016',
 					style: { "color": "#FFFFFF", "fontSize": "18px" }
 				},
 				subtitle: {
- 				   text: "- Etat d'esprit actuel -",
+ 				   text: '- L’indicateur de l’optimisme -',
  				   style: { "color": "#FFFFFF", "fontSize": "16px" }
-				},
+				},				
 				
-								
+				
+				
+				
 				xAxis: [{
-					categories: ['Inquiet', 'Méfiant', 'Optimiste', 'Attentiste', 'Confiant', 'Serein', 'Audacieux', 'Angoissé'],
-					labels: {
-					 	style: {"color":"#FFFFFF","fontWeight":"normal", "fontSize": '11pt', 'width': '230px',},	
-					},
+					categories: ['02/2015', '04/2015', '06/2015', '09/2015', '11/2015', '01/2016'],
+
 					lineColor: 'rgba(255, 255, 255, 0.01)',
-                    tickColor: 'rgba(255, 255, 255, 0.01)',
+	        		tickColor: 'rgba(255, 255, 255, 0.01)',
+	        		labels: {
+	            		style: {
+	                		fontSize: '8pt',
+							fontFamily: 'Tahoma',
+							color: 'white'
+	           					},
+							},
 				}],
 				
 				
-				yAxis: {
-                    min: 0,
-				    max: 60,
-				    labels: {
-					  enabled: false},
-					gridLineColor: 'rgba(255, 255, 255, 0.01)',
-					//opposite: true,
+				
+				yAxis: [{ 
 					title: {
-                     enabled: false,
-                     },
-				},
+						text: ''
+					},
+	        	gridLineColor: 'rgba(255, 255, 255, 0.2)',
+				labels: {
+                	formatter: function() {
+                    return this.value ;
+                		},
+	            	style: {
+	               	 fontSize: '8pt',
+						fontFamily: 'Tahoma',
+	                	color: 'rgba(255, 255, 255, 1)'
+	            		}
+	        		},
+				}],
 				
-            tooltip: {
-                formatter: function() {
-                    var s;
-                    if (this.point.name) { // the pie chart
-                        s = '' +
-                       this.series.name + '/ ' + this.point.name + ': ' + this.y + '%';
-                    } else {
-                        s = '' + '<b>'+ 
-                       this.series.name + '/ ' + this.x + '</b>'+' : ' + this.y + '%';
-                    }
-                    return s;
-                },
-			},
 				
-			
-			labels: {
+		
+				
+							labels: {
 
                 items: [{
 
-                    html: "<i>Q : Parmi les qualificatifs suivants, quels sont ceux <br><i>qui caractérisent le mieux votre état d'esprit actuel ?<br><i> (Plusieurs réponses possibles)</i>",
+                    html: "<i>L’indicateur prend en compte la part de répondants qui se déclarent :<br><i> Optimistes ou qui pensent que ce sera mieux demain, ou qui ont confiance<br><i> dans leur entreprise ou qui pensent augmenter le nombre de salariés. <br><br><i>La référence est la vague 1 de février 2015 (base 100).</i>",
 
                     style: {
 
-                        left: '650px',
-                        top: '55px',
-                    	fontSize: '9pt',
+                        left: '100px',
+                        top: '70px',
+                    	fontSize: '8pt',
                     	color: '#FFFFFF',
 						fontFamily: 'Tahoma',
 
@@ -77,53 +77,54 @@
 			},
 				
 				
-			plotOptions: {
-                column: {
-                    dataLabels: {
-                        enabled: true,
-                        formatter: function() {
-                  return this.y + "%";
-                },
-				      style: {
-                        fontSize: '11pt',
-						fontFamily: 'Tahoma',
-						fontWeight: 'normal',
-						color: "#FFFFFF"
-						 },
-                    },
-                },
-            },
 				
-				       legend: {
-            layout: 'vertical',
-            align: 'right',
-			//reversed: true,
-            verticalAlign: 'top',
-            x: -360,
-            y: 70,
-            floating: true,
-            borderWidth: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.5)',
-            shadow: false
-        },
-					  
-				series: [{
-					name: 'Ensemble des entrepreneurs',
-					//yAxis: 1,
-					color: '#FF9900',
-					data: [40, 31, 30, 26, 24, 19, 16, 16]
+				 plotOptions: {
+            		series: {
+			 		lineWidth: 5,
+					dataLabels: {
+                    	enabled: true,
+                    	formatter: function() {
+                        	return this.y ;
+                    		},
+                   		style: {
+	                		fontSize: '15pt',
+							fontFamily: 'Tahoma',
+	               			color: 'white'
+	            	}
+                }
+			 }
+          },
 
+
+	 		tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.series.name +'</b><br/>'+
+                        this.x +': '+ this.y ;
+                },
+				style: {
+					color: '#333333',
+					fontFamily: 'Tahoma',
+					padding: '5px'
+					}
+            },
+
+
+       		series: [{
+                name: "L’indicateur de l’optimisme",
+                marker: {symbol: "circle", radius: 8},
+				color: '#E40342',
+				//symbol: 'circle",
+				data: [100, 109, 108, 130, 110, 104]
+            }],
+		
+				legend: {
+					enabled: false,
+					itemStyle: {
+	                		fontSize: '8pt',
+							fontFamily: 'Tahoma',
+	               			color: 'white'
+	            	}
 				},
-				{
-					name: 'Ensemble des Français',
-					//yAxis: 2,
-					color: '#E50043',
-					data: [40, 38, 20, 19, 14, 15, 6, 15]
-
-				}],
-
-
-
 				credits: {
 				      enabled: false
 				},
@@ -135,75 +136,81 @@
 	}
 
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	function initChart2() {
 		$('.container-head-two').each(function() {
 			$(this).highcharts({
 				chart: {
-					type: 'column',
-					spacing: [15, 60, 5, 60],
-					marginTop: 30,
+					type: 'line',
+					spacing: [15, 60, 8, 60],
+					marginTop: 80,
 					height: 360,
 					backgroundColor: 'rgba(0,67,120,1)'
 				},
 
 				title: {
-					text: 'Grande consultation des entrepreneurs - Vague 1 / Février 2015',
+					text: 'Grande consultation des entrepreneurs - Vague 6 / Janvier 2016',
 					style: { "color": "#FFFFFF", "fontSize": "18px" }
 				},
 				subtitle: {
- 				   text: "- Les pressions s’exerçant sur les entrepreneurs -",
+ 				   text: "- Etat d'esprit actuel des chefs d'entreprise -",
  				   style: { "color": "#FFFFFF", "fontSize": "16px" }
 				},
 				
 								
 				xAxis: [{
-					categories: ["La complexité et l'instabilité administrative et fiscale ","Les prix de ventes","Les délais de paiement de vos clients","Votre carnet de commande","La qualité de vos prestations","Les délais de livraison","Les ressources humaines ","Autres types de pressions  ","Aucune"],
+					categories: ['02/2015', '04/2015', '06/2015', '09/2015', '11/2015', '01/2016'],
                     lineColor: 'rgba(255, 255, 255, 0.01)',
                     tickColor: 'rgba(255, 255, 255, 0.01)',
 				    labels: {
-					 	style: {"color":"#FFFFFF","fontWeight":"normal", "fontSize": '10pt'},	
+					 	style: {"color":"#FFFFFF","fontWeight":"normal", "fontSize": '8pt'},	
 					},}],
 				
 				
-				yAxis: {
-                    min: 0,
-				    max: 60,
-				    labels: {
-					  enabled: false},
-					gridLineColor: 'rgba(255, 255, 255, 0.01)',
-					//opposite: true,
-					title: {
-                     enabled: false,
-                     },
-				},
+				yAxis: [{ 
+				min: 5,
+				max: 55,
+				title: {
+						text: ''
+					},
+	        	gridLineColor: 'rgba(255, 255, 255, 0.2)',
+				labels: {
+                	formatter: function() {
+                    return this.value + '%';
+                		},
+	            	style: {
+	               	 fontSize: '8pt',
+						fontFamily: 'Tahoma',
+	                	color: 'rgba(255, 255, 255, 1)'
+	            		}
+	        		},
+				}],
 				
-            tooltip: {
+	 		tooltip: {
                 formatter: function() {
-                    var s;
-                    if (this.point.name) { // the pie chart
-                        s = '' +
-                        this.point.name + ': ' + this.y + '%';
-                    } else {
-                        s = '' + '<b>'+ 
-                        this.x + '</b>'+' : ' + this.y + '%';
-                    }
-                    return s;
+                    return '<b>'+ this.series.name +'</b><br/>'+
+                        this.x +': '+ this.y + '%';
                 },
-			},
+				style: {
+					color: '#333333',
+					fontFamily: 'Tahoma',
+					padding: '5px'
+					}
+            },
 			
 			
 			labels: {
 
                 items: [{
 
-                    html: "<i>Q : Parmi les critères suivants quels sont ceux sur lesquels vous subissez des fortes pressions ?<br><i> (Plusieurs réponses possibles)</i>",
+                    html: "<i>Q : Parmi les qualificatifs suivants, quels sont ceux qui caractérisent le mieux votre état d'esprit actuel ?</i>",
 
                     style: {
 
                         left: '250px',
-                        top: '55px',
-                    	fontSize: '9pt',
+                        top: '0px',
+                    	fontSize: '8pt',
                     	color: '#FFFFFF',
 						fontFamily: 'Tahoma',
 
@@ -213,14 +220,15 @@
 				
 			
 			plotOptions: {
-                column: {
+                line: {
+			 		lineWidth: 3,
                     dataLabels: {
                         enabled: true,
                         formatter: function() {
-                  return this.y + "%";
-                },
+                    		return this.y + '%';
+                					},
 				      style: {
-                        fontSize: '11pt',
+                        fontSize: '7pt',
 						fontFamily: 'Tahoma',
 						fontWeight: 'normal',
 						color: "#FFFFFF"
@@ -229,15 +237,57 @@
                 },
             },
 				
-            legend: {
-         enabled: false
-         },
+				legend: {
+					enabled: true,
+					itemStyle: {
+	                		fontSize: '8pt',
+							fontFamily: 'Tahoma',
+	               			color: 'white'
+	            	}
+				},
 
 
 
-           	 series: [{
-         data: [{y:55,color:'#E50043'}, {y:30,color:'#E50043'}, {y:23,color:'#E50043'}, {y:18,color:'#333333'}, {y:11,color:'#333333'}, {y:10,color:'#333333'}, {y:9,color:'#333333'}, {y:3,color:'#D6D6D6'}, {y:7,color:'#FF9900'}],
-     }],					  
+      		series: [{
+                name: "Optimiste",
+                color: '#85D6D6',
+				data: [30, 30, 34, 45, 28, 31]
+            },
+			{
+                name: "Confiant",
+                color: '#6FBC62',
+				data: [24, 23, 22, 35, 28, 27]
+            },
+			{
+                name: "Attentiste",
+                color: '#90D146',
+				data: [26, 28, 19, 31, 25, 27]
+            },
+			{
+                name: "Serein",
+                color: '#ACD379',
+				data: [19, 17, 18, 30, 21, 19]
+            },
+			{
+                name: "Audacieux",
+                color: '#DADADA',
+				data: [16, 11, 7, 23, 19, 13]
+            },
+			{
+                name: "Inquiet",
+                color: '#F26F4C',
+				data: [40, 37, 33, 41, 40, 38]
+            },
+			{
+                name: "Méfiant",
+                color: '#F9BD46',
+				data: [31, 29, 24, 35, 27, 29]
+            },
+			{
+                name: "Angoissé",
+                color: '#EF2950',
+				data: [16, 16, 12, 20, 14, 15]
+            }],				  
 			
 			
 				credits: {
@@ -260,11 +310,11 @@
 				},
 				//colors: ['#FF9900'],
 				title: {
-					text: 'Grande consultation des entrepreneurs - Vague 1 / Février 2015',
+					text: 'Grande consultation des entrepreneurs - Vague 6 / Janvier 2016',
 					style: { "color": "#FFFFFF", "fontSize": "18px" }
 				},
 				subtitle: {
- 				   text: '- Priorité actuelle pour l’entreprise -',
+ 				   text: '- Evolutions pronostiquées des embauches pour 2015 -',
  				   style: { "color": "#FFFFFF", "fontSize": "16px" }
 				},				
 				
@@ -272,62 +322,53 @@
 				
 				
 				xAxis: [{
-					categories: [],
-					labels: {
-					 	style: {"color":"#FFFFFF","fontWeight":"normal"}
-					}
+					categories: ['02/<br>2015', '04/<br>2015', '06/<br>2015', '09/<br>2015', '11/<br>2015', '01/<br>2016'],
+
+					lineColor: 'rgba(255, 255, 255, 0.01)',
+	        		tickColor: 'rgba(255, 255, 255, 0.01)',
+	        		labels: {
+	            		style: {
+	                		fontSize: '8pt',
+							fontFamily: 'Tahoma',
+							color: 'white'
+	           					},
+							},
 				}],
 				
 				
 				
-				yAxis: [{ // Primary yAxis
-					title: {
+				yAxis: [{ 
+				min: 0,
+				max: 100,
+				title: {
 						text: ''
-					}
-				}, { // Secondary yAxis
-					title: {
-						text: ''
-					},					
-					labels: {
-					 	style: {"color":"#FFFFFF","fontWeight":"normal"}
 					},
-					opposite: true
+	        	gridLineColor: 'rgba(255, 255, 255, 0.2)',
+				labels: {
+                	formatter: function() {
+                    return this.value + '%';
+                		},
+	            	style: {
+	               	 fontSize: '8pt',
+						fontFamily: 'Tahoma',
+	                	color: 'rgba(255, 255, 255, 1)'
+	            		}
+	        		},
 				}],
 				
 				
-			
+		
 				
-		labels: {
+			labels: {
 
                 items: [{
 
-                   //useHTML: true,
-				  // html: "",
-
-
-                    style: {
-
-                        left: '250px',
-                        top: '55px',
-                    	fontSize: '9pt',
-                    	color: '#FFFFFF',
-						fontFamily: 'Tahoma',
-
-
-                    },}],
-			},
-				
-				
-							labels: {
-
-                items: [{
-
-                    html: "<i>Q : Pour votre entreprise actuellement la priorité c’est avant tout… ?</i>",
+                    html: "<i>Q : Au cours des 12 prochains mois, votre entreprise envisage-t-elle de … ?</i>",
 
                     style: {
 
                         left: '310px',
-                        top: '20px',
+                        top: '65px',
                     	fontSize: '9pt',
                     	color: '#FFFFFF',
 						fontFamily: 'Tahoma',
@@ -338,55 +379,63 @@
 				
 				
 				
- 	  tooltip: {
+				 plotOptions: {
+                 series: {
+					lineWidth: 4,
+			 		dataLabels: {
+                    	enabled: true,
+                    	formatter: function() {
+                        	return this.y +'%';
+                    		},
+                   		style: {
+	                		fontSize: '11pt',
+							fontFamily: 'Tahoma',
+	               			color: 'white'
+	            	}
+                }
+			 }
+
+		  
+		  },
+
+
+	 		tooltip: {
                 formatter: function() {
-                    return '<b>'+ this.point.name +'</b>'+': '+ this.y +'%';
-				}},
-				
-				
-        plotOptions: {
-            pie: {
-                dataLabels: {
-                    enabled: true,
-                    formatter: function() {
-                    return this.point.name + ' : ' +'<b>'+ Highcharts.numberFormat(Math.abs(this.point.y), 0) + '%' + '<b>';
-                      },
-                    style: {
-                        fontSize: '14pt',
-                        color: 'white'                        
-                    }
+                    return '<b>'+ this.series.name +'</b><br/>'+
+                        this.x +': '+ this.y + '%' ;
                 },
-                startAngle: -90,
-                endAngle: 90,
-                center: ['50%', '100%'],
-				size: 300,
-            }
-        },
-        series: [{
-            type: 'pie',
-            //name: 'Browser share',
-            innerSize: '50%',
-            data: [{
+				style: {
+					color: '#333333',
+					fontFamily: 'Tahoma',
+					padding: '5px'
+					}
+            },
 
-                    name: "Trouver des leviers de croissance<br>pour votre activité",
 
-                    y: 52,
-
-                    color: '#89CED3'
-
-                    },{
-
-                    name: "Trouver des leviers de rentabilité<br>pour votre activité",
-
-                    y: 48,
-
-                    color: '#FF9900'
-
-                    }]
-        }],
+       		series: [{
+                name: "Réduire le nombre de salariés",
+                color: '#E50043',
+				//symbol: 'circle",
+				data: [8, 5, 6, 7, 6, 6]
+            },
+			{
+                name: "Maintenir le nombre de salariés",
+                color: '#FF9900',
+				data: [87, 85, 86, 84, 86, 89]
+            },
+			{
+                name: "Augmenter le nombre de salariés",
+                color: '#90D146',
+				data: [5, 10, 8, 9, 8, 5]
+            }],
 		
 				legend: {
-					enabled: false
+					enabled: true,
+					itemStyle: {
+	                		fontSize: '8pt',
+							fontFamily: 'Tahoma',
+	               			color: 'white'
+	            	}
 				},
 				credits: {
 				      enabled: false
@@ -402,6 +451,7 @@
 		$('.container-head-four').each(function() {
 			$(this).highcharts({
 				chart: {
+					type: 'pie',
 					spacing: [20, 180, 20, 180],
 					height: 360,
 					marginTop: 80,
@@ -409,11 +459,11 @@
 				},
 				//colors: ['#FF9900'],
 				title: {
-					text: 'Grande consultation des entrepreneurs - Vague 1 / Février 2015',
+					text: 'Grande consultation des entrepreneurs - Vague 6 / Janvier 2016',
 					style: { "color": "#FFFFFF", "fontSize": "18px" }
 				},
 				subtitle: {
- 				   text: '<i>Q : Innover c’est pour votre entreprise avant tout… ?</i>',
+ 				   text: "<i>Question d'actualité : Impact des attentats de novembre 2015 sur le chiffre d’affaires</i>",
  				   style: { "color": "#FFFFFF", "fontSize": "14px" }
 				},				
 				
@@ -421,7 +471,7 @@
 				
 				
 				xAxis: [{
-					categories: [],
+					categories: [' '],
 					labels: {
 					 	style: {"color":"#FFFFFF","fontWeight":"normal"}
 					}
@@ -429,86 +479,127 @@
 				
 				
 				
-				yAxis: [{ // Primary yAxis
-					title: {
+				yAxis: [{ 
+				min: 0,
+				//max: 100,
+				title: {
 						text: ''
-					}
-				}, { // Secondary yAxis
-					title: {
-						text: ''
-					},					
-					labels: {
-					 	style: {"color":"#FFFFFF","fontWeight":"normal"}
 					},
-					opposite: true
+	        	gridLineColor: 'rgba(255, 255, 255, 0.2)',
+				labels: {
+                	formatter: function() {
+                    return this.value + '%';
+                		},
+	            	style: {
+	               	 fontSize: '8pt',
+						fontFamily: 'Tahoma',
+	                	color: 'rgba(255, 255, 255, 1)'
+	            		}
+	        		},
 				}],
-				
-				
+		
 
-				
+		labels: {
+
+                items: [{
+
+                    html: "<i>Par rapport à l’an dernier, avez-vous constaté <br>une diminution de votre chiffre d’affaires <br>qui serait imputable aux attentats <br>de novembre 2015 ?</i>",
+
+                    style: {
+
+                        left: '10px',
+                        top: '52px',
+                    	fontSize: '10pt',
+                    	color: '#FFFFFF',
+						fontFamily: 'Tahoma',
+
+
+                    },},{
+
+                    html: "<i>Une diminution de l'ordre de 10 à 20% <br>pour 34% des chefs d'entreprise <br>(54% pour le secteur Cafés, hôtels, <br>restaurants) </i>",
+
+                    style: {
+
+                        left: '550px',
+                        top: '95px',
+                    	fontSize: '12pt',
+                    	color: '#FFFFFF',
+						fontFamily: 'Tahoma',
+
+
+                    },}],
+			},
+			
+ 			credits: {
+				      enabled: false
+				},
+			exporting: {
+				      enabled: false
+				},
+
 	
-				
- 	  tooltip: {
+	tooltip: {
                 formatter: function() {
-                    return this.point.name +': '+ this.point.value +'%';
+                    return this.point.name +': '+ this.y +'%';
 				}},
 				
-				
-     plotOptions: {
-            treemap: {
-                dataLabels: {
-                    enabled: true,
-                    formatter: function() {
-                    return this.point.name +': '+ this.point.value +'%';
-                      },
-                    style: {
-                        fontSize: '12pt',
-                        color: 'white'                        
-                    }
-                },
-
+	plotOptions: {
+            column: {
+                //grouping: false,
+                shadow: false,
+                borderWidth: 0
             }
         },
+			
+	legend: {
+					enabled: true,
+					itemStyle: {
+	                		fontSize: '10pt',
+							fontFamily: 'Tahoma',
+	               			color: 'white'
+	            	}
+				},
 
+	series: [{
 
-        series: [{
-            type: "treemap",
-            layoutAlgorithm: 'squarified',
-            data: [{
-                name: "Un investissement<br>",
-                value: 36,
-                color: '#89CED3'
-            }, {
-                name: "Une prise<br>de risque",
-                value: 24,
-                color: '#FF9900'
-            }, {
-                name: "Une condition<br>de survie<br>pour l’entreprise",
-                value: 24,
-                color: '#D499D6'
-            }, {
-                name: "Un mirage<br>plus qu’autre<br>chose",
-                value: 14,
-                color: '#E50043'
-            }, {
-                name: "NSP<br>",
-                value: 2,
-                color: '#262626'
-            }]
-        }],
+                type: 'pie',
 
+                name: '',
+
+                allowPointSelect: true,
+                data: [{
+
+                    name: 'OUI',
+
+                    y: 17,
+
+                    color: '#E6332A'
+
+                    },{
+
+                    name: 'NON',
+
+                    y: 83,
+
+                    color: '#78C479'
+
+                    }],
+
+                center: [400, 100],
+
+                size: 200,
+
+                showInLegend: true,
+
+                dataLabels: {
+
+                    enabled: false,
+					distance: 10,
+
+                }}]
 
 
 		
-				legend: {
-					enabled: false
-				},
-				credits: {
-				      enabled: false
-				},
-				exporting: {
-				      enabled: false
-				}
 			});
 		});
 	}
@@ -528,17 +619,17 @@
 					style: { "color": "#FFFFFF", "fontSize": "18px" }
 				},
 				subtitle: {
- 				   text: 'VOIR LES RESULTATS DETAILLES',
+ 				   text: "L'observatoire Banque Palatine/Challenges/Itélé des PME-ETI",
  				   style: { "color": "#FFFFFF" }
 				},				
 				xAxis: [{
-					categories: ['01/<br>2012','02','03','04','05','06','09','10','11','12','01/<br>2013','02','03','04','05','06','09','10','11', '12', '01/<br>2014','02', '03','04','05', '06', '09', '10', '11', '12','01/<br>2015', '02', '03', '04'],
+					categories: ['01/<br>2012','02','03','04','05','06','09','10','11','12','01/<br>2013','02','03','04','05','06','09','10','11', '12', '01/<br>2014','02', '03','04','05', '06', '09', '10', '11', '12','01/<br>2015', '02', '03', '04', '05', '06', '09', '10', '11', '12', '01/<br>2016'],
 
 					lineColor: 'rgba(255, 255, 255, 0.01)',
 	        		tickColor: 'rgba(255, 255, 255, 0.01)',
 	        		labels: {
 	            		style: {
-	                		fontSize: '8pt',
+	                		fontSize: '7pt',
 							fontFamily: 'Tahoma',
 							color: 'white'
 	           					},
@@ -599,17 +690,17 @@
                 name: "Confiance pour votre entreprise",
                 color: '#E5769A',
 				//symbol: 'circle",
-				data: [70, 77, 77, 80, 78, 75, 72, 61, 59, 62, 65, 62, 65, 67, 69, 61, 69, 67, 70, 68, 75, 72, 71, 73, 74, 69, 67, 68, 67, 60, 67, 70, 73, 73]
+				data: [70, 77, 77, 80, 78, 75, 72, 61, 59, 62, 65, 62, 65, 67, 69, 61, 69, 67, 70, 68, 75, 72, 71, 73, 74, 69, 67, 68, 67, 60, 67, 70, 73, 73, 74, 73, 80, 81, 82, 79, 88]
             },
 			{
                 name: "Confiance pour l'économie mondiale",
                 color: '#80DDE0',
-				data: [35, 32, 39, 37, 34, 30, 30, 21, 28, 31, 40, 36, 37, 34, 34, 44, 52, 51, 49, 49, 57, 61, 55, 62, 60, 55, 45, 49, 45, 46, 56, 51, 57, 61]
+				data: [35, 32, 39, 37, 34, 30, 30, 21, 28, 31, 40, 36, 37, 34, 34, 44, 52, 51, 49, 49, 57, 61, 55, 62, 60, 55, 45, 49, 45, 46, 56, 51, 57, 61, 66, 62, 42, 47, 55, 52, 48]
             },
 			{
                 name: "Confiance pour l'économie française",
                 color: '#FF9900',
-				data: [25, 25, 30, 38, 28, 30, 23, 17, 16, 18, 24, 21, 21, 11, 14, 12, 27, 25, 21, 20, 24, 20, 24, 25, 22, 17, 13, 14, 13, 12, 27, 28, 33, 36]
+				data: [25, 25, 30, 38, 28, 30, 23, 17, 16, 18, 24, 21, 21, 11, 14, 12, 27, 25, 21, 20, 24, 20, 24, 25, 22, 17, 13, 14, 13, 12, 27, 28, 33, 36, 39, 39, 41, 26, 44, 39, 43]
             }],
 			
 				legend: {

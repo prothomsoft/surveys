@@ -167,6 +167,12 @@ $oT = new Translator('template3',$sLang);
 					        	<?} else {?>
 					        		<label class="radio"><input type="radio" name="phone2" value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</label>
 					        	<?}?>
+								
+								<?if($event->getArg("phone2") == "Dans un département d'outre-mer") {?>
+					        		<label class="radio"><input type="radio" name="phone2" value="Dans un département d'outre-mer" checked="true">Dans un département d'outre-mer</label>
+					        	<?} else {?>
+					        		<label class="radio"><input type="radio" name="phone2" value="Dans un département d'outre-mer">Dans un département d'outre-mer</label>
+					        	<?}?>
 					        </div>
 					        
 					        <div style="padding-top: 15px;"></div>

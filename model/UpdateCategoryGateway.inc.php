@@ -10,7 +10,7 @@ class UpdateCategoryGateway{
    public function findByFatherId($id){
    	  $DB = new DB();
       $DB->connect();
-   	  $query ="SELECT C.UpdateCategoryId,C.FatherId,C.Name,C.SeoName,C.ListOrder,C.NumberOfItems ";
+   	  $query ="SELECT C.UpdateCategoryId,C.FatherId,C.Name,C.SeoName,C.ListOrder,C.NumberOfItems,C.IsModule ";
       $query.="FROM UpdateCategory C ";
       $query.="WHERE C.FatherId = '".$id."' ";
       $query.="ORDER BY C.ListOrder ASC ";
@@ -27,6 +27,7 @@ class UpdateCategoryGateway{
 		      $objUpdateCategoryBean->setSeoName($DB->getField("SeoName"));
 		      $objUpdateCategoryBean->setListOrder($DB->getField("ListOrder"));
 		      $objUpdateCategoryBean->setNumberOfItems($DB->getField("NumberOfItems"));
+		      $objUpdateCategoryBean->setIsModule($DB->getField("IsModule"));
 	      	  $arr[] = $objUpdateCategoryBean;
 			}
 			return $arr;
@@ -37,7 +38,7 @@ class UpdateCategoryGateway{
    public function findAllOrderedByListOrder() {
    	  $DB = new DB();
       $DB->connect();
-      $query ="SELECT C.UpdateCategoryId,C.FatherId,C.Name,C.SeoName,C.ListOrder,C.NumberOfItems ";
+      $query ="SELECT C.UpdateCategoryId,C.FatherId,C.Name,C.SeoName,C.ListOrder,C.NumberOfItems,C.IsModule ";
       $query.="FROM UpdateCategory C ";
       $query.="ORDER BY C.ListOrder ASC ";
       
@@ -54,6 +55,7 @@ class UpdateCategoryGateway{
 		      $objUpdateCategoryBean->setSeoName($DB->getField("SeoName"));
 		      $objUpdateCategoryBean->setListOrder($DB->getField("ListOrder"));
 		      $objUpdateCategoryBean->setNumberOfItems($DB->getField("NumberOfItems"));
+              $objUpdateCategoryBean->setIsModule($DB->getField("IsModule"));
 	      	  $arr[] = $objUpdateCategoryBean;
 			}
 			return $arr;

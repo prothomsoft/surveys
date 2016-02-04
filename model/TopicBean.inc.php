@@ -6,6 +6,7 @@
  */
 class TopicBean{
    private $TopicId;
+   private $UpdateCategoryId;
    private $Question;
    private $OpenQuestion;
    private $CreateDate;
@@ -19,6 +20,14 @@ class TopicBean{
 
    public function getTopicId(){
       return $this->TopicId;
+   }
+   
+   public function setUpdateCategoryId($val){
+      $this->UpdateCategoryId=$val;
+   }
+
+   public function getUpdateCategoryId(){
+      return $this->UpdateCategoryId;
    }
          
    public function setQuestion($val){

@@ -8,9 +8,9 @@ $SN = $objAppSession->getSession('SN');
 $sLang = $objAppSession->getSession('sLang');
 $oT = new Translator('template3',$sLang);
 
-	$title = "Surveys";
-	$keywords = "Surveys";
-	$description = "Surveys";
+	$title = "Grande Consultation";
+	$keywords = "Grande Consultation";
+	$description = "Grande Consultation";
 	$url = "";
 	$image = "";
 	
@@ -50,12 +50,12 @@ $oT = new Translator('template3',$sLang);
 		<link href="<?=$SN;?>styles/prettyPhoto.css" rel="stylesheet">
 		<link href="<?=$SN;?>styles/flexslider.css" rel="stylesheet">
 		
-		<!-- Colors-->
+		<!-- Colors -->
 		<link href="<?=$SN;?>css/colors/blue/style.css" rel="stylesheet" id="layoutstyle">
 	
-		<!-- Theme Responsive-->
+		<!-- Theme Responsive -->
 		<link href="<?=$SN;?>css/theme-responsive.css" rel="stylesheet">
-	
+		
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -65,6 +65,19 @@ $oT = new Translator('template3',$sLang);
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="<?=$SN;?>vendor/jquery.min.js"></script>
+		
+		<?if ($event->getArg('lesConsultationsEnCoursChatView') != "") {?>
+		    <link href="<?=$SN;?>styles/metisMenu.min.css" rel="stylesheet">
+            <link href="<?=$SN;?>styles/metisMenuNav.css" rel="stylesheet">
+    		<script src="<?=$SN;?>vendor/metisMenu.js"></script>
+            <script>
+                $(function () {
+                    $('#menu100').metisMenu({
+                        toggle: false
+                    });    
+                });
+            </script>
+        <?}?>
 		
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -252,6 +265,7 @@ $oT = new Translator('template3',$sLang);
 		<script src="<?=$SN;?>js/modules/treemap.js" type="text/javascript"></script>
 		
 		<!-- Others -->
+		<script src="<?=$SN;?>js/jquery.cookie.js"></script>
 		<script src="<?=$SN;?>js/jquery.surveys.js"></script>
 		<script type="text/javascript" src="<?=$SN;?>js/jquery.prettyPhoto.js"></script>
 		<script type="text/javascript" src="<?=$SN;?>js/jquery.flexslider.js"></script>

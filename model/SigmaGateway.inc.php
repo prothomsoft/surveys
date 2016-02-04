@@ -68,6 +68,7 @@ class SigmaGateway {
       $DB->connect();
       $query  = "SELECT SigmaId,DeltaId,Name,SeoName,Keyword,Description,ShortDescription,LongDescription,UpdateDate,SigmaOrder,Status,ImgDriveName,EventDate,EventCalendar FROM Sigma";
       $query .= " WHERE 1 = 1";
+      $query .= " AND DeltaId = 1";
       $query .= " ORDER BY SigmaOrder DESC";
       $query .= " LIMIT 0,8";      
       $DB->query($query);
@@ -95,6 +96,41 @@ class SigmaGateway {
       		}
       }
       return $arr;
+   }
+   
+   public function findThreeLatest(){
+   	$DB = new DB();
+   	$DB->connect();
+   	$query  = "SELECT SigmaId,DeltaId,Name,SeoName,Keyword,Description,ShortDescription,LongDescription,UpdateDate,SigmaOrder,Status,ImgDriveName,EventDate,EventCalendar FROM Sigma";
+   	$query .= " WHERE 1 = 1";
+   	$query .= " AND Description = 1";
+   	$query .= " ORDER BY SigmaId DESC";
+   	$query .= " LIMIT 0,3";   	
+   	$DB->query($query);
+   	$arr = "";
+   	if ($DB->numRows()>0)
+   	{
+   		while($DB->move_next())
+   		{
+   			$objSigmaBean= new SigmaBean();
+   			$objSigmaBean->setSigmaId($DB->getField("SigmaId"));
+   			$objSigmaBean->setDeltaId($DB->getField("DeltaId"));
+   			$objSigmaBean->setName($DB->getField("Name"));
+   			$objSigmaBean->setSeoName($DB->getField("SeoName"));
+   			$objSigmaBean->setKeyword($DB->getField("Keyword"));
+   			$objSigmaBean->setDescription($DB->getField("Description"));
+   			$objSigmaBean->setShortDescription($DB->getField("ShortDescription"));
+   			$objSigmaBean->setLongDescription($DB->getField("LongDescription"));
+   			$objSigmaBean->setUpdateDate($DB->getField("UpdateDate"));
+   			$objSigmaBean->setSigmaOrder($DB->getField("SigmaOrder"));
+   			$objSigmaBean->setStatus($DB->getField("Status"));
+   			$objSigmaBean->setImgDriveName($DB->getField("ImgDriveName"));
+   			$objSigmaBean->setEventDate($DB->getField("EventDate"));
+   			$objSigmaBean->setEventCalendar($DB->getField("EventCalendar"));
+   			$arr[] = $objSigmaBean;
+   		}
+   	}
+   	return $arr;
    }
    
    public function findInCurrentMonth(){

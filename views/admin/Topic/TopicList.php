@@ -14,8 +14,8 @@
 									<th width="0%">Topic Id</th>
 									<th width="30%">Topic name</th>
 									<th width="20%">Date</th>
-									<th width="20%">Status</th>
-									<th width="0%">Date</th>
+									<th width="30%">Father topic name</th>
+									<th width="10%">Status</th>
 									<th width="10%">Order</th>
 									<th width="20%" align="center">Actions</th>
 								</tr>

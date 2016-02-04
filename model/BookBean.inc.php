@@ -2,6 +2,7 @@
 class BookBean{
    private $BookId;
    private $SigmaId;
+   private $ParentId;
    private $Email;
    private $CreateDate;
    private $FirstName;
@@ -27,6 +28,14 @@ class BookBean{
 
    public function getSigmaId(){
       return $this->SigmaId;
+   }
+   
+   public function setParentId($val){
+      $this->ParentId=$val;
+   }
+
+   public function getParentId(){
+      return $this->ParentId;
    }
 
    public function setEmail($val){

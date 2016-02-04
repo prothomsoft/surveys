@@ -485,5 +485,47 @@ class model_PollListener extends MachII_framework_Listener
     	}
     	$event->setArg("totalNumberVotes", $totalNumberVotes);
     }
+    
+    function executePollVoteAction(&$event) {
+        $vote = $event->getArg("voteRadioValue");
+
+        $filename = $_SERVER['DOCUMENT_ROOT']."/poll/poll_result.txt";
+        $content = file($filename);
+        
+        //put content in array
+        $array = explode("||", $content[0]);
+        $yes = $array[0];
+        $no = $array[1];
+        
+        if($yes == "") $yes = 0;
+        if($no == "") $no = 0;
+        
+        if ($vote == 0) {
+          $yes = $yes + 1;
+        }
+        if ($vote == 1) {
+          $no = $no + 1;
+        }
+        
+        //insert votes to txt file
+        $insertvote = $yes."||".$no;
+        $fp = fopen($filename,"w");
+        fputs($fp,$insertvote);
+        fclose($fp);
+        
+        $widthYes = (100*round($yes/($no+$yes),2));
+        $widthNo = (100*round($no/($no+$yes),2));
+        
+        $question = file($_SERVER['DOCUMENT_ROOT']."/poll/question.txt");
+        
+        $responseJSON = "<h4 style=\"padding:15px 15px 0px 15px;\">".$question[0]."</h4>";        
+        $responseJSON .= "<div style=\"padding:0px 20px 0px 20px\">";
+        $responseJSON .= "<ul style=\"list-style-type: none; padding: 0;\">";
+        $responseJSON .= "<li><font color=\"#000000\">Oui - (".$yes." votes)</font> <div class=\"progress\"><div class=\"bar\" style=\"width: ".$widthYes."%\"></div></div></li>";
+        $responseJSON .= "<li><font color=\"#000000\">Non - (".$no." votes)</font> <div class=\"progress\"><div class=\"bar\" style=\"width: ".$widthNo."%\"></div></div></li>";        
+        $responseJSON .= "</ul>";
+        $responseJSON .= "</div>";
+        $event->setArg("responseJSON", $responseJSON);
+    }
 }
 ?>
