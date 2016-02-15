@@ -97,5 +97,15 @@
             
             <div class="ui-helper-clearfix spacer">                
             </div>
+            
+            <div class="ui-widget-content ui-corner-all center-header">
+                <p>Blog</p>
+                <p>&nbsp;</p>
+                <span class="wizardButton"><a href="index.php?event=showSigmasListByUser">List of Blog Entries</a><span>
+                <span class="wizardButton"><a href="index.php?event=showSigmaStep1">Add Blog Entry</a><span>            
+            </div>
+                    
+            <div class="ui-helper-clearfix spacer">
+            </div>
 		<?}?>
 </div>

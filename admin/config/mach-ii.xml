@@ -809,6 +809,18 @@
         	<notify listener="SigmaListener" method="getAdminTableData" />
         	<view-page name="responseJSON" />
         </event-handler>
+        
+        <event-handler event="showSigmasListByUser">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+        	<view-page name="menu" contentKey="menu" />
+        	<view-page name="SigmaList" contentKey="SigmaList" />
+        	<view-page name="documentReadyScript" contentKey="documentReadyScript" />
+			<view-page name="template" />
+        </event-handler>
+        <event-handler event="getSigmaTableData">
+        	<notify listener="SigmaListener" method="getAdminTableDataByUser" />
+        	<view-page name="responseJSON" />
+        </event-handler>
                         
         <!-- showSigmaStep1 -->
         <event-handler event="showSigmaStep1">
@@ -844,11 +856,26 @@
         	<announce event="showSigmasList" copyEventArgs="false" /> 
         </event-handler>
         
+        <!-- executeSigmaWizardCloseByUser -->
+        <event-handler event="executeSigmaWizardCloseByUser">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="SigmaListener" method="checkId" />
+        	<filter name="validateSigmaStep1Filter" />
+        	<announce event="showSigmasListByUser" copyEventArgs="false" /> 
+        </event-handler>
+        
         <!-- executeRemoveSigmaAction -->
         <event-handler event="executeRemoveSigmaAction" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
            	<notify listener="SigmaListener" method="removeRecord" />
 			<announce event="showSigmasList" copyEventArgs="false" />
+        </event-handler>
+        
+        <!-- executeRemoveSigmaActionByUser -->
+        <event-handler event="executeRemoveSigmaActionByUser" access="public">
+        	<notify listener="RightsListener" method="getAllowedEventsList" />
+           	<notify listener="SigmaListener" method="removeRecord" />
+			<announce event="showSigmasListByUser" copyEventArgs="false" />
         </event-handler>
         
         <!-- gets JSON for pictures grid -->

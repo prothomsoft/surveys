@@ -38,5 +38,11 @@
 <div class="ui-helper-clearfix spacer"></div>
 
 <div class="ui-widget formButtons">
-	<span class="wizardButton"><a href="javascript:$('#event').val('executeSigmaWizardClose');$('#SigmaId').val('<?=$event->getArg("SigmaId");?>');document.f1.submit();">Save Changes</a></span>
+<? if($event->getArg("Keyword") == 3) {?>
+		<span class="wizardButton"><a href="javascript:$('#event').val('executeSigmaWizardClose');$('#SigmaId').val('<?=$event->getArg("SigmaId");?>');document.f1.submit();">Save Changes</a></span>
+	<?} else {?>
+		<span class="wizardButton"><a href="javascript:$('#event').val('executeSigmaWizardCloseByUser');$('#SigmaId').val('<?=$event->getArg("SigmaId");?>');document.f1.submit();">Save Changes</a></span>
+	<?}?>
+
+	
 </div>

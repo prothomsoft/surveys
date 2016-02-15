@@ -120,6 +120,118 @@ class model_SigmaListener extends MachII_framework_Listener
 		
 		$event->setArg('responseJSON', $responseJSON);
 	}
+	
+	function getAdminTableDataByUser(&$event) {
+		 
+		$objAppSession=new AppSession();
+		$SN = $objAppSession->getSession('SN');
+		$objUser = $objAppSession->getSession('User');
+		$UserId = $objUser->getUserId();
+	
+		$DB = new DB();
+		$DB->connect();
+	
+		// columns in the table
+		$aColumns = array('SigmaId', 'ImgDriveName', 'Name', 'SeoName', 'UpdateDate', 'SigmaOrder');
+		$sIndexColumn = "SigmaId";
+	
+		// paging
+		$iDisplayStart = $event->getArg("iDisplayStart");
+		$iDisplayLength = $event->getArg("iDisplayLength");
+		$sLimit = "";
+		if (isset($iDisplayStart) && $iDisplayLength != '-1') {
+			$sLimit = "LIMIT ".mysql_real_escape_string($iDisplayStart).", ".mysql_real_escape_string($iDisplayLength);
+		}
+	
+		// ordering
+		$iSortCol_0 = $event->getArg("iSortCol_0");
+		$iSortingCols = $event->getArg("iSortingCols");
+		$sOrder = "";
+		if (isset($iSortCol_0)) {
+			$sOrder = "ORDER BY ";
+			for ($i=0; $i<intval($iSortingCols); $i++) {
+				$sOrder .= $aColumns[intval($event->getArg("iSortCol_".$i))]." ".mysql_real_escape_string($event->getArg("sSortDir_".$i)) .", ";
+			}
+			$sOrder = substr_replace($sOrder, "", -2);
+		}
+		$sWhere = "WHERE Keyword = '".$UserId."' ";
+			
+		// get data to display
+		$sQuery = "
+			SELECT SQL_CALC_FOUND_ROWS ".implode(", ", $aColumns)."
+				FROM   Sigma
+				$sWhere
+				$sOrder
+				$sLimit
+				";
+		
+				$rResult = $DB->query($sQuery);
+	
+		// data set length after filtering
+		$sQuery = "
+		SELECT FOUND_ROWS()
+		";
+				$rResultFilterTotal = $DB->query($sQuery);
+				$aResultFilterTotal = mysql_fetch_array($rResultFilterTotal);
+				$iFilteredTotal = $aResultFilterTotal[0];
+	
+				// total data set length
+				$sQuery = "
+				SELECT COUNT(".$sIndexColumn.")
+				FROM   Sigma
+		";
+						$rResultTotal = $DB->query($sQuery);
+						$aResultTotal = mysql_fetch_array($rResultTotal);
+						$iTotal = $aResultTotal[0];
+	
+						$sEcho = $event->getArg("sEcho");
+						$responseJSON = '{';
+						$responseJSON .= '"sEcho": '.intval($sEcho).', ';
+						$responseJSON .= '"iTotalRecords": '.$iTotal.', ';
+						$responseJSON .= '"iTotalDisplayRecords": '.$iFilteredTotal.', ';
+		$responseJSON .= '"aaData": [ ';
+			while ($aRow = mysql_fetch_array($rResult))	{
+			$responseJSON .= "[";
+			for ($i=0; $i<count($aColumns); $i++) {
+	
+			$SigmaId = $aRow[0];
+			$ImgDriveName = $aRow[1];
+			$Name = $aRow[2];
+			$SeoName = $aRow[3];
+			$UpdateDate = $aRow[4];
+			$SigmaOrder = $aRow[5];
+	
+			if ( $aColumns[$i] == "ImgDriveName") {
+			if($ImgDriveName != "") {
+			$responseJSON .= '"<table border=\"0\"><tr><td width=\"200\" height=\"200\" valign=\"middle\"><img width=\"200\" src=\"'.$SN.'/upload/'.$ImgDriveName.'\"></td></tr></table>",';
+					} else {
+			$responseJSON .= '"<table border=\"0\"><tr><td width=\"200\" height=\"200\" valign=\"middle\"><img width=\"200\" src=\"'.$SN.'/images/blank.gif\"></td></tr></table>",';
+					}
+				} else if ($aColumns[$i] == "Name"){
+					$responseJSON .= '"<strong>'.$Name.'</strong>",';
+			} else if ($aColumns[$i] == "UpdateDate"){
+			$responseJSON .= '"'.substr($UpdateDate, 0, 10).'",';
+			} else {
+			/* General output */
+			$responseJSON .= '"'.str_replace('"', '\"', $aRow[ $aColumns[$i] ]).'",';
+			}
+			}
+					$responseJSON .= '"<a class=\"anchor_link\" href=\"index.php?event=showSigmaStep1&SigmaId='.$SigmaId.'\">Edit</a>&nbsp;|&nbsp;&nbsp;';
+			if($UserId==3) {
+				$responseJSON .= '<a class=\"anchor_link\" href=\"index.php?event=executeRemoveSigmaAction&SigmaId='.$SigmaId.'\" onclick=\"return confirm(\'Are you sure you want to remove this record?\')\">Remove</a>",';
+			} else {
+				$responseJSON .= '<a class=\"anchor_link\" href=\"index.php?event=executeRemoveSigmaActionByUser&SigmaId='.$SigmaId.'\" onclick=\"return confirm(\'Are you sure you want to remove this record?\')\">Remove</a>",';
+			}
+			
+		
+			$responseJSON = substr_replace( $responseJSON, "", -1 );
+				$responseJSON .= "],";
+			}
+			$responseJSON = substr_replace( $responseJSON, "", -1 );
+			$responseJSON .= '] }';
+	
+			$event->setArg('responseJSON', $responseJSON);
+	}
    
 	function checkId(&$event){
    		$SigmaId = $event->getArg('SigmaId');
@@ -130,6 +242,16 @@ class model_SigmaListener extends MachII_framework_Listener
 			// we need to create empty SigmaId
 			$SigmaId = $objSigmaDao->create($objSigmaBean);
 			$event->setArg('SigmaId', $SigmaId);	
+		}
+		
+		
+		
+		$objAppSession = new AppSession();
+		$objUserBean = $objAppSession->getSession("User");
+		
+		if($event->getArg('Keyword') == "") {
+			$userId = $objUserBean->getUserId();
+			$event->setArg('Keyword', $userId);
 		}
 		
 		$objSigmaBean = $objSigmaDao->read($SigmaId);

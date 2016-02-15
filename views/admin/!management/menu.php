@@ -263,11 +263,11 @@
 		</div>
 	<?}*/?>
 	
-	<?if (in_array('getsigmatabledata', $arrEventsAllowedForLevel)) {?>
+	<?if (in_array('showsigmaslist', $arrEventsAllowedForLevel)) {?>
         <div>
             <h3><a href="#">Blog</a></h3>
             <div class="accordion_content">
-            <?$arrHighligths = array(showSigmasList, executeRemoveSigmasAction, executeSaveSigmasAction);
+            <?$arrHighligths = array(showSigmasList,executeRemoveSigmasAction, executeSaveSigmasAction);
                 $currentEvent = $event->getArg('event');
                 $activeStyle = "";
                 if (in_array($currentEvent, $arrHighligths)) {
@@ -279,7 +279,40 @@
                   showSigmaStep1,
                   showSigmaStep2,
                   executeSigmaWizardClose,
-                  executeRemoveSigmaAction);
+            	  executeSigmaWizardCloseByUser,
+                  executeRemoveSigmaAction,
+            	  executeRemoveSigmaActionByUser);
+                    $currentEvent = $event->getArg('event'); 
+                    $activeStyle = "";
+                    if (in_array($currentEvent, $arrHighligths)) {
+                        echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 4 );}</script>";
+                        $activeStyle = "style=\"font-weight:bold\"";
+                    }?>
+                    <p <?=$activeStyle?>><a href="index.php?event=showSigmaStep1">Add Blog Entry</a></p>
+            </div>
+        </div>
+    <?}?>
+	
+	
+	<?if (in_array('showsigmaslistbyuser', $arrEventsAllowedForLevel)) {?>
+        <div>
+            <h3><a href="#">Blog</a></h3>
+            <div class="accordion_content">
+            <?$arrHighligths = array(showSigmasListByUser, executeRemoveSigmasAction, executeSaveSigmasAction);
+                $currentEvent = $event->getArg('event');
+                $activeStyle = "";
+                if (in_array($currentEvent, $arrHighligths)) {
+                    echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 4 );}</script>";
+                    $activeStyle = "style=\"font-weight:bold\"";
+                }?>
+                <p <?=$activeStyle?>><a href="index.php?event=showSigmasListByUser">List of Blog Entries</a></p>
+            <?$arrHighligths = array(
+                  showSigmaStep1,
+                  showSigmaStep2,
+                  executeSigmaWizardClose,
+            	  executeSigmaWizardCloseByUser,
+                  executeRemoveSigmaAction,
+            	  executeRemoveSigmaActionByUser);
                     $currentEvent = $event->getArg('event'); 
                     $activeStyle = "";
                     if (in_array($currentEvent, $arrHighligths)) {
@@ -412,7 +445,9 @@
 	      		  showSigmaStep1,
 				  showSigmaStep2,
 				  executeSigmaWizardClose,
-				  executeRemoveSigmaAction);
+				  executeSigmaWizardCloseByUser,
+				  executeRemoveSigmaAction,
+				  executeRemoveSigmaActionByUser);
 	      			$currentEvent = $event->getArg('event'); 
 	      			$activeStyle = "";
 	      			if (in_array($currentEvent, $arrHighligths)) {

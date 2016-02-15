@@ -24,6 +24,7 @@
 <input type="hidden" name="event" id="event" value="showSigmaStep2">
 <input type="hidden" name="SigmaId" id="SigmaId" value="<?=$event->getArg('SigmaId')?>">
 <input type="hidden" name="ClubId" id="ClubId" value="<?=$event->getArg('ClubId')?>">
+<input type="hidden" name="Keyword" id="Keyword" value="<?=$event->getArg('Keyword')?>">
 	
 <div class="ui-widget-content ui-corner-all center-content">
 	
@@ -80,11 +81,6 @@
 	</fieldset>
 	
 	<fieldset>
-		<label for="Keyword">Author</label>
-		<input type="text" name="Keyword" id="Keyword" value="<?echo htmlspecialchars_decode($event->getArg('Keyword'));?>" class="text ui-widget-content ui-corner-all <?if ($event->getArg("missingField") == "Keyword") echo "ui-state-error"?>" />
-	</fieldset>
-	
-	<fieldset>
 		<label for="EventDate">Date of the entry (DD-MM-YYYY)</label>
 		<input type="text" name="EventDate" id="EventDate" value="<?echo htmlspecialchars_decode($event->getArg('EventDate'));?>" class="text ui-widget-content ui-corner-all <?if ($event->getArg("missingField") == "EventDate") echo "ui-state-error"?>" />
 	</fieldset>
@@ -113,6 +109,11 @@
 
 <div class="ui-widget formButtons">
 	<input type="submit" value="Add Pictures" class="wymupdate">
-	<span class="wizardButton wymupdate"><a href="javascript:$('#event').val('executeSigmaWizardClose');$('#SigmaId').val('<?=$event->getArg("SigmaId");?>');document.f1.submit();">Save Changes</a></span>
+	<? if($event->getArg("Keyword") == 3) {?>
+		<span class="wizardButton wymupdate"><a href="javascript:$('#event').val('executeSigmaWizardClose');$('#SigmaId').val('<?=$event->getArg("SigmaId");?>');document.f1.submit();">Save Changes</a></span>
+	<?} else {?>
+		<span class="wizardButton wymupdate"><a href="javascript:$('#event').val('executeSigmaWizardCloseByUser');$('#SigmaId').val('<?=$event->getArg("SigmaId");?>');document.f1.submit();">Save Changes</a></span>
+	<?}?>
+	
 </div>
 </form>				

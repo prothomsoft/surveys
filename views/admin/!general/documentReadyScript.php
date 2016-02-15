@@ -8,7 +8,7 @@ $(document).ready(function() {
 											showGamaStep1, showGamaStep2, executeGamaWizardClose,
 											showPollStep1, showPollStep2, executePollWizardClose,
 											showTopicStep1, showTopicStep2, executeTopicWizardClose,
-											showSigmaStep1, showSigmaStep2, executeSigmaWizardClose,
+											showSigmaStep1, showSigmaStep2, executeSigmaWizardClose, executeSigmaWizardCloseByUser,
 											showDeltaStep1, showDeltaStep2, executeDeltaWizardClose,
 											showCmsContentStep1, showCmsContentStep2, executeCmsContentWizardClose, showProductStep2);?>
 	<?$currentEvent = $event->getArg('event');?>

@@ -269,7 +269,21 @@ class EventsAllowedForLevel {
     		
     		removeaccount,
             executeremoveaccount,
-            removeaccountconfirmation
+            removeaccountconfirmation,
+    		
+    		// sigma management
+    		getsigmatabledata,
+    		showsigmaslistbyuser,
+    		showsigmastep1,
+    		showsigmastep2,
+    		executesigmawizardclosebyuser,
+    		executeremovesigmaaction,
+    		executeremovesigmaactionbyuser,
+    		findsigmapicturebysigmaid,
+    		executesigmapictureremove,
+    		executesigmasavepicturedescription,
+    		executesigmapicturesetmain,
+    		findsigmabystreet
     );
     
     // LEVEL 2 - ZONE 2 - $4.99

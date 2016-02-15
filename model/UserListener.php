@@ -171,7 +171,6 @@ class model_UserListener extends MachII_framework_Listener {
 	}
 		
 	function createUserWithActivation(&$event) {
-		echo "123";
 		$objUserBean = new UserBean();
 		$objUserBean->setEmail($event->getArg('email'));
 		$password = $event->getArg('password');
