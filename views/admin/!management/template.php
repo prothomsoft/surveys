@@ -290,7 +290,31 @@
 				}
 				if ($event->getArg('BookView') != "") {
 					echo $event->getArg('BookView');
-				}?>								
+				}?>	
+				
+				<?if ($event->getArg('changePasswordFormView') != "") {
+                    echo $event->getArg('changePasswordFormView');
+                }?>
+                
+                <?if ($event->getArg('changePasswordConfirmationView') != "") {
+                    echo $event->getArg('changePasswordConfirmationView');
+                }?>
+                
+                <?if ($event->getArg('changeDetailsFormView') != "") {
+                    echo $event->getArg('changeDetailsFormView');
+                }?>
+                
+                <?if ($event->getArg('changeDetailsConfirmationView') != "") {
+                    echo $event->getArg('changeDetailsConfirmationView');
+                }?>
+                
+                <?if ($event->getArg('removeAccountFormView') != "") {
+                    echo $event->getArg('removeAccountFormView');
+                }?>
+                
+                <?if ($event->getArg('removeAccountConfirmationView') != "") {
+                    echo $event->getArg('removeAccountConfirmationView');
+                }?>							
 			</div> <!-- end .content-column-center-right -->
 			
 		</div> <!-- .ui-helper-clearfix content -->

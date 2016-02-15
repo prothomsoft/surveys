@@ -268,8 +268,8 @@ class EventsAllowedForLevel {
     		changedetailsconfirmation,
     		
     		removeaccount,
-    		executeremoveaccount,
-    		removeaccountconfirmation
+            executeremoveaccount,
+            removeaccountconfirmation
     );
     
     // LEVEL 2 - ZONE 2 - $4.99

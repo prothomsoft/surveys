@@ -129,9 +129,7 @@
     	<event-filter name="validateSamplesFieldsFilter" type="filters.ValidateSamplesFieldsFilter" />
     	<event-filter name="validateNewsletterFieldsFilter" type="filters.ValidateNewsletterFieldsFilter" />
     	<event-filter name="validateContactFromFieldsFilter" type="filters.ValidateContactFormFieldsFilter" />
-    	<event-filter name="validateForgotPasswordFieldsFilter" type="filters.ValidateForgotPasswordFieldsFilter" />
-    	<event-filter name="validateChangePasswordFieldsFilter" type="filters.ValidateChangePasswordFieldsFilter" />
-    	<event-filter name="validateChangeDetailsFieldsFilter" type="filters.ValidateChangeDetailsFieldsFilter" />
+    	<event-filter name="validateForgotPasswordFieldsFilter" type="filters.ValidateForgotPasswordFieldsFilter" />    	
     	<event-filter name="validateOrderFieldsFilter" type="filters.ValidateOrderFieldsFilter" />
     	<event-filter name="validatePromocjaFieldsFilter" type="filters.ValidatePromocjaFieldsFilter" />
     	<event-filter name="validateRezerwacjaFieldsFilter" type="filters.ValidateRezerwacjaFieldsFilter" />
@@ -436,34 +434,6 @@
         </event-handler>                     
         <!-- FORGOTPASSWORD --> <!-- FORGOTPASSWORD --> <!-- FORGOTPASSWORD -->
         
-        <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD -->
-        <event-handler event="changePassword" access="public">
-        	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<view-page name="changePasswordFormView" contentKey="changePasswordFormView" />
-        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
-        	<view-page name="navigationView" contentKey="navigationView" />
-        	<view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
-        	<view-page name="footerView" contentKey="footerView" />
-        	<view-page name="searchView" contentKey="searchView" />
-        	<view-page name="template4" />
-        </event-handler>
-        <event-handler event="executeChangePassword" access="public">
-        	<event-arg name="failEvent" value="changePassword" />
-        	<filter name="validateChangePasswordFieldsFilter" />
-        	<notify listener="UserListener" method="changePassword" />        	
-        </event-handler>
-        <event-handler event="changePasswordConfirmation" access="public">
-        	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
-        	<view-page name="navigationView" contentKey="navigationView" />
-        	<view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
-        	<view-page name="changePasswordConfirmationView" contentKey="changePasswordConfirmationView" />
-        	<view-page name="footerView" contentKey="footerView" />
-        	<view-page name="searchView" contentKey="searchView" />
-        	<view-page name="template4" />        	
-        </event-handler>
-        <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD -->
-        
         <!-- REMOVEACCOUNT --> <!-- REMOVEACCOUNT --> <!-- REMOVEACCOUNT -->
         <event-handler event="removeAccount" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
@@ -476,7 +446,7 @@
         	<view-page name="template4" />
         </event-handler>
         <event-handler event="executeRemoveAccount" access="public">
-        	<event-arg name="failEvent" value="changePassword" />        	
+        	<event-arg name="failEvent" value="removeAccount" />        	
         	<notify listener="UserListener" method="removeAccount" />        	
         </event-handler>
         <event-handler event="removeAccountConfirmation" access="public">
@@ -492,34 +462,7 @@
         <!-- REMOVEACCOUNT --> <!-- REMOVEACCOUNT --> <!-- REMOVEACCOUNT -->
         
         
-        <!-- UPDATEACCOUNT --> <!-- UPDATEACCOUNT --> <!-- UPDATEACCOUNT -->
-        <event-handler event="changeDetails" access="public">
-        	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<notify listener="UserListener" method="getDetails" />
-        	<view-page name="changeDetailsFormView" contentKey="changeDetailsFormView" />
-        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
-        	<view-page name="navigationView" contentKey="navigationView" />
-        	<view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
-        	<view-page name="footerView" contentKey="footerView" />
-        	<view-page name="searchView" contentKey="searchView" />
-        	<view-page name="template4" />
-        </event-handler>
-        <event-handler event="executeChangeDetails" access="public">
-        	<event-arg name="failEvent" value="changeDetails" />
-        	<filter name="validateChangeDetailsFieldsFilter" />
-        	<notify listener="UserListener" method="changeDetails" />        	
-        </event-handler>
-        <event-handler event="changeDetailsConfirmation" access="public">
-        	<notify listener="RightsListener" method="getAllowedEventsList" />
-        	<!--<view-page name="carouselView" contentKey="carouselView" />-->
-        	<view-page name="navigationView" contentKey="navigationView" />
-        	<view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
-        	<view-page name="changeDetailsConfirmationView" contentKey="changeDetailsConfirmationView" />
-        	<view-page name="footerView" contentKey="footerView" />
-        	<view-page name="searchView" contentKey="searchView" />
-        	<view-page name="template4" />        	
-        </event-handler>
-        <!-- UPDATEACCOUNT --> <!-- UPDATEACCOUNT --> <!-- UPDATEACCOUNT -->
+        
         
         
         
@@ -1036,22 +979,6 @@
             <notify listener="TopicMessageListener" method="saveTopicMessage" />
             <notify listener="TopicMessageListener" method="validationResultTrue" />            
         </event-handler>
-        
-        <event-handler event="executeLesConsultationsEnCours" access="public">
-            <event-arg name="failEvent" value="changePassword" />
-            <filter name="validateChangePasswordFieldsFilter" />
-            <notify listener="UserListener" method="changePassword" />          
-        </event-handler>
-        <event-handler event="lesConsultationsEnCoursConfirmation" access="public">
-            <notify listener="RightsListener" method="getAllowedEventsList" />
-            <!--<view-page name="carouselView" contentKey="carouselView" />-->
-            <view-page name="navigationView" contentKey="navigationView" />
-            <view-page name="userAreaMenuView" contentKey="userAreaMenuView" />
-            <view-page name="changePasswordConfirmationView" contentKey="changePasswordConfirmationView" />
-            <view-page name="footerView" contentKey="footerView" />
-            <view-page name="searchView" contentKey="searchView" />
-            <view-page name="template4" />          
-        </event-handler>
         <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours --> <!-- lesConsultationsEnCours -->
         
         <event-handler event="blog" access="public">
@@ -1139,10 +1066,6 @@
     	<page-view name="forgotPasswordFormView" page="/views/front/forgotpassword/forgotPasswordFormView.php"/>
     	<page-view name="forgotPasswordConfirmationView" page="/views/front/forgotpassword/forgotPasswordConfirmationView.php"/>
     	
-    	<!--  CHANGE PASSWORD -->
-    	<page-view name="changePasswordFormView" page="/views/front/changepassword/changePasswordFormView.php"/>
-    	<page-view name="changePasswordConfirmationView" page="/views/front/changepassword/changePasswordConfirmationView.php"/>
-    	
     	<!--  CHANGE DETAILS -->
     	<page-view name="changeDetailsFormView" page="/views/front/changedetails/changeDetailsFormView.php"/>
     	<page-view name="changeDetailsConfirmationView" page="/views/front/changedetails/changeDetailsConfirmationView.php"/>
@@ -1150,8 +1073,7 @@
     	<page-view name="removeAccountFormView" page="/views/front/removeaccount/removeAccountFormView.php"/>
     	<page-view name="removeAccountConfirmationView" page="/views/front/removeaccount/removeAccountConfirmationView.php"/>
     	
-    	
-    	
+    	    	
     	<!--  NAVIGATION -->
     	<page-view name="navigationView" page="/views/front/!general/navigationView.php"/>
     	<page-view name="userAreaMenuView" page="/views/front/!general/userAreaMenuView.php"/>

@@ -44,7 +44,7 @@ class MachII_util_Exception extends Exception {
     function MachII_util_Exception($message = '', $code = MACHII_ERROR)
     {   
         $localizedMessage = $this->_localizeErrorMessage($message, $code);
-        header("Location: http://grandeconsultation.fr/surveys.html");
+        header("Location: http://127.0.0.1/surveys/surveys.html");
         //echo $localizedMessage;
         //echo $code;
         parent::Exception($localizedMessage, $code);

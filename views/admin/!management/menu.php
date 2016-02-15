@@ -14,7 +14,50 @@
 			<p><a href="../index.php?event=executelogout">Logout</a></p>
 		</div>
 	</div>
-	<?}?>	
+	<?}?>
+	
+	<?if (in_array('changepassword', $arrEventsAllowedForLevel)) {?>
+	    <div>
+            <h3><a href="#">Mes Informations</a></h3>
+            <div class="accordion_content">
+            <?$arrHighligths = array(
+                  changePassword,
+                  executeChangePassword,
+                  changePasswordConfirmation);
+                $currentEvent = $event->getArg('event');
+                $activeStyle = "";
+                if (in_array($currentEvent, $arrHighligths)) {
+                    echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 1 );}</script>";
+                    $activeStyle = "style=\"font-weight:bold\"";
+                }?>
+                <p <?=$activeStyle?>><a href="index.php?event=changePassword">Modifier son mot de passe</a></p>
+                <?$arrHighligths = array(
+                  changeDetails,
+                  executeChangeDetails,
+                  changeDetailsConfirmation);
+                $currentEvent = $event->getArg('event');
+                $activeStyle = "";
+                if (in_array($currentEvent, $arrHighligths)) {
+                    echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 1 );}</script>";
+                    $activeStyle = "style=\"font-weight:bold\"";
+                }?>
+                <p <?=$activeStyle?>><a href="index.php?event=changeDetails">Modifier ses informations</a></p>
+                <?/*<?$arrHighligths = array(
+                  removeAccount,
+                  executeRemoveAccount,
+                  removeAccountConfirmation);
+                $currentEvent = $event->getArg('event');
+                $activeStyle = "";
+                if (in_array($currentEvent, $arrHighligths)) {
+                    echo "<script>function initStartAdmin() {\$(\"#accordion\").accordion( \"option\", \"active\", 1 );}</script>";
+                    $activeStyle = "style=\"font-weight:bold\"";
+                }?>
+                <p <?=$activeStyle?>><a href="index.php?event=removeAccount">Supprimer son compte</a></p>*/?>
+                        
+            </div>
+        </div>
+	    
+	<?}?>
 	
 	<?if (in_array('showcmscategorieslist', $arrEventsAllowedForLevel)) {?>
 		<div>

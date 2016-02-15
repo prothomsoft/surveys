@@ -218,6 +218,12 @@
     	
     	<!-- Topic -->
         <event-filter name="validateTopicStep1Filter" type="filters.ValidateTopicStep1Filter" />
+        
+        <!-- Change Password -->
+        <event-filter name="validateChangePasswordFieldsFilter" type="filters.ValidateChangePasswordFieldsFilter" />
+        
+        <!-- Change Details -->
+        <event-filter name="validateChangeDetailsFieldsFilter" type="filters.ValidateChangeDetailsFieldsFilter" />
     	
     </event-filters>
     
@@ -1512,6 +1518,52 @@
             <notify listener="TopicMessageListener" method="removeRecord" />            
         </event-handler>     
         <!-- executeRemoveTopicMessageAction -->
+        
+        
+        <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD -->
+        <event-handler event="changePassword" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <view-page name="menu" contentKey="menu" />
+            <view-page name="changePasswordFormView" contentKey="changePasswordFormView" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />            
+            <view-page name="template" />
+        </event-handler>
+        <event-handler event="executeChangePassword" access="public">
+            <event-arg name="failEvent" value="changePassword" />
+            <filter name="validateChangePasswordFieldsFilter" />
+            <notify listener="UserListener" method="changePassword" />                      
+        </event-handler>
+        <event-handler event="changePasswordConfirmation" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <view-page name="menu" contentKey="menu" />
+            <view-page name="changePasswordConfirmationView" contentKey="changePasswordConfirmationView" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />            
+            <view-page name="template" />                      
+        </event-handler>
+        <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD --> <!-- CHANGEPASSWORD -->
+        
+        <!-- UPDATEACCOUNT --> <!-- UPDATEACCOUNT --> <!-- UPDATEACCOUNT -->
+        <event-handler event="changeDetails" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <notify listener="UserListener" method="getDetails" />
+            <view-page name="menu" contentKey="menu" />
+            <view-page name="changeDetailsFormView" contentKey="changeDetailsFormView" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />            
+            <view-page name="template" />
+        </event-handler>
+        <event-handler event="executeChangeDetails" access="public">
+            <event-arg name="failEvent" value="changeDetails" />
+            <filter name="validateChangeDetailsFieldsFilter" />
+            <notify listener="UserListener" method="changeDetails" />                      
+        </event-handler>
+        <event-handler event="changeDetailsConfirmation" access="public">
+            <notify listener="RightsListener" method="getAllowedEventsList" />
+            <view-page name="menu" contentKey="menu" />
+            <view-page name="changeDetailsConfirmationView" contentKey="changeDetailsConfirmationView" />
+            <view-page name="documentReadyScript" contentKey="documentReadyScript" />            
+            <view-page name="template" />                      
+        </event-handler>
+        <!-- UPDATEACCOUNT --> <!-- UPDATEACCOUNT --> <!-- UPDATEACCOUNT -->
                                
     </event-handlers>
     
@@ -1521,6 +1573,14 @@
         <!-- !GENERAL -->
         <page-view name="responseJSON" page="/views/admin/!general/responseJSON.php"/>
         <page-view name="documentReadyScript" page="/views/admin/!general/documentReadyScript.php"/>
+        
+        <!--  CHANGE PASSWORD -->
+        <page-view name="changePasswordFormView" page="/views/admin/changepassword/changePasswordFormView.php"/>
+        <page-view name="changePasswordConfirmationView" page="/views/admin/changepassword/changePasswordConfirmationView.php"/>
+        
+        <!--  CHANGE DETAILS -->
+        <page-view name="changeDetailsFormView" page="/views/admin/changedetails/changeDetailsFormView.php"/>
+        <page-view name="changeDetailsConfirmationView" page="/views/admin/changedetails/changeDetailsConfirmationView.php"/>
         
         <!-- !MANAGEMENT -->
         <page-view name="template" page="/views/admin/!management/template.php"/>

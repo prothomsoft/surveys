@@ -8,7 +8,7 @@ class filters_ValidateChangeDetailsFieldsFilter extends MachII_framework_EventFi
     	$newEventArgs = &$event->getArgs();
     	
     	if ($event->isArgDefined('website1') && ($event->getArg('website1') == '')) {
-        	$newEventArgs['message'] = 'txtDepuisCombienIsRequiredField';
+        	$newEventArgs['message'] = 'Depuis Combien is a required field.';
         	$newEventArgs['missingField'] = 'website1';
         	$this->announceEvent($event->getArg('failEvent'), $newEventArgs);
         	return false;
@@ -17,7 +17,7 @@ class filters_ValidateChangeDetailsFieldsFilter extends MachII_framework_EventFi
         if ($event->isArgDefined('website1') && ($event->getArg('website1') != '')) {
         	$website1 = $event->getArg('website1');        	
         	if(!is_numeric($website1)) {
-        		$newEventArgs['message'] = 'txtOnlyNumericValueAllowed';
+        		$newEventArgs['message'] = 'Only numeric values are allowed.';
         		$newEventArgs['missingField'] = 'website1';
         		$this->announceEvent($event->getArg('failEvent'), $newEventArgs);
         		return false;
