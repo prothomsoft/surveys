@@ -21,7 +21,7 @@ $objAppSession->destroySession();
 							<p style="text-align:center">
 								<?=$oT->gL("txtRemoveAccountConfirmationMessage")?>
 							</p>
-							<div style="text-align:center"><a class="btn btn-primary" href="<?=$SN;?>surveys.html"><?=$oT->gL("txtStart")?></a></div>									
+							<div style="text-align:center"><a class="btn btn-primary" href="<?=$SN;?>young_life.html"><?=$oT->gL("txtStart")?></a></div>									
 						</div>
 						<div style="padding-bottom:150px">
 						</div>

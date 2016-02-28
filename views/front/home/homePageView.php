@@ -114,7 +114,7 @@ $arrSigmaThreeLatest = $event->getArg("arrSigmaThreeLatest");
                                     <span><i class="fa fa-external-link"></i></span>
                                 </a>                                                
                             </span>
-                            <img alt="" class="img-responsive" src="<?=$SN;?>images/surveys/consulaire_320.jpg">
+                            <img alt="" class="img-responsive" src="<?=$SN;?>images/young_life/consulaire_320.jpg">
                         </div>		    			
 					</div>
 					
@@ -124,7 +124,7 @@ $arrSigmaThreeLatest = $event->getArg("arrSigmaThreeLatest");
 		    			<div style="font-size:21px; font-weight:bold; color: #E50043; text-align:center;">LES DERNIERES ETUDES PUBLIEES</div>
 		    			<div class="product-thumb-info-image collect-item-thumb">
 							<span class="product-thumb-info-act">
-								<a class="view-product" href="http://grandeconsultation.fr/surveys_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html">
+								<a class="view-product" href="http://grandeconsultation.fr/young_life_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html">
 									<span><i class="fa fa-external-link"></i></span>
 								</a>												
 							</span>
@@ -132,7 +132,7 @@ $arrSigmaThreeLatest = $event->getArg("arrSigmaThreeLatest");
 						</div>
 		    			<div class="product-thumb-info-image collect-item-thumb">
 							<span class="product-thumb-info-act">
-								<a class="view-product" href="http://grandeconsultation.fr/surveys_page/observatoire-de-la-performance-des-pmeeti-banque-palatinechallengesitele.html">
+								<a class="view-product" href="http://grandeconsultation.fr/young_life_page/observatoire-de-la-performance-des-pmeeti-banque-palatinechallengesitele.html">
 									<span><i class="fa fa-external-link"></i></span>
 								</a>												
 							</span>
@@ -140,7 +140,7 @@ $arrSigmaThreeLatest = $event->getArg("arrSigmaThreeLatest");
 						</div>
 		    			<div class="product-thumb-info-image collect-item-thumb">
 							<span class="product-thumb-info-act">
-								<a class="view-product" href="http://grandeconsultation.fr/surveys_page/la-question-de-leco.html">
+								<a class="view-product" href="http://grandeconsultation.fr/young_life_page/la-question-de-leco.html">
 									<span><i class="fa fa-external-link"></i></span>
 								</a>												
 							</span>

@@ -29,7 +29,7 @@ class plugins_SecurityPlugin extends MachII_framework_Plugin
     {
       $appSession = new AppSession();
       
-      $SN = "http://".$_SERVER['SERVER_NAME']."/surveys/";
+      $SN = "http://".$_SERVER['SERVER_NAME']."/young_life/";
       $appSession->setSession("SN",$SN);
       
        if ($appSession->getSession("sLang") == "") {

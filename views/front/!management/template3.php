@@ -27,7 +27,7 @@ $oT = new Translator('template3',$sLang);
         <meta property="og:type" content="article"/>
         <meta property="og:url" content="<?=$url?>"/>
         <meta property="og:image" content="<?=$image?>"/>
-        <meta property="og:site_name" content="Surveys"/>
+        <meta property="og:site_name" content="Young life"/>
         <meta property="fb:admins" content="543999369"/>
         <meta property="og:description" content="<?=$description?>"/>
         
@@ -78,15 +78,6 @@ $oT = new Translator('template3',$sLang);
                 });
             </script>
         <?}?>
-        
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-          ga('create', 'UA-60924329-1', 'auto');
-          ga('send', 'pageview');
-        </script>
                             
     </head>
     
@@ -142,7 +133,7 @@ $oT = new Translator('template3',$sLang);
         <script src="<?=$SN;?>js/modules/treemap.js" type="text/javascript"></script>
         
         <!-- Others -->
-        <script src="<?=$SN;?>js/jquery.surveys.js"></script>
+        <script src="<?=$SN;?>js/jquery.young_life.js"></script>
         <script type="text/javascript" src="<?=$SN;?>js/jquery.prettyPhoto.js"></script>
         <script type="text/javascript" src="<?=$SN;?>js/jquery.flexslider.js"></script>
         <script type="text/javascript" src="<?=$SN;?>js/usdeur.js"></script>

@@ -29,7 +29,7 @@ function string_limit_words($string, $word_limit) { $words = explode(' ', $strin
 						
 							<h3><?=$name;?></h3>
 							<p><?=string_limit_words($longDescription, 50);?>...</p>
-							<p><a href="<?=$SN?>surveys_page/<?=$objCmsContent->getSeoName();?>.html">&raquo;&nbsp;Lire la suite</a></p>
+							<p><a href="<?=$SN?>young_life_page/<?=$objCmsContent->getSeoName();?>.html">&raquo;&nbsp;Lire la suite</a></p>
 							<hr/>
 							
 						<?}?>

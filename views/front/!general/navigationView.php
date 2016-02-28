@@ -58,18 +58,29 @@ $oT = new Translator('template3',$sLang);
 
 <div id="logo">
 	<div class="container">
-		<div class="row">
+		<div class="row" style="background-color:#515356;">
 			<div class="col-xs-12 col-sm-12 col-md-12">
-				<div style="padding:20px; text-align:center;"><a href="<?=$SN?>surveys.html"><img src="<?=$SN?>images/surveys/logo_surveys.jpg"></a></div>
-				<div><h3 style="text-align: center; color: #004378; font-size: 34px;">GRANDE CONSULTATION<br/>DES ENTREPRENEURS</h3></div>
-				<div style="border-bottom: 1px dashed #004378;"></div>							
-					</div>
-				</div>
+				<div style="text-align:center;"><a href="<?=$SN?>young_life.html"><img src="<?=$SN?>images/young_life/young_life.jpg"></a></div>															
+			</div>			
+		</div>
+		
+		<div class="row" style="background-color:#FF5E1B;">
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				<div style="padding:10px 10px 10px 10px; color: #FFFFFF; font-size:40px; font-weight:bold;">Bienvenue Jean-Pierre!</div>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3">
+				<div style="padding:7px 10px 10px 10px; color: #FFFFFF; font-size:22px; font-weight:bold; text-align:right;">Vous avez déjà<br/>participé à</div>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3">
+				<div style="padding:10px 10px 10px 10px; color: #FFFFFF; font-size:36px; font-weight:bold;">2/9 enquêtes</div>
 			</div>
 		</div>
+	</div>
+</div>
     
     	<div id="menu">
-    		<div class="container" style="padding-bottom:10px">
+    		<div class="container" style="padding-bottom:10px;">
+    		
     		    	<nav class="navbar navbar-default navbar-main navbar-main-slide" role="navigation">
     		    		<div style="padding-bottom: 5px;">
     		    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu1">

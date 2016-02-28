@@ -3,7 +3,7 @@
     <!-- PROPERTIES -->
     <properties>
         <!-- MACH-II REQUIRED -->
-        <property name="defaultEvent" value="surveys"/>
+        <property name="defaultEvent" value="young_life"/>
         <property name="exceptionEvent" value=""/>
         <property name="applicationRoot" value="."/>
         <property name="eventParameter" value="event"/>
@@ -142,7 +142,7 @@
         
         
         <!-- START --> <!-- START --> <!-- START -->
-        <event-handler event="surveys">
+        <event-handler event="young_life">
         	<notify listener="RightsListener" method="getAllowedEventsList" />        	
         	<notify listener="SigmaListener" method="findThreeLatest" />
         	<notify listener="SigmaListener" method="getQueue" />
@@ -168,7 +168,7 @@
         </event-handler>
         
         <!-- CMS --> <!-- CMS --> <!-- CMS -->
-        <event-handler event="surveys_page" access="public">
+        <event-handler event="young_life_page" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
         	<notify listener="AlfaListener" method="findLatest" />
         	<notify listener="BetaListener" method="findAll" />
@@ -359,7 +359,7 @@
         <event-handler event="executeLogout" access="public">
         	<notify listener="RightsListener" method="getAllowedEventsList" />
 			<notify listener="UserListener" method="logOut" />
-        	<announce event="surveys" />
+        	<announce event="young_life" />
         </event-handler>
         <!-- LOGIN/LOGOUT --> <!-- LOGIN/LOGOUT --> <!-- LOGIN/LOGOUT -->
         

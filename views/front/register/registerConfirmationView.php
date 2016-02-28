@@ -19,7 +19,7 @@ $oT = new Translator('template3',$sLang);
 							<p style="text-align:center">
 								<?=$oT->gL("txtRegisterMessage")?>
 							</p>
-							<div style="text-align:center"><a class="btn btn-primary" href="<?=$SN;?>surveys.html"><?=$oT->gL("txtStart")?></a></div>									
+							<div style="text-align:center"><a class="btn btn-primary" href="<?=$SN;?>young_life.html"><?=$oT->gL("txtStart")?></a></div>									
 						</div>
 					</article>							
 				</div>

@@ -419,7 +419,7 @@ class model_UserListener extends MachII_framework_Listener {
 			
 			$fromEmail = "grandeconsultation.fr <admin@grandeconsultation.fr>";
 			$toEmail = $objUserBean->getEmail();
-			$subject  = "Surveys - Forgot Password";
+			$subject  = "Young life - Forgot Password";
 			
 			// tytuł
 			$messageContent .= "<p style=\"font-size:18px\">Forgot password<br/></p>"; 
@@ -522,9 +522,9 @@ class model_UserListener extends MachII_framework_Listener {
 		$fromEmail = "grandeconsultation.fr <admin@grandeconsultation.fr>";
 		$toEmail = "ncurtelin@gmail.com";
 		//$toEmail = "tprokop@prothomsoft.com";
-		$subject  = "Surveys user account was removed by user.";
+		$subject  = "Young life user account was removed by user.";
 
-		$messageContent = "<p style=\"font-size:18px\">Surveys user account was removed by user <br/><br/></p>"; 
+		$messageContent = "<p style=\"font-size:18px\">Young life user account was removed by user <br/><br/></p>"; 
 		// tresc wiadomosci
 
 		$messageContent .= "User details:<br/>";

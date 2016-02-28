@@ -324,7 +324,7 @@
 		
 		<div class="ui-helper-clearfix footer">
 			<div class="ui-widget-content ui-corner-all footer-content">
-				<p style="text-align:center">&copy; 2015 Surveys</a>
+				<p style="text-align:center">&copy; 2015 Young Life</a>
 			</div>
 		</div> <!-- .ui-helper-clearfix footer -->
 		

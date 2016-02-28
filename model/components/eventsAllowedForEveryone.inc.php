@@ -33,8 +33,8 @@ class EventsAllowedForEveryone {
 	  orderpayment,
 	  searchresults,
       
-	  surveys_page,
-	  surveys,
+	  young_life_page,
+	  young_life,
       search,
 	  collections,
 	  pomoc,

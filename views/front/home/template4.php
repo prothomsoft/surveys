@@ -27,7 +27,7 @@ $oT = new Translator('template3',$sLang);
 	    <meta property="og:type" content="article"/>
 	    <meta property="og:url" content="<?=$url?>"/>
 	    <meta property="og:image" content="<?=$image?>"/>
-	    <meta property="og:site_name" content="Surveys"/>
+	    <meta property="og:site_name" content="Young Life"/>
 	    <meta property="fb:admins" content="543999369"/>
 	    <meta property="og:description" content="<?=$description?>"/>
 	    
@@ -252,7 +252,7 @@ $oT = new Translator('template3',$sLang);
 		<script src="<?=$SN;?>js/modules/treemap.js" type="text/javascript"></script>
 		
 		<!-- Others -->
-		<script src="<?=$SN;?>js/jquery.surveys.js"></script>
+		<script src="<?=$SN;?>js/jquery.young_life.js"></script>
 		<script type="text/javascript" src="<?=$SN;?>js/jquery.prettyPhoto.js"></script>
 		<script type="text/javascript" src="<?=$SN;?>js/jquery.flexslider.js"></script>
 		<script type="text/javascript" src="<?=$SN;?>js/usdeur.js"></script>

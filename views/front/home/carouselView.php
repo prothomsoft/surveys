@@ -131,7 +131,7 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 							  		<div class="flex-slides">
 							  			<div class="row">
 											<div class="hidden-xs col-sm-12 col-md-12">
-												<a href="http://grandeconsultation.fr/surveys_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html" target="_blank"><div class="container-head-one"></div></a>
+												<a href="http://grandeconsultation.fr/young_life_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html" target="_blank"><div class="container-head-one"></div></a>
 											</div>
 										</div>
 									</div>
@@ -143,7 +143,7 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 									<div class="flex-slides">
 										<div class="row">
 											<div class="hidden-xs col-sm-12 col-md-12">
-												<a href="http://grandeconsultation.fr/surveys_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html" target="_blank"><div class="container-head-two"></div></a>
+												<a href="http://grandeconsultation.fr/young_life_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html" target="_blank"><div class="container-head-two"></div></a>
 											</div>
 										</div>
 									</div>
@@ -155,7 +155,7 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 									<div class="flex-slides">
 										<div class="row">
 											<div class="hidden-xs col-sm-12 col-md-12">
-												<a href="http://grandeconsultation.fr/surveys_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html" target="_blank"><div class="container-head-three"></div></a>
+												<a href="http://grandeconsultation.fr/young_life_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html" target="_blank"><div class="container-head-three"></div></a>
 											</div>
 										</div>
 									</div>
@@ -167,7 +167,7 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 									<div class="flex-slides">
 										<div class="row">
 											<div class="hidden-xs col-sm-12 col-md-12">
-												<a href="http://grandeconsultation.fr/surveys_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html" target="_blank"><div class="container-head-four"></div></a>
+												<a href="http://grandeconsultation.fr/young_life_page/la-grande-consultation-des-entrepreneurs-sondages-opinionway-pour-cci-france-la-tribune-europe-1.html" target="_blank"><div class="container-head-four"></div></a>
 											</div>
 										</div>
 									</div>
@@ -183,7 +183,7 @@ $arrDeltas = $event->getArg("arrDeltas");?>
 									<div class="flex-slides">
 										<div class="row">
 											<div class="hidden-xs col-sm-12 col-md-12">
-												<a href="http://grandeconsultation.fr/surveys_page/observatoire-de-la-performance-des-pmeeti-banque-palatinechallengesitele.html" target="_blank"><div class="container-head-five"></div></a>
+												<a href="http://grandeconsultation.fr/young_life_page/observatoire-de-la-performance-des-pmeeti-banque-palatinechallengesitele.html" target="_blank"><div class="container-head-five"></div></a>
 											</div>
 										</div>
 									</div>
